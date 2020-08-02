@@ -33,9 +33,9 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script src="_static/searchtools.js"></script>
@@ -76,27 +76,37 @@
 </form>
 
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
+  <p class="caption">
+ <span class="caption-text">
+  Prerequisites
+ </span>
+</p>
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
+  <a class="reference internal" href="Prerequisites/AircraftAnatomy.html">
+   Aircraft Anatomy and Nomenclature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Prerequisites/LiftandDrag.html">
+   Lift and Drag
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Performance
+ </span>
+</p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="content.html">
-   Content in Jupyter Book
+  <a class="reference internal" href="AircraftPerformance/Airspeed.html">
+   Defining Aircraft ‘Speed’
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Welcome to your Jupyter Book
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
+  <a class="reference internal" href="AircraftPerformance/SteadyLevelFlight.html">
+   Forces in Steady Level Flight
   </a>
  </li>
 </ul>
@@ -106,7 +116,9 @@
  <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+  <div>
+    <script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</div>
 </div>
 
 </div>

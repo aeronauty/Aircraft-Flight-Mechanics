@@ -1,7 +1,19 @@
 - file: Introduction
-  numbered: true
 
 - chapter: Prerequisites
   sections:
   - file: Prerequisites/AircraftAnatomy
   - file: Prerequisites/LiftandDrag
+
+- chapter: Aircraft Performance
+  sections:
+  - file: AircraftPerformance/Airspeed
+  - file: AircraftPerformance/SteadyLevelFlight
+  - file: AircraftPerformance/Propulsion
+  - file: AircraftPerformance/RangeandEndurance
+  - file: AircraftPerformance/ClimbandDescent
+  - file: AircraftPerformance/SteadyTurns
+
+- chapter: Aircraft Equations of Motion
+  sections:
+  - file: EoM/Introduction
