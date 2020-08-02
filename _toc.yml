@@ -1,6 +1,7 @@
-file: markdown
-sections:
 - file: Introduction
-- file: content
-- file: intro
-- file: notebooks
+  numbered: true
+
+- chapter: Prerequisites
+  sections:
+  - file: Prerequisites/AircraftAnatomy
+  - file: Prerequisites/AerofoilBehaviour

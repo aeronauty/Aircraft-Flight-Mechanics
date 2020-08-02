@@ -18,5 +18,5 @@ html:
 
 # Configure your Binder links, such as the URL of the BinderHub.
 launch_buttons:
-  binderhub_url             : https://mybinder.org/v2/gh/aeronauty/Aircraft-Flight-Mechanics/master
+  binderhub_url             : https://mybinder.org/
   thebe                     : true  # Add a thebe button to pages (requires the repository to run on Binder)
