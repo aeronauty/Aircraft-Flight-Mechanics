@@ -4,4 +4,4 @@
 - chapter: Prerequisites
   sections:
   - file: Prerequisites/AircraftAnatomy
-  - file: Prerequisites/AerofoilBehaviour
+  - file: Prerequisites/LiftandDrag
