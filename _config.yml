@@ -6,3 +6,17 @@ logo: logo.png
 latex:
   latex_documents:
     targetname: book.tex
+
+# Information about where the book exists on the web
+repository:
+  url                       : https://github.com/aeronauty/Aircraft-Flight-Mechanics
+
+
+html:
+  use_repository_button: true
+  use_issues_button: true
+
+# Configure your Binder links, such as the URL of the BinderHub.
+launch_buttons:
+  binderhub_url             : https://mybinder.org/v2/gh/aeronauty/Aircraft-Flight-Mechanics/master
+  thebe                     : true  # Add a thebe button to pages (requires the repository to run on Binder)
