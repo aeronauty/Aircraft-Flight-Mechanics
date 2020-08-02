@@ -1,0 +1,8 @@
+# Book settings
+title: Aircraft Flight Mechanics
+author: Harry Smith
+logo: logo.png
+
+latex:
+  latex_documents:
+    targetname: book.tex
