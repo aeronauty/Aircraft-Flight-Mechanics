@@ -1,0 +1,476 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Assumed knowledge &#8212; Aircraft Flight Mechanics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Defining Aircraft ‘Speed’" href="../AircraftPerformance/Airspeed.html" />
+    <link rel="prev" title="Course Introduction" href="../CourseIntroduction.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Aircraft Flight Mechanics</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CourseIntroduction.html">
+   Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Assumed knowledge
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Performance
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Airspeed.html">
+   Defining Aircraft ‘Speed’
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/SteadyLevelFlight.html">
+   Forces in Steady Level Flight
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  References and Resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div>
+    <script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Prerequisites/Prerequisites.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org//v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/Prerequisites/Prerequisites.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aircraft-anatomy">
+   Aircraft Anatomy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aerodynamic-propulsive-and-inertial-forces">
+   Aerodynamic, Propulsive, and Inertial Forces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aerodynamic-coefficients">
+   Aerodynamic Coefficients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aerofoils-and-lift">
+   Aerofoils and Lift
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="assumed-knowledge">
+<h1>Assumed knowledge<a class="headerlink" href="#assumed-knowledge" title="Permalink to this headline">¶</a></h1>
+<p>This course assumes a certain level of knowledge on the reader and will not be formally taught in class - you will have been taught this at earlier levels in your undergraduate studies but:</p>
+<ul class="simple">
+<li><p>Students forget things</p></li>
+<li><p>Repetition helps to reinforce learning</p></li>
+</ul>
+<p>So a review of what is assumed of your knowledge is suitable at this juncture.</p>
+<div class="section" id="aircraft-anatomy">
+<h2>Aircraft Anatomy<a class="headerlink" href="#aircraft-anatomy" title="Permalink to this headline">¶</a></h2>
+<p>The basic parts of a standard fixed-wing aircraft are labelled in <a class="reference internal" href="#aircraftcomponents"><span class="std std-numref">Fig. 1</span></a>. Flight is controlled through movable parts of the aircraft, and from adjusting the propulsion.</p>
+<div class="figure align-default" id="aircraftcomponents">
+<a class="reference internal image-reference" href="../_images/AircraftComponents.png"><img alt="../_images/AircraftComponents.png" src="../_images/AircraftComponents.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Major Aircraft Components</span><a class="headerlink" href="#aircraftcomponents" title="Permalink to this image">¶</a></p>
+</div>
+<p>Aircraft have control surfaces in red and high-lift devices in blue in <a class="reference internal" href="#controlsurfaces"><span class="std std-numref">Fig. 2</span></a>. Note that some aircraft have additional flow control devices such as <em>spoilers</em> but there are not discussed here.</p>
+<div class="figure align-default" id="controlsurfaces">
+<a class="reference internal image-reference" href="../_images/ControlSurfaces.png"><img alt="../_images/ControlSurfaces.png" src="../_images/ControlSurfaces.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Aircraft Control Surfaces and High Lift Devices</span><a class="headerlink" href="#controlsurfaces" title="Permalink to this image">¶</a></p>
+</div>
+<p>The control surfaces are there to alter the aircraft’s attitude (its orientation in 3D space). They are:</p>
+<ul class="simple">
+<li><p><strong>Ailerons</strong> - these are outboard on each wing, and operate in <em>differential mode</em>, meaning if one goes up, the other goes down. These are effected via a sideways stick/yoke movement. This increases lift on one wing, and decreases it on the other, effecting a <em>roll rate</em>, <span class="math notranslate nohighlight">\(p\)</span>, which changes the roll angle, <span class="math notranslate nohighlight">\(\phi\)</span>.</p></li>
+<li><p>The <strong>elevator</strong> is usually situated on the horizontal stabiliser, and both sides move together. This increases/decreases the tail lift, and changes the aircraft pitch attitude, <span class="math notranslate nohighlight">\(\theta\)</span>. This is controlled by moving the stick/yoke forward/aft.</p></li>
+<li><p>The <strong>rudder</strong> is on the vertical tail, and is a single control surface. If the rudder moves to the port (left), it creates a sideways aerodynamic force on the tail towards starboard (right), which moves the aircraft nose-port to a <em>sideslip angle</em>, <span class="math notranslate nohighlight">\(\beta\)</span>. This is controlled using pedals in the cockpit.</p></li>
+</ul>
+<p>We will look at <em>trapezoidal wings</em> for most of this course - see <a class="reference internal" href="#trapezoidalwing"><span class="std std-numref">Fig. 3</span></a>. In general, we usually define wing parameters in terms of <strong>gross wing</strong> - see <a href="#id1"><span class="problematic" id="id2">:numred:`WingAreas`</span></a>, <span class="math notranslate nohighlight">\(S\)</span>. We represent the wing with a simple trapezoid:</p>
+<div class="figure align-default" id="trapezoidalwing">
+<a class="reference internal image-reference" href="../_images/TrapezoidalWing2.png"><img alt="../_images/TrapezoidalWing2.png" src="../_images/TrapezoidalWing2.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Aircraft Trapezoidal Wing</span><a class="headerlink" href="#trapezoidalwing" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="wingareas">
+<a class="reference internal image-reference" href="../_images/TrapezoidalWing.png"><img alt="../_images/TrapezoidalWing.png" src="../_images/TrapezoidalWing.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Aircraft Wing Areas</span><a class="headerlink" href="#wingareas" title="Permalink to this image">¶</a></p>
+</div>
+<p>you will note that the swing, <em>sweep</em>, which is a measure of how far back the tip is compared to the root, is measured by the sweep of the quarter-chord line. The <em>chord</em> is the length of the wing in the direction of travel (hence vertical in the image). The so-called <strong>root chord</strong> is usually defined on the aircraft centerline, and not at the actual aircraft root. We can define a few parameters:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \text{Wing taper ratio: } \lambda &amp;= \frac{c_t}{c_0}\\
+    \text{Wing area: } S &amp;= \frac{c_t + c_0}{2}\cdot =\bar{c}\cdot b\\
+    \text{Standard Mean chord: } \bar{c} &amp;= \frac{c_t + c_0}{2}=\frac{S}{b}\\
+    \text{Aspect Ratio: } \bar{AR} &amp;= \frac{b}{\bar{c}}=\frac{b^2}{S}\\
+    \text{Mean aerodynamic chord: } \bar{\bar{c}} &amp;= \frac{1}{S}\int^{+s}_{-s}c^2\text{d}y
+\end{aligned}\end{split}\]</div>
+</div>
+<div class="section" id="aerodynamic-propulsive-and-inertial-forces">
+<h2>Aerodynamic, Propulsive, and Inertial Forces<a class="headerlink" href="#aerodynamic-propulsive-and-inertial-forces" title="Permalink to this headline">¶</a></h2>
+<p>As will be covered in the Aircraft Performance module, the simplest regime of flight is that of <em>steady, level flight</em>. Steady means not accelerating, and level means that there is no variation in altitude - this <em>does not</em> mean that the wings are level, so the aircraft may be turning in a <em>steady turn</em>.</p>
+<p>Whilst this will be covered in detail later, the basics of this regime <em>should</em> be relatable to previous modules.</p>
+<p>Since the aircraft is not accelerating, the forces must be in equilibrium. We summarise our forces on the aircraft as two aerodynamic forces, one propulsive, and one inertial:</p>
+<ul class="simple">
+<li><p><strong>Lift</strong> - <span class="math notranslate nohighlight">\(L\)</span> - the aerodynamic force normal to the incident flow velocity, acting in a ‘lifting’ sense.</p></li>
+<li><p><strong>Drag</strong> - <span class="math notranslate nohighlight">\(D\)</span> - the aerodynamic force parallel to the incident flow velocity, opposing motion.</p></li>
+<li><p><strong>Weight</strong> - <span class="math notranslate nohighlight">\(W\)</span> - the inertial force acting downward; <span class="math notranslate nohighlight">\(W=m\,g\)</span> where <span class="math notranslate nohighlight">\(g=9.80665\text{m}\,\text{s}^{-2}\)</span>, the acceleration due to gravity.</p></li>
+<li><p><strong>Thrust</strong> - <span class="math notranslate nohighlight">\(T\)</span> - the propulsive force parallel to the aircraft longitudinal axis, providing motion.</p></li>
+</ul>
+<div class="figure align-default" id="eqforces">
+<a class="reference internal image-reference" href="../_images/EqForces.png"><img alt="../_images/EqForces.png" src="../_images/EqForces.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Equilibrium Forces</span><a class="headerlink" href="#eqforces" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="aerodynamic-coefficients">
+<h2>Aerodynamic Coefficients<a class="headerlink" href="#aerodynamic-coefficients" title="Permalink to this headline">¶</a></h2>
+<p>In general, it’s useful to be able to remove units from expressions in engineering for a number of reasons:</p>
+<ul class="simple">
+<li><p>It enables us to work between unit systems (i.e., between metric and imperial unit systems) without conversion.</p></li>
+<li><p>It enables us to compare aircraft of differing sizes in terms of performance.</p></li>
+<li><p>It enables us to perform scale model work of aircraft and extend the results to full-size.</p></li>
+</ul>
+<p>Hence, as presented in the preceding section forces <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(D\)</span> represent <em>dimensional</em> lift and drag, which we may measure in Newtons, Pounds-Force, Dyne, or Kip.</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>You may not have heard of the last two. Don’t worry - we won’t be using them.</p>
+</div>
+<p>To remove the dimensions from these forces, we divide by something else with the same dimensions. You should be comfortable with the fact that the lift is proportional to the ‘dynamic pressure’, <span class="math notranslate nohighlight">\(q_\infty\)</span></p>
+<div class="math notranslate nohighlight">
+\[q_\infty=\frac{1}{2}\,\rho\, V^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(\rho\)</span> is the fluid density, and <span class="math notranslate nohighlight">\(V\)</span> is the density of the fluid. Dynamic pressure has dimensions of:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    q_\infty=\frac{1}{2}\,\rho\, V^2     &amp;: \frac{\text{kg}}{{\text{m}^3}}\,\left\{\frac{{\text{m}}}{{{\text{s}}}}\right\}^2\\
+    &amp;: \frac{\text{kg}}{{\text{m}\text{s}^2}}\\
+    &amp;: \left[\frac{\text{M}}{\text{L}\,\text{T}^2}\right]\end{aligned}\end{split}\]</div>
+<p>We know that lift and drag may be represented in <em>Newtons</em>, which have units of <span class="math notranslate nohighlight">\({\text{N}}={\text{kg}\,\text{m}\,\text{s}^{-2}}\)</span> which has dimensions of</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \left[\frac{\text{M}\,\text{L}}{\text{T}^2}\right]  \end{aligned}\]</div>
+<p>to get something that has the same dimensions as the aerodynamic forces, we need to multiply the dynamic pressure by <em>some</em> area. The area that we choose is the <em>wing area</em>, <span class="math notranslate nohighlight">\(S\)</span>, which we’ll define in more detail later. But now we’ve reached the definition of the three-dimensional lift and drag coefficients:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    C_L = \frac{L}{\frac{1}{2}\,\rho\,V^2\,S}\\
+    C_D = \frac{D}{\frac{1}{2}\,\rho\,V^2\,S}   \end{aligned}\end{split}\]</div>
+<p>The uppercase <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(D\)</span> in the subscript means that we’re looking at the three-dimensional lift and drag coefficients. As aeronautical engineers we often like to look at an infinitesimal slice of a wing, which we call an aerofoil/airfoil.</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>Though I live and work in America, I’m a Brit. Hence the ‘u’s and ‘s’ in place of ‘z’s. Aerofoil is British English, Airfoil is US English.</p>
+</div>
+<p>If we wish to have the lift and drag quantified on 2D aerofoil, then we look at the <em>lift and drag per unit span</em>, which we denote with a lowercase <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(d\)</span>. The corresponding two-dimensional lift and drag coefficients are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    C_l = \frac{l}{\frac{1}{2}\,\rho\,V^2\,c}\\
+    C_d = \frac{d}{\frac{1}{2}\,\rho\,V^2\,c}   \end{aligned}\end{split}\]</div>
+<p>where we’ve now introduced a new parameter, <span class="math notranslate nohighlight">\(c\)</span>, in place of the wing area. This <span class="math notranslate nohighlight">\(c\)</span> represents the <em>chord</em> of the aerofoil, which is simply the length from the very front (the leading edge) to the very aft (the trailing edge).</p>
+</div>
+<div class="section" id="aerofoils-and-lift">
+<h2>Aerofoils and Lift<a class="headerlink" href="#aerofoils-and-lift" title="Permalink to this headline">¶</a></h2>
+<p>As discussed above, an aerofoil is an infinitesimal section of a wing, which we can represent in two dimensions (this is helpful, as drawing in 3d is difficult!). The simplest aerofoil is a symmetric one.</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>The simplest aerofoil with thickness - as the simplest ‘foil’ could be argued to be a flat plate.</p>
+</div>
+<p>The nondimensional longitudinal axis is the <span class="math notranslate nohighlight">\(x\)</span> direction, and the distance from the front (leading edge) to the tail (trailing edge) of the airfoil is the <em>chord</em> line.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">naca4</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="s1">&#39;0012&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plots the aerofoill for the given 4 digit NACA number string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mf">100.0</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mf">10.0</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span><span class="o">/</span><span class="mf">100.0</span>
+
+    <span class="n">a0</span> <span class="o">=</span> <span class="o">+</span><span class="mf">0.2969</span>
+    <span class="n">a1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1260</span>
+    <span class="n">a2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.3516</span>
+    <span class="n">a3</span> <span class="o">=</span> <span class="o">+</span><span class="mf">0.2843</span>
+    <span class="n">a4</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1015</span>
+
+    <span class="c1"># Make a vector of the x spacing</span>
+    <span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># Get the thickness distribution</span>
+    <span class="n">yt</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="p">(</span><span class="n">a0</span><span class="o">*</span><span class="n">x</span><span class="o">**.</span><span class="mi">5</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a3</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">a4</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+    
+    <span class="c1"># Get the camber line</span>
+    <span class="n">yc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">yc</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span> <span class="o">/</span> <span class="n">p</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">]</span> <span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">yc</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">p</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">p</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Get the upper and lower surfaces</span>
+    <span class="n">yu</span> <span class="o">=</span> <span class="n">yc</span> <span class="o">+</span> <span class="n">yt</span>
+    <span class="n">yl</span> <span class="o">=</span> <span class="n">yc</span> <span class="o">-</span> <span class="n">yt</span>
+    
+    <span class="c1"># Put into Selig format</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">yu</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">yl</span><span class="p">))</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">))</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">yu</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Upper Surface&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">yl</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lower Surface&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Camber Line&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Normalised aerofoil for NACA </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">))</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">naca4</span><span class="p">(</span><span class="s1">&#39;2412&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Prerequisites_6_0.png" src="../_images/Prerequisites_6_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "aeronauty/Aircraft-Flight-Mechanics",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Prerequisites"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../CourseIntroduction.html" title="previous page">Course Introduction</a>
+    <a class='right-next' id="next-link" href="../AircraftPerformance/Airspeed.html" title="next page">Defining Aircraft ‘Speed’</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Harry Smith<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

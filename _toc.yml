@@ -1,9 +1,9 @@
-- file: Introduction
+- file: NotesIntroduction
 
-- chapter: Prerequisites
+- chapter: Getting Started
   sections:
-  - file: Prerequisites/AircraftAnatomy
-  - file: Prerequisites/LiftandDrag
+  - file: CourseIntroduction
+  - file: Prerequisites/Prerequisites
 
 - chapter: Aircraft Performance
   sections:
@@ -17,3 +17,7 @@
 - chapter: Aircraft Equations of Motion
   sections:
   - file: EoM/Introduction
+
+- chapter: References and Resources
+  sections:
+  - file: references

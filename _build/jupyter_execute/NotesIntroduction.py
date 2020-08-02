@@ -1,5 +1,5 @@
 
-# Introduction
+# Introduction to this content
 
 This website comprises the course notes for MMAE 410 Aircraft Flight Mechanics - this text originally started as a PDF file written using LaTeX, with links to code and other tidbits. These notes started as my means of ensuring my own competence with the material and, accordingly, they get updated regularly and requiring students to download an updated PDF file every few weeks proved to not be the ideal solution.
 
@@ -18,7 +18,6 @@ And see {eq}`my_label` below:
 ```{math}
 :label: my_label
 F = m\,a
-v = u + a\,t
 ```
 
 
@@ -44,10 +43,10 @@ plt.ylabel('y')
 ```{toctree}
 :hidden:
 :titlesonly:
-:caption: Prerequisites
+:caption: Getting Started
 
-Prerequisites/AircraftAnatomy
-Prerequisites/LiftandDrag
+CourseIntroduction
+Prerequisites/Prerequisites
 ```
 
 
@@ -71,4 +70,13 @@ AircraftPerformance/SteadyTurns
 :caption: Aircraft Equations of Motion
 
 EoM/Introduction
+```
+
+
+```{toctree}
+:hidden:
+:titlesonly:
+:caption: References and Resources
+
+references
 ```
