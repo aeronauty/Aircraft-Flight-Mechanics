@@ -20,3 +20,9 @@ html:
 launch_buttons:
   binderhub_url             : https://mybinder.org/
   thebe                     : true  # Add a thebe button to pages (requires the repository to run on Binder)
+
+html:
+    extra_navbar: |
+        <div>
+            <script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        </div>
