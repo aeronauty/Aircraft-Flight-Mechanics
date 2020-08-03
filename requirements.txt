@@ -3,3 +3,4 @@ matplotlib
 numpy
 scipy
 ambiance
+myst_nb
