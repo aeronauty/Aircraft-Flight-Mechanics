@@ -346,10 +346,10 @@ vc = vcs[randint(0, len(vcs)-1)]
 Vt = Vts[randint(0, len(Vts)-1)]
 if Vt > 0:
     wind = 'tailwind'
-    winddir = 'added'
+    winddir = 'added to'
 else:
     wind = 'headwind'
-    winddir = 'subtracted'
+    winddir = 'subtracted from'
 
 
 
@@ -509,7 +509,7 @@ We get true airspeed from the relationship $V=V_e\cdot\sigma^{-\frac{1}{2}}$ whi
 
 Note that at no point have the units had to be converted into SI to make the corrections - that's the smart part of the density and pressure corrections; they are both non-dimensional corrections. If you have velocity in knots, you use them and get velocity in knots out.
 
-Since the wind is a {glue:text}`wind`, this is {glue:text}`winddir` to the value above to yield the groundspeed in knots as {glue:text}`Vg:1.3f`kn.
+Since the wind is a {glue:text}`wind`, this is {glue:text}`winddir` the value above to yield the groundspeed in knots as {glue:text}`Vg:1.3f`kn.
 
 With the velocity in knots we can convert it to m/s by mutliplying by 0.5144444 which yields $V$={glue:text}`Vms:1.3f`m/s. This gives us the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.
 

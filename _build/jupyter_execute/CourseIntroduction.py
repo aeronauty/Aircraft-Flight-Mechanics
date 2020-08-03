@@ -2,15 +2,21 @@
 
 ## What is Flight Mechanics?
 
-Without going back to basics too much, a definition of what Flight Mechanics is can be garnered from the definitions of each word - both taken from the Oxford English Dicionary:
+Without going back to basics too much, a definition of what Flight Mechanics is can be garnered from the definitions of each word:
 
+```{epigraph}
 **flight** - *the action or process of flying through the air*
 
+-- Oxford English Dictionary
+```
 
 So Flight is relatively easy to understand. *Mechanics*, when not referring to people who fix machinery is defined as
 
+```{epigraph}
 **mechanics** - *the branch of mathematics dealing with **motion** and **forces producing motion***
 
+-- Oxford English Dictionary
+```
 
 Flight Mechanics allows us to construct a mathematical *model* of an aircraft to analyse and predict flight characteristics. Generally, a model is a simpler representation of a system that has sufficient fidelity to represent the parameters of interest - so we are not concerned with, say, turbulence modelling in this course as this is a higher order parameter when understanding aircraft performance, stability, and control.
 
