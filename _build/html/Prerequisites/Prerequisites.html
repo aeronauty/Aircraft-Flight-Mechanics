@@ -39,7 +39,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Defining Aircraft ‘Speed’" href="../AircraftPerformance/Airspeed.html" />
+    <link rel="next" title="Aircraft Performance" href="../AircraftPerformance/Introduction.html" />
     <link rel="prev" title="Course Introduction" href="../CourseIntroduction.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -97,6 +97,11 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Introduction.html">
+   Aircraft Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../AircraftPerformance/Airspeed.html">
    Defining Aircraft ‘Speed’
   </a>
@@ -128,6 +133,7 @@
   <div>
     <script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </div>
+
 </div>
 
 </div>
@@ -186,7 +192,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org//v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/Prerequisites/Prerequisites.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/Prerequisites/Prerequisites.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -229,6 +235,76 @@
   <a class="reference internal nav-link" href="#aerofoils-and-lift">
    Aerofoils and Lift
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#where-does-lift-come-from">
+     Where does lift come from?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lift-vs-alpha-and-a-few-other-things">
+     Lift vs Alpha (and a few other things).
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compressibility">
+     Compressibility
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viscosity">
+     Viscosity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lift-summary">
+     Lift Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#drag">
+   Drag
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#skin-friction-drag">
+     Skin Friction Drag
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pressure-drag">
+     Pressure Drag
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pressure-drag-1-form-drag">
+       Pressure Drag 1:
+       <strong>
+        Form Drag
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pressure-drag-2-induced-drag">
+       Pressure Drag 2:
+       <strong>
+        Induced Drag
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pressure-drag-3-wave-drag">
+       Pressure Drag 3:
+       <strong>
+        Wave Drag
+       </strong>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -352,6 +428,14 @@
 <p>The simplest aerofoil with thickness - as the simplest ‘foil’ could be argued to be a flat plate.</p>
 </div>
 <p>The nondimensional longitudinal axis is the <span class="math notranslate nohighlight">\(x\)</span> direction, and the distance from the front (leading edge) to the tail (trailing edge) of the airfoil is the <em>chord</em> line.</p>
+<p>The simplest ‘standard’ airfoils are the NACA 4-digit series. Where the four digits are numbers. The format is <span class="math notranslate nohighlight">\(MPXX\)</span> where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(M\)</span> is the maximum camber expressed as a percentage of the chord. In the example <span class="math notranslate nohighlight">\(M\)</span>=2 so the camber is 0.02 or 2% of the chord.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the position (in the <span class="math notranslate nohighlight">\(x\)</span> direction) of the maximum camber expressed in tenths of the chord length. In the example P=4 so the maximum camber is at 0.4 or 40% of the chord.</p></li>
+<li><p><span class="math notranslate nohighlight">\(XX\)</span> is the thickness as a percentage. In the example <span class="math notranslate nohighlight">\(XX\)</span>=12 so the thickness is 0.12 or 12% of the chord.</p></li>
+</ul>
+<p>We have already discussed the chord line, and now also the <em>camber line</em>. For reasons that you should have discovered in your studies, a <em>cambered</em> aerofoil produces more lift and a symmetric one for the same angle of attack (before stall). The camber line is defined as the locus of points midway between the upper and lower surface. For a NACA 4-digit airfoil with nonzero first and second digit, you can immediately observe that the aerofoil will have <em>camber</em>. The camber line is the midpoint between the upper and lower surface at all points.</p>
+<p>You should be comfortable with NACA 4 and 5 digit series aerofoils - these are defined by polynominal functions representing the <em>camber line</em> and the <em>thickness distribution</em>. A code snippet below enables you to plot the NACA 4-digit series. Click the rocket and choose ‘launch thebe’ or open this page in Binder to change the aerofoil section.</p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -362,7 +446,7 @@
 <span class="k">def</span> <span class="nf">naca4</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="s1">&#39;0012&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
     
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Plots the aerofoill for the given 4 digit NACA number string</span>
+<span class="sd">    Plots the aerofoil for the given 4 digit NACA number string</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">m</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mf">100.0</span>
@@ -399,6 +483,7 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">yu</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Upper Surface&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">yl</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lower Surface&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Camber Line&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">yc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Chord Line&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
@@ -417,6 +502,126 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/Prerequisites_6_0.png" src="../_images/Prerequisites_6_0.png" />
+</div>
+</div>
+<p>The most important parameter for lift is <em>angle of attack</em>. We define the incident velocity at <span class="math notranslate nohighlight">\(V_\infty\)</span>, and the angle of attack is the angle it makes with the chord line of the aerofoil. This angle is given the symbol <span class="math notranslate nohighlight">\(\alpha\)</span> - see <a class="reference internal" href="#aoaalpha"><span class="std std-numref">Fig. 6</span></a>.</p>
+<div class="figure align-default" id="aoaalpha">
+<a class="reference internal image-reference" href="../_images/AoAAlpha.png"><img alt="../_images/AoAAlpha.png" src="../_images/AoAAlpha.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Aerofoil Angle of Attack</span><a class="headerlink" href="#aoaalpha" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="where-does-lift-come-from">
+<h3>Where does lift come from?<a class="headerlink" href="#where-does-lift-come-from" title="Permalink to this headline">¶</a></h3>
+<p>Fundamentally, an aerofoil provides a <em>pressure difference</em> by accelerating the flow over the upper surface, and retarding the flow over the lower surface. <strong>This has nothing to do with the airflow ‘catching up’ at the trailing edge</strong> - and though you’ll find plenty of sources for the so-called Bernoulli fallacy, it is wholly incorrect.</p>
+<p>In your third year classes, you will have covered the <em>circulatory theory of lift</em>, and discovered that it is the tendency of the aerofoil to ‘circulate’ the air that provides lift. Hence a symmetric aerofoil at an angle of attack produces lift, and a cambered aerofoil produces some lift at zero angle of attack.</p>
+<p>If you want to describe where lift comes from, you can say that ‘<em>an aerofoil with a sharp trailing edge, if immersed in a viscous flowfield, will create about itself sufficient circulation such that the flow leaves the trailing edge smoothly (aka the Kutta condition)</em>.</p>
+<p>The key effects of this are:</p>
+<ul class="simple">
+<li><p>The flow is accelerated over the upper surface and retarded over the lower surface</p></li>
+<li><p>This causes a pressure rise on the lower surface and a pressure drop on the upper surface</p></li>
+<li><p>These pressures, when integrated, give rise to lift (and some drag, which we’ll talk about later).</p></li>
+<li><p>The lift coefficient is linearly proportional to the <em>angle of attack</em>.</p></li>
+</ul>
+</div>
+<div class="section" id="lift-vs-alpha-and-a-few-other-things">
+<h3>Lift vs Alpha (and a few other things).<a class="headerlink" href="#lift-vs-alpha-and-a-few-other-things" title="Permalink to this headline">¶</a></h3>
+<p>If we plot the lift coefficient vs angle of attack, we get a curve that looks like <a class="reference internal" href="#clalphasymmetric"><span class="std std-numref">Fig. 7</span></a>. You will notice:</p>
+<ul class="simple">
+<li><p>The first part of the curve is linear, and it has the slope of <span class="math notranslate nohighlight">\(C_L=2\,\pi/\text{rad}\)</span>.</p></li>
+<li><p>The lift curve slope is defined as <span class="math notranslate nohighlight">\(a=\frac{\partial C_L}{\partial\alpha}\)</span>, which we define just for this linear part.</p></li>
+<li><p>The curve stops being linear as it approaches its maximum - this is the start of nonlinearity.</p></li>
+<li><p>The maximum lift the aerofoil can produce is <span class="math notranslate nohighlight">\(C_{Lmax}\)</span>.</p></li>
+<li><p>At angles of attack beyond <span class="math notranslate nohighlight">\(\alpha_{stall}\)</span>, the aerofoil is fully stalled and the flow is <em>separated</em></p></li>
+<li><p>It <em>should</em> be <span class="math notranslate nohighlight">\(C_l\)</span> and not <span class="math notranslate nohighlight">\(C_L\)</span> on the y-axis, but I am too lazy to correct it.</p></li>
+</ul>
+<p>For the symmetric aerofoil, we can determine the lift from <span class="math notranslate nohighlight">\(C_L=a\,\alpha\)</span>, where <span class="math notranslate nohighlight">\(a\)</span> is the lift curve slope. When we introduce camber to the aerofoil, we shift the <span class="math notranslate nohighlight">\(C_L-\alpha\)</span> curve to the left. You’ll note that for the symmetric aerofoil, there is zero lift produced at an angle of attack of zero. The cambered aerofoil produces <span class="math notranslate nohighlight">\(C_{L0}\)</span> at <span class="math notranslate nohighlight">\(\alpha=0\)</span>, and we note that there is some negative angle of attack at which it produces zero lift, which we call <span class="math notranslate nohighlight">\(\alpha_0\)</span>. <a class="reference internal" href="#clalphacambered"><span class="std std-numref">Fig. 8</span></a>:</p>
+<p>The lift curve slope of a cambered aerofoil will be the same, so the lift of a cambered aerofoil can be determined from <span class="math notranslate nohighlight">\(C_L=a\left[\alpha-\alpha_0\right]\)</span>.</p>
+<div class="figure align-default" id="clalphasymmetric">
+<a class="reference internal image-reference" href="../_images/ClAlphaSymmetric.png"><img alt="../_images/ClAlphaSymmetric.png" src="../_images/ClAlphaSymmetric.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Lift Coefficient vs Angle of Attack - Symmetric Aerofoil</span><a class="headerlink" href="#clalphasymmetric" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="clalphacambered">
+<a class="reference internal image-reference" href="../_images/ClAlphaCambered.png"><img alt="../_images/ClAlphaCambered.png" src="../_images/ClAlphaCambered.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Lift Coefficient vs Angle of Attack - Cambered Aerofoil</span><a class="headerlink" href="#clalphacambered" title="Permalink to this image">¶</a></p>
+</div>
+<p>In general, we can use <span class="math notranslate nohighlight">\(C_L\)</span> to compare aerodynamic performance, and we note that <span class="math notranslate nohighlight">\(C_L\)</span> is simply a function of the angle of attack. However, <span class="math notranslate nohighlight">\(C_L\)</span> is also a function of two important parameters that we’ll mention here:</p>
+</div>
+<div class="section" id="compressibility">
+<h3>Compressibility<a class="headerlink" href="#compressibility" title="Permalink to this headline">¶</a></h3>
+<p>The fastest that information can travel through a fluid is the speed of sound, <span class="math notranslate nohighlight">\(a=\sqrt{\gamma\,R\,T}\)</span> where the speed of sound at sea-level is around 340. Because the aerofoil disturbs the flow around it, these disturbances move at the speed of sound.</p>
+<p>As the fluid velocity gets faster, these disturbances travel at rates that are slower and slower compared to the fluid velocity. Whilst we won’t get into the mathematics of compressible flow, we can probably see that the lift produced will be a function of how fast the fluid is traveling compared to the speed of sound. So we have just defined the <em>Mach number</em>, which is our dimensionless measure of speed compared to <span class="math notranslate nohighlight">\(a\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[M=\frac{V}{a}\]</div>
+</div>
+<div class="section" id="viscosity">
+<h3>Viscosity<a class="headerlink" href="#viscosity" title="Permalink to this headline">¶</a></h3>
+<p>How ‘sticky’ the air is affects how well it adheres to the aerofoil, and hence when stall will occur. It also affects how much drag is produced. Aerodynamicists use another dimensionless parameter, <em>Reynold’s number</em>, which is the ratio of the <em>inertial forces</em> to the <em>viscous forces</em> in a fluid.</p>
+<div class="math notranslate nohighlight">
+\[Re=\frac{\rho\,V\,l}{\mu}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\rho\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are as they were before, and <span class="math notranslate nohighlight">\(l\)</span> is the ‘characteristic length’. If we’re looking at aerofoils, it will be the chord length. For other problems, it might be the length of the whole aircraft. <span class="math notranslate nohighlight">\(\mu\)</span> is the <em>dynamic viscosity</em> which has units of . Check that this is dimensionless using the same technique as we did for the lift coefficient.</p>
+</div>
+<div class="section" id="lift-summary">
+<h3>Lift Summary<a class="headerlink" href="#lift-summary" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Lift is the aerodynamic force arising from a pressure differential due to the flow being accelerated over the top of a lifting surface, and retarded over the bottom.</p></li>
+<li><p>For our purposes, lift is associated with the creation of ‘circulation’ which is the tendency of the flow to circulate the aerofoil in a manner which causes this flow change.</p></li>
+</ul>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>Lift can be produced in supersonic flow, and in impulsive flow without circulation, but these are graduate-level topics.</p>
+</div>
+<ul class="simple">
+<li><p>The lift coefficient is primarily a function of angle of attack, and this relationship is linear until stall.</p></li>
+<li><p>The lift coefficient is also a function of Mach number and Reynold’s number, so care must be taken when comparing data from dissimilar flow regimes.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="drag">
+<h2>Drag<a class="headerlink" href="#drag" title="Permalink to this headline">¶</a></h2>
+<p>Drag the component of aerodynamic force that opposes aircraft motion. Whilst it might appear slightly more easy to intuit than lift, it can be a whole load more complicated. Semenal textbooks are written on Drag, so the following is presented as a simplification to be able to use drag to develop relationships for aircraft flight mechanics. We’ll firstly describe two main sources of drag:</p>
+<div class="section" id="skin-friction-drag">
+<h3>Skin Friction Drag<a class="headerlink" href="#skin-friction-drag" title="Permalink to this headline">¶</a></h3>
+<p>Skin friction drag is a direct result of viscosity. We discussed the concept of a <em>boundary layer</em> in class, and we know that the flow directly next to the surface of a solid body is <em>stagnant</em> - this is why dust doesn’t get removed from your moving car!</p>
+<p>Fundamentally, we can consider the fluid velocity closest to the surface as zero, and it increasing with the distance from the surface until it reaches the freestream velocity. In order for the flow to be retarded, work needs to be done to it, and this is transferred through shear forces in the fluid and frictional forces between the fluid and solid body. This force is applied to the body in the same direction is fluid motion, and is called <strong>skin friction drag</strong>.</p>
+<p>We note that for more complex geometries such as aerofoils, the local surface direction may not be the same as the streamwise direction, so the component of the force parallel to the inclement freestream must be calculated.</p>
+</div>
+<div class="section" id="pressure-drag">
+<h3>Pressure Drag<a class="headerlink" href="#pressure-drag" title="Permalink to this headline">¶</a></h3>
+<p>We have already established that <em>lift</em> is caused by a pressure difference on an aerofoil being resolved into the direction normal to the fluid motion. If we resolve these pressures into a direction parallel to the freestream, we arrive at <strong>pressure drag</strong>. We further subdivide pressure drag into:</p>
+<div class="section" id="pressure-drag-1-form-drag">
+<h4>Pressure Drag 1: <strong>Form Drag</strong><a class="headerlink" href="#pressure-drag-1-form-drag" title="Permalink to this headline">¶</a></h4>
+<p>Associated with the growth of a boundary layer. We can appreciate that the boundary layer, and a trailed wake will change the effective size of a body that a fluid must move around. Hence a large boundary layer will cause more drag.
+If we recall our ideal cylinder in 2D flow, we’ll note that it has zero drag (no wake, no pressure drag, no friction):</p>
+<p>As we introduce viscosity, we also introduce the Reynold’s number of the flow, and change the attachment and separation points. This gives us a <em>wake</em> of varying size, which depends on the Reynold’s number:</p>
+<div class="figure align-default" id="dcylinder">
+<a class="reference internal image-reference" href="../_images/2DCylinderWake.png"><img alt="../_images/2DCylinderWake.png" src="../_images/2DCylinderWake.png" style="height: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Different Wakes Behind 2D Cylinder Dependent on Re: Borrowed from Heat Transfer by A. Mills</span><a class="headerlink" href="#dcylinder" title="Permalink to this image">¶</a></p>
+</div>
+<p>Note that the size of the wake is not necessarily a linear or continuous function of the Reynold’s number between these two examples - but for these two examples, the <strong>form drag</strong> would be higher with the lower <span class="math notranslate nohighlight">\(Re\)</span> example.</p>
+</div>
+<div class="section" id="pressure-drag-2-induced-drag">
+<h4>Pressure Drag 2:  <strong>Induced Drag</strong><a class="headerlink" href="#pressure-drag-2-induced-drag" title="Permalink to this headline">¶</a></h4>
+<p>A 3D effect associated with a trailing vortex system. A wing that produces lift will produce a tip vortex, causing the air to rotate behind the aircraft. The energy associated with imparting this rotational motion to the air is <strong>induced drag</strong>.</p>
+</div>
+<div class="section" id="pressure-drag-3-wave-drag">
+<h4>Pressure Drag 3: <strong>Wave Drag</strong><a class="headerlink" href="#pressure-drag-3-wave-drag" title="Permalink to this headline">¶</a></h4>
+<p>Associated with shocks. We don’t really need to cover it in this course</p>
+<p>Of the components of drag above, we note that both <em>skin friction</em> and <em>form drag</em> are due to viscosity, and hence cannot be modelled in the potential/’ideal’ aerodynamic model we developed in class. We’ll lump these two together and call it <em>profile drag</em>, which is the <em>combined drag due to viscous effects</em>.</p>
+<p>To reduce form drag, we want a ‘nice’ separation (a laminar one). This has been known since at least 1810 when Sir George Cayley produced his minimum drag shape (which it has been suggested was modelled on a Trout!):</p>
+<div class="figure align-default" id="trout">
+<a class="reference internal image-reference" href="../_images/Trout.png"><img alt="../_images/Trout.png" src="../_images/Trout.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Sir George Cayley’s Minimum Drag Shape</span><a class="headerlink" href="#trout" title="Permalink to this image">¶</a></p>
+</div>
+<p>We can see a similarity with a basic aerofoil shape:</p>
+<ul class="simple">
+<li><p>Rapid change in thickness at the leading edge.</p></li>
+<li><p>Gentle change in thickness towards the trailing edge.</p></li>
+<li><p>Sharp trailing edge.</p></li>
+</ul>
+<p>These things help reduce form drag by having laminar separation, but in doing so we’ve <em>increased</em> the surface area of the body. Thus, we have increased skin friction drag. It follows that <strong>to minimise profile drag, we have a compromise between skin friction and form drag</strong>. We can see that a flat plate and cylinder of the same cross-sectional area have different total drag due to form drag - see:</p>
+<div class="figure align-default" id="sfandformdrag">
+<a class="reference internal image-reference" href="../_images/SFandFormDrag.png"><img alt="../_images/SFandFormDrag.png" src="../_images/SFandFormDrag.png" style="height: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Skin Friction and Form Drag: Borrowed from Unknown Source</span><a class="headerlink" href="#sfandformdrag" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -451,7 +656,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="../CourseIntroduction.html" title="previous page">Course Introduction</a>
-    <a class='right-next' id="next-link" href="../AircraftPerformance/Airspeed.html" title="next page">Defining Aircraft ‘Speed’</a>
+    <a class='right-next' id="next-link" href="../AircraftPerformance/Introduction.html" title="next page">Aircraft Performance</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

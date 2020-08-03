@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Forces in Steady Level Flight" href="SteadyLevelFlight.html" />
-    <link rel="prev" title="Assumed knowledge" href="../Prerequisites/Prerequisites.html" />
+    <link rel="prev" title="Aircraft Performance" href="Introduction.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -96,6 +96,11 @@
  </span>
 </p>
 <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Aircraft Performance
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Defining Aircraft ‘Speed’
@@ -128,6 +133,7 @@
   <div>
     <script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </div>
+
 </div>
 
 </div>
@@ -186,7 +192,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org//v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/AircraftPerformance/Airspeed.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/AircraftPerformance/Airspeed.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -209,7 +215,65 @@
             <i class="fas fa-list"></i> On this page
         </div>
         <nav id="bd-toc-nav">
-            
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#airspeed-measurement">
+   Airspeed Measurement
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calibrated-airspeed">
+     Calibrated Airspeed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indicated-airspeed">
+     Indicated Airspeed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equivalent-airspeed">
+     Equivalent Airspeed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#true-airspeed">
+     True Airspeed
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#approximate-density-correction">
+       Approximate density correction
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-use-eas">
+     Why use EAS?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-corrections">
+   Summary of Corrections
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problems">
+   Problems:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-1-1-conversion-between-airspeeds">
+     Problem 1.1 - Conversion between airspeeds
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
         </nav>
     </div>
 </div>
@@ -220,6 +284,445 @@
                 
   <div class="section" id="defining-aircraft-speed">
 <h1>Defining Aircraft ‘Speed’<a class="headerlink" href="#defining-aircraft-speed" title="Permalink to this headline">¶</a></h1>
+<p>Measuring translations and velocities for a ground-based vehicle (your car) is relatively simple as the vehicle is moving with respect to an inertially-fixed reference frame (the Earth), that it is <em>always</em> connected to. To determine how long it will take to get somewhere, distance/time/velocity calculations are simple, and the engine performance is chiefly a function of the vehicle speed.</p>
+<p>By comparison, an aircraft is moving with respect to the inertially-fixed reference frame, but it is not connected to it - thus is it difficult to make measurements between the two. Furthermore, aerodynamic performance (how much lift and drag is being produced) is a function of the aircraft’s orientation and translation with respect to the incident wind, and not to the Earth. Similarly, the powerplant performance will be a function of the incident wind and not the groundspeed.</p>
+<p>This gives us our first set of ‘speeds’, and the relationship between them:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    V_{gnd} &amp;= V + V_{wind}\label{eq:Vgnd1}
+\end{aligned}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+&amp;V_{gnd} : \text{Ground Speed}\nonumber\\
+    &amp;V : \text{True Airspeed (TAS)}\nonumber\\
+    &amp;V_{wind} : \text{Wind Speed}\nonumber\end{aligned}\end{split}\]</div>
+<p>where we can simply add the two together via vector addition. In the two figures below, the two situations will require the exact same amount of thrust, and the same configuration of control surfaces - but the there is a groundspeed difference of 100kn.</p>
+<div class="figure align-default" id="headwind">
+<a class="reference internal image-reference" href="../_images/HeadWind.png"><img alt="../_images/HeadWind.png" src="../_images/HeadWind.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Aircraft With Headwind</span><a class="headerlink" href="#headwind" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="tailwind">
+<a class="reference internal image-reference" href="../_images/TailWind.png"><img alt="../_images/TailWind.png" src="../_images/TailWind.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Aircraft With Tailwind</span><a class="headerlink" href="#tailwind" title="Permalink to this image">¶</a></p>
+</div>
+<p>This is why LHR-ORD takes typically 8h50m, but ORD-LHR takes 7h30m, yet in each case, the aircraft is flying at typical cruise velocity, requiring the same amount of total thrust.</p>
+<div class="section" id="airspeed-measurement">
+<h2>Airspeed Measurement<a class="headerlink" href="#airspeed-measurement" title="Permalink to this headline">¶</a></h2>
+<p>Clearly aerospace engineers require a means of determining the true airspeed, in order to determine aircraft powerplane/aerodynamic performance, and in order to calculate groundspeed and thus facilitate speed/time calculations.</p>
+<p>Equation <a class="reference internal" href="#equation-tasequation">(2)</a> may be developed from the isentropic flow equations, and allows us to determine <strong>true airspeed</strong> as a function of density and pressure:</p>
+<div class="math notranslate nohighlight" id="equation-tasequation">
+<span class="eqno">(2)<a class="headerlink" href="#equation-tasequation" title="Permalink to this equation">¶</a></span>\[V =\sqrt{7\cdot\frac{p}{\rho}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\rho = \text{ Local air density}\\p = \text{ Local static pressure}\\\gamma = \text{ Specific heat ratio = 1.4 for diatomic gases}\\\Delta p = \text{ Dynamic pressure/pressure difference} : p_o-p\\p_o = \text{ Stagnation/total pressure} p_o = \tfrac{1}{2}\rho V^2 + p\end{aligned}\end{align} \]</div>
+<p>Equation <a class="reference internal" href="#equation-tasequation">(2)</a> is often simply given in textbooks with no derivation or explanation. You are encouraged to <em>understand</em> the derivation, but I won’t test you on it.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to show the derivation…</p>
+<p>This is presented <a class="bibtex reference internal" href="../references.html#yechout-2014vg" id="id1">[YMB+14]</a>, and other textbooks with no derivation given. It is easily derived from the isentropic flow equations.</p>
+<p>The following should be standard from your compressible flow classes, but I want to ensure you understand the legacy of the equations you’re using - so you understand limitations and their development. This is adapted from my own undergraduate notes.</p>
+<p>We have the isentropic relationship showing that the ratio of total to static temperature is a function of the Mach number and the ratio of specific heats:</p>
+<div class="math notranslate nohighlight">
+\[\frac{T_{0}}{T}=1+\frac{\gamma-1}{2} M^{2}\]</div>
+<p>and we have the isentropic relations</p>
+<div class="math notranslate nohighlight">
+\[\frac{p_{2}}{p_{1}}=\left(\frac{\rho_{2}}{\rho_{1}}\right)^{\gamma}=\left(\frac{T_{2}}{T_{1}}\right)^{\frac{\gamma}{\gamma-1}}\]</div>
+<p>since from total to stagnation we have an isentropic compression of the flow, we can state</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{p_{0}}{p}=\left(\frac{\rho_{0}}{\rho}\right)^{\gamma}=\left(\frac{T_{0}}{T}\right)^{\frac{\gamma}{\gamma-1}}\]</div>
+<p>the equations above can be combined to give</p>
+<div class="math notranslate nohighlight">
+\[\frac{p_{0}}{p}=\left(1+\frac{\gamma-1}{2} M^{2}\right)^{\frac{\gamma}{\gamma-1}}\label{eq:ISEN1}\]</div>
+<p>the fraction may be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[\frac{p_{0}}{p} = \frac{p+\Delta p}{p}=\frac{\frac{p}{p}+\frac{\Delta p}{p}}{\frac{p}{p}}=\frac{\Delta p}{p} + 1\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta p\)</span> is the \textsl{impact pressure}, and is the difference between total and static in a pitot-static - for incompressible flow, this would be the same as the dynamic pressure, but for compressible flow it is not -  hence</p>
+<div class="math notranslate nohighlight">
+\[\frac{\Delta p}{p} + 1=\left(1+\frac{\gamma-1}{2} M^{2}\right)^{\frac{\gamma}{\gamma-1}}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{2}{\gamma-1}\left[\left(\frac{\Delta p}{p}+1\right)^{\frac{\gamma-1}{\gamma}}-1\right]=M^2=\left(\frac{V}{\sqrt{\gamma\,R\,T}}\right)^2=\frac{V^2}{{\gamma\,R\,T}}\]</div>
+<div class="math notranslate nohighlight">
+\[V^2=\frac{\gamma\,R\,T\cdot 2}{\gamma-1}    \left[\left(\frac{\Delta p}{p}+1\right)^{\frac{\gamma-1}{\gamma}}-1\right]\]</div>
+<p>from the equation of state, we can express <span class="math notranslate nohighlight">\(R\,T\)</span> as <span class="math notranslate nohighlight">\(\frac{p}{\rho}\)</span></p>
+<div class="math notranslate nohighlight">
+\[    V^2=\frac{\gamma}{\gamma-1}\cdot\left(\frac{p}{\rho}\right)^2\cdot 2    \left[\left(\frac{\Delta p}{p}+1\right)^{\frac{\gamma-1}{\gamma}}-1\right]\]</div>
+<p>the <em>heat capacity ratio</em>, <span class="math notranslate nohighlight">\(\gamma\)</span>, is <strong>exactly</strong> 1.4 for diatomic gases - see footnote - so we can write</p>
+<div class="math notranslate nohighlight">
+\[V = \sqrt{7\cdot\frac{p}{\rho}\left[\left(\frac{\Delta p}{p}+1\right)^{\frac{\gamma-1}{\gamma}}-1\right]}\]</div>
+<p>QED</p>
+<p>Footnote - Wikipedia isn’t a valid source in most places, but I don’t want to repeat a bit of derivation for an bit of a tangent - https://en.wikipedia.org/wiki/Heat_capacity_ratio#Relation_with_degrees_of_freedom</p>
+</div>
+<p>Equation <a class="reference internal" href="#equation-tasequation">(2)</a> allows us to determine the velocity with respect to a volume of air, via measurement of three quantities - density <span class="math notranslate nohighlight">\(\rho\)</span>, static pressure <span class="math notranslate nohighlight">\(p\)</span>, and impact pressure <span class="math notranslate nohighlight">\(\Delta p\)</span>. ‘Impact pressure’ is a term that is probably new to you, and refers to the difference between total and static pressure - and, for an incompressible fluid, is the same as dynamic pressure, but not for a compressible fluid.</p>
+<p>We have the relationship <span class="math notranslate nohighlight">\(V(p, \rho, \Delta p)\)</span>, but the first two quantities are relatively difficult to measure, as they are <em>absolute</em> quantities. Hence, transducers for measurement of absolute pressure and density would require regular calibration, and would add complexity to a measurement system. The reasons for this are complex, and will be elaborated upon in an instrumentation/measurement course - suffice to say that, in general, all transducers are relative transducers, and thus measurement of any absolute quantity require a datum against which they can be compared, calibrated for changes in non-measured quantities, such as temperature.</p>
+<p>By contrast, <span class="math notranslate nohighlight">\(\Delta p\)</span> is a <em>relative</em> quantity. Whilst a transducer for measurement will still require calibration, measurement of <span class="math notranslate nohighlight">\(\Delta p\)</span> is relatively easy - for this purpose, we use a pitot-static device. Originally these were analogue devices, measuring the pressure difference between two sides of a pressure chamber via a mechanical diaphragm, calibrated to provide an accurate reading of <span class="math notranslate nohighlight">\(\Delta p\)</span>:</p>
+<div class="figure align-default" id="pitotstatic">
+<a class="reference internal image-reference" href="../_images/PitotStatic.png"><img alt="../_images/PitotStatic.png" src="../_images/PitotStatic.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Aircraft Pitot-Static Measurement Device</span><a class="headerlink" href="#pitotstatic" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="calibrated-airspeed">
+<h3>Calibrated Airspeed<a class="headerlink" href="#calibrated-airspeed" title="Permalink to this headline">¶</a></h3>
+<p>To avoid having to measure <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(\rho\)</span>, rather than using the pitot-static to measure <span class="math notranslate nohighlight">\(\Delta p\)</span>, aircraft Engineers calibrated their devices to provide the correct value of true airspeed at sea-level ISA density and pressure. This provides us with <strong>calibrated airspeed</strong>, <span class="math notranslate nohighlight">\(V_c\)</span>/CAS, which is only the same as true airspeed at sea-level ISA conditions. <span class="math notranslate nohighlight">\(V_c\)</span> can be calculated via Equation <a class="reference internal" href="#equation-casequation">(3)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-casequation">
+<span class="eqno">(3)<a class="headerlink" href="#equation-casequation" title="Permalink to this equation">¶</a></span>\[    V_c=\sqrt{7\cdot\frac{p_{SL}}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p_{SL}}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
+</div>
+<div class="section" id="indicated-airspeed">
+<h3>Indicated Airspeed<a class="headerlink" href="#indicated-airspeed" title="Permalink to this headline">¶</a></h3>
+<p>In reality, such a pitot-static device will measure the <strong>calibrated airspeed</strong> at a point on the aircraft surface, where the flow has already been disturbed by the aircraft. The device is NOT measuring the freestream velicity - thus there is a <em>position error</em>, based on where the pitot-static is on the aircraft. During flight testing, these inaccuracies can be quantified, and a difference between what is <em>indicated</em> by the device, <strong>indicated airspeed</strong>/IAS, and calibrated airspeed is determined - <span class="math notranslate nohighlight">\(\Delta V_p\)</span>, the position error.</p>
+<div class="math notranslate nohighlight" id="equation-iasequation">
+<span class="eqno">(4)<a class="headerlink" href="#equation-iasequation" title="Permalink to this equation">¶</a></span>\[V_c = V_I + \Delta V_p\]</div>
+<p>At this stage - we have three airspeeds; Indicated (what is shown on the measurement device, for ISA SL conditions), Calibrated (what <em>should</em> be shown on the measurement device, for ISA SL conditions), and True Airspeed. We don’t have a means to convert Calibrated to True yet, so we adopt a two-step approach.</p>
+</div>
+<div class="section" id="equivalent-airspeed">
+<h3>Equivalent Airspeed<a class="headerlink" href="#equivalent-airspeed" title="Permalink to this headline">¶</a></h3>
+<p>The first correction is for the actual pressure at a given altitude. This gives Equivalent Airspeed, EAS.</p>
+<div class="math notranslate nohighlight" id="equation-easequation">
+<span class="eqno">(5)<a class="headerlink" href="#equation-easequation" title="Permalink to this equation">¶</a></span>\[    V_e=\sqrt{7\cdot\frac{p}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
+<p>where we can see that the sea-level pressure has been replaced with the actual pressure. In practice, this correction is applied as a multiplier between CAS and EAS:</p>
+<div class="math notranslate nohighlight">
+\[V_e = f\cdot V_c\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[  f = \frac{V_e}{V_c} \]</div>
+<div class="math notranslate nohighlight">
+\[    = \frac{\sqrt{7\cdot\frac{p}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}}{\sqrt{7\cdot\frac{p_{SL}}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p_{SL}}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}}\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$= f(\Delta p, p)$$
+</pre></div>
+</div>
+<p>Since <span class="math notranslate nohighlight">\(f\)</span> is only dependent on the <span class="math notranslate nohighlight">\(\Delta p\)</span> the aircraft speed, and the <span class="math notranslate nohighlight">\(p\)</span> the aircraft altitude, it can be calculated and tabulated - see the table below for the pressure correction factor:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>h, ft</p></th>
+<th class="text-align:left head"><p><td colspan=9> Calibrated Airspeed, kn</p></th>
+<th class="text-align:left head"><p></p></th>
+<th class="text-align:left head"><p></p></th>
+<th class="text-align:left head"><p></p></th>
+<th class="text-align:left head"><p></p></th>
+<th class="text-align:left head"><p></p></th>
+<th class="text-align:left head"><p></p></th>
+<th class="text-align:left head"><p></p></th>
+<th class="text-align:left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p>100</p></td>
+<td class="text-align:left"><p>125</p></td>
+<td class="text-align:left"><p>150</p></td>
+<td class="text-align:left"><p>175</p></td>
+<td class="text-align:left"><p>200</p></td>
+<td class="text-align:left"><p>225</p></td>
+<td class="text-align:left"><p>250</p></td>
+<td class="text-align:left"><p>275</p></td>
+<td class="text-align:left"><p>300</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>5000</p></td>
+<td class="text-align:left"><p>0.999</p></td>
+<td class="text-align:left"><p>0.999</p></td>
+<td class="text-align:left"><p>0.999</p></td>
+<td class="text-align:left"><p>0.998</p></td>
+<td class="text-align:left"><p>0.998</p></td>
+<td class="text-align:left"><p>0.997</p></td>
+<td class="text-align:left"><p>0.997</p></td>
+<td class="text-align:left"><p>0.996</p></td>
+<td class="text-align:left"><p>0.995</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>10000</p></td>
+<td class="text-align:left"><p>0.999</p></td>
+<td class="text-align:left"><p>0.998</p></td>
+<td class="text-align:left"><p>0.997</p></td>
+<td class="text-align:left"><p>0.996</p></td>
+<td class="text-align:left"><p>0.995</p></td>
+<td class="text-align:left"><p>0.994</p></td>
+<td class="text-align:left"><p>0.992</p></td>
+<td class="text-align:left"><p>0.991</p></td>
+<td class="text-align:left"><p>0.989</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>15000</p></td>
+<td class="text-align:left"><p>0.998</p></td>
+<td class="text-align:left"><p>0.997</p></td>
+<td class="text-align:left"><p>0.995</p></td>
+<td class="text-align:left"><p>0.994</p></td>
+<td class="text-align:left"><p>0.992</p></td>
+<td class="text-align:left"><p>0.990</p></td>
+<td class="text-align:left"><p>0.987</p></td>
+<td class="text-align:left"><p>0.985</p></td>
+<td class="text-align:left"><p>0.982</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>20000</p></td>
+<td class="text-align:left"><p>0.997</p></td>
+<td class="text-align:left"><p>0.995</p></td>
+<td class="text-align:left"><p>0.993</p></td>
+<td class="text-align:left"><p>0.990</p></td>
+<td class="text-align:left"><p>0.987</p></td>
+<td class="text-align:left"><p>0.984</p></td>
+<td class="text-align:left"><p>0.981</p></td>
+<td class="text-align:left"><p>0.977</p></td>
+<td class="text-align:left"><p>0.973</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>25000</p></td>
+<td class="text-align:left"><p>0.995</p></td>
+<td class="text-align:left"><p>0.993</p></td>
+<td class="text-align:left"><p>0.990</p></td>
+<td class="text-align:left"><p>0.986</p></td>
+<td class="text-align:left"><p>0.982</p></td>
+<td class="text-align:left"><p>0.978</p></td>
+<td class="text-align:left"><p>0.973</p></td>
+<td class="text-align:left"><p>0.968</p></td>
+<td class="text-align:left"><p>0.963</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>30000</p></td>
+<td class="text-align:left"><p>0.993</p></td>
+<td class="text-align:left"><p>0.990</p></td>
+<td class="text-align:left"><p>0.986</p></td>
+<td class="text-align:left"><p>0.981</p></td>
+<td class="text-align:left"><p>0.975</p></td>
+<td class="text-align:left"><p>0.970</p></td>
+<td class="text-align:left"><p>0.963</p></td>
+<td class="text-align:left"><p>0.957</p></td>
+<td class="text-align:left"><p>0.950</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>35000</p></td>
+<td class="text-align:left"><p>0.991</p></td>
+<td class="text-align:left"><p>0.986</p></td>
+<td class="text-align:left"><p>0.981</p></td>
+<td class="text-align:left"><p>0.974</p></td>
+<td class="text-align:left"><p>0.967</p></td>
+<td class="text-align:left"><p>0.959</p></td>
+<td class="text-align:left"><p>0.951</p></td>
+<td class="text-align:left"><p>0.943</p></td>
+<td class="text-align:left"><p>0.934</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>40000</p></td>
+<td class="text-align:left"><p>0.988</p></td>
+<td class="text-align:left"><p>0.982</p></td>
+<td class="text-align:left"><p>0.974</p></td>
+<td class="text-align:left"><p>0.966</p></td>
+<td class="text-align:left"><p>0.957</p></td>
+<td class="text-align:left"><p>0.947</p></td>
+<td class="text-align:left"><p>0.937</p></td>
+<td class="text-align:left"><p>0.926</p></td>
+<td class="text-align:left"><p>0.916</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>45000</p></td>
+<td class="text-align:left"><p>0.984</p></td>
+<td class="text-align:left"><p>0.976</p></td>
+<td class="text-align:left"><p>0.966</p></td>
+<td class="text-align:left"><p>0.956</p></td>
+<td class="text-align:left"><p>0.944</p></td>
+<td class="text-align:left"><p>0.932</p></td>
+<td class="text-align:left"><p>0.920</p></td>
+<td class="text-align:left"><p>0.907</p></td>
+<td class="text-align:left"><p>0.895</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>50000</p></td>
+<td class="text-align:left"><p>0.979</p></td>
+<td class="text-align:left"><p>0.969</p></td>
+<td class="text-align:left"><p>0.957</p></td>
+<td class="text-align:left"><p>0.944</p></td>
+<td class="text-align:left"><p>0.930</p></td>
+<td class="text-align:left"><p>0.915</p></td>
+<td class="text-align:left"><p>0.901</p></td>
+<td class="text-align:left"><p>0.886</p></td>
+<td class="text-align:left"><p>0.871</p></td>
+</tr>
+</tbody>
+</table>
+<p>Intermediate values are found via linear interpolation - you should be comfortable with doing this by hand, or by writing code. An example code is provided below that provides two-dimensional interpolation for any values - you can use this function to find out the pressure correction factor - use the syntax <code class="docutils literal notranslate"><span class="pre">f_correction(VC,</span> <span class="pre">h)</span></code> (both of these have default values, so you don’t need to provide either).</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.interpolate</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp2d</span>
+<span class="n">presscorr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5000</span><span class="p">,</span><span class="mf">0.999</span><span class="p">,</span><span class="mf">0.999</span><span class="p">,</span><span class="mf">0.999</span><span class="p">,</span><span class="mf">0.998</span><span class="p">,</span><span class="mf">0.998</span><span class="p">,</span><span class="mf">0.997</span><span class="p">,</span><span class="mf">0.997</span><span class="p">,</span><span class="mf">0.996</span><span class="p">,</span><span class="mf">0.995</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">10000</span><span class="p">,</span><span class="mf">0.999</span><span class="p">,</span><span class="mf">0.998</span><span class="p">,</span><span class="mf">0.997</span><span class="p">,</span><span class="mf">0.996</span><span class="p">,</span><span class="mf">0.995</span><span class="p">,</span><span class="mf">0.994</span><span class="p">,</span><span class="mf">0.992</span><span class="p">,</span><span class="mf">0.991</span><span class="p">,</span><span class="mf">0.989</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">15000</span><span class="p">,</span><span class="mf">0.998</span><span class="p">,</span><span class="mf">0.997</span><span class="p">,</span><span class="mf">0.995</span><span class="p">,</span><span class="mf">0.994</span><span class="p">,</span><span class="mf">0.992</span><span class="p">,</span><span class="mf">0.99</span><span class="p">,</span><span class="mf">0.987</span><span class="p">,</span><span class="mf">0.985</span><span class="p">,</span><span class="mf">0.982</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">20000</span><span class="p">,</span><span class="mf">0.997</span><span class="p">,</span><span class="mf">0.995</span><span class="p">,</span><span class="mf">0.993</span><span class="p">,</span><span class="mf">0.99</span><span class="p">,</span><span class="mf">0.987</span><span class="p">,</span><span class="mf">0.984</span><span class="p">,</span><span class="mf">0.981</span><span class="p">,</span><span class="mf">0.977</span><span class="p">,</span><span class="mf">0.973</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">25000</span><span class="p">,</span><span class="mf">0.995</span><span class="p">,</span><span class="mf">0.993</span><span class="p">,</span><span class="mf">0.99</span><span class="p">,</span><span class="mf">0.986</span><span class="p">,</span><span class="mf">0.982</span><span class="p">,</span><span class="mf">0.978</span><span class="p">,</span><span class="mf">0.973</span><span class="p">,</span><span class="mf">0.968</span><span class="p">,</span><span class="mf">0.963</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">30000</span><span class="p">,</span><span class="mf">0.993</span><span class="p">,</span><span class="mf">0.99</span><span class="p">,</span><span class="mf">0.986</span><span class="p">,</span><span class="mf">0.981</span><span class="p">,</span><span class="mf">0.975</span><span class="p">,</span><span class="mf">0.97</span><span class="p">,</span><span class="mf">0.963</span><span class="p">,</span><span class="mf">0.957</span><span class="p">,</span><span class="mf">0.95</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">35000</span><span class="p">,</span><span class="mf">0.991</span><span class="p">,</span><span class="mf">0.986</span><span class="p">,</span><span class="mf">0.981</span><span class="p">,</span><span class="mf">0.974</span><span class="p">,</span><span class="mf">0.967</span><span class="p">,</span><span class="mf">0.959</span><span class="p">,</span><span class="mf">0.951</span><span class="p">,</span><span class="mf">0.943</span><span class="p">,</span><span class="mf">0.934</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">40000</span><span class="p">,</span><span class="mf">0.988</span><span class="p">,</span><span class="mf">0.982</span><span class="p">,</span><span class="mf">0.974</span><span class="p">,</span><span class="mf">0.966</span><span class="p">,</span><span class="mf">0.957</span><span class="p">,</span><span class="mf">0.947</span><span class="p">,</span><span class="mf">0.937</span><span class="p">,</span><span class="mf">0.926</span><span class="p">,</span><span class="mf">0.916</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">45000</span><span class="p">,</span><span class="mf">0.984</span><span class="p">,</span><span class="mf">0.976</span><span class="p">,</span><span class="mf">0.966</span><span class="p">,</span><span class="mf">0.956</span><span class="p">,</span><span class="mf">0.944</span><span class="p">,</span><span class="mf">0.932</span><span class="p">,</span><span class="mf">0.92</span><span class="p">,</span><span class="mf">0.907</span><span class="p">,</span><span class="mf">0.895</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">50000</span><span class="p">,</span><span class="mf">0.979</span><span class="p">,</span><span class="mf">0.969</span><span class="p">,</span><span class="mf">0.957</span><span class="p">,</span><span class="mf">0.944</span><span class="p">,</span><span class="mf">0.93</span><span class="p">,</span><span class="mf">0.915</span><span class="p">,</span><span class="mf">0.901</span><span class="p">,</span><span class="mf">0.886</span><span class="p">,</span><span class="mf">0.871</span><span class="p">]])</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">presscorr</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">VC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">275</span><span class="p">,</span> <span class="mi">300</span><span class="p">])</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">presscorr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">f_corr</span> <span class="o">=</span> <span class="n">interp2d</span><span class="p">(</span><span class="n">VC</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f_correction</span><span class="p">(</span><span class="n">VC</span><span class="o">=</span><span class="mi">125</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">45000</span><span class="p">,</span> <span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">f_corr</span><span class="p">(</span><span class="n">VC</span><span class="p">,</span> <span class="n">h</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">f</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VC</span> <span class="o">=</span> <span class="mi">125</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">45000</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">f_corr</span><span class="p">(</span><span class="mi">125</span><span class="p">,</span> <span class="mi">4500</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;For a CAS of </span><span class="si">{</span><span class="n">VC</span><span class="si">}</span><span class="s2">, at an altitude of </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2"> feet, the pressure correction factor is </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>For a CAS of 125, at an altitude of 45000 feet, the pressure correction factor is [0.999]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="true-airspeed">
+<h3>True Airspeed<a class="headerlink" href="#true-airspeed" title="Permalink to this headline">¶</a></h3>
+<p>Finally, <strong>True Airspeed</strong> may be calculated from <strong>Equivalent Airspeed</strong>, by accounting for the actual density at the correct altitude:</p>
+<div class="math notranslate nohighlight">
+\[V = V_e\cdot\sqrt{\frac{\rho_{SL}}{\rho}}\]</div>
+<div class="math notranslate nohighlight">
+\[V = V_e\cdot\sqrt{\frac{1}{\sigma}}\]</div>
+<div class="math notranslate nohighlight">
+\[\sigma = \frac{\rho}{\rho_{SL}}\]</div>
+<p>Where we may get the density at different altitudes from standard tables of the atmospheric properties. These are available in the original PDF notes. What we’ll use more regularly is either <code class="docutils literal notranslate"><span class="pre">atmosisa</span></code> in MATLAB or <code class="docutils literal notranslate"><span class="pre">ambiance</span></code> in Python.</p>
+<p>If you can’t get the following to work - then you might need to install ambiance. Try <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ambiance</span></code> in your terminal window. See here for more instructions: https://pypi.org/project/ambiance/</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ambiance</span> <span class="kn">import</span> <span class="n">Atmosphere</span>
+
+<span class="n">sealevel</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At sealevel, the pressure is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">pressure</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">Pa, the density is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">density</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.3f</span><span class="si">}</span><span class="s2">kg/m^3, the tempertaure is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">temperature</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">K, and the viscosity is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">kinematic_viscosity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.3e</span><span class="si">}</span><span class="s2">kg/s&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>At sealevel, the pressure is 101325.0Pa, the density is 1.225kg/m^3, the tempertaure is 288.15K, and the viscosity is 1.461e-05kg/s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">ambiance</span></code> to define the density, we can create a function, <code class="docutils literal notranslate"><span class="pre">sigma_density</span></code> (it’s a good idea to make function handles descriptive, and there tend to be lots of sigma functions that mean important things in programming languages). This function will return the density ratio for a given altitude provided in metres or feet - bearing in mind than the units for <code class="docutils literal notranslate"><span class="pre">ambiance</span></code> are metres.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ambiance</span> <span class="kn">import</span> <span class="n">Atmosphere</span>
+
+<span class="k">def</span> <span class="nf">sigma_density</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">alt_units</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">alt_units</span> <span class="o">==</span> <span class="s1">&#39;m&#39;</span><span class="p">:</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">alt_units</span> <span class="o">==</span> <span class="s1">&#39;ft&#39;</span><span class="p">:</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="mf">0.3048</span>
+    <span class="k">elif</span> <span class="n">alt_units</span> <span class="o">==</span> <span class="s1">&#39;miles&#39;</span><span class="p">:</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="mf">1609.34</span>
+    
+    <span class="n">sea_level</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">atmospheric_properties</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">factor</span><span class="p">)</span>
+    
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">atmospheric_properties</span><span class="o">.</span><span class="n">density</span> <span class="o">/</span> <span class="n">sea_level</span><span class="o">.</span><span class="n">density</span>
+    <span class="k">return</span> <span class="n">sigma</span>
+    
+<span class="n">h_in</span> <span class="o">=</span> <span class="mi">12000</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At </span><span class="si">{</span><span class="n">h_in</span><span class="si">}</span><span class="s2">m, the density ratio is </span><span class="si">{</span><span class="n">sigma_density</span><span class="p">(</span><span class="n">h_in</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>At 12000m, the density ratio is 0.254643
+</pre></div>
+</div>
+</div>
+</div>
+<p>The inputs can also be <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">sigmas</span> <span class="o">=</span> <span class="n">sigma_density</span><span class="p">(</span><span class="n">alts</span><span class="p">,</span> <span class="s1">&#39;miles&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">alt</span><span class="p">,</span> <span class="n">sigma</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">alts</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At an altitude of </span><span class="si">{</span><span class="n">alt</span><span class="si">}</span><span class="s2"> mile, the density ratio is </span><span class="si">{</span><span class="n">sigma</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>At an altitude of 1 mile, the density ratio is 0.8544179176392871
+At an altitude of 2 mile, the density ratio is 0.7256946830480345
+At an altitude of 3 mile, the density ratio is 0.6124148561281167
+At an altitude of 4 mile, the density ratio is 0.5132337621724308
+At an altitude of 5 mile, the density ratio is 0.42687647082233393
+At an altitude of 6 mile, the density ratio is 0.3521367607463307
+At an altitude of 7 mile, the density ratio is 0.28579654351527745
+At an altitude of 8 mile, the density ratio is 0.22195323343439954
+At an altitude of 9 mile, the density ratio is 0.17239372263976577
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="approximate-density-correction">
+<h4>Approximate density correction<a class="headerlink" href="#approximate-density-correction" title="Permalink to this headline">¶</a></h4>
+<p>For altitudes below about 16km, we can use the approximation</p>
+<div class="math notranslate nohighlight">
+\[\sigma=\frac{20-H}{20+H}\]</div>
+<p>where <span class="math notranslate nohighlight">\(H\)</span> is the altitude in <span class="math notranslate nohighlight">\(km\)</span>.</p>
+<p>The error in this approximation is easily shown using the functions we have created:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigma_approx</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span> <span class="o">-</span> <span class="n">H</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">20</span> <span class="o">+</span> <span class="n">H</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sigma</span>
+
+<span class="n">Hs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">30e3</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mf">30e3</span><span class="p">))</span>
+
+<span class="n">sigma_exact</span> <span class="o">=</span> <span class="n">sigma_density</span><span class="p">(</span><span class="n">Hs</span><span class="p">)</span>
+<span class="n">sigma_approximation</span> <span class="o">=</span> <span class="n">sigma_approx</span><span class="p">(</span><span class="n">Hs</span><span class="o">/</span><span class="mf">1e3</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Hs</span><span class="o">/</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">sigma_exact</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exact&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Hs</span><span class="o">/</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">sigma_approximation</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Approximation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Exact and Approximate Sigma Corrections&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Altitude in km&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">sqrt{</span><span class="se">\\</span><span class="s1">frac{</span><span class="se">\\</span><span class="s1">rho}{</span><span class="se">\\</span><span class="s1">rho_</span><span class="si">{sl}</span><span class="s1">}}$&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Airspeed_13_0.png" src="../_images/Airspeed_13_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="why-use-eas">
+<h3>Why use EAS?<a class="headerlink" href="#why-use-eas" title="Permalink to this headline">¶</a></h3>
+<p>Equivalent airspeed is actually very useful (though pilots tend not to actually use it, annoyingly). We tend to define <span class="math notranslate nohighlight">\(q_\infty\)</span> as <span class="math notranslate nohighlight">\(\tfrac{1}{2}\rho_{SL}V_e^2\)</span>, which means that aerodynamic coefficients remain the same for a given <span class="math notranslate nohighlight">\(V_e\)</span> and <span class="math notranslate nohighlight">\(\alpha/\beta\)</span>.</p>
+<p>It is useful to see that the Equivalent Air Speed (EAS) for a given flight condition, <span class="math notranslate nohighlight">\(V_e\)</span>, is the <strong>speed which if flown at standard sea level density (<span class="math notranslate nohighlight">\(\rho_{sl} \sim 1.225 kg\cdot m^{-3}\)</span>) would give the same aerodynamic loads, for the same aerodynamic configuration, constant <span class="math notranslate nohighlight">\(C_L\)</span></strong>.</p>
+<p>This is useful for simplicity of calculations, but is also useful for ease of flight - stall will always occur at the same angle, for the same EAS, regardless of flight altitude. Structural limits are always defined in EAS for the same reason, as the loads are constant at any altitude for the same EAS.</p>
+</div>
+</div>
+<div class="section" id="summary-of-corrections">
+<h2>Summary of Corrections<a class="headerlink" href="#summary-of-corrections" title="Permalink to this headline">¶</a></h2>
+<p>We can remember the order of corrections by the mnemonic “ICE-T”, with the relative magnitudes of the velocities given by the shape that loosely looks like a square root -</p>
+<div class="figure align-default" id="icet">
+<a class="reference internal image-reference" href="../_images/IceT.png"><img alt="../_images/IceT.png" src="../_images/IceT.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Airspeed Corrections</span><a class="headerlink" href="#icet" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="problems">
+<h2>Problems:<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input tag_remove-outputs tag_remove-output docutils container">
+</div>
+<div class="section" id="problem-1-1-conversion-between-airspeeds">
+<h3>Problem 1.1 - Conversion between airspeeds<a class="headerlink" href="#problem-1-1-conversion-between-airspeeds" title="Permalink to this headline">¶</a></h3>
+<p>An aircraft is flying at an altitude of <span class="pasted-text">20000</span>ft, with a calibrated airspeed of <span class="pasted-text">200</span>kn, with a <span class="pasted-text">6</span>kn <span class="pasted-text">headwind</span>:</p>
+<p>a) How long will it take to cover 100 miles?</p>
+<p>b) How long will it take to cover 200km?</p>
+<p>c) If instead of Vc = <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">200</span></code></span>kn, we have Vc = <span class="pasted-text">200</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
+<p>Try and tackle the problem yourself before you see the solution below. When you reload the page, the numbers should change - so you can try the problem a few times.</p>
+<div class="cell tag_remove-input tag_remove-output docutils container">
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -250,7 +753,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../Prerequisites/Prerequisites.html" title="previous page">Assumed knowledge</a>
+    <a class='left-prev' id="prev-link" href="Introduction.html" title="previous page">Aircraft Performance</a>
     <a class='right-next' id="next-link" href="SteadyLevelFlight.html" title="next page">Forces in Steady Level Flight</a>
 
     </div>

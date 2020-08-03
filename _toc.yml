@@ -7,6 +7,7 @@
 
 - chapter: Aircraft Performance
   sections:
+  - file: AircraftPerformance/Introduction
   - file: AircraftPerformance/Airspeed
   - file: AircraftPerformance/SteadyLevelFlight
   - file: AircraftPerformance/Propulsion
