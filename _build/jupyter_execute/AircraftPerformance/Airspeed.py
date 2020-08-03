@@ -346,8 +346,10 @@ vc = vcs[randint(0, len(vcs)-1)]
 Vt = Vts[randint(0, len(Vts)-1)]
 if Vt > 0:
     wind = 'tailwind'
+    winddir = 'added'
 else:
     wind = 'headwind'
+    winddir = 'subtracted'
 
 
 
@@ -357,6 +359,7 @@ glue("vc", (vc));
 glue("Vt", (Vt));
 glue("Vtabs", abs(Vt));
 glue("wind", (wind));
+glue("winddir", (winddir));
 
 ### Problem 1.1 - Conversion between airspeeds
 
@@ -366,16 +369,43 @@ a) How long will it take to cover 100 miles?
 
 b) How long will it take to cover 200km?
 
-c) If instead of Vc = {glue:}`vc`kn, we have Vc = {glue:text}`vc`kn, with a position error of $\Delta V_P=+2kn$, what do the above answers change to?
+c) If instead of Vc = {glue:text}`vc`kn, we have Vc = {glue:text}`vc`kn, with a position error of $\Delta V_P=+2kn$, what do the above answers change to?
 
-Try and tackle the problem yourself before you see the solution below. When you reload the page, the numbers should change - so you can try the problem a few times.
+Try and tackle the problem yourself before you see the solution below. The numbers in this problem will change each time the notes are updated. 
+
+import math
+
+def hms(s):
+    s = abs(s)
+    hours = math.floor(s/3600)
+    minutes = math.floor((s - hours*3600)/60)
+    seconds = math.floor((s - hours*3600 - minutes*60))
+    
+    if hours > 0:
+        textstr = f"{hours:1.0f} hours, {minutes:1.0f} minutes, {seconds:1.0f} seconds"
+    elif minutes > 0:
+        textstr = f"{minutes:1.0f} minutes, {seconds:1.0f} seconds"
+    else:
+        textstr = f"{seconds:1.0f} seconds"
+    
+    
+    return textstr
+
 
 ### Solution work
 press_correction = f_correction(VC=vc, h=alt)
-dens_correction = sigma_density(alt*0.3048)
+dens_correction = sigma_density(alt*0.3048)[0]
+
+
 
 Ve = press_correction * vc
 V = Ve * np.sqrt(1/dens_correction)
+
+
+glue("press_correction", press_correction);
+glue("dens_correction", dens_correction);
+glue("Ve", (Ve));
+glue("V", (V));
 
 Vtabs = abs(Vt)
 
@@ -384,35 +414,122 @@ if wind == "tailwind":
 elif wind == "headwind":
     Vg = V - Vtabs
     
+# V to SI
+Vms = Vg * 0.514444444
+    
 # Miles to m
 dist = 100 * 1609.34
 
-time1 = dist / Vg
+time1 = dist / Vms
 
 # 200km 
-time2 = 200 * 1e3 / Vg
+time2 = 200 * 1e3 / Vms
+
+glue("Vg", Vg);
+glue("Vms", Vms);
+glue("dist1", dist);
+glue("dist2", 200 * 1e3);
+glue("time1", time1);
+glue("time2", time2);
+
+glue("text_time1", hms(time1));
+glue("text_time2", hms(time2));
+
+
 
 # Position error
 vc = vc + 2
 
 press_correction = f_correction(VC=vc, h=alt)
-dens_correction = sigma_density(alt*0.3048)
+dens_correction = sigma_density(alt*0.3048)[0]
 
 Ve = press_correction * vc
 V = Ve * np.sqrt(1/dens_correction)
+
 
 if wind == "tailwind":
     Vg = V + Vt
 elif wind == "headwind":
     Vg = V - Vt
+
+# V to SI
+Vms = Vg * 0.514444444    
+    
+glue("Vc2", vc);
+glue("Ve2", Ve);
+glue("V2", V);
+glue("Vg2", Vg);
+glue("Vms2", Vg);
     
 # Miles to m
 dist = 100 * 1609.34
 
-time1_2 = dist / Vg
+time1_2 = dist / Vms
 
 
 # 200km 
-time2_2 = 200 * 1e3 / Vg
+time2_2 = 200 * 1e3 / Vms
 
+glue("time1_2", time1_2);
+glue("time2_2", time2_2);
+
+glue("text_time1_2", hms(time1_2));
+glue("text_time2_2", hms(time2_2));
+
+# Time deltas
+dT1 = time1_2 - time1
+dT2 = time2_2 - time2
+if dT1 > 0:
+    time_text = 'slower'
+else:
+    time_text = 'faster'
+    
+glue("dT1", hms(dT1));
+glue("dT2", hms(dT2));
+
+glue("time_text", time_text);
+
+    
+
+
+
+
+```{admonition} Click to show the solution... 
+:class: dropdown 
+
+The first step is to take Vc to Ve via the pressure correction.
+
+For the altitude of {glue:text}`altitude`ft, with a calibrated airspeed of {glue:text}`vc`kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction({glue:text}`altitude`, {glue:text}`vc`).
+
+This gives a value of {glue:text}`press_correction:1.3f` for the pressure correction, and this enables us to determine the equivalent airspeed from $V_e = V_c\cdot f$ so, $V_e=${glue:text}`Ve:1.3f`kn.
+
+We need to know the density correction - $\sigma=\frac{\rho}{\rho_{sl}}$, and this is found to be $\sigma=${glue:text}`dens_correction:1.3f`kn. Since this is an altitude _above_ sea level, this has to be a number smaller than one - if it's not, then you've done something wrong.
+
+We get true airspeed from the relationship $V=V_e\cdot\sigma^{-\frac{1}{2}}$ which yields $V$={glue:text}`V:1.3f`kn.
+
+Note that at no point have the units had to be converted into SI to make the corrections - that's the smart part of the density and pressure corrections; they are both non-dimensional corrections. If you have velocity in knots, you use them and get velocity in knots out.
+
+Since the wind is a {glue:text}`wind`, this is {glue:text}`winddir` to the value above to yield the groundspeed in knots as {glue:text}`Vg:1.3f`kn.
+
+With the velocity in knots we can convert it to m/s by mutliplying by 0.5144444 which yields $V$={glue:text}`Vms:1.3f`m/s. This gives us the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.
+
+100 miles is 160,934m, and hence this is covered in {glue:text}`time1:1.1f`s or {glue:text}`text_time1`
+
+200 km is 200,000, and hence this is covered in {glue:text}`time2:1.1f`s or {glue:text}`text_time2`
+
+----
+
+For the last part of the question, this is solved by recalling that $V_c = V_I + \Delta V_p$ and hence the speeds calculated are now:
+
+$V_c$ = {glue:text}`Vc2:1.3f`kn
+
+$V_e$ = {glue:text}`Ve2:1.3f`kn
+
+$V$ = {glue:text}`V2:1.3f`kn
+
+$V_g$ = {glue:text}`Vg2:1.3f`kn = {glue:text}`Vms2:1.3f`m/s 
+
+The times taken are found to be {glue:text}`text_time1_2` and  {glue:text}`text_time2_2`, for a respective  {glue:text}`dT1` and  {glue:text}`dT2` {glue:text}`time_text`.
+
+```
 

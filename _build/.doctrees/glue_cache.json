@@ -1,27 +1,75 @@
 {
   "AircraftPerformance/Airspeed": {
-    "altitude": {
+    "dist1": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "altitude",
+          "name": "dist1",
           "mime_prefix": ""
         }
       },
       "data": {
-        "text/plain": "30000"
+        "text/plain": "160934.0"
       }
     },
-    "wind": {
+    "time_text": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "wind",
+          "name": "time_text",
           "mime_prefix": ""
         }
       },
       "data": {
-        "text/plain": "'headwind'"
+        "text/plain": "'faster'"
+      }
+    },
+    "dT2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "dT2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "'7 seconds'"
+      }
+    },
+    "Vg2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Vg2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "406.2971635300219"
+      }
+    },
+    "text_time2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "text_time2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "'16 minutes, 4 seconds'"
+      }
+    },
+    "Vms2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Vms2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "406.2971635300219"
       }
     },
     "vc": {
@@ -33,7 +81,115 @@
         }
       },
       "data": {
-        "text/plain": "175"
+        "text/plain": "230"
+      }
+    },
+    "time1_2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "time1_2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "769.9553378584806"
+      }
+    },
+    "V2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "V2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "398.2971635300219"
+      }
+    },
+    "dens_correction": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "dens_correction",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "0.3105757644543481"
+      }
+    },
+    "time1": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "time1",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "776.0088650459393"
+      }
+    },
+    "Ve2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Ve2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "221.96832"
+      }
+    },
+    "press_correction": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "press_correction",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "0.9574"
+      }
+    },
+    "Vms": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Vms",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "207.38680606499616"
+      }
+    },
+    "V": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "V",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "395.1277011225651"
+      }
+    },
+    "time2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "time2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "964.3815042762118"
       }
     },
     "Vtabs": {
@@ -45,7 +201,103 @@
         }
       },
       "data": {
-        "text/plain": "14"
+        "text/plain": "8"
+      }
+    },
+    "wind": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "wind",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "'tailwind'"
+      }
+    },
+    "Vg": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Vg",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "403.1277011225651"
+      }
+    },
+    "Vc2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Vc2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "232"
+      }
+    },
+    "altitude": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "altitude",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "35000"
+      }
+    },
+    "text_time1_2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "text_time1_2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "'12 minutes, 49 seconds'"
+      }
+    },
+    "text_time1": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "text_time1",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "'12 minutes, 56 seconds'"
+      }
+    },
+    "text_time2_2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "text_time2_2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "'15 minutes, 56 seconds'"
+      }
+    },
+    "time2_2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "time2_2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "956.8585107665014"
       }
     },
     "Vt": {
@@ -57,7 +309,55 @@
         }
       },
       "data": {
-        "text/plain": "-14"
+        "text/plain": "8"
+      }
+    },
+    "winddir": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "winddir",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "'added'"
+      }
+    },
+    "Ve": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Ve",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "220.202"
+      }
+    },
+    "dist2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "dist2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "200000.0"
+      }
+    },
+    "dT1": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "dT1",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "'6 seconds'"
       }
     }
   }
