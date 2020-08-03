@@ -1,5 +1,17 @@
 {
   "AircraftPerformance/Airspeed": {
+    "altitude": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "altitude",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "30000"
+      }
+    },
     "wind": {
       "output_type": "display_data",
       "metadata": {
@@ -12,28 +24,16 @@
         "text/plain": "'headwind'"
       }
     },
-    "Vt": {
+    "vc": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "Vt",
+          "name": "vc",
           "mime_prefix": ""
         }
       },
       "data": {
-        "text/plain": "-6"
-      }
-    },
-    "altitude": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "altitude",
-          "mime_prefix": ""
-        }
-      },
-      "data": {
-        "text/plain": "20000"
+        "text/plain": "175"
       }
     },
     "Vtabs": {
@@ -45,19 +45,19 @@
         }
       },
       "data": {
-        "text/plain": "6"
+        "text/plain": "14"
       }
     },
-    "vc": {
+    "Vt": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "vc",
+          "name": "Vt",
           "mime_prefix": ""
         }
       },
       "data": {
-        "text/plain": "200"
+        "text/plain": "-14"
       }
     }
   }

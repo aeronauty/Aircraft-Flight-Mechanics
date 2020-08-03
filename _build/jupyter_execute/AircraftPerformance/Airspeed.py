@@ -338,6 +338,7 @@ vcs = np.arange(125, 300, 5)
 Vts = np.arange(-20, 20, 2)
 Vts[Vts == 0] = 3
 
+# seed(randseed)
 
 
 alt = alts[randint(0, len(alts)-1)]
@@ -376,10 +377,12 @@ dens_correction = sigma_density(alt*0.3048)
 Ve = press_correction * vc
 V = Ve * np.sqrt(1/dens_correction)
 
+Vtabs = abs(Vt)
+
 if wind == "tailwind":
-    Vg = V + Vt
+    Vg = V + Vtabs
 elif wind == "headwind":
-    Vg = V - Vt
+    Vg = V - Vtabs
     
 # Miles to m
 dist = 100 * 1609.34
