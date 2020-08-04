@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Defining Aircraft ‘Speed’ &#8212; Aircraft Flight Mechanics by Harry Smith</title>
+    <title>Defining Aircraft ‘Speed’ &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -59,10 +59,10 @@
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="../index.html">
   
-  <img src="../_static/logo.png" class="logo" alt="logo">
+  <img src="../_static/Logo2.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">Aircraft Flight Mechanics by Harry Smith</h1>
+  <h1 class="site-logo" id="site-title">Aircraft Flight Mechanics by Harry Smith, PhD</h1>
   
 </a>
 </div>
@@ -130,10 +130,7 @@
  <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  <div>
-    <script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-</div>
-
+  <div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
 </div>
 
 </div>
@@ -178,6 +175,24 @@
     
 </div>
         <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/issues/new?title=Issue%20on%20page%20%2FAircraftPerformance/Airspeed.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/edit/master/AircraftPerformance/Airspeed.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
 
 
         <!-- Full screen (wrap in <a> to have style consistency -->
@@ -305,23 +320,23 @@
 <p>where we can simply add the two together via vector addition. In the two figures below, the two situations will require the exact same amount of thrust, and the same configuration of control surfaces - but the there is a groundspeed difference of 100kn.</p>
 <div class="figure align-default" id="headwind">
 <a class="reference internal image-reference" href="../_images/HeadWind.png"><img alt="../_images/HeadWind.png" src="../_images/HeadWind.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Aircraft With Headwind</span><a class="headerlink" href="#headwind" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Aircraft With Headwind</span><a class="headerlink" href="#headwind" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="tailwind">
 <a class="reference internal image-reference" href="../_images/TailWind.png"><img alt="../_images/TailWind.png" src="../_images/TailWind.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Aircraft With Tailwind</span><a class="headerlink" href="#tailwind" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Aircraft With Tailwind</span><a class="headerlink" href="#tailwind" title="Permalink to this image">¶</a></p>
 </div>
 <p>This is why LHR-ORD takes typically 8h50m, but ORD-LHR takes 7h30m, yet in each case, the aircraft is flying at typical cruise velocity, requiring the same amount of total thrust.</p>
 <div class="section" id="airspeed-measurement">
 <h2>Airspeed Measurement<a class="headerlink" href="#airspeed-measurement" title="Permalink to this headline">¶</a></h2>
 <p>Clearly aerospace engineers require a means of determining the true airspeed, in order to determine aircraft powerplane/aerodynamic performance, and in order to calculate groundspeed and thus facilitate speed/time calculations.</p>
-<p>Equation <a class="reference internal" href="#equation-tasequation">(2)</a> may be developed from the isentropic flow equations, and allows us to determine <strong>true airspeed</strong> as a function of density and pressure:</p>
+<p>Equation <a class="reference internal" href="#equation-tasequation">(1)</a> may be developed from the isentropic flow equations, and allows us to determine <strong>true airspeed</strong> as a function of density and pressure:</p>
 <div class="math notranslate nohighlight" id="equation-tasequation">
-<span class="eqno">(2)<a class="headerlink" href="#equation-tasequation" title="Permalink to this equation">¶</a></span>\[V =\sqrt{7\cdot\frac{p}{\rho}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-tasequation" title="Permalink to this equation">¶</a></span>\[V =\sqrt{7\cdot\frac{p}{\rho}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}\rho = \text{ Local air density}\\p = \text{ Local static pressure}\\\gamma = \text{ Specific heat ratio = 1.4 for diatomic gases}\\\Delta p = \text{ Dynamic pressure/pressure difference} : p_o-p\\p_o = \text{ Stagnation/total pressure} p_o = \tfrac{1}{2}\rho V^2 + p\end{aligned}\end{align} \]</div>
-<p>Equation <a class="reference internal" href="#equation-tasequation">(2)</a> is often simply given in textbooks with no derivation or explanation. You are encouraged to <em>understand</em> the derivation, but I won’t test you on it.</p>
+<p>Equation <a class="reference internal" href="#equation-tasequation">(1)</a> is often simply given in textbooks with no derivation or explanation. You are encouraged to <em>understand</em> the derivation, but I won’t test you on it.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the derivation…</p>
 <p>This is presented <a class="bibtex reference internal" href="../zreferences.html#yechout-2014vg" id="id1">[YMB+14]</a>, and other textbooks with no derivation given. It is easily derived from the isentropic flow equations.</p>
@@ -358,31 +373,31 @@
 <p>QED</p>
 <p>Footnote - Wikipedia isn’t a valid source in most places, but I don’t want to repeat a bit of derivation for an bit of a tangent - https://en.wikipedia.org/wiki/Heat_capacity_ratio#Relation_with_degrees_of_freedom</p>
 </div>
-<p>Equation <a class="reference internal" href="#equation-tasequation">(2)</a> allows us to determine the velocity with respect to a volume of air, via measurement of three quantities - density <span class="math notranslate nohighlight">\(\rho\)</span>, static pressure <span class="math notranslate nohighlight">\(p\)</span>, and impact pressure <span class="math notranslate nohighlight">\(\Delta p\)</span>. ‘Impact pressure’ is a term that is probably new to you, and refers to the difference between total and static pressure - and, for an incompressible fluid, is the same as dynamic pressure, but not for a compressible fluid.</p>
+<p>Equation <a class="reference internal" href="#equation-tasequation">(1)</a> allows us to determine the velocity with respect to a volume of air, via measurement of three quantities - density <span class="math notranslate nohighlight">\(\rho\)</span>, static pressure <span class="math notranslate nohighlight">\(p\)</span>, and impact pressure <span class="math notranslate nohighlight">\(\Delta p\)</span>. ‘Impact pressure’ is a term that is probably new to you, and refers to the difference between total and static pressure - and, for an incompressible fluid, is the same as dynamic pressure, but not for a compressible fluid.</p>
 <p>We have the relationship <span class="math notranslate nohighlight">\(V(p, \rho, \Delta p)\)</span>, but the first two quantities are relatively difficult to measure, as they are <em>absolute</em> quantities. Hence, transducers for measurement of absolute pressure and density would require regular calibration, and would add complexity to a measurement system. The reasons for this are complex, and will be elaborated upon in an instrumentation/measurement course - suffice to say that, in general, all transducers are relative transducers, and thus measurement of any absolute quantity require a datum against which they can be compared, calibrated for changes in non-measured quantities, such as temperature.</p>
 <p>By contrast, <span class="math notranslate nohighlight">\(\Delta p\)</span> is a <em>relative</em> quantity. Whilst a transducer for measurement will still require calibration, measurement of <span class="math notranslate nohighlight">\(\Delta p\)</span> is relatively easy - for this purpose, we use a pitot-static device. Originally these were analogue devices, measuring the pressure difference between two sides of a pressure chamber via a mechanical diaphragm, calibrated to provide an accurate reading of <span class="math notranslate nohighlight">\(\Delta p\)</span>:</p>
 <div class="figure align-default" id="pitotstatic">
 <a class="reference internal image-reference" href="../_images/PitotStatic.png"><img alt="../_images/PitotStatic.png" src="../_images/PitotStatic.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Aircraft Pitot-Static Measurement Device</span><a class="headerlink" href="#pitotstatic" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Aircraft Pitot-Static Measurement Device</span><a class="headerlink" href="#pitotstatic" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="calibrated-airspeed">
 <h3>Calibrated Airspeed<a class="headerlink" href="#calibrated-airspeed" title="Permalink to this headline">¶</a></h3>
-<p>To avoid having to measure <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(\rho\)</span>, rather than using the pitot-static to measure <span class="math notranslate nohighlight">\(\Delta p\)</span>, aircraft Engineers calibrated their devices to provide the correct value of true airspeed at sea-level ISA density and pressure. This provides us with <strong>calibrated airspeed</strong>, <span class="math notranslate nohighlight">\(V_c\)</span>/CAS, which is only the same as true airspeed at sea-level ISA conditions. <span class="math notranslate nohighlight">\(V_c\)</span> can be calculated via Equation <a class="reference internal" href="#equation-casequation">(3)</a>:</p>
+<p>To avoid having to measure <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(\rho\)</span>, rather than using the pitot-static to measure <span class="math notranslate nohighlight">\(\Delta p\)</span>, aircraft Engineers calibrated their devices to provide the correct value of true airspeed at sea-level ISA density and pressure. This provides us with <strong>calibrated airspeed</strong>, <span class="math notranslate nohighlight">\(V_c\)</span>/CAS, which is only the same as true airspeed at sea-level ISA conditions. <span class="math notranslate nohighlight">\(V_c\)</span> can be calculated via Equation <a class="reference internal" href="#equation-casequation">(2)</a>:</p>
 <div class="math notranslate nohighlight" id="equation-casequation">
-<span class="eqno">(3)<a class="headerlink" href="#equation-casequation" title="Permalink to this equation">¶</a></span>\[    V_c=\sqrt{7\cdot\frac{p_{SL}}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p_{SL}}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-casequation" title="Permalink to this equation">¶</a></span>\[    V_c=\sqrt{7\cdot\frac{p_{SL}}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p_{SL}}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
 </div>
 <div class="section" id="indicated-airspeed">
 <h3>Indicated Airspeed<a class="headerlink" href="#indicated-airspeed" title="Permalink to this headline">¶</a></h3>
 <p>In reality, such a pitot-static device will measure the <strong>calibrated airspeed</strong> at a point on the aircraft surface, where the flow has already been disturbed by the aircraft. The device is NOT measuring the freestream velicity - thus there is a <em>position error</em>, based on where the pitot-static is on the aircraft. During flight testing, these inaccuracies can be quantified, and a difference between what is <em>indicated</em> by the device, <strong>indicated airspeed</strong>/IAS, and calibrated airspeed is determined - <span class="math notranslate nohighlight">\(\Delta V_p\)</span>, the position error.</p>
 <div class="math notranslate nohighlight" id="equation-iasequation">
-<span class="eqno">(4)<a class="headerlink" href="#equation-iasequation" title="Permalink to this equation">¶</a></span>\[V_c = V_I + \Delta V_p\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-iasequation" title="Permalink to this equation">¶</a></span>\[V_c = V_I + \Delta V_p\]</div>
 <p>At this stage - we have three airspeeds; Indicated (what is shown on the measurement device, for ISA SL conditions), Calibrated (what <em>should</em> be shown on the measurement device, for ISA SL conditions), and True Airspeed. We don’t have a means to convert Calibrated to True yet, so we adopt a two-step approach.</p>
 </div>
 <div class="section" id="equivalent-airspeed">
 <h3>Equivalent Airspeed<a class="headerlink" href="#equivalent-airspeed" title="Permalink to this headline">¶</a></h3>
 <p>The first correction is for the actual pressure at a given altitude. This gives Equivalent Airspeed, EAS.</p>
 <div class="math notranslate nohighlight" id="equation-easequation">
-<span class="eqno">(5)<a class="headerlink" href="#equation-easequation" title="Permalink to this equation">¶</a></span>\[    V_e=\sqrt{7\cdot\frac{p}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-easequation" title="Permalink to this equation">¶</a></span>\[    V_e=\sqrt{7\cdot\frac{p}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
 <p>where we can see that the sea-level pressure has been replaced with the actual pressure. In practice, this correction is applied as a multiplier between CAS and EAS:</p>
 <div class="math notranslate nohighlight">
 \[V_e = f\cdot V_c\]</div>
@@ -725,7 +740,7 @@ At an altitude of 9 mile, the density ratio is 0.17239372263976577
 <p>We can remember the order of corrections by the mnemonic “ICE-T”, with the relative magnitudes of the velocities given by the shape that loosely looks like a square root -</p>
 <div class="figure align-default" id="icet">
 <a class="reference internal image-reference" href="../_images/IceT.png"><img alt="../_images/IceT.png" src="../_images/IceT.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Airspeed Corrections</span><a class="headerlink" href="#icet" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Airspeed Corrections</span><a class="headerlink" href="#icet" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="problems">
@@ -736,32 +751,32 @@ At an altitude of 9 mile, the density ratio is 0.17239372263976577
 </div>
 <div class="section" id="problem-1-1-conversion-between-airspeeds">
 <h3>Problem 1.1 - Conversion between airspeeds<a class="headerlink" href="#problem-1-1-conversion-between-airspeeds" title="Permalink to this headline">¶</a></h3>
-<p>An aircraft is flying at an altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">125</span>kn, with a <span class="pasted-text">4</span>kn <span class="pasted-text">headwind</span>:</p>
+<p>An aircraft is flying at an altitude of <span class="pasted-text">20000</span>ft, with a calibrated airspeed of <span class="pasted-text">285</span>kn, with a <span class="pasted-text">12</span>kn <span class="pasted-text">tailwind</span>:</p>
 <p>a) How long will it take to cover 100 miles?</p>
 <p>b) How long will it take to cover 200km?</p>
-<p>c) If instead of Vc = <span class="pasted-text">125</span>kn, we have Vc = <span class="pasted-text">125</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
+<p>c) If instead of Vc = <span class="pasted-text">285</span>kn, we have Vc = <span class="pasted-text">285</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
 <p>Try and tackle the problem yourself before you see the solution below. The numbers in this problem will change each time the notes are updated.</p>
 <div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the solution…</p>
 <p>The first step is to take Vc to Ve via the pressure correction.</p>
-<p>For the altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">125</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">35000</span>, <span class="pasted-text">125</span>).</p>
-<p>This gives a value of <span class="pasted-text">0.986</span> for the pressure correction, and this enables us to determine the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">123.250</span>kn.</p>
-<p>We need to know the density correction - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.311</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
-<p>We get true airspeed from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">221.158</span>kn.</p>
+<p>For the altitude of <span class="pasted-text">20000</span>ft, with a calibrated airspeed of <span class="pasted-text">285</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">20000</span>, <span class="pasted-text">285</span>).</p>
+<p>This gives a value of <span class="pasted-text">0.975</span> for the pressure correction, and this enables us to determine the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">277.989</span>kn.</p>
+<p>We need to know the density correction - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.533</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
+<p>We get true airspeed from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">380.715</span>kn.</p>
 <p>Note that at no point have the units had to be converted into SI to make the corrections - that’s the smart part of the density and pressure corrections; they are both non-dimensional corrections. If you have velocity in knots, you use them and get velocity in knots out.</p>
-<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">217.158</span>kn.</p>
-<p>With the velocity in knots we can convert it to m/s by mutliplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">111.716</span>m/s. This gives us the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
-<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">1440.6</span>s or <span class="pasted-text">24 minutes, 0 seconds</span></p>
-<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">1790.3</span>s or <span class="pasted-text">29 minutes, 50 seconds</span></p>
+<p>Since the wind is a <span class="pasted-text">tailwind</span>, this is <span class="pasted-text">added to</span> the value above to yield the groundspeed in knots as <span class="pasted-text">392.715</span>kn.</p>
+<p>With the velocity in knots we can convert it to m/s by mutliplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">202.030</span>m/s. This gives us the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
+<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">796.6</span>s or <span class="pasted-text">13 minutes, 16 seconds</span></p>
+<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">990.0</span>s or <span class="pasted-text">16 minutes, 29 seconds</span></p>
 <hr class="docutils" />
 <p>For the last part of the question, this is solved by recalling that <span class="math notranslate nohighlight">\(V_c = V_I + \Delta V_p\)</span> and hence the speeds calculated are now:</p>
-<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">127.000</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">125.171</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">224.606</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">228.606</span>kn = <span class="pasted-text">117.605</span>m/s</p>
-<p>The times taken are found to be <span class="pasted-text">22 minutes, 48 seconds</span> and  <span class="pasted-text">28 minutes, 20 seconds</span>, for a respective  <span class="pasted-text">1 minutes, 12 seconds</span> and  <span class="pasted-text">1 minutes, 29 seconds</span> <span class="pasted-text">faster</span>.</p>
+<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">287.000</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">279.848</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">383.261</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">395.261</span>kn = <span class="pasted-text">203.340</span>m/s</p>
+<p>The times taken are found to be <span class="pasted-text">13 minutes, 11 seconds</span> and  <span class="pasted-text">16 minutes, 23 seconds</span>, for a respective  <span class="pasted-text">5 seconds</span> and  <span class="pasted-text">6 seconds</span> <span class="pasted-text">faster</span>.</p>
 </div>
 </div>
 <div class="section" id="problem-1-2-theory">

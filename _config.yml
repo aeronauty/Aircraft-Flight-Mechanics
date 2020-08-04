@@ -1,7 +1,8 @@
 # Book settings
-title: Aircraft Flight Mechanics by Harry Smith
+logo: Logo2.png
+title: Aircraft Flight Mechanics by Harry Smith, PhD
 author: Harry Smith
-logo: logo.png
+
 
 latex:
   latex_documents:
@@ -11,21 +12,19 @@ latex:
 repository:
   url                       : https://github.com/aeronauty/Aircraft-Flight-Mechanics
 
-
+# HTML
 html:
-  use_repository_button: true
-  use_issues_button: true
+  use_repository_button     : true
+  use_issues_button         : true
+  use_edit_page_button      : true  # Whether to add an "edit this page" button to pages. 
+  extra_navbar: <div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
 
 # Configure your Binder links, such as the URL of the BinderHub.
 launch_buttons:
   binderhub_url             : https://mybinder.org
   thebe                     : true  # Add a thebe button to pages (requires the repository to run on Binder)
 
-html:
-    extra_navbar: |
-        <div>
-            <script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        </div>
+
 
 execute_notebooks: force
 
