@@ -1,5 +1,5 @@
 # Book settings
-title: Aircraft Flight Mechanics
+title: Aircraft Flight Mechanics\n by Harry Smith
 author: Harry Smith
 logo: logo.png
 
@@ -28,3 +28,7 @@ html:
         </div>
 
 execute_notebooks: force
+
+sphinx:
+  extra_extensions:
+  - sphinx_tabs.tabs

@@ -169,8 +169,8 @@ $$V_e = f\cdot V_c$$
 where
 
 $$  f = \frac{V_e}{V_c} $$
-$$    = \frac{\sqrt{7\cdot\frac{p}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}}{\sqrt{7\cdot\frac{p_{SL}}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p_{SL}}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}}$$\
-    $$= f(\Delta p, p)$$
+$$    = \frac{\sqrt{7\cdot\frac{p}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}}{\sqrt{7\cdot\frac{p_{SL}}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p_{SL}}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}}$$
+$$= f(\Delta p, p)$$
     
 Since $f$ is only dependent on the $\Delta p$ the aircraft speed, and the $p$ the aircraft altitude, it can be calculated and tabulated - see the table below for the pressure correction factor:
 
@@ -241,7 +241,21 @@ from ambiance import Atmosphere
 
 sealevel = Atmosphere(0)
 
-print(f"At sealevel, the pressure is {sealevel.pressure[0]}Pa, the density is {sealevel.density[0]:1.3f}kg/m^3, the tempertaure is {sealevel.temperature[0]}K, and the viscosity is {sealevel.kinematic_viscosity[0]:1.3e}kg/s")
+h = 12000
+
+altmospere = Atmosphere(h)
+
+print(f"At sea level, the pressure is {sealevel.pressure[0]:6.3f}Pa,\
+ the density is {sealevel.density[0]:1.3f}kg/m^3,\
+ the tempertaure is {sealevel.temperature[0]-273.15:1.1f}C, \
+ and the viscosity is {sealevel.kinematic_viscosity[0]:1.3e}kg/s")
+
+print("")
+
+print(f"At an altitude of {h}m, the pressure is {altmospere.pressure[0]:6.3f}Pa,\
+the density is {altmospere.density[0]:1.3f}kg/m^3,\
+the tempertaure is {altmospere.temperature[0]-273.15:1.1f}C,\
+and the viscosity is {altmospere.kinematic_viscosity[0]:1.3e}kg/s")
 
 Using ```ambiance``` to define the density, we can create a function, ```sigma_density``` (it's a good idea to make function handles descriptive, and there tend to be lots of sigma functions that mean important things in programming languages). This function will return the density ratio for a given altitude provided in metres or feet - bearing in mind than the units for ```ambiance``` are metres.
 

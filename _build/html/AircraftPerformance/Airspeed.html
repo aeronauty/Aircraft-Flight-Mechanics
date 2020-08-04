@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Defining Aircraft ‘Speed’ &#8212; Aircraft Flight Mechanics</title>
+    <title>Defining Aircraft ‘Speed’ &#8212; Aircraft Flight Mechanics\n by Harry Smith</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -62,7 +62,7 @@
   <img src="../_static/logo.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">Aircraft Flight Mechanics</h1>
+  <h1 class="site-logo" id="site-title">Aircraft Flight Mechanics\n by Harry Smith</h1>
   
 </a>
 </div>
@@ -391,9 +391,8 @@
 \[  f = \frac{V_e}{V_c} \]</div>
 <div class="math notranslate nohighlight">
 \[    = \frac{\sqrt{7\cdot\frac{p}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}}{\sqrt{7\cdot\frac{p_{SL}}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p_{SL}}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}}\]</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$= f(\Delta p, p)$$
-</pre></div>
-</div>
+<div class="math notranslate nohighlight">
+\[= f(\Delta p, p)\]</div>
 <p>Since <span class="math notranslate nohighlight">\(f\)</span> is only dependent on the <span class="math notranslate nohighlight">\(\Delta p\)</span> the aircraft speed, and the <span class="math notranslate nohighlight">\(p\)</span> the aircraft altitude, it can be calculated and tabulated - see the table below for the pressure correction factor:</p>
 <table class="colwidths-auto table">
 <thead>
@@ -534,7 +533,7 @@
 </tbody>
 </table>
 <p>Intermediate values are found via linear interpolation - you should be comfortable with doing this by hand, or by writing code. An example code is provided below that provides two-dimensional interpolation for any values - you can use this function to find out the pressure correction factor - use the syntax <code class="docutils literal notranslate"><span class="pre">f_correction(VC,</span> <span class="pre">h)</span></code> (both of these have default values, so you don’t need to provide either).</p>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hide-input tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.interpolate</span>
@@ -596,12 +595,28 @@
 
 <span class="n">sealevel</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At sealevel, the pressure is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">pressure</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">Pa, the density is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">density</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.3f</span><span class="si">}</span><span class="s2">kg/m^3, the tempertaure is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">temperature</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">K, and the viscosity is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">kinematic_viscosity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.3e</span><span class="si">}</span><span class="s2">kg/s&quot;</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">12000</span>
+
+<span class="n">altmospere</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At sea level, the pressure is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">pressure</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">6.3f</span><span class="si">}</span><span class="s2">Pa,</span><span class="se">\</span>
+<span class="s2"> the density is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">density</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.3f</span><span class="si">}</span><span class="s2">kg/m^3,</span><span class="se">\</span>
+<span class="s2"> the tempertaure is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">temperature</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">273.15</span><span class="si">:</span><span class="s2">1.1f</span><span class="si">}</span><span class="s2">C, </span><span class="se">\</span>
+<span class="s2"> and the viscosity is </span><span class="si">{</span><span class="n">sealevel</span><span class="o">.</span><span class="n">kinematic_viscosity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.3e</span><span class="si">}</span><span class="s2">kg/s&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At an altitude of </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2">m, the pressure is </span><span class="si">{</span><span class="n">altmospere</span><span class="o">.</span><span class="n">pressure</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">6.3f</span><span class="si">}</span><span class="s2">Pa,</span><span class="se">\</span>
+<span class="s2">the density is </span><span class="si">{</span><span class="n">altmospere</span><span class="o">.</span><span class="n">density</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.3f</span><span class="si">}</span><span class="s2">kg/m^3,</span><span class="se">\</span>
+<span class="s2">the tempertaure is </span><span class="si">{</span><span class="n">altmospere</span><span class="o">.</span><span class="n">temperature</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">273.15</span><span class="si">:</span><span class="s2">1.1f</span><span class="si">}</span><span class="s2">C,</span><span class="se">\</span>
+<span class="s2">and the viscosity is </span><span class="si">{</span><span class="n">altmospere</span><span class="o">.</span><span class="n">kinematic_viscosity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.3e</span><span class="si">}</span><span class="s2">kg/s&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>At sealevel, the pressure is 101325.0Pa, the density is 1.225kg/m^3, the tempertaure is 288.15K, and the viscosity is 1.461e-05kg/s
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>At sea level, the pressure is 101325.000Pa, the density is 1.225kg/m^3, the tempertaure is 15.0C,  and the viscosity is 1.461e-05kg/s
+
+At an altitude of 12000m, the pressure is 19399.392Pa,the density is 0.312kg/m^3,the tempertaure is -56.5C,and the viscosity is 4.557e-05kg/s
 </pre></div>
 </div>
 </div>
@@ -721,32 +736,32 @@ At an altitude of 9 mile, the density ratio is 0.17239372263976577
 </div>
 <div class="section" id="problem-1-1-conversion-between-airspeeds">
 <h3>Problem 1.1 - Conversion between airspeeds<a class="headerlink" href="#problem-1-1-conversion-between-airspeeds" title="Permalink to this headline">¶</a></h3>
-<p>An aircraft is flying at an altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">260</span>kn, with a <span class="pasted-text">6</span>kn <span class="pasted-text">headwind</span>:</p>
+<p>An aircraft is flying at an altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">125</span>kn, with a <span class="pasted-text">4</span>kn <span class="pasted-text">headwind</span>:</p>
 <p>a) How long will it take to cover 100 miles?</p>
 <p>b) How long will it take to cover 200km?</p>
-<p>c) If instead of Vc = <span class="pasted-text">260</span>kn, we have Vc = <span class="pasted-text">260</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
+<p>c) If instead of Vc = <span class="pasted-text">125</span>kn, we have Vc = <span class="pasted-text">125</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
 <p>Try and tackle the problem yourself before you see the solution below. The numbers in this problem will change each time the notes are updated.</p>
 <div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the solution…</p>
 <p>The first step is to take Vc to Ve via the pressure correction.</p>
-<p>For the altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">260</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">35000</span>, <span class="pasted-text">260</span>).</p>
-<p>This gives a value of <span class="pasted-text">0.948</span> for the pressure correction, and this enables us to determine the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">246.428</span>kn.</p>
+<p>For the altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">125</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">35000</span>, <span class="pasted-text">125</span>).</p>
+<p>This gives a value of <span class="pasted-text">0.986</span> for the pressure correction, and this enables us to determine the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">123.250</span>kn.</p>
 <p>We need to know the density correction - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.311</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
-<p>We get true airspeed from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">442.187</span>kn.</p>
+<p>We get true airspeed from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">221.158</span>kn.</p>
 <p>Note that at no point have the units had to be converted into SI to make the corrections - that’s the smart part of the density and pressure corrections; they are both non-dimensional corrections. If you have velocity in knots, you use them and get velocity in knots out.</p>
-<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">436.187</span>kn.</p>
-<p>With the velocity in knots we can convert it to m/s by mutliplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">224.394</span>m/s. This gives us the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
-<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">717.2</span>s or <span class="pasted-text">11 minutes, 57 seconds</span></p>
-<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">891.3</span>s or <span class="pasted-text">14 minutes, 51 seconds</span></p>
+<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">217.158</span>kn.</p>
+<p>With the velocity in knots we can convert it to m/s by mutliplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">111.716</span>m/s. This gives us the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
+<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">1440.6</span>s or <span class="pasted-text">24 minutes, 0 seconds</span></p>
+<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">1790.3</span>s or <span class="pasted-text">29 minutes, 50 seconds</span></p>
 <hr class="docutils" />
 <p>For the last part of the question, this is solved by recalling that <span class="math notranslate nohighlight">\(V_c = V_I + \Delta V_p\)</span> and hence the speeds calculated are now:</p>
-<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">262.000</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">248.156</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">445.288</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">451.288</span>kn = <span class="pasted-text">232.163</span>m/s</p>
-<p>The times taken are found to be <span class="pasted-text">11 minutes, 33 seconds</span> and  <span class="pasted-text">14 minutes, 21 seconds</span>, for a respective  <span class="pasted-text">23 seconds</span> and  <span class="pasted-text">29 seconds</span> <span class="pasted-text">faster</span>.</p>
+<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">127.000</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">125.171</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">224.606</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">228.606</span>kn = <span class="pasted-text">117.605</span>m/s</p>
+<p>The times taken are found to be <span class="pasted-text">22 minutes, 48 seconds</span> and  <span class="pasted-text">28 minutes, 20 seconds</span>, for a respective  <span class="pasted-text">1 minutes, 12 seconds</span> and  <span class="pasted-text">1 minutes, 29 seconds</span> <span class="pasted-text">faster</span>.</p>
 </div>
 </div>
 <div class="section" id="problem-1-2-theory">

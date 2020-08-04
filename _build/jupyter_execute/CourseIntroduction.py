@@ -34,15 +34,43 @@ Other supplementary texts that may be useful are "*Aerodynamics for Engineering 
 
 This is a *large* course, comprising five interrelated modules:
 
-1.  **Aircraft Performance**: Defining relationships between basic forces and motion in steady, level flight, with aircraft represented by a point mass. Understanding take-off, landing, and steady turns. Range calculations.
+````{tabs}
+```{tab} Aircraft Performance
 
-2.  **Aircraft Equations of Motion**: Axis systems, reference frames, and relative motion. Newton's Second law as applied for aircraft forces and moments
+- Defining relationships between basic forces and motion in steady, level flight, with aircraft represented by a point mass. 
+- Understanding take-off, landing, and steady turns. 
+- Range calculations.
 
-3.  **Static Stability**: Defining trimmed conditions, utilising relationships between control surface deflections, and forces around the aircraft CG.
+```
+```{tab} Aircraft Equations of Motion
 
-4.  **Linearisation of the Equations of Motion**: Using the small perturbation theory to linearise the aircraft nonlinear differential equations of motion.
+- Earth, Stability, Wind, Body Axes systems
+- Aerodynamic Angles
+- Euler Angles
+- Reference frames, and relative motion
+- Newton's Second law as applied for aircraft forces and moments
+```
+```{tab} Static Stability
 
-5.  **Flight Dynamics**: Stability definitions for first order and second order systems. Laplace transforms, characteristic equation. Longitudinal EOM dynamics; short-period (pitch) mode, phugoid mode. Lateral/Directional EOM dynamics; spiral mode, roll mode, Dutch roll mode. Predicting the dynamic stability of fixed wing aircraft. Reduced order models.
+- Defining trimmed conditions
+- Utilising relationships between control surface deflections, and forces around the aircraft CG.
+```
+```{tab} Linearisation of the Equations of Motion
+
+- Using the small perturbation theory to linearise the aircraft nonlinear differential equations of motion.
+- Developing transfer functions to relate control input and state/non-state variables.
+- Understanding the difference between aircraft *states* (*e.g.*, $u$) and other variables (*e.g.*., $\beta$)
+```
+```{tab} Aircraft Flight Dynamics
+
+- Stability definitions for first order and second order systems. 
+- Laplace transforms, characteristic equation. 
+- Longitudinal EOM dynamics; short-period (pitch) mode, phugoid mode. 
+- Lateral/Directional EOM dynamics; spiral mode, roll mode, Dutch roll mode. 
+- Predicting the dynamic stability of fixed wing aircraft. 
+- Reduced order models for modes.
+```
+````
 
 Each of these could be an entire course on its own, so we will not be able to cover the entirety of each subject, but we will develop an understanding of sufficient detail to answer questions on a range of topics in each subject.
 
