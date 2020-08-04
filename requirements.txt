@@ -4,3 +4,4 @@ numpy
 scipy
 ambiance
 myst_nb
+sphinx_tabs
