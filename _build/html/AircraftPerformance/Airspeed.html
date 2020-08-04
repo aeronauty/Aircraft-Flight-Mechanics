@@ -119,7 +119,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../references.html">
+  <a class="reference internal" href="../zreferences.html">
    References
   </a>
  </li>
@@ -270,6 +270,11 @@
      Problem 1.1 - Conversion between airspeeds
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-1-2-theory">
+     Problem 1.2 - Theory
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -319,7 +324,7 @@
 <p>Equation <a class="reference internal" href="#equation-tasequation">(2)</a> is often simply given in textbooks with no derivation or explanation. You are encouraged to <em>understand</em> the derivation, but I won’t test you on it.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the derivation…</p>
-<p>This is presented <a class="bibtex reference internal" href="../references.html#yechout-2014vg" id="id1">[YMB+14]</a>, and other textbooks with no derivation given. It is easily derived from the isentropic flow equations.</p>
+<p>This is presented <a class="bibtex reference internal" href="../zreferences.html#yechout-2014vg" id="id1">[YMB+14]</a>, and other textbooks with no derivation given. It is easily derived from the isentropic flow equations.</p>
 <p>The following should be standard from your compressible flow classes, but I want to ensure you understand the legacy of the equations you’re using - so you understand limitations and their development. This is adapted from my own undergraduate notes.</p>
 <p>We have the isentropic relationship showing that the ratio of total to static temperature is a function of the Mach number and the ratio of specific heats:</p>
 <div class="math notranslate nohighlight">
@@ -710,36 +715,63 @@ At an altitude of 9 mile, the density ratio is 0.17239372263976577
 </div>
 <div class="section" id="problems">
 <h2>Problems:<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h2>
+<p>Below are a range of numerical and theoretical questions. Some of the numerical questions have random numbers that change each time the notes get updated - so you’re not going crazy if you thought it was different last time.</p>
+<p>Try and go through the questions on your own before looking at the solutions - questions you’ll face in tests/exams will be <em>similar</em> but not exactly the same, so you need to be able to understand the <em>why</em> of the solution rather than just following an algorithm.</p>
 <div class="cell tag_remove-input tag_remove-outputs tag_remove-output tag_thebe-init docutils container">
 </div>
 <div class="section" id="problem-1-1-conversion-between-airspeeds">
 <h3>Problem 1.1 - Conversion between airspeeds<a class="headerlink" href="#problem-1-1-conversion-between-airspeeds" title="Permalink to this headline">¶</a></h3>
-<p>An aircraft is flying at an altitude of <span class="pasted-text">15000</span>ft, with a calibrated airspeed of <span class="pasted-text">145</span>kn, with a <span class="pasted-text">4</span>kn <span class="pasted-text">tailwind</span>:</p>
+<p>An aircraft is flying at an altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">260</span>kn, with a <span class="pasted-text">6</span>kn <span class="pasted-text">headwind</span>:</p>
 <p>a) How long will it take to cover 100 miles?</p>
 <p>b) How long will it take to cover 200km?</p>
-<p>c) If instead of Vc = <span class="pasted-text">145</span>kn, we have Vc = <span class="pasted-text">145</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
+<p>c) If instead of Vc = <span class="pasted-text">260</span>kn, we have Vc = <span class="pasted-text">260</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
 <p>Try and tackle the problem yourself before you see the solution below. The numbers in this problem will change each time the notes are updated.</p>
 <div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the solution…</p>
 <p>The first step is to take Vc to Ve via the pressure correction.</p>
-<p>For the altitude of <span class="pasted-text">15000</span>ft, with a calibrated airspeed of <span class="pasted-text">145</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">15000</span>, <span class="pasted-text">145</span>).</p>
-<p>This gives a value of <span class="pasted-text">0.995</span> for the pressure correction, and this enables us to determine the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">144.333</span>kn.</p>
-<p>We need to know the density correction - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.629</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
-<p>We get true airspeed from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">181.921</span>kn.</p>
+<p>For the altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">260</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">35000</span>, <span class="pasted-text">260</span>).</p>
+<p>This gives a value of <span class="pasted-text">0.948</span> for the pressure correction, and this enables us to determine the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">246.428</span>kn.</p>
+<p>We need to know the density correction - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.311</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
+<p>We get true airspeed from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">442.187</span>kn.</p>
 <p>Note that at no point have the units had to be converted into SI to make the corrections - that’s the smart part of the density and pressure corrections; they are both non-dimensional corrections. If you have velocity in knots, you use them and get velocity in knots out.</p>
-<p>Since the wind is a <span class="pasted-text">tailwind</span>, this is <span class="pasted-text">added to</span> the value above to yield the groundspeed in knots as <span class="pasted-text">185.921</span>kn.</p>
-<p>With the velocity in knots we can convert it to m/s by mutliplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">95.646</span>m/s. This gives us the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
-<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">1682.6</span>s or <span class="pasted-text">28 minutes, 2 seconds</span></p>
-<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">2091.0</span>s or <span class="pasted-text">34 minutes, 51 seconds</span></p>
+<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">436.187</span>kn.</p>
+<p>With the velocity in knots we can convert it to m/s by mutliplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">224.394</span>m/s. This gives us the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
+<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">717.2</span>s or <span class="pasted-text">11 minutes, 57 seconds</span></p>
+<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">891.3</span>s or <span class="pasted-text">14 minutes, 51 seconds</span></p>
 <hr class="docutils" />
 <p>For the last part of the question, this is solved by recalling that <span class="math notranslate nohighlight">\(V_c = V_I + \Delta V_p\)</span> and hence the speeds calculated are now:</p>
-<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">147.000</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">146.300</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">184.400</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">188.400</span>kn = <span class="pasted-text">188.400</span>m/s</p>
-<p>The times taken are found to be <span class="pasted-text">27 minutes, 40 seconds</span> and  <span class="pasted-text">34 minutes, 23 seconds</span>, for a respective  <span class="pasted-text">22 seconds</span> and  <span class="pasted-text">27 seconds</span> <span class="pasted-text">faster</span>.</p>
+<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">262.000</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">248.156</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">445.288</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">451.288</span>kn = <span class="pasted-text">232.163</span>m/s</p>
+<p>The times taken are found to be <span class="pasted-text">11 minutes, 33 seconds</span> and  <span class="pasted-text">14 minutes, 21 seconds</span>, for a respective  <span class="pasted-text">23 seconds</span> and  <span class="pasted-text">29 seconds</span> <span class="pasted-text">faster</span>.</p>
+</div>
+</div>
+<div class="section" id="problem-1-2-theory">
+<h3>Problem 1.2 - Theory<a class="headerlink" href="#problem-1-2-theory" title="Permalink to this headline">¶</a></h3>
+<p>a) When converting between different airspeeds, how can you ‘sense check’ your numbers?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to show the solution…</p>
+<p>Look at the square-root symbol for ICE-T <a class="reference internal" href="#icet"><span class="std std-ref">Airspeed Corrections</span></a>. This shows the respective magnitude of the velocities you should expect to find.</p>
+<p>Once you have the true airspeed, you should also compare it to the type of aircraft listed (if one is). The speed of sound is about 340m/s at sea-level - so if you’ve been given a light commuter aircraft, and you’ve found a true airspeed of 500m/s then something is wrong. (You probably got the knots to metre/s conversion wrong - <a class="reference external" href="https://www.google.com/search?q=how+do+i+convert+knots+to+metres+per+second&amp;rlz=1C5CHFA_enUS892US892&amp;oq=how+do+i+convert+knots+to+metres+per+second&amp;aqs=chrome..69i57j6.5772j1j7&amp;sourceid=chrome&amp;ie=UTF-8">see here</a></p>
+</div>
+<p>b) What is the significance of “equivalent airspeed”, and why is it preferable to use when defining limiting speeds for aircraft</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to show the solution…</p>
+<p>For a given angle of attack, the dimensional lift on a given aircraft will be the same for constant <span class="math notranslate nohighlight">\(V_e\)</span> at <em>any</em> altitude. This is not the same for any of the other airspeeds.</p>
+<p>Hence - the <em>stall speed</em> (which we will calculate soon) is <em>constant</em> with altitude when defined in EAS, as is the “never exceed” speed (provided <span class="math notranslate nohighlight">\(V_{ne}\)</span> has been defined due to aerodymamic structural limitations.</p>
+</div>
+<p>c) In what cases could you find that your true airspeed is <em>less</em> than your calibrated airspeed?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to show the solution…</p>
+<p>Flight below sea-level, or if you’ve made a mistake.</p>
+</div>
+<p>d) For what conditions is EAS equivalent to TAS?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to show the solution…</p>
+<p>Flight at sea-level.</p>
 </div>
 </div>
 </div>

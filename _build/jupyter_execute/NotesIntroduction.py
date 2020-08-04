@@ -79,5 +79,5 @@ EoM/Introduction
 :titlesonly:
 :caption: References and Resources
 
-references
+zreferences
 ```

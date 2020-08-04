@@ -326,7 +326,9 @@ Airspeed Corrections
 
 ## Problems:
 
+Below are a range of numerical and theoretical questions. Some of the numerical questions have random numbers that change each time the notes get updated - so you're not going crazy if you thought it was different last time.
 
+Try and go through the questions on your own before looking at the solutions - questions you'll face in tests/exams will be _similar_ but not exactly the same, so you need to be able to understand the *why* of the solution rather than just following an algorithm.
 
 from myst_nb import glue
 from random import seed
@@ -459,7 +461,7 @@ glue("Vc2", vc);
 glue("Ve2", Ve);
 glue("V2", V);
 glue("Vg2", Vg);
-glue("Vms2", Vg);
+glue("Vms2", Vms);
     
 # Miles to m
 dist = 100 * 1609.34
@@ -532,4 +534,48 @@ $V_g$ = {glue:text}`Vg2:1.3f`kn = {glue:text}`Vms2:1.3f`m/s
 The times taken are found to be {glue:text}`text_time1_2` and  {glue:text}`text_time2_2`, for a respective  {glue:text}`dT1` and  {glue:text}`dT2` {glue:text}`time_text`.
 
 ```
+
+### Problem 1.2 - Theory
+
+a) When converting between different airspeeds, how can you 'sense check' your numbers?
+
+```{admonition} Click to show the solution... 
+:class: dropdown 
+
+Look at the square-root symbol for ICE-T {ref}`IceT`. This shows the respective magnitude of the velocities you should expect to find.
+
+Once you have the true airspeed, you should also compare it to the type of aircraft listed (if one is). The speed of sound is about 340m/s at sea-level - so if you've been given a light commuter aircraft, and you've found a true airspeed of 500m/s then something is wrong. (You probably got the knots to metre/s conversion wrong - [see here](https://www.google.com/search?q=how+do+i+convert+knots+to+metres+per+second&rlz=1C5CHFA_enUS892US892&oq=how+do+i+convert+knots+to+metres+per+second&aqs=chrome..69i57j6.5772j1j7&sourceid=chrome&ie=UTF-8)
+
+```
+
+b) What is the significance of "equivalent airspeed", and why is it preferable to use when defining limiting speeds for aircraft
+
+```{admonition} Click to show the solution... 
+:class: dropdown 
+
+For a given angle of attack, the dimensional lift on a given aircraft will be the same for constant $V_e$ at *any* altitude. This is not the same for any of the other airspeeds.
+
+Hence - the *stall speed* (which we will calculate soon) is *constant* with altitude when defined in EAS, as is the "never exceed" speed (provided $V_{ne}$ has been defined due to aerodymamic structural limitations.
+
+```
+
+c) In what cases could you find that your true airspeed is *less* than your calibrated airspeed? 
+
+```{admonition} Click to show the solution... 
+:class: dropdown 
+
+Flight below sea-level, or if you've made a mistake.
+
+```
+
+d) For what conditions is EAS equivalent to TAS?
+
+
+```{admonition} Click to show the solution... 
+:class: dropdown 
+
+Flight at sea-level.
+
+```
+
 

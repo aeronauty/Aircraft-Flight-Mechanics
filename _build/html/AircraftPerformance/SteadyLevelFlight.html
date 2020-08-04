@@ -119,7 +119,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../references.html">
+  <a class="reference internal" href="../zreferences.html">
    References
   </a>
  </li>
@@ -215,7 +215,19 @@
             <i class="fas fa-list"></i> On this page
         </div>
         <nav id="bd-toc-nav">
-            
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vertical-forces">
+   Vertical Forces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#longitudinal-forces">
+   Longitudinal Forces
+  </a>
+ </li>
+</ul>
+
         </nav>
     </div>
 </div>
@@ -226,7 +238,86 @@
                 
   <div class="section" id="forces-in-steady-level-flight">
 <h1>Forces in Steady Level Flight<a class="headerlink" href="#forces-in-steady-level-flight" title="Permalink to this headline">¶</a></h1>
-<p>Some text in here</p>
+<p>The discipline of Aircraft Flight Mechanics requires the formulation of relationships between aircraft forces, and aircraft motion. In order to define <em>motion</em>, it was necessary to define the different airspeeds in the preceding section.</p>
+<p>Aircraft have six degrees of freedom - three translational (<span class="math notranslate nohighlight">\(x, y, z\)</span>), and three rotational (<span class="math notranslate nohighlight">\(\phi, \theta, \psi\)</span>), and in order to develop the expressions describing aicraft flight, <em>nine</em> coupled equations are required. This course will get to that point, and those equations will derived and utilised - but before that, some really handy relationships can be defined for flight constrained to a single direction.</p>
+<p>The simplest flight regime is best to start with, which is steady, level (meaning no change in altitude) flight.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">A word about SLUF…</p>
+<p>Sometimes you may see this flight regime caled SLUF, standing for <strong>S</strong>teady <strong>L</strong>evel <strong>U</strong>naccellerated <strong>F</strong>light. I don’t particularly like this acronym as:</p>
+<ul class="simple">
+<li><p>Steady <em>means</em> unaccelerated, so it’s tautologous</p></li>
+<li><p>There’s another, arguably better <a class="reference external" href="https://en.wiktionary.org/wiki/SLUF">definition for SLUF</a></p></li>
+</ul>
+</div>
+<p>Let’s explore what this regime means, and the assumptions we make</p>
+<ul class="simple">
+<li><p>We assume that the aircraft is a <strong>point mass</strong>, whereby we assume that the aircraft dimensions are negligible when compared to the dimensions of motion.</p></li>
+<li><p><strong>Steady</strong> flight means no acceleration, so we can infer from Newton’s first law that the sum of forces acting on the aircraft is zero <span class="math notranslate nohighlight">\(\sum\vec{F}=0\)</span> . This is the <strong>equilibrium steady flight condition</strong>.</p></li>
+</ul>
+<p>The definition of forces on the aircraft can change depending on the purpose - and it is only be convention that we define lift and drag in the directions we do.</p>
+<p>The semantics notwithstanding, it is traditional to define four mutually-orthogonal forces - see <a class="reference internal" href="#cruiseforces"><span class="std std-ref">Equilibrium Forces</span></a>.</p>
+<ul class="simple">
+<li><p>Two aerodynamic; <strong>lift and drag</strong>.</p></li>
+<li><p>One propulsive; <strong>thrust</strong>.</p></li>
+<li><p>One inertial; <strong>weight</strong>.</p></li>
+</ul>
+<div class="figure align-default" id="cruiseforces">
+<a class="reference internal image-reference" href="../_images/CruiseForces.png"><img alt="../_images/CruiseForces.png" src="../_images/CruiseForces.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Equilibrium Forces</span><a class="headerlink" href="#cruiseforces" title="Permalink to this image">¶</a></p>
+</div>
+<p>For this regime, it is further assumed that the aerodynamic incidence is small, and that the thrust offset is negligible. Therefore we assume that lift and weight are <em>perpendicular</em> to aircraft motion, and that thrust and drag are parallel to aircraft motion.</p>
+<div class="section" id="vertical-forces">
+<h2>Vertical Forces<a class="headerlink" href="#vertical-forces" title="Permalink to this headline">¶</a></h2>
+<p>Looking at the vertical forces, <span class="math notranslate nohighlight">\(\sum F_z =0\)</span>, therefore <span class="math notranslate nohighlight">\(L=W\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[C_L = \frac{L}{\tfrac{1}{2}\rho V^2S}\]</div>
+<div class="math notranslate nohighlight">
+\[    = \frac{W}{\tfrac{1}{2}\rho V^2S}\]</div>
+<p>rearranging to find flight speed:</p>
+<div class="math notranslate nohighlight" id="equation-acspeedequation">
+<span class="eqno">(6)<a class="headerlink" href="#equation-acspeedequation" title="Permalink to this equation">¶</a></span>\[V = \sqrt{\frac{\frac{W}{S}}{\tfrac{1}{2}\rho C_L}}\]</div>
+<p>Equation <a class="reference internal" href="#equation-acspeedequation">(6)</a> is the <strong>Aircraft Speed Equation</strong> for steady level flight, and some basic aerodynamic behaviour may be inferred from it:</p>
+<ul class="simple">
+<li><p>Slower flight is possible by reducing wing loading - reducing aircraft mass, or increasing wing area. Or by increasing <span class="math notranslate nohighlight">\(C_L\)</span> - increasing <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p>The minimum possible flight speed occurs at <span class="math notranslate nohighlight">\(C_{L_{max}}\)</span> - just before stall</p></li>
+<li><p>Flight speed may be increased by reducing <span class="math notranslate nohighlight">\(\rho\)</span> - by flying at increased altitude</p></li>
+</ul>
+</div>
+<div class="section" id="longitudinal-forces">
+<h2>Longitudinal Forces<a class="headerlink" href="#longitudinal-forces" title="Permalink to this headline">¶</a></h2>
+<p>Looking at the longitudinal forces, <span class="math notranslate nohighlight">\(\sum F_x =0\)</span>, therefore <span class="math notranslate nohighlight">\(T=D\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    C_D &amp;= \frac{D}{\tfrac{1}{2}\rho V^2S}\nonumber\\
+    &amp;= \frac{T}{\tfrac{1}{2}\rho V^2S}\nonumber\end{aligned}\end{split}\]</div>
+<p>Drag estimation is complex, and can be performed via a variety of means from datasheets, CFD, wind tunnel testing or - more commonly - a combination of all. A good breakdown of drag sources is given by <a class="bibtex reference internal" href="../zreferences.html#maccormick-1995wq" id="id1">[Mac95]</a>, and a reproduction of the breakdown given is found in the dropdown below - but this is far beyond the complexity required for Aircraft Performance.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Drag Breakdown (well beyond what we need, but included for reference)</p>
+<p>The following is an extract from <a class="bibtex reference internal" href="../zreferences.html#maccormick-1995wq" id="id2">[Mac95]</a> [pp. 162-163]:</p>
+<p><strong>Induced Drag</strong> The drag that results from the generation of a trailing vortex system downstream of a lifting surface of finite aspect ratio.</p>
+<p><strong>Parasite Drag</strong> The total drag of an airplane minus the induced drag. Thus, it is the drag not directly associated with the production of lift. The parasite drag is composed of many drag components, the definitions of which follow.</p>
+<p><strong>Skin Friction Drag</strong> The drag on a body resulting from viscous shearing stresses over its wetted surface.</p>
+<p><strong>Form Drag</strong> (Sometimes Called Pressure Drag) The drag on a body resulting from the integrated effect of the static pressure acting normal to its surface resolved in the drag direction.</p>
+<p><strong>Interference Drag</strong> The increment in drag resulting from bringing two bodies in proximity to each other. For example, the total drag of a wing-fuselage combination will usually be greater than the sum of the wing drag and fuselage drag independent of each other.</p>
+<p><strong>Trim Drag</strong> The increment in drag resulting from the aerodynamic forces required to trim the airplane about its center of gravity. Usually this takes the form of added induced and form drag on the horizontal tail.</p>
+<p><strong>Profile Drag</strong> Usually taken to mean the total of the skin friction drag and form drag for a two-dimensional airfoil section.</p>
+<p><strong>Cooling Drag</strong> The drag resulting from the momentum lost by the air that passes through the power plant installation for purposes of cooling the engine, oil, and accessories.</p>
+<p><strong>Base Drag</strong> The specific contribution to the pressure drag attributed to the blunt after-end of a body.</p>
+<p><strong>Wave Drag</strong> Limited to supersonic flow, this drag is a pressure drag resulting from non-canceling static pressure components to either side of a shock wave acting on the surface of the body from which the wave is emanating.</p>
+</div>
+<p>In flight performance, we assume that the aircraft is operating in the region of linear aerodynamics, and utilise a drag model as given by Equation <a href="#id3"><span class="problematic" id="id4">:eqn:`DragEquation`</span></a>:</p>
+<div class="math notranslate nohighlight" id="equation-dragequation">
+<span class="eqno">(7)<a class="headerlink" href="#equation-dragequation" title="Permalink to this equation">¶</a></span>\[\begin{split}    \underbrace{C_D}_{\text{Total Drag}} = \underbrace{C_{D0}}_{\substack{\text{Zero incidence} \\ \text{drag}}} + \underbrace{K\cdot C_L^2}_{\substack{\text{Induced Drag +} \\ \text{$\alpha$-dependent form drag}}}\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[    K=\frac{k}{\pi AR}\]</div>
+<p><span class="math notranslate nohighlight">\(k\sim 1.1-1.4\)</span> for most aircraft, and <span class="math notranslate nohighlight">\(AR\)</span> is the wing aspect ratio <span class="math notranslate nohighlight">\(AR = \frac{b^2}{S}\)</span>. <span class="math notranslate nohighlight">\(K\)</span>, <span class="math notranslate nohighlight">\(C_{D0}\)</span> usually assumed constant, but can depend on:</p>
+<ul class="simple">
+<li><p>configuration changes (flap deployment)</p></li>
+<li><p>Reynolds Number (speed and height)</p></li>
+<li><p>Compressibility (shock waves)</p></li>
+</ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
