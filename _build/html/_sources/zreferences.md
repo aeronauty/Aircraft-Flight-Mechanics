@@ -1,4 +1,4 @@
 # References
-```{bibliography} bibliography2.bib
+```{bibliography} Bibliography2.bib
 :style: alpha
 ```

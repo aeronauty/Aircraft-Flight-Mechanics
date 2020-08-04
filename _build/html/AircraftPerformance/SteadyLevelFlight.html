@@ -240,6 +240,18 @@
   <a class="reference internal nav-link" href="#longitudinal-forces">
    Longitudinal Forces
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#drag-polar">
+     Drag Polar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#best-lift-to-drag-ratio">
+     Best lift to drag ratio
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -305,10 +317,10 @@
 \[\begin{split}\begin{aligned}
     C_D &amp;= \frac{D}{\tfrac{1}{2}\rho V^2S}\nonumber\\
     &amp;= \frac{T}{\tfrac{1}{2}\rho V^2S}\nonumber\end{aligned}\end{split}\]</div>
-<p>Drag estimation is complex, and can be performed via a variety of means from datasheets, CFD, wind tunnel testing or - more commonly - a combination of all. A good breakdown of drag sources is given by :cite:<code class="docutils literal notranslate"><span class="pre">MacCormick:1995wq</span></code>, and a reproduction of the breakdown given is found in the dropdown below - but this is far beyond the complexity required for Aircraft Performance.</p>
+<p>Drag estimation is complex, and can be performed via a variety of means from datasheets, CFD, wind tunnel testing or - more commonly - a combination of all. A good breakdown of drag sources is given by MacCormick<a class="bibtex reference internal" href="../zreferences.html#maccormick-1995wq" id="id1">[Mac95]</a>, and a reproduction of the breakdown given is found in the dropdown below - but this is far beyond the complexity required for Aircraft Performance.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Drag Breakdown (well beyond what we need, but included for reference)</p>
-<p>The following is an extract from <a class="bibtex reference internal" href="../zreferences.html#maccormick-1995wq" id="id1">[Mac95]</a> [pp. 162-163]:</p>
+<p>The following is an extract from MacCormick<a class="bibtex reference internal" href="../zreferences.html#maccormick-1995wq" id="id2">[Mac95]</a> [pp. 162-163]:</p>
 <p><strong>Induced Drag</strong> The drag that results from the generation of a trailing vortex system downstream of a lifting surface of finite aspect ratio.</p>
 <p><strong>Parasite Drag</strong> The total drag of an airplane minus the induced drag. Thus, it is the drag not directly associated with the production of lift. The parasite drag is composed of many drag components, the definitions of which follow.</p>
 <p><strong>Skin Friction Drag</strong> The drag on a body resulting from viscous shearing stresses over its wetted surface.</p>
@@ -326,12 +338,96 @@
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[    K=\frac{k}{\pi AR}\]</div>
-<p><span class="math notranslate nohighlight">\(k\sim 1.1-1.4\)</span> for most aircraft, and <span class="math notranslate nohighlight">\(AR\)</span> is the wing aspect ratio <span class="math notranslate nohighlight">\(AR = \frac{b^2}{S}\)</span>. <span class="math notranslate nohighlight">\(K\)</span>, <span class="math notranslate nohighlight">\(C_{D0}\)</span> usually assumed constant, but can depend on:</p>
+<p>The first term represents the drag that is independent of aerodynamic incidence, whilst the second term is proportional to <span class="math notranslate nohighlight">\(C_L^2\)</span>, which represents the induced drag and the component of form drag that varies with incidence.</p>
+<p>The parameter <span class="math notranslate nohighlight">\(k\sim 1.1-1.4\)</span> for most aircraft, and <span class="math notranslate nohighlight">\(AR\)</span> is the wing aspect ratio <span class="math notranslate nohighlight">\(AR = \frac{b^2}{S}\)</span>. <span class="math notranslate nohighlight">\(K\)</span>, <span class="math notranslate nohighlight">\(C_{D0}\)</span> usually assumed constant, but can depend on:</p>
 <ul class="simple">
 <li><p>configuration changes (flap deployment)</p></li>
 <li><p>Reynolds Number (speed and height)</p></li>
 <li><p>Compressibility (shock waves)</p></li>
 </ul>
+<p>Equation <a class="reference internal" href="#equation-dragequation">(6)</a> assumes that the minimum drag occurs at zero lift. This is the case for a symmetric aerofoil, but not for a cambered one. Since most airfcraft have a cambered wing, Equation <a class="reference internal" href="#equation-dragequation">(6)</a> should be modified to</p>
+<div class="math notranslate nohighlight">
+\[C_D = C_{D, min} + K\left(C_L - C_{L0}\right)^2\]</div>
+<p>The second equation is more realistic for real aircraft - but adds complexity to the algebra. For simplicity, Equation <a class="reference internal" href="#equation-dragequation">(6)</a> will be used in development of the Aircraft Performance Equations.</p>
+<p>Equation <a class="reference internal" href="#equation-acspeedequation">(5)</a> and Equation <a class="reference internal" href="#equation-dragequation">(6)</a> underpin the basics of aircraft performance.</p>
+<div class="section" id="drag-polar">
+<h3>Drag Polar<a class="headerlink" href="#drag-polar" title="Permalink to this headline">¶</a></h3>
+<p>The relationship between lift and drag is given through the aircraft drag polar - often plotted as <span class="math notranslate nohighlight">\(C_L\)</span> vs <span class="math notranslate nohighlight">\(C_D\)</span>. Values for <span class="math notranslate nohighlight">\(C_L\)</span> and <span class="math notranslate nohighlight">\(C_D\)</span> are commonplace in the literature - a quick search yielded data for the Cessna 172S <span class="xref std std-ref">Haberkorn:2016bj</span>.</p>
+<p>You will see that the drag model works well for low values of lift - that is, in the linear aerodynamic region. The behaviour at the ‘bottom’ of the curve is sometimes called the ‘drag bucket’ - and I spent many years <em>collecting</em> these data in a wind tunnel.</p>
+<p>The drag polar shows the aerodynamic efficiency of a given aircraft - that is, it represents the lift-to-drag ratio. You can find the best (highest) lift to drag ratio as the tangent of a line drawn from the origin to the curve.</p>
+<p>It would be great to be able to find the best lift to drag ratio without having to draw the drag polar. If you looka the source code for the image below, then it’s obvious that I haven’t drawn the tangent to find the best lift to drag ratio - rather I have drawn the tangent after having found the best lift to drag ratio.</p>
+<p>Expand the code to see the source data and coefficients used in the drag model.</p>
+<div class="cell tag_hide-input tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aircraft Drag polar</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Data for this graph has been taken from here: https://www.researchgate.net/figure/Figure-A10-Drag-polar-for-the-Cessna-172S-This-plot-is-created-for-NACA-2412-airfoil_fig25_328578766</span>
+
+<span class="c1"># Discrete points:</span>
+<span class="n">Cd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.033099</span><span class="p">,</span> <span class="mf">0.035185</span><span class="p">,</span> <span class="mf">0.035214</span><span class="p">,</span> <span class="mf">0.041961</span><span class="p">,</span> <span class="mf">0.051143</span><span class="p">,</span>\
+<span class="mf">0.064192</span><span class="p">,</span> <span class="mf">0.080106</span><span class="p">,</span> <span class="mf">0.096683</span><span class="p">,</span> <span class="mf">0.104613</span><span class="p">,</span> <span class="mf">0.11364</span><span class="p">,</span> <span class="mf">0.121425</span><span class="p">,</span> <span class="mf">0.130259</span><span class="p">,</span> <span class="mf">0.138232</span><span class="p">])</span>
+<span class="n">Cl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1454</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.09219</span><span class="p">,</span> <span class="mf">0.38303</span><span class="p">,</span> <span class="mf">0.6238</span><span class="p">,</span> <span class="mf">0.86305</span><span class="p">,</span> <span class="mf">1.09772</span><span class="p">,</span>\
+<span class="mf">1.31082</span><span class="p">,</span> <span class="mf">1.45757</span><span class="p">,</span> <span class="mf">1.51784</span><span class="p">,</span> <span class="mf">1.55342</span><span class="p">,</span> <span class="mf">1.58437</span><span class="p">,</span> <span class="mf">1.60452</span><span class="p">,</span> <span class="mf">1.58455</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Cd</span><span class="p">,</span> <span class="n">Cl</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+
+<span class="c1"># Put the drag model on top</span>
+<span class="n">Clvector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">Cl</span><span class="p">)</span> <span class="o">-</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">Cl</span><span class="p">)</span> <span class="o">+</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e3</span><span class="p">))</span>
+<span class="n">Cd0</span> <span class="o">=</span> <span class="mf">0.033</span>
+<span class="n">Cl0</span> <span class="o">=</span> <span class="mf">0.14</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mf">0.035</span>
+<span class="n">Cdvector</span> <span class="o">=</span> <span class="n">Cd0</span> <span class="o">+</span> <span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="n">Clvector</span> <span class="o">-</span> <span class="n">Cl0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Cdvector</span><span class="p">,</span> <span class="n">Clvector</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Drag Model&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$C_D$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$C_L$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Drag Polar: Data vs. Drag Model&#39;</span><span class="p">);</span>
+
+<span class="c1"># Determine minimum drag</span>
+<span class="n">Clmind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Cd0</span><span class="o">/</span><span class="n">K</span> <span class="o">+</span> <span class="n">Cl0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Cdmind</span> <span class="o">=</span>  <span class="n">Cd0</span> <span class="o">+</span> <span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="n">Clmind</span> <span class="o">-</span> <span class="n">Cl0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># plot it</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Cdmind</span><span class="p">,</span> <span class="n">Clmind</span><span class="p">,</span> <span class="s1">&#39;ob&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">frac</span><span class="si">{L}{D}</span><span class="s2">_</span><span class="si">{max}</span><span class="s2">$&quot;</span><span class="p">)</span>
+
+<span class="c1"># show that this is the tangent</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">Cdmind</span><span class="o">*</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">Clmind</span><span class="o">*</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;-b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Tangent&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+
+<span class="c1"># Legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/SteadyLevelFlight_3_0.png" src="../_images/SteadyLevelFlight_3_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="best-lift-to-drag-ratio">
+<h3>Best lift to drag ratio<a class="headerlink" href="#best-lift-to-drag-ratio" title="Permalink to this headline">¶</a></h3>
+<p>The highest lift to drag ratio gives the position of best aerodynamic efficiency, and sets the best <em>glide ratio</em> for an aircraft.</p>
+<p>In the following, the values of <span class="math notranslate nohighlight">\(C_L\)</span> and <span class="math notranslate nohighlight">\(C_D\)</span> for optimum aerodynamic efficiency - but before diving into the mathematics, some consideration of their significance might be necessary for some readers.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Why do we want to know <span class="math notranslate nohighlight">\(C_L\)</span>?</p>
+<p>In the aviation world, pilots tend to be excellent at intuiting flight physics - and being able to relate control movement to aircraft flight, without needed to understand the physics (often in spite of thinking they do).</p>
+<p>By contrast, aerospace engineers tend to be be excellent and understanding the mathematics of flight physics - without any consideration of the physical significance of what they are actually deriving. By way of an example ask yourself - <em>‘what control would you change to effect an altitude change?’</em>, and if your answer is simply <em>‘pull the stick/yoke back’</em>, then this highlights a misunderstanding of the aircraft controls and physics. In reality, it would be a combination of throttle and stick, but fundamentally you need to <em>gain potential energy</em> which requires an increase in energy from somewhere, <em>i.e.,</em> the engine.</p>
+<hr class="docutils" />
+<p>Back to the problem at hand:</p>
+<p>Consider what <em>“to fly at a <span class="math notranslate nohighlight">\(C_L=X\)</span>”</em> actually means - the pilot controls the <em>pitch</em> of the aircraft using fore-aft motion of the stick/yoke. A change in pitch changes the <em>angle of attack</em> of the aircraft, which changes the aircraft lift coefficient.</p>
+<p>In reality, a pilot will not tend to consider the numerical value of <span class="math notranslate nohighlight">\(\alpha\)</span> they are flying at - and they are even less likely to know the <span class="math notranslate nohighlight">\(C_L\)</span> of the aircraft under a given flight regime.</p>
+<p>For a given <span class="math notranslate nohighlight">\(C_L\)</span>, the aircraft speed determines the dimensional value of lift being produced. If <span class="math notranslate nohighlight">\(L=W\)</span>, this is steady level flight. If <span class="math notranslate nohighlight">\(L&gt;W\)</span>, the aircraft climbs, if <span class="math notranslate nohighlight">\(L&lt;W\)</span>, the aircraft descends.</p>
+<p>Through a combination of thottle setting, and elevator deflection (stick fore/aft), steady flight can be achieved. Again - the pilot probably isn’t considering the <span class="math notranslate nohighlight">\(C_L\)</span> value, and won’t know whether they’re at the best lift to drag ratio or not.</p>
+<p>So - there is a certain speed, in EAS, that will give the best lift to drag ratio. If the pilot is able to maintain this speed with no throttle adjustment, and finds that the aircraft is not climbing nor descending, then they are flying at the best lift to drag ratio - which will give the best <strong>endurance</strong>.</p>
+<p>These speeds are usually listed in the aircarft (though in the light aircraft I’ve been in, they’re listed in IAS, and the following questions about EAS fell on deaf ears).</p>
+</div>
+</div>
 </div>
 </div>
 
