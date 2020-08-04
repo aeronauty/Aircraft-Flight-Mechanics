@@ -6,4 +6,5 @@ ambiance
 myst_nb
 sphinx_tabs
 ipywidgets
+pandas
 plotly
