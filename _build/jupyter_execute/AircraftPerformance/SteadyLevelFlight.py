@@ -98,7 +98,7 @@ The following is an extract from {cite}`MacCormick:1995wq` [pp. 162-163]:
 ```
 
 
-In flight performance, we assume that the aircraft is operating in the region of linear aerodynamics, and utilise a drag model as given by Equation {eqn}`DragEquation`:
+In flight performance, we assume that the aircraft is operating in the region of linear aerodynamics, and utilise a drag model as given by Equation {eq}`DragEquation`:
 
 ```{math}
 :label: DragEquation

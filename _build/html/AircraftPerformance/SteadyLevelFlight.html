@@ -305,10 +305,10 @@
 \[\begin{split}\begin{aligned}
     C_D &amp;= \frac{D}{\tfrac{1}{2}\rho V^2S}\nonumber\\
     &amp;= \frac{T}{\tfrac{1}{2}\rho V^2S}\nonumber\end{aligned}\end{split}\]</div>
-<p>Drag estimation is complex, and can be performed via a variety of means from datasheets, CFD, wind tunnel testing or - more commonly - a combination of all. A good breakdown of drag sources is given by <a class="bibtex reference internal" href="../zreferences.html#maccormick-1995wq" id="id1">[Mac95]</a>, and a reproduction of the breakdown given is found in the dropdown below - but this is far beyond the complexity required for Aircraft Performance.</p>
+<p>Drag estimation is complex, and can be performed via a variety of means from datasheets, CFD, wind tunnel testing or - more commonly - a combination of all. A good breakdown of drag sources is given by <a class="bibtex reference internal" href="../zreferences.html#maccormick-1995wq" id="id1">[2]</a>, and a reproduction of the breakdown given is found in the dropdown below - but this is far beyond the complexity required for Aircraft Performance.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Drag Breakdown (well beyond what we need, but included for reference)</p>
-<p>The following is an extract from <a class="bibtex reference internal" href="../zreferences.html#maccormick-1995wq" id="id2">[Mac95]</a> [pp. 162-163]:</p>
+<p>The following is an extract from <a class="bibtex reference internal" href="../zreferences.html#maccormick-1995wq" id="id2">[2]</a> [pp. 162-163]:</p>
 <p><strong>Induced Drag</strong> The drag that results from the generation of a trailing vortex system downstream of a lifting surface of finite aspect ratio.</p>
 <p><strong>Parasite Drag</strong> The total drag of an airplane minus the induced drag. Thus, it is the drag not directly associated with the production of lift. The parasite drag is composed of many drag components, the definitions of which follow.</p>
 <p><strong>Skin Friction Drag</strong> The drag on a body resulting from viscous shearing stresses over its wetted surface.</p>
@@ -320,7 +320,7 @@
 <p><strong>Base Drag</strong> The specific contribution to the pressure drag attributed to the blunt after-end of a body.</p>
 <p><strong>Wave Drag</strong> Limited to supersonic flow, this drag is a pressure drag resulting from non-canceling static pressure components to either side of a shock wave acting on the surface of the body from which the wave is emanating.</p>
 </div>
-<p>In flight performance, we assume that the aircraft is operating in the region of linear aerodynamics, and utilise a drag model as given by Equation <a href="#id3"><span class="problematic" id="id4">:eqn:`DragEquation`</span></a>:</p>
+<p>In flight performance, we assume that the aircraft is operating in the region of linear aerodynamics, and utilise a drag model as given by Equation <a class="reference internal" href="#equation-dragequation">(6)</a>:</p>
 <div class="math notranslate nohighlight" id="equation-dragequation">
 <span class="eqno">(6)<a class="headerlink" href="#equation-dragequation" title="Permalink to this equation">¶</a></span>\[\begin{split}    \underbrace{C_D}_{\text{Total Drag}} = \underbrace{C_{D0}}_{\substack{\text{Zero incidence} \\ \text{drag}}} + \underbrace{K\cdot C_L^2}_{\substack{\text{Induced Drag +} \\ \text{$\alpha$-dependent form drag}}}\end{split}\]</div>
 <p>where</p>
