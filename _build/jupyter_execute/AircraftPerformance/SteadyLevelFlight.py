@@ -69,7 +69,7 @@ $$\begin{aligned}
     C_D &= \frac{D}{\tfrac{1}{2}\rho V^2S}\nonumber\\
     &= \frac{T}{\tfrac{1}{2}\rho V^2S}\nonumber\end{aligned}$$
     
-Drag estimation is complex, and can be performed via a variety of means from datasheets, CFD, wind tunnel testing or - more commonly - a combination of all. A good breakdown of drag sources is given by {cite}`MacCormick:1995wq`, and a reproduction of the breakdown given is found in the dropdown below - but this is far beyond the complexity required for Aircraft Performance.
+Drag estimation is complex, and can be performed via a variety of means from datasheets, CFD, wind tunnel testing or - more commonly - a combination of all. A good breakdown of drag sources is given by :cite:`MacCormick:1995wq`, and a reproduction of the breakdown given is found in the dropdown below - but this is far beyond the complexity required for Aircraft Performance.
 
 ```{admonition} Drag Breakdown (well beyond what we need, but included for reference)
 :class: dropdown
