@@ -270,6 +270,57 @@ The above should make sense to you *intuitively*. Profile drag is largely viscou
 
 For a set of parameters, the drag equation can be plotted.
 
+import plotly.io as pio
+import plotly.express as px
+import plotly.offline as py
+import plotly.graph_objects as go
+from ambiance import Atmosphere
+
+# Define constants
+CD0=0.01; K=0.01; alt=0; S=50; W=5000
+mosphere = Atmosphere(alt*1000)
+rho = mosphere.density
+
+A = CD0 * 0.5 * rho * S
+B = K * W **2 / 0.5 / rho / S
+
+# Flight speed
+Vs = np.linspace(1, 150, 1000)
+
+# Define drags
+Dind = B * Vs**-2
+Dprof = A * Vs**2
+D = Dind + Dprof
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=Vs, y=Dind, name="Induced Drag"))
+fig.add_trace(go.Scatter(x=Vs, y=Dprof, name="Profile Drag"))
+fig.add_trace(go.Scatter(x=Vs, y=D, name="Total Drag"))
+
+
+
+fig.update_layout(
+    title=f"Variation of Profile, Induced, and Total Drag - CD0 = {CD0}, K={K}, altitude={alt}km, S={S}m^2, W={W/1e3}",
+    xaxis_title="TAS / (m/s)",
+    yaxis_title="Drag / N",
+    legend_title="Drag Breakdown",
+)
+
+import ipywidgets as widgets
+widgets.IntSlider(
+    value=0,
+    min=0,
+    max=50,
+    step=1,
+    description='Altitude (km):',
+    disabled=False,
+    continuous_update=False,
+    orientation='horizontal',
+    readout=True,
+    readout_format='d'
+)
+
+
 # The source for this graph is very poorly written - it's the first graph I've produced with Plotly.
 # Things that should be different include, but are not limited to:
 # - Hackey way of assigning labels
