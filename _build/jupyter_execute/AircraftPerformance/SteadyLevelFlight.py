@@ -129,7 +129,7 @@ Equation {eq}`ACSpeedEquation` and Equation {eq}`DragEquation` underpin the basi
 
 ### Drag Polar
 
-The relationship between lift and drag is given through the aircraft drag polar - often plotted as $C_L$ vs $C_D$. Values for $C_L$ and $C_D$ are commonplace in the literature - a quick search yielded data for the Cessna 172S {ref}`Haberkorn:2016bj`.
+The relationship between lift and drag is given through the aircraft drag polar - often plotted as $C_L$ vs $C_D$. Values for $C_L$ and $C_D$ are commonplace in the literature - a quick search yielded data for the Cessna 172S {cite}`Haberkorn:2016bj`.
 
 You will see that the drag model works well for low values of lift - that is, in the linear aerodynamic region. The behaviour at the 'bottom' of the curve is sometimes called the 'drag bucket' - and I spent many years *collecting* these data in a wind tunnel.
 
@@ -143,7 +143,8 @@ Expand the code to see the source data and coefficients used in the drag model.
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Data for this graph has been taken from here: https://www.researchgate.net/figure/Figure-A10-Drag-polar-for-the-Cessna-172S-This-plot-is-created-for-NACA-2412-airfoil_fig25_328578766
+# Data for this graph has been taken from here: 
+# https://www.researchgate.net/figure/Figure-A10-Drag-polar-for-the-Cessna-172S-This-plot-is-created-for-NACA-2412-airfoil_fig25_328578766
 
 # Discrete points:
 Cd = np.array([0.033099, 0.035185, 0.035214, 0.041961, 0.051143,\
@@ -215,7 +216,112 @@ So - there is a certain speed, in EAS, that will give the best lift to drag rati
 
 These speeds are usually listed in the aircarft (though in the light aircraft I've been in, they're listed in IAS, and the following questions about EAS fell on deaf ears).
 
+So we, as aerospace engineers, wish to know the lift coefficient for optimum aerodynamic efficiency - but it will be translated into a more pilot-friendly parameter, such as a post-it note on the airspeed indicator.
+
 ```
 
+The best lift to drag ratio can be determined from Equation {eq}`DragEquation`. Consider that the lift to drag ratio is equal in dimensional and coefficient form:
 
+$$\frac{L}{D}=\frac{C_L}{C_D}$$
+
+Into which Equation {eq}`DragEquation` may be inserted
+
+$$\frac{L}{D}=\frac{C_L}{C_{D0} + K\cdot C_L^2}$$
+
+The best lift to drag ratio can then be found from minimising $\frac{D}{L}$, so differentiate by $C_L$:
+
+$$\left.\frac{D}{L}\right|_{min}=\left.\frac{C_{D0} + K\cdot C_L^2}{C_L}\right|_{min}$$
+
+A bit of elementary calculus gives the minima of the right hand side as given by
+
+$$C_{L, md}=\sqrt{\frac{C_{D0}}{K}}$$
+
+```{admonition} What about a real aircraft?
+:class: dropdown
+
+Remember that Equation {eq}`DragEquation` as used above is only valid for an uncambered wing - the expression for $C_{L, md}$ changes in that case. If you look at the source code for the drag polar, you can see what it changes to. Try to derive this yourself. 
+
+```
+
+### Drag Equation in Dimensional Form
+
+The drag equation can be multiplied by the numerator of the lift and drag coefficients, $\frac{1}{2}\rho\,V^2S$, to yield dimensional drag:
+
+$$ C_D\cdot \frac{1}{2}\rho\,V^2S = C_{D0}\cdot\frac{1}{2}\rho\,V^2S + K\cdot C_L^2\cdot\frac{1}{2}\rho\,V^2S$$
+
+In steady level flight, $L=W$, so the lift coefficient can be expressed as
+
+$$C_L = \frac{W}{\frac{1}{2}\rho\,V^2S}$$
+
+and hence
+
+$$D = C_{D0}\frac{1}{2}\rho\,V^2S + \frac{K\,W^2}{\frac{1}{2}\rho\,V^2S}$$
+
+or
+
+$$D = A\,V^2 + B\,V^{-2}$$
+
+where $A$ and $B$ are functions of density (and therefore functions of altitude).
+
+- $A=C_{D0}\frac{1}{2}\rho S$ represents the **profile drag**, which gets larger with forward speed squared
+- $B=\frac{K\,W^2}{\frac{1}{2}\rho S}$ represents the **induced drag**, which gets smaller with forward speed squared
+
+The above should make sense to you *intuitively*. Profile drag is largely viscous drag, which will get larger in proportion to the dynamic pressure. The induced drag is proportional to the bound vortex maintaining lift, which will be proportional to $C_L$ which, for a steady flight, is inversely proportional to the dynamic pressure.
+
+For a set of parameters, the drag equation can be plotted.
+
+# The source for this graph is very poorly written - it's the first graph I've produced with Plotly.
+# Things that should be different include, but are not limited to:
+# - Hackey way of assigning labels
+# - Duplication of A and B definitions
+
+import plotly.graph_objs as go
+import numpy as np
+from ipywidgets import interact
+from ambiance import Atmosphere
+
+
+
+# Make a figure
+fig = go.FigureWidget()
+scatt = fig.add_scatter(name="Total Drag")
+scatt = fig.add_scatter(name="Profile Drag")
+scatt = fig.add_scatter(name="Induced Drag")
+
+fig.update_layout(
+    title="Variation of Profile, Induced, and Total Drag",
+    xaxis_title="$\\text{True Airspeed } (ms^{-1})^{-1}$",
+    yaxis_title="$\\text{Dimensional Drag } N^{-1}$",
+    legend_title="Drag Breakdown",
+)
+
+Vs = np.linspace(1, 150, 1000)
+
+@interact(CD0=(0.01, 0.1, 0.01), K=(0.01, 0.2, 0.01), alt = (0, 80, 1), S = (10, 150, 5), W = (1000, 500000, 500), ylim=(10, 50000, 1), xlim=(10, max(Vs), 1))
+def update(CD0=0.01, K=0.01, alt=0, S=50, W=5000, ylim=5000, xlim=max(Vs)):
+    with fig.batch_update():
+        mosphere = Atmosphere(alt*1000)
+        rho = mosphere.density
+        
+        # Define 
+        A = CD0 * 0.5 * rho * S
+        B = K * W **2 / 0.5 / rho / S
+        
+        # Total Drag
+        fig.data[0].x=Vs
+        fig.data[0].y=A * Vs**2 + B * Vs**-2
+
+        
+        # Profile Drag
+        fig.data[1].x=Vs
+        fig.data[1].y=A * Vs**2
+        
+        # Induced Drag
+        fig.data[2].x=Vs
+        fig.data[2].y=B * Vs**-2
+        
+        fig.update_yaxes(range=[0, ylim])
+        fig.update_xaxes(range=[0, xlim])
+        fig.show()
+        
 

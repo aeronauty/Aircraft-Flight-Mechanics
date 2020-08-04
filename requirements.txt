@@ -5,3 +5,5 @@ scipy
 ambiance
 myst_nb
 sphinx_tabs
+ipywidgets
+plotly
