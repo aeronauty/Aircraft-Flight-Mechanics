@@ -185,8 +185,6 @@ plt.axhline(0, color='black');
 plt.legend();
 
 
-
-
 ### Best lift to drag ratio
 
 The highest lift to drag ratio gives the position of best aerodynamic efficiency, and sets the best _glide ratio_ for an aircraft.
@@ -306,73 +304,8 @@ fig.update_layout(
     legend_title="Drag Breakdown",
 )
 
-import ipywidgets as widgets
-widgets.IntSlider(
-    value=0,
-    min=0,
-    max=50,
-    step=1,
-    description='Altitude (km):',
-    disabled=False,
-    continuous_update=False,
-    orientation='horizontal',
-    readout=True,
-    readout_format='d'
-)
-
-
-# The source for this graph is very poorly written - it's the first graph I've produced with Plotly.
-# Things that should be different include, but are not limited to:
-# - Hackey way of assigning labels
-# - Duplication of A and B definitions
-
-import plotly.graph_objs as go
-import numpy as np
-from ipywidgets import interact
-from ambiance import Atmosphere
+fig.update_yaxes(range=[0, 1000])
 
 
 
-# Make a figure
-fig = go.FigureWidget()
-scatt = fig.add_scatter(name="Total Drag")
-scatt = fig.add_scatter(name="Profile Drag")
-scatt = fig.add_scatter(name="Induced Drag")
-
-fig.update_layout(
-    title="Variation of Profile, Induced, and Total Drag",
-    xaxis_title="$\\text{True Airspeed } (ms^{-1})^{-1}$",
-    yaxis_title="$\\text{Dimensional Drag } N^{-1}$",
-    legend_title="Drag Breakdown",
-)
-
-Vs = np.linspace(1, 150, 1000)
-
-@interact(CD0=(0.01, 0.1, 0.01), K=(0.01, 0.2, 0.01), alt = (0, 80, 1), S = (10, 150, 5), W = (1000, 500000, 500), ylim=(10, 50000, 1), xlim=(10, max(Vs), 1))
-def update(CD0=0.01, K=0.01, alt=0, S=50, W=5000, ylim=5000, xlim=max(Vs)):
-    with fig.batch_update():
-        mosphere = Atmosphere(alt*1000)
-        rho = mosphere.density
-        
-        # Define 
-        A = CD0 * 0.5 * rho * S
-        B = K * W **2 / 0.5 / rho / S
-        
-        # Total Drag
-        fig.data[0].x=Vs
-        fig.data[0].y=A * Vs**2 + B * Vs**-2
-
-        
-        # Profile Drag
-        fig.data[1].x=Vs
-        fig.data[1].y=A * Vs**2
-        
-        # Induced Drag
-        fig.data[2].x=Vs
-        fig.data[2].y=B * Vs**-2
-        
-        fig.update_yaxes(range=[0, ylim])
-        fig.update_xaxes(range=[0, xlim])
-        fig.show()
-        
 
