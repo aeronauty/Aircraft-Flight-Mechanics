@@ -231,8 +231,13 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-use-python">
-   Why use Python
+  <a class="reference internal nav-link" href="#lectures">
+   Lectures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#technical-computing-why-all-the-python">
+   Technical Computing - Why all the Python?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -259,18 +264,30 @@
 <p>This website comprises the course notes for MMAE 410 Aircraft Flight Mechanics at the Illinois Institute of Technology - this text originally started as a PDF file written using LaTeX, with links to code and other tidbits. These notes started as my means of ensuring my own competence with the material and, accordingly, they get updated regularly and requiring students to download an updated PDF file every few weeks proved to not be the ideal solution.</p>
 <p>So now these notes are being transferred into Jupyter notebooks which are bundled together into this document - any changes made to the notes should be reflected in the website within minutes, and this format allows handy things like <em>interactive content,</em> which simply isn’t possible (easily) within a PDF.</p>
 <p>It does mean that my pipedream of getting them published as a textbook is over - but in the spirit of open access and education for all, I’d simply rather that they just got used for their intended purpose. Hence; use these notes to supplement your own learning, and to further your knowledge of the discipline.</p>
-<div class="section" id="why-use-python">
-<h2>Why use Python<a class="headerlink" href="#why-use-python" title="Permalink to this headline">¶</a></h2>
-<p>The original PDF notes were written and contained examples using both MATLAB and Python. Over the past few months, I’ve made the personal decision to switch <em>all</em> my code from MATLAB to Python. There are many reasons for this change, but the benefit for the reader is that you can view the source for any of the plots included in this book without purchasing a MATLAB license.</p>
+<div class="section" id="lectures">
+<h2>Lectures<a class="headerlink" href="#lectures" title="Permalink to this headline">¶</a></h2>
+<p>Due to COVID-19, my Fall 2020 class is entirely online - and I’ve chosen to pre-record all my lectures, which will be available on YouTube. For students in the class at IIT, there is content available via Slack and I will be hosting regular review sessions via Zoom.</p>
+<p>In the interest of open access, I’ve decided to release my lectures for all in addition to this content.</p>
+<p>The review sessions, Slack space, and assessment is available to enrolled students only.</p>
+</div>
+<div class="section" id="technical-computing-why-all-the-python">
+<h2>Technical Computing - Why all the Python?<a class="headerlink" href="#technical-computing-why-all-the-python" title="Permalink to this headline">¶</a></h2>
+<p>There is a lot of ‘pen and paper’ content in this work, and you need to go through the derivations yourself and understand the mathematics. The accompanying lectures cover the mathematical derivations and do work on the ‘whiteboard’ (which is actually an iPad).</p>
+<p>With modern engineering, though, there’s a limit reached very quickly with what you can do by hand. Even simple hand calculations are often faster to complete using some form of tehcnical computing - especially if you have to repeat them. With this in mind, I try and instill in my students a will to use computing at every level. That is; I want you to be able to solve problems by hand, and also solve them using some form of technical computing.</p>
+<p>You can choose whatever environment works for you; lots of engineers use Excel to do things that they shouldn’t (I’ve seen a <em>propeller wake model</em> written using Excel macros), and I have been guilty of using MATLAB to do things that I shouldn’t have (such as batch-renaming files, or automating the e-mail of grades to students).</p>
+<p>The original PDF notes were written and contained examples using both MATLAB and occasional Python. Over the past few months, I’ve made the personal decision to switch <em>all</em> my code from MATLAB to Python. There are many reasons for this change, but the benefit for the reader is that <em>you can view and run the source for any of the plots included in this online book without purchasing a MATLAB license</em>.</p>
+<p>I’ve discovered that Python is a wonderful and extensible programming language, which can be used to replicate pretty-much all of the functionality in MATLAB - often much more elegantly because of the nature of the language itself. MATLAB, on the other hand, is easy to get started with to perform calculations and you can construct some wonderful programs using MATLAB - but it’s not a very good programming language, <a class="reference external" href="https://www.rath.org/matlab-is-a-terrible-programming-language.html#:~:text=Individually%2C%20none%20of%20them%20make,code%20a%20rather%20painful%20exercise.">which is a common opinion</a>.</p>
+<p>So - the choice is yours; you should complete the exercises using some form of technical computing. I don’t mind what you use, as long as you get the work done. I will offer accompanying examples that will help you understand all the problems, and these will be written in Python. The original MATLAB codes should still be available in the PDF notes.</p>
+<p>As an aeronautical or mechanical engineering student, you should be good at coding - it will help you in your studies, and it will help you in your career. For example, if you want to practice problems for an examination - re-write an example using some programming language, and you can then simply change the input numbers and you’ll have a whole set of answers to check your work against.</p>
 <div class="section" id="interactive-content">
 <h3>Interactive content<a class="headerlink" href="#interactive-content" title="Permalink to this headline">¶</a></h3>
 <p>There is iteractive content that will help you to explore equations, and understand the relationship between different parameters.</p>
 <p>The way this works is slightly convoluted, but very powerful - this whole book is hosted as a GitHub repository, as a mixture of <code class="docutils literal notranslate"><span class="pre">.md</span></code> and <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files. This means that any Jupyter Notebooks can be run on the web thanks to the kind folks at DockerHub. The book is written using JupyterBook, which is a plugin called <em>thebe</em>, which enables the code sections to be run without having to actually go to DockerHub.</p>
 <p>What this means is that you have a few different ways to access the interactive content:</p>
 <ul class="simple">
-<li><p>Download the whole <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file and run natively in Juypter on your machine: <a class="reference internal" href="#github"><span class="std std-ref">Downloading the source or a PDF</span></a></p></li>
-<li><p>Run the notebook in Docker: <a class="reference internal" href="#binder"><span class="std std-ref">Connecting to Binder/Thebe</span></a></p></li>
-<li><p>Run the code in-place using thebe: <span class="xref std std-ref">Thebe</span></p></li>
+<li><p>Download the whole <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file and run natively in Juypter on your machine</p></li>
+<li><p>Run the notebook in Docker</p></li>
+<li><p>Run the code in-place using thebe</p></li>
 </ul>
 <p>Both of the latter work well on the pages I have tested - but it can take time for the whole notebook to be initlialised. If you click on “run code” in the dropdown from the rocket icon at the top of the page, it needs to connect to Docker, which then connects to GitHub, and then send the content back to this site.</p>
 <div class="figure align-default" id="binder">
