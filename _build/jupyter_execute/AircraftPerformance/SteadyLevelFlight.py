@@ -61,6 +61,10 @@ Equation {eq}`ACSpeedEquation` is the **Aircraft Speed Equation** for steady lev
 
 -   Flight speed may be increased by reducing $\rho$ - by flying at increased altitude
 
+### Stall speed
+
+From {eq}`ACSpeedEquation`, the _stall speed_ may be determined if $C_{L_{max}}$ is known.
+
 ## Longitudinal Forces
 
 Looking at the longitudinal forces, $\sum F_x =0$, therefore $T=D$:
@@ -266,34 +270,63 @@ where $A$ and $B$ are functions of density (and therefore functions of altitude)
 
 The above should make sense to you *intuitively*. Profile drag is largely viscous drag, which will get larger in proportion to the dynamic pressure. The induced drag is proportional to the bound vortex maintaining lift, which will be proportional to $C_L$ which, for a steady flight, is inversely proportional to the dynamic pressure.
 
-For a set of parameters, the drag equation can be plotted.
+#### Minimum drag speed
+
+From the drag equation in dimensional form, the minmum drag speed can be shown
+
+$$D = A\,V^2 + B\,V^{-2}$$
+$$\frac{\partial D}{\partial V} = 2\cdot A\,V - 2 B\,V^{-3}$$
+$$\implies V_{md} = $$
+
+
+
+For a set of parameters, the drag equation can be plotted from the aircraft stall speed. You can zoom in on the plot, or expand the source to see how the plot was made.
 
 import plotly.io as pio
 import plotly.express as px
 import plotly.offline as py
 import plotly.graph_objects as go
 from ambiance import Atmosphere
+import numpy as np
 
 # Define constants
-CD0=0.01; K=0.01; alt=0; S=50; W=5000
+CD0=0.016 # Zero incidence drag
+K=0.045 # Induced drag factor
+S=50 # Wing area, m^2
+W=160e3 # Aircarft weight, Newtons
+Clmax = 1.5
+
+alt=0; # Altitude
+
 mosphere = Atmosphere(alt*1000)
 rho = mosphere.density
 
-A = CD0 * 0.5 * rho * S
-B = K * W **2 / 0.5 / rho / S
+# Determine stall speed
+Vstall = np.sqrt(W / (0.5 * rho * S * Clmax))
 
-# Flight speed
-Vs = np.linspace(1, 150, 1000)
+
+# Determine A and B
+A = CD0 * 0.5 * rho * S
+B = K * W ** 2 / 0.5 / rho / S
+
+# Flight speed vector
+Vs = np.linspace(Vstall[0], 200, 1000)
+
 
 # Define drags
 Dind = B * Vs**-2
 Dprof = A * Vs**2
 D = Dind + Dprof
 
+# Get minimum drag
+Vmd = (B/A)**.25
+md = A * Vmd**2 + B * Vmd**-2
+
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=Vs, y=Dind, name="Induced Drag"))
 fig.add_trace(go.Scatter(x=Vs, y=Dprof, name="Profile Drag"))
 fig.add_trace(go.Scatter(x=Vs, y=D, name="Total Drag"))
+fig.add_trace(go.Scatter(x=Vmd, y=md, mode="markers+text", text="Minimum Drag", textposition="top center", name="Annotation"))
 
 
 
@@ -304,8 +337,24 @@ fig.update_layout(
     legend_title="Drag Breakdown",
 )
 
-fig.update_yaxes(range=[0, 1000])
+for trace in fig['data']: 
+    if(trace['name'] == "Annotation"): trace['showlegend'] = False
 
+fig.update_xaxes(range=[0, 200])
+fig.update_yaxes(range=[0, 20e3])
+
+
+import ipywidgets as widgets
+
+a = widgets.IntSlider(description='a')
+b = widgets.IntSlider(description='b')
+c = widgets.IntSlider(description='c')
+def f(a, b, c):
+    print('{}*{}*{}={}'.format(a, b, c, a*b*c))
+
+out = widgets.interactive_output(f, {'a': a, 'b': b, 'c': c})
+
+widgets.HBox([widgets.VBox([a, b, c]), out])
 
 
 

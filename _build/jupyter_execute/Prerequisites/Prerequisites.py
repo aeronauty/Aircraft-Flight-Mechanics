@@ -227,7 +227,7 @@ The most important parameter for lift is *angle of attack*. We define the incide
 
 ```{figure} ../Images/AoAAlpha.png
 ---
-height: 300px
+height: 100px
 name: AoAAlpha
 ---
 Aerofoil Angle of Attack
