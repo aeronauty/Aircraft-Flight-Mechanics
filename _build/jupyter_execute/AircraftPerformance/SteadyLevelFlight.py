@@ -270,13 +270,21 @@ where $A$ and $B$ are functions of density (and therefore functions of altitude)
 
 The above should make sense to you *intuitively*. Profile drag is largely viscous drag, which will get larger in proportion to the dynamic pressure. The induced drag is proportional to the bound vortex maintaining lift, which will be proportional to $C_L$ which, for a steady flight, is inversely proportional to the dynamic pressure.
 
+(minimum-drag-speed)=
 #### Minimum drag speed
 
 From the drag equation in dimensional form, the minmum drag speed can be shown
 
 $$D = A\,V^2 + B\,V^{-2}$$
 $$\frac{\partial D}{\partial V} = 2\cdot A\,V - 2 B\,V^{-3}$$
-$$\implies V_{md} = $$
+$$\implies V_{md} = \left[\frac{B}{A}\right]^{-\frac{1}{4}}$$
+$$=\left[\frac{2\,W}{\rho\,S}\right]^{\frac{1}{2}}\left[\frac{K}{C_{D0}}\right]^{\frac{1}{4}}$$
+```{admonition} Alternative method
+:class: dropdown
+
+It has already been shown that the lift at minimum drag is $C_{L, md}=\sqrt{\frac{C_{D0}}{K}}$. Substitute this into the aircraft speed equation to show the same answer as above
+
+```
 
 
 
@@ -344,17 +352,274 @@ fig.update_xaxes(range=[0, 200])
 fig.update_yaxes(range=[0, 20e3])
 
 
-import ipywidgets as widgets
+#### Variation of drag with altitude
 
-a = widgets.IntSlider(description='a')
-b = widgets.IntSlider(description='b')
-c = widgets.IntSlider(description='c')
-def f(a, b, c):
-    print('{}*{}*{}={}'.format(a, b, c, a*b*c))
+With the drag equation presented in dimensional form the effect of altitude on drag may be determined. Since $A$ and $B$ are directly and inversely proportional to density, it can be expected that they will be inversely, and directly proportional to altitude, respectively.
 
-out = widgets.interactive_output(f, {'a': a, 'b': b, 'c': c})
+That is - for an increase in altitude, $A$ (profile drag) will decrease whilst $B$ (induced drag) will increase.
 
-widgets.HBox([widgets.VBox([a, b, c]), out])
+```{admonition} Think: does that make sense?
+:class: dropdown
+
+Whenever you derive a relationship between physical parameters, you should see if the answer is intuitively correct.
+
+Profile drag is fundamentally a *viscous* effect, so it makes sense that for fewer air particles in a given volume, the profile drag would decrease.
+
+Induced drag is proportional to the amount of circulation. For a reduction in density, a larger amount of circulation is required to effect the same dimensional value of lift. Hence, induced drag will increase.
+```
+
+It has been shown above that $V_{md}\propto\frac{1}{\sqrt{\rho}}$ (see {ref}`minimum-drag-speed`), so these cancel with the density terms in the $A$ and $B$ expressions - accordingly, **the minimum drag remains constant with altitude** whilst the minimum drag speed increases. See:
+
+fig = go.Figure()
+
+fig.update_xaxes(range=[0, 300])
+fig.update_yaxes(range=[0, 20e3])
+
+for alt in [0, 5000, 15000]:
+
+    mosphere = Atmosphere(alt)
+    rho = mosphere.density
+
+    # Determine stall speed
+    Vstall = np.sqrt(W / (0.5 * rho * S * Clmax))
 
 
+    # Determine A and B
+    A = CD0 * 0.5 * rho * S
+    B = K * W ** 2 / 0.5 / rho / S
+
+    # Flight speed vector
+    Vs = np.linspace(Vstall[0], 340, 1000)
+
+
+    # Define drags
+    Dind = B * Vs**-2
+    Dprof = A * Vs**2
+    D = Dind + Dprof
+
+    # Get minimum drag
+    Vmd = (B/A)**.25
+    md = A * Vmd**2 + B * Vmd**-2
+
+
+    fig.add_trace(go.Scatter(x=Vs, y=D, name=f"Total Drag: {alt/1e3:1.0f}km"))
+    fig.add_trace(go.Scatter(x=Vmd, y=md, mode="markers+text",\
+                             text=f"{Vmd[0]:1.0f} m/s ",\
+                             textposition="bottom center", name="Annotation"))
+
+
+    
+
+    fig.update_layout(
+        title=f"Total drag variation with altitude - CD0 = {CD0}, K={K}, S={S}m^2, W={W/1e3}",
+        xaxis_title="TAS / (m/s)",
+        yaxis_title="Drag / N",
+        legend_title="Altitude",
+    )
+    
+
+fig.add_trace(go.Scatter(x=np.linspace(0, 300, 1000), y=md*np.ones(1000), name="Constant Minimum Drag", connectgaps=True))
+    
+    
+for trace in fig['data']: 
+    if(trace['name'] == "Annotation"): trace['showlegend'] = False
+            
+        
+fig.show()
+
+
+#### Variation of drag with aircraft weight
+
+By contrast to the density, the aircraft weight *only* appears in the **induced drag** term, $B=\frac{K\,W}{\frac{1}{2}\rho S}$, and hence the profile drag stays constant whilst the induced drag increases with aircraft weight.
+
+This makes sense as the wetted area of the aircraft is unchanged, hence the viscous drag would be constant. The dimensional value of lift is increased, therefore the cruise $C_L$ is also increased, and the circulation *must* be increased hence the trailing vortex system is given more energy - more drag.
+
+
+fig = go.Figure()
+
+fig.update_xaxes(range=[0, 300])
+fig.update_yaxes(range=[0, 20e3])
+alt = 0
+
+for W in [160e3, 200e3, 300e3]:
+
+    mosphere = Atmosphere(alt)
+    rho = mosphere.density
+
+    # Determine stall speed
+    Vstall = np.sqrt(W / (0.5 * rho * S * Clmax))
+
+
+    # Determine A and B
+    A = CD0 * 0.5 * rho * S
+    B = K * W ** 2 / 0.5 / rho / S
+
+    # Flight speed vector
+    Vs = np.linspace(Vstall[0], 340, 1000)
+
+
+    # Define drags
+    Dind = B * Vs**-2
+    Dprof = A * Vs**2
+    D = Dind + Dprof
+
+    # Get minimum drag
+    Vmd = (B/A)**.25
+    md = A * Vmd**2 + B * Vmd**-2
+
+
+    fig.add_trace(go.Scatter(x=Vs, y=D, name=f"Total Drag: W={W/1e3:1.0f}kN"))
+    fig.add_trace(go.Scatter(x=Vmd, y=md, mode="markers+text",\
+                             text=f"{Vmd[0]:1.0f} m/s ",\
+                             textposition="bottom center", name="Annotation"))
+
+
+    
+
+    fig.update_layout(
+        title=f"Total drag variation with aircraft weight - CD0 = {CD0}, K={K}, S={S}m^2, Sea Level",
+        xaxis_title="TAS / (m/s)",
+        yaxis_title="Drag / N",
+        legend_title="Altitude",
+    )
+    
+
+# fig.add_trace(go.Scatter(x=np.linspace(0, 300, 1000), y=md*np.ones(1000), name="Constant Minimum Drag", connectgaps=True))
+    
+    
+for trace in fig['data']: 
+    if(trace['name'] == "Annotation"): trace['showlegend'] = False
+            
+        
+fig.show()
+
+#### Variation of aircraft drag in cruise: summary
+
+In the drag equation, the combination of $V^2$ and $V^{-2}$ terms gives a mininma in the total drag curve at the minimum drag speed, $V_{md}$ which can be determined directly from $V_{md}=\left[\frac{B}{A}\right]^{\frac{1}{4}}$.
+
+At *low speed*, the induced drag term $B=\frac{K\,W}{\frac{1}{2}\rho\,S}$ dominates.
+
+```{admonition} Think: where in a flight regime is this important?
+:class: dropdown
+
+Take-off, landing, and air combat.
+```
+At *high speed*, the induced drag term $A=\frac{1}{2}\rho C_{D0}S$ dominates.
+
+```{admonition} Think: where in a flight regime is this important?
+:class: dropdown
+
+At cruise conditions.
+```
+This gives an indication of which parameters are relevant for different aircraft if drag reduction is desired.
+
+Answer the following questions:
+
+
+```{admonition} Describe the effect of *altitude* on drag curves.
+:class: dropdown
+
+An increase in altitude causes a decrease in density. This causes the induced drag to increase, and the profile drag to decrease. The minimum drag speed increases with altitude, but the minimum drag stays constant.
+
+The visual effect is that total drag curves are shifted to the right, but the minima remains at the same position.
+```
+
+```{admonition} Describe the effect of *aircraft weight* on drag curves.
+:class: dropdown
+
+An increase in aircraft weight affects *only* the induced drag, which is increased.
+
+The visual effect is that total drag curves are shifted to the right, and up - the minimum drag *and* the minimum drag speed are increased.
+```
+
+
+```{admonition} Describe the effect of *wing area* on drag curves.
+:class: dropdown
+
+This wasn't covered above, but you should be able to answer using the same logic. Think about what you expect the answer to be, then try and plot it.
+
+Discuss the answer on Slack.
+```
+
+
+### Removing the Altitude Dependency - EAS
+
+The drag equation as presented, in dimensional form is
+
+$$D = C_{D0}\frac{1}{2}\rho\,V^2S + \frac{K\,W^2}{\frac{1}{2}\rho\,V^2S}$$
+
+where the velocity in question is TAS. We can use the relationship
+
+$$\frac{V_E}{V}=\sqrt{\frac{\rho}{\rho_{SL}}}$$
+
+to express the drag equation in terms of EAS:
+
+$$D = C_{D0}\frac{1}{2}\rho_{SL}\,V_E^2S + \frac{K\,W^2}{\frac{1}{2}\rho_{SL}\,V_E^2S}$$
+
+or
+
+$$D = A_E\cdot V_E^2 + B_E\cdot V_E^{-2}$$
+
+where $A_E$ and $B_E$ are defined as before, but with the sea-level density in place of density at whatever altitude is in question.
+
+This has the effect of *collapsing the drag curves together*, as $\rho_{SL}$ is a constant.
+
+fig = go.Figure()
+
+fig.update_xaxes(range=[0, 300])
+fig.update_yaxes(range=[0, 20e3])
+
+rho_sl = 1.225
+
+for alt in [0, 5000, 15000]:
+
+    mosphere = Atmosphere(alt)
+    rho = mosphere.density
+
+    # Determine stall speed
+    Vstall = np.sqrt(W / (0.5 * rho_sl * S * Clmax))
+
+
+    # Determine A and B
+    AE = CD0 * 0.5 * rho_sl * S
+    BE = K * W ** 2 / 0.5 / rho_sl / S
+
+    # Flight speed vector
+    VE = np.linspace(Vstall, 340, 1000)
+
+
+    # Define drags
+    Dind = BE * VE**-2
+    Dprof = AE * VE**2
+    D = Dind + Dprof
+
+    # Get minimum drag
+    Vmd = (BE/AE)**.25
+    md = AE * Vmd**2 + BE * Vmd**-2
+
+
+    fig.add_trace(go.Scatter(x=Vs, y=D, name=f"Total Drag: {alt/1e3:1.0f}km"))
+
+
+
+    
+
+    fig.update_layout(
+        title=f"Total drag variation with altitude - CD0 = {CD0}, K={K}, S={S}m^2, W={W/1e3}",
+        xaxis_title="EAS / (m/s)",
+        yaxis_title="Drag / N",
+        legend_title="Altitude",
+    )
+    
+
+# fig.add_trace(go.Scatter(x=np.linspace(0, 300, 1000), y=md*np.ones(1000), name="Constant Minimum Drag", connectgaps=True))
+    
+    
+for trace in fig['data']: 
+    if(trace['name'] == "Annotation"): trace['showlegend'] = False
+            
+        
+fig.show()
+
+Hence the minimum drag speed in EAS is a function of the constants $K$ and $C_{Dmin}$, and $\rho_{SL}$. $V_{E_{MD}}$ and *increases with aircraft weight* and **remains constant** with *aircraft altitude*.
 
