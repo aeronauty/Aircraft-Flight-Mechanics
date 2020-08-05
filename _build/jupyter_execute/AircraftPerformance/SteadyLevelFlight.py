@@ -623,3 +623,34 @@ fig.show()
 
 Hence the minimum drag speed in EAS is a function of the constants $K$ and $C_{Dmin}$, and $\rho_{SL}$. $V_{E_{MD}}$ and *increases with aircraft weight* and **remains constant** with *aircraft altitude*.
 
+### Power required
+
+The aircraft *drag* can be considered as the force required to propel the aircraft forward. As will be explored a little later, this can be compared with the force available to determine the flight envelope - but only if the aircraft has a pure turbojet or low bypass ratio turbofan.
+
+For propellers and high bypass ratio turbofan engines (that is, most civil aircraft), the *power* required needs to be compared to the power available from the engine.
+
+```{admonition} Thrust vs Power?
+:class: dropdown
+
+This will be elaborated later, but the reasoning for the distinction is that broadly speaking, thrust is constant with velocity for the first two engines, whilst power is constant with velocity for the latter two.
+```
+Power is the rate of doing work - so the power required to overcome drag is:
+
+$$\text{required power } = \text{ drag} \times \text{flight speed}$$
+$$P_R=D\cdot V$$
+
+$$P = T\cdot V = D\cdot V$$
+$$= \left[AV^2 + \frac{B}{V^2}\right]\cdot V$$
+$$= AV^3 + \frac{B}{V}$$
+
+the minimum power required is found
+
+$$\frac{\text{d}P}{\text{d}V} = 3AV^2 - \frac{B}{V^2} (= 0 \text{ at }P_{min}\text{)})$$
+$$V_{MP}^4 = \frac{B}{3A}$$
+$$V_{MP} = \left[\frac{B}{3A}\right]^{\frac{1}{4}}$$
+$$= \left[\frac{2W}{\rho S}\right]^\frac{1}{2}\left[\frac{K}{3\cdot C_{D0}}\right]^{\frac{1}{4}}$$
+    
+Similarly, the breakdown between induced and profile power can be shown. $P_{min}$ is not constant with altitude, unlike $D_{min}$, and $\frac{\text{d}P_{min}}{\text{d}V}$ is linear, and positive.
+
+
+
