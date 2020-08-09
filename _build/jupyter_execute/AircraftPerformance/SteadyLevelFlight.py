@@ -245,9 +245,9 @@ Remember that Equation {eq}`DragEquation` as used above is only valid for an unc
 
 ```
 
-### Drag Equation in Dimensional Form
+### Thrust required
 
-The drag equation can be multiplied by the numerator of the lift and drag coefficients, $\frac{1}{2}\rho\,V^2S$, to yield dimensional drag:
+The drag equation can be multiplied by the numerator of the lift and drag coefficients, $\frac{1}{2}\rho\,V^2S$, to yield dimensional drag - this can be considered as the **thrust required** in order to fly at a certain speed:
 
 $$ C_D\cdot \frac{1}{2}\rho\,V^2S = C_{D0}\cdot\frac{1}{2}\rho\,V^2S + K\cdot C_L^2\cdot\frac{1}{2}\rho\,V^2S$$
 
@@ -623,17 +623,16 @@ fig.show()
 
 Hence the minimum drag speed in EAS is a function of the constants $K$ and $C_{Dmin}$, and $\rho_{SL}$. $V_{E_{MD}}$ and *increases with aircraft weight* and **remains constant** with *aircraft altitude*.
 
+### Range vs Endurance
+
+The aircraft *drag* can be considered as the force required to propel the aircraft forward. For this reason, it is useful to determine the condition of minimum drag, as this means the aircraft is flying with the greatest aerodynamic efficiency - when flying at this condition, the aircraft can go the farthest. This defines the **maximum range**. Hence, if a pilot wishes to fly the longest distance for a certain amount of fuel, they should fly at $V_{md} = \left[\frac{B}{A}\right]^{-\frac{1}{4}}$.
+
+However, they will not be able to fly for the longest period of time at this speed. For certain aircraft missions, it is desirable to seek _endurance_ as oppposed to _range_.
+
+For consideration of endurance, the problem is not one of minimising the force required, but instead to minimise the amount of energy required in a given amount of time, Hence, the problem is not one of minimising the *force required* (the drag), but minimising the amount of *work done per time* - **flying with minimum power**.
+
 ### Power required
 
-The aircraft *drag* can be considered as the force required to propel the aircraft forward. As will be explored a little later, this can be compared with the force available to determine the flight envelope - but only if the aircraft has a pure turbojet or low bypass ratio turbofan.
-
-For propellers and high bypass ratio turbofan engines (that is, most civil aircraft), the *power* required needs to be compared to the power available from the engine.
-
-```{admonition} Thrust vs Power?
-:class: dropdown
-
-This will be elaborated later, but the reasoning for the distinction is that broadly speaking, thrust is constant with velocity for the first two engines, whilst power is constant with velocity for the latter two.
-```
 Power is the rate of doing work - so the power required to overcome drag is:
 
 $$\text{required power } = \text{ drag} \times \text{flight speed}$$
@@ -649,8 +648,518 @@ $$\frac{\text{d}P}{\text{d}V} = 3AV^2 - \frac{B}{V^2} (= 0 \text{ at }P_{min}\te
 $$V_{MP}^4 = \frac{B}{3A}$$
 $$V_{MP} = \left[\frac{B}{3A}\right]^{\frac{1}{4}}$$
 $$= \left[\frac{2W}{\rho S}\right]^\frac{1}{2}\left[\frac{K}{3\cdot C_{D0}}\right]^{\frac{1}{4}}$$
-    
-Similarly, the breakdown between induced and profile power can be shown. $P_{min}$ is not constant with altitude, unlike $D_{min}$, and $\frac{\text{d}P_{min}}{\text{d}V}$ is linear, and positive.
 
+It is easy to compare the minimum drag speed and the minimum power speeds, now:
+
+$$\frac{V_{MP}}{V_{MD}} = \frac{\left[\frac{B}{3A}\right]^{\frac{1}{4}}}{\left[\frac{B}{A}\right]^{\frac{1}{4}}}=\left[\frac{1}{3}\right]^\frac{1}{4}\simeq 75.98\%$$
+
+So flying at the minimum power speed, which is _slower_ than the minimum drag speed, will not get the best range but will enable a pilot to stay in the air for the longest period of time. 
+    
+As was performed for Drag, the Power required can now be plotted vs TAS:
+
+import plotly.io as pio
+import plotly.express as px
+import plotly.offline as py
+import plotly.graph_objects as go
+from ambiance import Atmosphere
+import numpy as np
+
+# Define constants
+CD0=0.016 # Zero incidence drag
+K=0.045 # Induced drag factor
+S=50 # Wing area, m^2
+W=160e3 # Aircarft weight, Newtons
+Clmax = 1.5
+
+alt=0; # Altitude
+
+mosphere = Atmosphere(alt*1000)
+rho = mosphere.density
+
+# Determine stall speed
+Vstall = np.sqrt(W / (0.5 * rho * S * Clmax))
+
+
+# Determine A and B
+A = CD0 * 0.5 * rho * S
+B = K * W ** 2 / 0.5 / rho / S
+
+# Flight speed vector
+Vs = np.linspace(Vstall[0], 200, 1000)
+
+
+# Define drags
+Pind = B * Vs**-1
+Pprof = A * Vs**3
+P = Pind + Pprof
+
+# Get minimum drag speed and associated power
+Vmd = (B/A)**.25
+mdp = A * Vmd**3 + B * Vmd**-1
+
+# Get minimum power
+Vmp = (B/3/A)**.25
+mp = A * Vmp**3 + B * Vmp**-1
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=Vs, y=Pind, name="Induced Power"))
+fig.add_trace(go.Scatter(x=Vs, y=Pprof, name="Profile Power"))
+fig.add_trace(go.Scatter(x=Vs, y=P, name="Total Power"))
+
+fig.add_trace(go.Scatter(x=Vmd, y=mdp, mode="markers+text", text=f"$V_{{md}}={Vmd[0]:1.2f}$", textposition="top center", name="Annotation"))
+
+fig.add_trace(go.Scatter(x=Vmp, y=mp, mode="markers+text", text=f"$V_{{mp}}={Vmp[0]:1.2f}$", textposition="top center", name="Annotation"))
+
+
+
+fig.update_layout(
+    title=f"Variation of Profile, Induced, and Total Power - CD0 = {CD0}, K={K}, altitude={alt}km, S={S}m^2, W={W/1e3}",
+    xaxis_title="TAS / (m/s)",
+    yaxis_title="Drag / N",
+    legend_title="Drag Breakdown",
+)
+
+for trace in fig['data']: 
+    if(trace['name'] == "Annotation"): trace['showlegend'] = False
+
+fig.update_xaxes(range=[0, 200])
+fig.update_yaxes(range=[0, 4e6])
+
+
+#### Effect of altitude on minimum power
+
+Recall that an increase in altitude caused the total drag curve to shift to the right - increasing the minimum drag _speed_ but keeping the same value of dimensional minium drag.
+
+A similar plot can be made to show the variation of minimum power with altitude - it can be seen that the minimum power increases linearly, with a line that passes through the origin.
+
+If you really wish to, you can show analytically that the gradient is a constant by differentiating the expression for $V_{MP}$ with respect to $\rho$. It will yield a constant - but this will be a bit of a laborious exercise in algebra and calculus.
+
+import plotly.io as pio
+import plotly.express as px
+import plotly.offline as py
+import plotly.graph_objects as go
+from ambiance import Atmosphere
+import numpy as np
+
+# Define constants
+CD0=0.016 # Zero incidence drag
+K=0.045 # Induced drag factor
+S=50 # Wing area, m^2
+W=160e3 # Aircarft weight, Newtons
+Clmax = 1.5
+
+fig = go.Figure()
+
+for alt in [0, 5, 10]: # Altitude
+
+    mosphere = Atmosphere(alt*1000)
+    rho = mosphere.density
+
+    # Determine stall speed
+    Vstall = np.sqrt(W / (0.5 * rho * S * Clmax))
+
+
+    # Determine A and B
+    A = CD0 * 0.5 * rho * S
+    B = K * W ** 2 / 0.5 / rho / S
+
+    # Flight speed vector
+    Vs = np.linspace(Vstall[0], 200, 1000)
+
+
+    # Define power
+    Pind = B * Vs**-1
+    Pprof = A * Vs**3
+    P = Pind + Pprof
+
+    # Get minimum drag speed and associated power
+    Vmd = (B/A)**.25
+    mdp = A * Vmd**3 + B * Vmd**-1
+
+    # Get minimum power
+    Vmp = (B/3/A)**.25
+    mp = A * Vmp**3 + B * Vmp**-1
+
+
+#     fig.add_trace(go.Scatter(x=Vs, y=Dind, name="Induced Power"))
+#     fig.add_trace(go.Scatter(x=Vs, y=Dprof, name="Profile Power"))
+    fig.add_trace(go.Scatter(x=Vs, y=P, name=f"Total Power - {alt}km"))
+
+
+
+    fig.add_trace(go.Scatter(x=Vmp, y=mp, mode="markers+text", text=f"$V_{{mp}}={Vmp[0]:1.2f}$", textposition="top center", name="Annotation"))
+
+
+
+
+
+
+fig.add_trace(go.Scatter(x=[0, Vmp[0]], y=[0, mp[0]], name="Annotation", mode='lines'))
+
+
+            
+fig.update_xaxes(range=[0, 200])
+fig.update_yaxes(range=[0, 4e6])
+
+for trace in fig['data']: 
+    if(trace['name'] == "Annotation"): trace['showlegend'] = False
+
+
+fig.update_layout(
+    title=f"Variation of Total Power with Altitude - CD0 = {CD0}, K={K}, S={S}m^2, W={W/1e3}",
+    xaxis_title="TAS / (m/s)",
+    yaxis_title="Drag / N",
+    legend_title="Drag Breakdown",
+)
+
+import plotly.io as pio
+import plotly.express as px
+import plotly.offline as py
+import plotly.graph_objects as go
+from ambiance import Atmosphere
+import numpy as np
+
+# Define constants
+CD0=0.016 # Zero incidence drag
+K=0.045 # Induced drag factor
+S=50 # Wing area, m^2
+W=160e3 # Aircarft weight, Newtons
+Clmax = 1.5
+
+fig = go.Figure()
+
+alt = 0
+
+for W in [160e3, 200e3, 240e3]: # Weight
+
+    mosphere = Atmosphere(alt*1000)
+    rho = mosphere.density
+
+    # Determine stall speed
+    Vstall = np.sqrt(W / (0.5 * rho * S * Clmax))
+
+
+    # Determine A and B
+    A = CD0 * 0.5 * rho * S
+    B = K * W ** 2 / 0.5 / rho / S
+
+    # Flight speed vector
+    Vs = np.linspace(Vstall[0], 200, 1000)
+
+
+    # Define power
+    Pind = B * Vs**-1
+    Pprof = A * Vs**3
+    P = Pind + Pprof
+
+    # Get minimum drag speed and associated power
+    Vmd = (B/A)**.25
+    mdp = A * Vmd**3 + B * Vmd**-1
+
+    # Get minimum power
+    Vmp = (B/3/A)**.25
+    mp = A * Vmp**3 + B * Vmp**-1
+
+
+#     fig.add_trace(go.Scatter(x=Vs, y=Dind, name="Induced Power"))
+#     fig.add_trace(go.Scatter(x=Vs, y=Dprof, name="Profile Power"))
+    fig.add_trace(go.Scatter(x=Vs, y=P, name=f"Total Power - {W}kN"))
+
+
+
+    fig.add_trace(go.Scatter(x=Vmp, y=mp, mode="markers+text", text=f"$V_{{mp}}={Vmp[0]:1.2f}$", textposition="top center", name="Annotation"))
+
+
+
+
+
+
+
+
+
+            
+fig.update_xaxes(range=[0, 200])
+fig.update_yaxes(range=[0, 4e6])
+
+for trace in fig['data']: 
+    if(trace['name'] == "Annotation"): trace['showlegend'] = False
+
+
+fig.update_layout(
+    title=f"Variation of Total Power with Aircraft Weight - CD0 = {CD0}, K={K}, sea level, S={S}m^2",
+    xaxis_title="TAS / (m/s)",
+    yaxis_title="Drag / N",
+    legend_title="Drag Breakdown",
+)
+
+#### Variation of aircraft power in cruise: summary
+
+In the power equation, the combination of $V^3$ and $V^{-1}$ terms gives a mininma in the total drag curve that is lower than minimum drag speed. This is the mininum power speed, $V_{mp}$ which can be determined directly from $V_{mp}=\left[\frac{B}{3\,A}\right]^{\frac{1}{4}}$.
+
+Answer the following questions:
+
+
+```{admonition} Describe the effect of *altitude* on power curves.
+:class: dropdown
+
+An increase in altitude causes a decrease in density. This causes the induced power to increase, and the profile drag to decrease - but the profile power rises with the cube of speed, whilst induced power falls with the inverse of forwar speed. The minimum power speed increases with altitude, but and the minimum power rises linearly.
+
+The visual effect is that total drag curves are shifted to the right and up.
+```
+
+```{admonition} Describe the effect of *aircraft weight* on drag curves.
+:class: dropdown
+
+Similarly to drag, an increase in aircraft weight affects *only* the induced power, which is increased.
+
+The visual effect is that total drag curves are shifted to the right, and up - the minimum power *and* the minimum power speed are increased.
+```
+
+### Removing the Altitude Dependency - EAS
+
+To plot power vs equivalent airspeed as performed before for drag, one has to be careful with definitions. If you take the power equation, and simply replace $V$ with $V_E$, and plot against $V_E$, then we are not representing true power vs. EAS due to the velocity term outside the brackets. What we are actually showing is a parameter that can be considered *density-scaled power*:
+
+$$\begin{aligned}
+    P\sqrt{\sigma}&=\left[A_EV_E^2 + \frac{B_E}{V_E^2}\right]\cdot V_E\\    
+\text{since}\\
+    P&=\left[A_EV_E^2 + \frac{B_E}{V_E^2}\right]\cdot V\\
+    &=\left[A_EV_E^2 + \frac{B_E}{V_E^2}\right]\cdot \frac{V_E}{\sqrt{\sigma}}\end{aligned}$$
+
+Similar to plotting drag vs. EAS, plotting $P\sqrt{\sigma}$ vs EAS collapses the curves for different altitudes onto one another, creating a single power curve vs. EAS. However, caution must be taken as the ordinate is not actual power, unlike for the drag plot, where the ordinate is dimensional true drag.
+
+It is left as an exercise for the reader to show this plot based upon those already given.
+
+## Thrust Available vs. Thrust Required
+
+As stated previously, the aircraft total drag is analogous to the *total thrust force required* to maintain a condition. The total power is analogous to the *total propulsive power required* to maintain the condition.
+
+The aircraft powerplant creates thrust and power (more on the distinction, shortly), and this sets the range of possible flight speeds.
+
+Consider an aircraft engine capable of producing a thrust that is constant with forward speed (which isn't realistic, as we will see), this can be overlaid on the thrust OR power required curve.
+
+```{figure} ../Images/TrandTa.png
+---
+height: 300px
+name: TrandTa
+---
+Thrust Available and Thrust Required
+```
+Denoting the thrust produced by the powerplant as $T_A$, meaning *thrust available* and the total drag as $T_R$, meaning *thrust required*, the intersection between the $T_A$ and $T_R$ curves gives the possible flight speeds.
+
+$T_A$ is simply a number, whilst the $T_R$ curve is a polynomial so the intersection can be determined from:
+
+$$T_R=A\cdot V^2 + B\cdot V^{-2}$$
+
+Which is equal to the thrust available:
+
+$$T_R=A\cdot V^2 + B\cdot V^{-2}=T_A$$
+$$A\cdot V^4 + B - T_A\cdot V^2=0$$
+
+hence a quadratic in $V^2$ or 
+
+$$a\cdot (V^2)^2 +  b\cdot (V^2) +  c=0$$
+with $a=A$, $b=-T_A$ and $c=B$
+
+$$V=\sqrt{\frac{T_A\pm\sqrt{T_A^2-4\cdot A\cdot B}}{2\cdot A}}$$
+
+which yields the two velocities from the graph, $V_1$ and $V_2$.
+
+### Example
+
+For an aircraft with a drag equation described by:
+
+$$C_D = 0.016 + 0.045\cdot C_L^2$$
+
+with a wing area of 50m$^2$, a weight of 160 tonnes, a $C_{L,max}=1.5$, flying at sea-level **determine the maximum and minimum flight speeds for a constant thrust of 10kN**
+
+```{admonition} Solution procedure - attempt the question before looking at the answer.
+:class: dropdown
+
+The drag equation gives you the constants $C_{D0}=0.016$ and $K=0.045$, and the remaining constants are provided in the question.
+
+This enables you to determine the profile drag factor A=0.49000001 and the induced drag factor B=37616325.974.
+
+With $T_A=10,000N$, you now have everything to solve the quadratic equation to yield $v_1=70.53m/s$ and $v_2=124.43m/s$.
+
+Look at the plot below, and see if you could reproduce is _without_ looking at the source code.
+```
+
+
+import plotly.io as pio
+import plotly.express as px
+import plotly.offline as py
+import plotly.graph_objects as go
+from ambiance import Atmosphere
+import numpy as np
+import cmath
+
+# Define constants
+CD0=0.016 # Zero incidence drag
+K=0.045 # Induced drag factor
+S=50 # Wing area, m^2
+W=160e3 # Aircarft weight, Newtons
+Clmax = 1.5
+
+alt=0; # Altitude
+
+mosphere = Atmosphere(alt*1000)
+rho = mosphere.density
+
+# Determine stall speed
+Vstall = np.sqrt(W / (0.5 * rho * S * Clmax))
+
+
+# Determine A and B
+A = CD0 * 0.5 * rho * S
+B = K * W ** 2 / 0.5 / rho / S
+
+# Flight speed vector
+Vs = np.linspace(Vstall[0], 200, 1000)
+
+
+# Define drags
+Dind = B * Vs**-2
+Dprof = A * Vs**2
+D = Dind + Dprof
+
+# Get minimum drag
+Vmd = (B/A)**.25
+md = A * Vmd**2 + B * Vmd**-2
+
+
+fig = go.Figure()
+# Thrust available
+TA = 10e3
+fig.add_trace(go.Scatter(x=[min(Vs), max(Vs)], y=[TA, TA], name="$T_A$", mode="lines"))
+
+# Get the intersection
+a = A
+b = -TA
+c = B
+flight_limit_speeds = np.sort(np.sqrt(np.roots([a, b, c])))
+
+
+
+fig.add_trace(go.Scatter(x=Vs, y=D, name="$T_R$"))
+fig.add_trace(go.Scatter(x=Vmd, y=md, mode="markers+text", text="$V_{md}$", textposition="top center", name="Annotation"))
+
+fig.add_trace(go.Scatter(x=flight_limit_speeds, y=[TA, TA], mode="markers+text", text=[f"$V_{{1}}={flight_limit_speeds[0]:1.2f}$", f"$V_{{2}}={flight_limit_speeds[1]:1.2f}$"], textposition="bottom center", name="Annotation"))
+
+
+
+fig.update_layout(
+    title=f"Graphical Solution",
+    xaxis_title="TAS / (m/s)",
+    yaxis_title="Drag / N",
+    legend_title="Drag Breakdown",
+)
+
+for trace in fig['data']: 
+    if(trace['name'] == "Annotation"): trace['showlegend'] = False
+
+fig.update_xaxes(range=[0, 200])
+fig.update_yaxes(range=[0, 20e3])
+
+
+## A propulsion model
+
+In the question above, it was assumed that the thrust was constant with forward speed. This is only the case for a pure turbojet or a high bypass-ratio turbofan. Before we can go further with the methogology, a broad comparison between aircraft powerplant types needs to be made.
+
+With infinite thrust/power available, our aircraft could fly anywhere on the D vs. TAS curve, but this is not the case in reality. Thrust and power are provided by the aircraft powerplant, sosome understanding of what it means to produce thrust is required.
+
+Newton's second law states that "*force is equal to the rate of change of momentum*". The momentum change in question is that of the fluid before and the effect of the propulsor.
+
+```{admonition} A revision of aircraft propulsion.
+:class: dropdown
+Recall that the fluid accelerates before and after the propulsor, and reaches the ultimate velocity at some downstream distance. 
+
+All generalised jets, meaning any propulsor that works by accelerating a fluid provide a \textsl{streamwise pressure discontinuity} which creates a continuous streamwise velocity variation. You may resolve the force as $F=\Delta P\cdot A$ or $F=\dot{m}\Delta V$, and these are equal to each other - they are not summative.
+```
+
+Defining a *jet efflux velocity*, $v_j$, as the velocity of the air when it is fully accelerated by the propulsor. Newton's second law is then:
+
+$$\begin{aligned}
+    T &= \frac{\text{d}}{\text{d}t}\left({m}\cdot\Delta v\right)\\
+    \text{in steady flight, }\Delta v=0\\
+    &=  \dot{m}\cdot\Delta v \\
+    &= \dot{m}\Delta v\\
+    &= \dot{m}\left(v_j - V\right)\end{aligned}$$
+
+Considering *work done*; the work that the propulsor performs on the airframe is **useful work**, whilst any work done in providing the streamtube with veloocity is **waste work**.
+
+Work is force $\times$ displacement in the direction of the force, and power is the rate of doing work, so:\
+Useful power
+
+$$\begin{aligned}
+    P &= T\cdot V\\
+    &= \dot{m}\cdot\left(v_j - V\right)\cdot V  \end{aligned}$$
+
+Waste power is the rate of change of kinetic energy of the air:
+
+$$\begin{aligned}
+    P_{waste}=\frac{1}{2}\dot{m}\left(v_j-V\right)^2    \end{aligned}$$
+
+Which allows the definition of *propulsive efficiency* as a measure of the propulsive power to the total power required.
+
+$$\begin{aligned}
+    \eta&=\frac{\text{Useful (Propulsive) Power}}{\text{Total Power Output}}\\
+    &= \frac{T\cdot V}{T\cdot V + \frac{1}{2}\dot{m}\left(v_j-V\right)^2    }\\ 
+    &= \frac{\dot{m}\cdot\left(v_j - V\right)\cdot V}{\dot{m}\cdot\left(v_j - V\right)\cdot V + \frac{1}{2}\dot{m}\left(v_j-V\right)^2  }\end{aligned}$$
+
+Noting that propulsive power is a function of the aerodynamics of the propulsor and does not include any effects such as losses in the powerplant itself.
+
+
+***Propellers and High Bypass-Ratio Turbofans*** have a high $\dot{m}$ due to a large disc area, but a small $v_j$. This means:
+
+-   Lower fuel consumption due to small KE increase
+
+-   Rapid loss of thrust with forward speed due to small $v_j-V$
+
+These engines may be defined as **power engines** as their fuel consumption is generally linear with the power they produce. They have an associated **specific fuel consumption (SFC)** which has units of kg/s/W or lb/h/hP or equivalents.
+
+***Turbojets and Low Bypass-Ratio Turbofans*** have a small $\dot{m}$ due to a small disc area, but a large $v_j$. This means:
+
+-   High fuel consumption due to large KE increase
+
+-   Little loss of thrust with forward speed due to small $v_j>>V$
+
+These engines are defined as **thrust engines** as their fuel consumption is generally linear with the thrust they produce. They have an associated **thrust specific fuel consumption (TSFC)** which has units of kg/s/N or lb/h/lbf or equivalents.
+
+### Thrust and Power Model
+
+Since all aircraft propulsors accelerate a mass of air, it follows that their output is a function of air density/altitude - but also of many, many other factors. 
+
+```{admonition} Validity of this model
+:class: dropdown
+
+In reality, the relationships for thrust and power for different types of engines are functions of forward speed, Mach number, density, temperature, and engine-specific factors relating to efficiency.
+
+For a detailed discussion of these effects, see Chapter 3 in "Aircraft Performance and Design" {cite}`Anderson:1999AP`. The summary on page 186 results in the altitude model used in 
+
+```
+
+There are a myriad of different thrust and power models used for aircraft performance, but for this course, the simplest one will be used.
+
+For *thrust engines*, the altitude variation is described by:
+
+$$\begin{aligned}
+    \frac{T}{T_{SL}} &= k\cdot\sigma^n\label{eq:thrustmodel}\\
+\text{where}\\
+    k &: \text{Throttle setting = 0 to 1}\\
+    T_{SL} &: \text{Thrust produced at ISA SL}\\
+    \sigma &: \text{Density ratio} - \frac{\rho}{\rho_{SL}}\\
+    n &: \text{1 if not indicated otherwise} \end{aligned}$$
+
+For *power engines*, the altitude variation is described by:
+
+$$\begin{aligned}
+    \frac{P}{P_{SL}} &= k\cdot\sigma^n\label{eq:thrustmodel}\\
+\text{where}\\
+    k &: \text{Throttle setting = 0 to 1}\\
+    P_{SL} &: \text{Power produced at ISA SL}\\
+    \sigma &: \text{Density ratio} - \frac{\rho}{\rho_{SL}}\\
+    n &: \text{1 if not indicated otherwise} \end{aligned}$$
+
+Some sources list $n$ as an altitude dependent parameter that accounts for the change of lapse rate at the tropopause, whilst other list it as an engine-specific parameter. In this course, it will be used as a parameter that encompasses both - you will be able to assume $n=1.0$ unless otherwise directed.
 
 
