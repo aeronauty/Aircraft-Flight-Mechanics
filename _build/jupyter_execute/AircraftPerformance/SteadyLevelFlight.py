@@ -1061,6 +1061,37 @@ fig.update_xaxes(range=[0, 200])
 fig.update_yaxes(range=[0, 20e3])
 
 
+### Speed stability in cruise
+
+In the figure above, for a fixed throttle setting of 10kN, _steady_ flight is possible at $V_1$ or $V_2$. At speeds $V_1$ or $V_2$ *only* $T_A=T_R$ and there is no *excess thrust*.
+
+At speeds $V_1 < v < V_2$, there is *positive excess thrust* and at speeds $v<V_1$ or $v>V_1$ there is *negative excess thrust* (sometimes called *excess drag*). With positive excess thrust, the aircarft *accelerates*. With negative excess thrust the aircraft *decellerates*.
+
+#### Flight at v1
+
+Consider flight at $V_1$ - *any* velocity perturbation (e.g., due to a gust) will move the aircraft into a condition of *excess thrust*. 
+
+For the case with **no pilot input**, if the aircraft speeds up, there will be positive excess thrust leading to acceleration all the way to $V_2$. If the aircraft slows down, there will be negative excess thrust leading to decelleration all the way to $V_{stall}$.
+
+**This is speed instability, and leads to increased pilot workload (requires continual throttle adjustments)**
+
+#### Flight at v2
+
+Consider flight at $V_2$ - *any* velocity perturbation (e.g., due to a gust) will move the aircraft into a condition of *excess thrust*. 
+
+For the case with **no pilot input**, if the aircraft speeds up, there will be negative excess thrust leading to decelleration back to $V_2$. If the aircraft slows down, there will be postitive excess thrust leading to acceleratiob back to $V_{2}$.
+
+**This is a stable system, with reduced pilot workload (no required throttle adjustments)**
+
+#### Stability boundary
+
+Consider that the pilot may adjust the throttle to increase or decrease the thrust. Accordingly, if in the example given above the $T_A$ line represents the _maximum_ thrust, then the throttle could be adjusted to allow cruise to be possible at all speeds $V_1\le v\le V_2$.
+
+Using the reasoning above, though, it can be seen that cruise at any velocity $V\leq V_{md}$ will be subject to a speed instability.
+
+
+
+
 ## A propulsion model
 
 In the question above, it was assumed that the thrust was constant with forward speed. This is only the case for a pure turbojet or a high bypass-ratio turbofan. Before we can go further with the methogology, a broad comparison between aircraft powerplant types needs to be made.
@@ -1153,7 +1184,7 @@ $$\begin{aligned}
 For *power engines*, the altitude variation is described by:
 
 $$\begin{aligned}
-    \frac{P}{P_{SL}} &= k\cdot\sigma^n\label{eq:thrustmodel}\\
+    \frac{P}{P_{SL}} &= k\cdot\sigma^n\\
 \text{where}\\
     k &: \text{Throttle setting = 0 to 1}\\
     P_{SL} &: \text{Power produced at ISA SL}\\
@@ -1161,5 +1192,151 @@ $$\begin{aligned}
     n &: \text{1 if not indicated otherwise} \end{aligned}$$
 
 Some sources list $n$ as an altitude dependent parameter that accounts for the change of lapse rate at the tropopause, whilst other list it as an engine-specific parameter. In this course, it will be used as a parameter that encompasses both - you will be able to assume $n=1.0$ unless otherwise directed.
+
+### v1 and v2 with altitude
+
+With the thrust or power model now giving the variation of *available thrust* with altitude (with the change in density), the range of possible speeds can be determined for different altitudes.
+
+It can be appreciated that it is easier to perform this exercise in EAS rather than TAS, as there is a single $T_R$ curve in EAS.
+
+
+import plotly.io as pio
+import plotly.express as px
+import plotly.offline as py
+import plotly.graph_objects as go
+from ambiance import Atmosphere
+import numpy as np
+import cmath
+from myst_nb import glue
+
+
+# Define constants
+CD0=0.016 # Zero incidence drag
+K=0.045 # Induced drag factor
+S=50 # Wing area, m^2
+W=160e3 # Aircarft weight, Newtons
+Clmax = 1.5
+
+rho_sl = 1.225
+
+TSL = 25e3
+
+fig = go.Figure()
+
+
+# Determine A and B - EAS
+AE = CD0 * 0.5 * rho_sl * S
+BE = K * W ** 2 / 0.5 / rho_sl / S
+
+# Find mimimum drag as this sets the ceiling
+Vemd = (BE/AE)**.25
+Dmin = AE * Vemd**2 + BE * Vemd**-2
+sig_dmin = Dmin/TSL
+rho_dmin = sig_dmin * rho_sl
+
+# Need to find the altitude for this - this isn't an efficient way to calculate it. But it'll work
+ceiling_found = False
+alt = 0
+iteration = 0
+dH = 1
+while not ceiling_found:
+    mosphere = Atmosphere(alt*1000)
+    rho = mosphere.density
+    drho = rho - rho_dmin
+    dH = drho
+    
+    alt = alt + drho
+    
+    if abs(drho) < 1e-5:
+        ceiling_found = True
+    
+ceiling = alt
+altvec = np.arange(0, ceiling, 2)
+altvec = np.concatenate((altvec, ceiling))
+
+# Get minimum drag
+Vemd = (BE/AE)**.25
+md = AE * Vemd**2 + BE * Vemd**-2
+
+# Turn this into TAS
+Vmd = Vemd * sig_dmin**-.5
+
+# Save these values for later
+glue("Vemd", Vemd, display=False);
+glue("Vmd", Vmd, display=False);
+
+
+
+
+# Flight speed vector
+# Determine stall speed
+Vstall = np.sqrt(W / (0.5 * rho_sl * S * Clmax))
+Vs = np.linspace(Vstall, 300, 1000)
+
+# Define drags
+Dind = BE * Vs**-2
+Dprof = AE * Vs**2
+D = Dind + Dprof
+
+fig.add_trace(go.Scatter(x=Vs, y=D, name="$T_R$"))   
+
+
+
+for alt in altvec:
+
+    mosphere = Atmosphere(alt*1000)
+    rho = mosphere.density
+
+    # Thrust available at this altitude
+    sigma = rho/rho_sl
+    TA = TSL * sigma[0]
+
+    # Plot available thrust
+    fig.add_trace(go.Scatter(x=[0, 250], y=[TA, TA], name="Annotation", mode="lines"))
+    fig.add_trace(go.Scatter(x=[250], y=[TA], mode="text", text=f"h={alt}km", textposition="middle right", name="Annotation"))
+    
+    # Get the intersection
+    a = AE
+    b = -TA
+    c = BE
+    flight_limit_speeds = np.sort(np.sqrt(np.roots([a, b, c])))
+    
+    # Is this in the envelope (this code is redundant now, but might be handy for later)
+    in_envelope = not (isinstance(flight_limit_speeds[0], complex))
+    
+    # Add v1 and v2 annotations        
+    if in_envelope and not (alt == ceiling):
+        fig.add_trace(go.Scatter(x=flight_limit_speeds, y=[TA, TA], mode="markers+text", text=[f"v1={flight_limit_speeds[0]:1.2f}", f"v2={flight_limit_speeds[1]:1.2f}"], textposition="bottom center", name="Annotation"))
+    elif in_envelope:
+        fig.add_trace(go.Scatter(x=[flight_limit_speeds[0]], y=[TA], mode="markers+text", text=[f"v1=v2={flight_limit_speeds[0]:1.2f}"], textposition="bottom center", name="Annotation"))
+
+
+# Add the stall speed
+fig.add_trace(go.Scatter(x=[Vstall, Vstall], y=[0, 30e3], mode="lines", name="Annotation"))        
+fig.add_trace(go.Scatter(x=[Vstall], y=[27e3], mode="text", text="Stall Speed", textposition="middle right", name="Annotation"))
+
+fig.update_layout(
+    title=f"$T_R \\text{{ and }} T_A \\text{{ for different altitudes}}$",
+    xaxis_title="EAS / (m/s)",
+    yaxis_title="Drag / N",
+    legend_title="Drag Breakdown",
+)
+
+for trace in fig['data']: 
+    if(trace['name'] == "Annotation"): trace['showlegend'] = False
+
+fig.update_xaxes(range=[0, 260])
+fig.update_yaxes(range=[0, 30e3])
+
+fig.show()
+
+
+Look at the graph above, observe the following:
+- There is a single $T_R$ curve since the graph has been plotted in EAS
+- At sea-level the $T_A$ curve is highest as the air density is lowest, hence there is the greatest available thrust
+- As altitude increases, the *available thrust* decreases, and hence the minimum flight speed $v_1$ increases whilst the maximum flight speed $v_2$ increases
+- For many altitudes, the minimum flight speed is lower than the stall speed hence the value has no physical significance - since flight would not be *possible at these speeds*
+- Altitudes have been plotted in 2km intervals, which is an arbitrary interval.
+- As $v_1$ and $v_2$ get closer together, they finally meet at the *minimum drag speed* - the physical significance here is that at this altitude the engine can only produce sufficient thrust (*i.e.,* at maximium throttle) to enable cruise at a single speed (that which requires the minimum thrust, $V_{md}$) - {glue:text}`Vemd:1.3f`m/s EAS {glue:text}`Vmd:1.3f`m/s TAS
 
 
