@@ -103,9 +103,9 @@ Prerequisites/Prerequisites
 AircraftPerformance/Introduction
 AircraftPerformance/Airspeed
 AircraftPerformance/SteadyLevelFlight
-AircraftPerformance/Propulsion
+AircraftPerformance/GlidingFlight
+AircraftPerformance/ClimbingFlight
 AircraftPerformance/RangeandEndurance
-AircraftPerformance/ClimbandDescent
 AircraftPerformance/SteadyTurns
 ```
 

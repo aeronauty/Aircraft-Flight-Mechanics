@@ -1,8 +1,8 @@
-# Forces in Steady Level Flight
+# Steady Level Flight
 
 The discipline of Aircraft Flight Mechanics requires the formulation of relationships between aircraft forces, and aircraft motion. In order to define *motion*, it was necessary to define the different airspeeds in the preceding section.
 
-Aircraft have six degrees of freedom - three translational ($x, y, z$), and three rotational ($\phi, \theta, \psi$), and in order to develop the expressions describing aicraft flight, *nine* coupled equations are required. This course will get to that point, and those equations will derived and utilised - but before that, some really handy relationships can be defined for flight constrained to a single direction.
+Aircraft have six degrees of freedom - three translational ($x, y, z$), and three rotational ($\phi, \theta, \psi$), and in order to develop the expressions describing aircraft flight, *nine* coupled equations are required. This course will get to that point, and those equations will derived and utilised - but before that, some really handy relationships can be defined for flight constrained to a single direction.
 
 The simplest flight regime is best to start with, which is steady, level (meaning no change in altitude) flight.
 
@@ -111,7 +111,7 @@ In flight performance, we assume that the aircraft is operating in the region of
 
 where
 
-$$    K=\frac{k}{\pi AR}$$
+$$    K=\frac{k}{\pi AR} = \frac{1}{\pi\,e_0\,AR}$$
 
 The first term represents the drag that is independent of aerodynamic incidence, whilst the second term is proportional to $C_L^2$, which represents the induced drag and the component of form drag that varies with incidence.
 
@@ -122,6 +122,8 @@ The parameter $k\sim 1.1-1.4$ for most aircraft, and $AR$ is the wing aspect rat
 -   Reynolds Number (speed and height)
 
 -   Compressibility (shock waves)
+
+Or sometimes can be presented as the Oswold efficiency factor, $e_0$, which can be related to $K$ through the aspect ratio.
 
 Equation {eq}`DragEquation` assumes that the minimum drag occurs at zero lift. This is the case for a symmetric aerofoil, but not for a cambered one. Since most airfcraft have a cambered wing, Equation {eq}`DragEquation` should be modified to
 
@@ -212,11 +214,11 @@ In reality, a pilot will not tend to consider the numerical value of $\alpha$ th
 
 For a given $C_L$, the aircraft speed determines the dimensional value of lift being produced. If $L=W$, this is steady level flight. If $L>W$, the aircraft climbs, if $L<W$, the aircraft descends. 
 
-Through a combination of thottle setting, and elevator deflection (stick fore/aft), steady flight can be achieved. Again - the pilot probably isn't considering the $C_L$ value, and won't know whether they're at the best lift to drag ratio or not.
+Through a combination of throttle setting, and elevator deflection (stick fore/aft), steady flight can be achieved. Again - the pilot probably isn't considering the $C_L$ value, and won't know whether they're at the best lift to drag ratio or not.
 
 So - there is a certain speed, in EAS, that will give the best lift to drag ratio. If the pilot is able to maintain this speed with no throttle adjustment, and finds that the aircraft is not climbing nor descending, then they are flying at the best lift to drag ratio - which will give the best **endurance**.
 
-These speeds are usually listed in the aircarft (though in the light aircraft I've been in, they're listed in IAS, and the following questions about EAS fell on deaf ears).
+These speeds are usually listed in the aircraft (though in the light aircraft I've been in, they're listed in IAS, and the following questions about EAS fell on deaf ears).
 
 So we, as aerospace engineers, wish to know the lift coefficient for optimum aerodynamic efficiency - but it will be translated into a more pilot-friendly parameter, such as a post-it note on the airspeed indicator.
 
@@ -495,7 +497,7 @@ fig.show()
 
 #### Variation of aircraft drag in cruise: summary
 
-In the drag equation, the combination of $V^2$ and $V^{-2}$ terms gives a mininma in the total drag curve at the minimum drag speed, $V_{md}$ which can be determined directly from $V_{md}=\left[\frac{B}{A}\right]^{\frac{1}{4}}$.
+In the drag equation, the combination of $V^2$ and $V^{-2}$ terms gives a minima in the total drag curve at the minimum drag speed, $V_{md}$ which can be determined directly from $V_{md}=\left[\frac{B}{A}\right]^{\frac{1}{4}}$.
 
 At *low speed*, the induced drag term $B=\frac{K\,W}{\frac{1}{2}\rho\,S}$ dominates.
 
@@ -627,7 +629,7 @@ Hence the minimum drag speed in EAS is a function of the constants $K$ and $C_{D
 
 The aircraft *drag* can be considered as the force required to propel the aircraft forward. For this reason, it is useful to determine the condition of minimum drag, as this means the aircraft is flying with the greatest aerodynamic efficiency - when flying at this condition, the aircraft can go the farthest. This defines the **maximum range**. Hence, if a pilot wishes to fly the longest distance for a certain amount of fuel, they should fly at $V_{md} = \left[\frac{B}{A}\right]^{-\frac{1}{4}}$.
 
-However, they will not be able to fly for the longest period of time at this speed. For certain aircraft missions, it is desirable to seek _endurance_ as oppposed to _range_.
+However, they will not be able to fly for the longest period of time at this speed. For certain aircraft missions, it is desirable to seek _endurance_ as opposed to _range_.
 
 For consideration of endurance, the problem is not one of minimising the force required, but instead to minimise the amount of energy required in a given amount of time, Hence, the problem is not one of minimising the *force required* (the drag), but minimising the amount of *work done per time* - **flying with minimum power**.
 
@@ -728,7 +730,7 @@ fig.update_yaxes(range=[0, 4e6])
 
 #### Effect of altitude on minimum power
 
-Recall that an increase in altitude caused the total drag curve to shift to the right - increasing the minimum drag _speed_ but keeping the same value of dimensional minium drag.
+Recall that an increase in altitude caused the total drag curve to shift to the right - increasing the minimum drag _speed_ but keeping the same value of dimensional minimum drag.
 
 A similar plot can be made to show the variation of minimum power with altitude - it can be seen that the minimum power increases linearly, with a line that passes through the origin.
 
@@ -894,7 +896,7 @@ fig.update_layout(
 
 #### Variation of aircraft power in cruise: summary
 
-In the power equation, the combination of $V^3$ and $V^{-1}$ terms gives a mininma in the total drag curve that is lower than minimum drag speed. This is the mininum power speed, $V_{mp}$ which can be determined directly from $V_{mp}=\left[\frac{B}{3\,A}\right]^{\frac{1}{4}}$.
+In the power equation, the combination of $V^3$ and $V^{-1}$ terms gives a minima in the total drag curve that is lower than minimum drag speed. This is the minimum power speed, $V_{mp}$ which can be determined directly from $V_{mp}=\left[\frac{B}{3\,A}\right]^{\frac{1}{4}}$.
 
 Answer the following questions:
 
@@ -902,7 +904,7 @@ Answer the following questions:
 ```{admonition} Describe the effect of *altitude* on power curves.
 :class: dropdown
 
-An increase in altitude causes a decrease in density. This causes the induced power to increase, and the profile drag to decrease - but the profile power rises with the cube of speed, whilst induced power falls with the inverse of forwar speed. The minimum power speed increases with altitude, but and the minimum power rises linearly.
+An increase in altitude causes a decrease in density. This causes the induced power to increase, and the profile drag to decrease - but the profile power rises with the cube of speed, whilst induced power falls with the inverse of forward speed. The minimum power speed increases with altitude, but and the minimum power rises linearly.
 
 The visual effect is that total drag curves are shifted to the right and up.
 ```
@@ -1013,6 +1015,8 @@ Vstall = np.sqrt(W / (0.5 * rho * S * Clmax))
 A = CD0 * 0.5 * rho * S
 B = K * W ** 2 / 0.5 / rho / S
 
+
+
 # Flight speed vector
 Vs = np.linspace(Vstall[0], 200, 1000)
 
@@ -1043,7 +1047,7 @@ flight_limit_speeds = np.sort(np.sqrt(np.roots([a, b, c])))
 fig.add_trace(go.Scatter(x=Vs, y=D, name="$T_R$"))
 fig.add_trace(go.Scatter(x=Vmd, y=md, mode="markers+text", text="$V_{md}$", textposition="top center", name="Annotation"))
 
-fig.add_trace(go.Scatter(x=flight_limit_speeds, y=[TA, TA], mode="markers+text", text=[f"$V_{{1}}={flight_limit_speeds[0]:1.2f}$", f"$V_{{2}}={flight_limit_speeds[1]:1.2f}$"], textposition="bottom center", name="Annotation"))
+fig.add_trace(go.Scatter(x=flight_limit_speeds, y=[TA, TA], mode="markers+text", text=[f"V1={flight_limit_speeds[0]:1.2f}", f"V2={flight_limit_speeds[1]:1.2f}"], textposition="bottom center", name="Annotation"))
 
 
 
@@ -1065,7 +1069,7 @@ fig.update_yaxes(range=[0, 20e3])
 
 In the figure above, for a fixed throttle setting of 10kN, _steady_ flight is possible at $V_1$ or $V_2$. At speeds $V_1$ or $V_2$ *only* $T_A=T_R$ and there is no *excess thrust*.
 
-At speeds $V_1 < v < V_2$, there is *positive excess thrust* and at speeds $v<V_1$ or $v>V_1$ there is *negative excess thrust* (sometimes called *excess drag*). With positive excess thrust, the aircarft *accelerates*. With negative excess thrust the aircraft *decellerates*.
+At speeds $V_1 < v < V_2$, there is *positive excess thrust* and at speeds $v<V_1$ or $v>V_1$ there is *negative excess thrust* (sometimes called *excess drag*). With positive excess thrust, the aircraft *accelerates*. With negative excess thrust the aircraft *decellerates*.
 
 #### Flight at v1
 
@@ -1079,7 +1083,7 @@ For the case with **no pilot input**, if the aircraft speeds up, there will be p
 
 Consider flight at $V_2$ - *any* velocity perturbation (e.g., due to a gust) will move the aircraft into a condition of *excess thrust*. 
 
-For the case with **no pilot input**, if the aircraft speeds up, there will be negative excess thrust leading to decelleration back to $V_2$. If the aircraft slows down, there will be postitive excess thrust leading to acceleratiob back to $V_{2}$.
+For the case with **no pilot input**, if the aircraft speeds up, there will be negative excess thrust leading to decelleration back to $V_2$. If the aircraft slows down, there will be postitive excess thrust leading to acceleration back to $V_{2}$.
 
 **This is a stable system, with reduced pilot workload (no required throttle adjustments)**
 
@@ -1089,14 +1093,22 @@ Consider that the pilot may adjust the throttle to increase or decrease the thru
 
 Using the reasoning above, though, it can be seen that cruise at any velocity $V\leq V_{md}$ will be subject to a speed instability.
 
+```{admonition} Caution - the above is a simplification.
+:class: dropdown
+
+The description of what happens with excess thrust as described above is a *simplification* (you'll read this phrase a *lot* in Flight Mechanics).
+
+In reality, whenever there is positive excess thrust, the resulting acceleration will result in a speed increase which, for a given attitude will result in an increase in lift and hence *climb*. 
+
+If the pilot wishes to maintain constant speed, they may intuitively adjust attitude via the stick/yoke which will take the aircraft out of equilibrium.
+```
 
 
+### Aircraft Propulsion - thrust or power available
 
-## A propulsion model
+In the question above, it was assumed that the thrust was constant with forward speed. This is only the case for a pure turbojet or a high bypass-ratio turbofan. Before we can go further with the methodology, a broad comparison between aircraft powerplant types needs to be made.
 
-In the question above, it was assumed that the thrust was constant with forward speed. This is only the case for a pure turbojet or a high bypass-ratio turbofan. Before we can go further with the methogology, a broad comparison between aircraft powerplant types needs to be made.
-
-With infinite thrust/power available, our aircraft could fly anywhere on the D vs. TAS curve, but this is not the case in reality. Thrust and power are provided by the aircraft powerplant, sosome understanding of what it means to produce thrust is required.
+With infinite thrust/power available, our aircraft could fly anywhere on the D vs. TAS curve, but this is not the case in reality. Thrust and power are provided by the aircraft powerplant, so some understanding of what it means to produce thrust is required.
 
 Newton's second law states that "*force is equal to the rate of change of momentum*". The momentum change in question is that of the fluid before and the effect of the propulsor.
 
@@ -1116,7 +1128,7 @@ $$\begin{aligned}
     &= \dot{m}\Delta v\\
     &= \dot{m}\left(v_j - V\right)\end{aligned}$$
 
-Considering *work done*; the work that the propulsor performs on the airframe is **useful work**, whilst any work done in providing the streamtube with veloocity is **waste work**.
+Considering *work done*; the work that the propulsor performs on the airframe is **useful work**, whilst any work done in providing the streamtube with velocity is **waste work**.
 
 Work is force $\times$ displacement in the direction of the force, and power is the rate of doing work, so:\
 Useful power
@@ -1156,7 +1168,7 @@ These engines may be defined as **power engines** as their fuel consumption is g
 
 These engines are defined as **thrust engines** as their fuel consumption is generally linear with the thrust they produce. They have an associated **thrust specific fuel consumption (TSFC)** which has units of kg/s/N or lb/h/lbf or equivalents.
 
-### Thrust and Power Model
+#### Thrust and Power Model
 
 Since all aircraft propulsors accelerate a mass of air, it follows that their output is a function of air density/altitude - but also of many, many other factors. 
 
@@ -1337,6 +1349,159 @@ Look at the graph above, observe the following:
 - As altitude increases, the *available thrust* decreases, and hence the minimum flight speed $v_1$ increases whilst the maximum flight speed $v_2$ increases
 - For many altitudes, the minimum flight speed is lower than the stall speed hence the value has no physical significance - since flight would not be *possible at these speeds*
 - Altitudes have been plotted in 2km intervals, which is an arbitrary interval.
-- As $v_1$ and $v_2$ get closer together, they finally meet at the *minimum drag speed* - the physical significance here is that at this altitude the engine can only produce sufficient thrust (*i.e.,* at maximium throttle) to enable cruise at a single speed (that which requires the minimum thrust, $V_{md}$) - {glue:text}`Vemd:1.3f`m/s EAS {glue:text}`Vmd:1.3f`m/s TAS
+- As $v_1$ and $v_2$ get closer together, they finally meet at the *minimum drag speed* - the physical significance here is that at this altitude the engine can only produce sufficient thrust (*i.e.,* at maximum throttle) to enable cruise at a single speed (that which requires the minimum thrust, $V_{md}$) - {glue:text}`Vemd:1.3f`m/s EAS or {glue:text}`Vmd:1.3f`m/s TAS
+
+#### Plotting flight speeds
+
+From the above, it is possible to plot the maximum and minimum flight speeds with altitude
 
 
+# Make a vector for the altitude in 100m intervals
+alt_vector = np.arange(0, ceiling, 0.1)
+alt_vector = np.concatenate((alt_vector, ceiling))
+
+# AE and BE are already available from before - we'll introduce two new arrays to store V1 and V2
+#EAS
+VE1 = np.zeros(alt_vector.shape)
+VE2 = np.zeros(alt_vector.shape)
+
+#TAS
+V1 = np.zeros(alt_vector.shape)
+V2 = np.zeros(alt_vector.shape)
+
+# iterate over the altitudes
+for i, altitude in enumerate(alt_vector):
+    mosphere = Atmosphere(altitude*1000)
+    rho = mosphere.density
+
+    # Thrust available at this altitude
+    sigma = rho/rho_sl
+    TA = TSL * sigma[0]
+    
+    # Get the intersection
+    a = AE
+    b = -TA
+    c = BE
+    flight_limit_speeds = np.sort(np.sqrt(np.roots([a, b, c])))
+    
+    # Store these in the array
+    VE1[i] = flight_limit_speeds[0]
+    VE2[i] = flight_limit_speeds[1]
+    
+    # And for EAS
+    V1[i] = VE1[i] * sigma ** -.5
+    V2[i] = VE2[i] * sigma ** -.5
+    
+    
+# Sort these into an array for plotting
+VEs = np.concatenate((VE1, np.flip(VE2)))
+Vs = np.concatenate((V1, np.flip(V2)))
+alt_vector = np.concatenate((alt_vector, np.flip(alt_vector)))
+
+# 
+
+
+
+fig = go.Figure()
+
+fig.add_trace(go.Scatter(x=VEs, y=alt_vector, mode="lines", name="EAS"))
+fig.add_trace(go.Scatter(x=Vs, y=alt_vector, mode="lines", name="TAS"))
+
+fig.update_layout(
+    title=f"Possible airspeeds for different altitudes in EAS and TAS",
+    xaxis_title="Airspeed / (m/s)",
+    yaxis_title="Altitude / km",
+)
+
+    
+
+Now - the plot above show the *possible flight speeds* from the solution of the quadratic, but it was shown in the previous plot that for lower altitudes, $v_1$ was below the stall speed.
+
+If this is taken into consideration, then the plot is modified to:
+
+# Make a vector for the altitude in 100m intervals
+alt_vector = np.arange(0, ceiling, 0.1)
+alt_vector = np.concatenate((alt_vector, ceiling))
+
+# AE and BE are already available from before - we'll introduce two new arrays to store V1 and V2
+#EAS
+VE1 = np.zeros(alt_vector.shape)
+VE2 = np.zeros(alt_vector.shape)
+
+#TAS
+V1 = np.zeros(alt_vector.shape)
+V2 = np.zeros(alt_vector.shape)
+
+# Stall speed    
+Vstall = np.sqrt(W / (0.5 * rho_sl * S * Clmax))
+
+# iterate over the altitudes
+for i, altitude in enumerate(alt_vector):
+    mosphere = Atmosphere(altitude*1000)
+    rho = mosphere.density
+
+    # Thrust available at this altitude
+    sigma = rho/rho_sl
+    TA = TSL * sigma[0]
+    
+
+
+    
+    # Get the intersection
+    a = AE
+    b = -TA
+    c = BE
+    flight_limit_speeds = np.sort(np.sqrt(np.roots([a, b, c])))
+    
+    # Store these in the array
+    VE1[i] = max([flight_limit_speeds[0], Vstall])
+    VE2[i] = flight_limit_speeds[1]
+    
+    # And for EAS
+    V1[i] = VE1[i] * sigma ** -.5
+    V2[i] = VE2[i] * sigma ** -.5
+    
+    
+# Sort these into an array for plotting
+VEs = np.concatenate((VE1, np.flip(VE2)))
+Vs = np.concatenate((V1, np.flip(V2)))
+alt_vector = np.concatenate((alt_vector, np.flip(alt_vector)))
+
+
+fig = go.Figure()
+
+fig.add_trace(go.Scatter(x=VEs, y=alt_vector, mode="lines", name="EAS"))
+fig.add_trace(go.Scatter(x=Vs, y=alt_vector, mode="lines", name="TAS"))
+
+fig.update_layout(
+    title=f"Possible airspeeds for different altitudes in EAS and TAS",
+    xaxis_title="Airspeed / (m/s)",
+    yaxis_title="Altitude / km",
+)
+
+fig.update_xaxes(range=[0, max(Vs)])
+
+
+The source code for the plot above is not included on the website - though you *could* download it if you look at the source ```.ipynb``` file.
+
+You are advised to try and reproduce the plot above based on the source code from the previous plot. This will be a good test of your ability to understand the equations and the logic flow of these codes.
+
+### Aircraft Absolute Ceiling
+
+This introduces the concept of **aircraft absolute ceiling**, which is defined as the altitude at which the only possible flightspeed is $V_{md}$.
+
+A consideration of this concept should ring alarm bells in your aircraft performance engineer's brain.
+
+```{admonition} What alarm bells?
+:class: dropdown
+
+Think back to the concept of speed stability - where the idea of velocity perturbations were introduced. 
+
+If an aircraft is flying at the absolute ceiling, then any velocity perturbation will push the aircraft to a speed where there is negative excess thrust and thus the aircraft will begin to sink.
+
+As a consequence, sustained cruise at the absolute ceiling is not feasible.
+```
+
+For the above reasons, the aircraft absolute ceiling is rarely used or listed by a manufacturer. In reality, the *aircraft service* ceiling is defined, where a small rate of climb is still possible - the rate is usually dictated by the manufacturer.
+
+To explore this concept, a model for climbing/sinking/gliding flight will be required. This ends the section of Steady Level Flight.
