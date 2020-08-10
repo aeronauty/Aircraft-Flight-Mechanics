@@ -10,9 +10,10 @@
   - file: AircraftPerformance/Introduction
   - file: AircraftPerformance/Airspeed
   - file: AircraftPerformance/SteadyLevelFlight
-  - file: AircraftPerformance/Propulsion
+  - file: AircraftPerformance/GlidingFlight
+  - file: AircraftPerformance/PoweredDescent
+  - file: AircraftPerformance/ClimbingFlight
   - file: AircraftPerformance/RangeandEndurance
-  - file: AircraftPerformance/ClimbandDescent
   - file: AircraftPerformance/SteadyTurns
 
 - chapter: Aircraft Equations of Motion
