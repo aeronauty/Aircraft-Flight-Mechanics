@@ -68,7 +68,7 @@ $$\begin{aligned}
 
 As will be covered in the Aircraft Performance module, the simplest regime of flight is that of *steady, level flight*. Steady means not accelerating, and level means that there is no variation in altitude - this *does not* mean that the wings are level, so the aircraft may be turning in a *steady turn*.
 
-Whilst this will be covered in detail later, the basics of this regime *should* be relatable to previous modules.
+Whilst this will be covered in detail later, the basics of this regime *should* be familiar from previous courses.
 
 Since the aircraft is not accelerating, the forces must be in equilibrium. We summarise our forces on the aircraft as two aerodynamic forces, one propulsive, and one inertial:
 

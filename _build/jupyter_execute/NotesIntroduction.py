@@ -31,6 +31,17 @@ So - the choice is yours; you should complete the exercises using some form of t
 
 As an aeronautical or mechanical engineering student, you should be good at coding - it will help you in your studies, and it will help you in your career. For example, if you want to practice problems for an examination - re-write an example using some programming language, and you can then simply change the input numbers and you'll have a whole set of answers to check your work against.
 
+### Matplotlib or Plotly
+
+You will see that I have chosen to use *plotly* to produce a lot of the figures in this online textbook. There were several reasons for this:
+- Plotly allows the figures to be *interactive* in that you can zoom, pan, hide/show different *traces*
+- Plotly allows the figures to be updated with live data, so this *should* allow further interactivity
+- I fancied a challenge
+
+There is a drawback to this in that I find plotly to produce plots that aren't quite so suitable for presentation by contrast to matplotlib. This means that you should probably use matplotlib when submitting homework as a PDF.
+
+This actually makes it a benefit for me as an instructor in that you *should* use the source code to see how the plots are made, but then write your own using matplotlib or MATLAB or whatever.
+
 ### Interactive content
 
 There is iteractive content that will help you to explore equations, and understand the relationship between different parameters.

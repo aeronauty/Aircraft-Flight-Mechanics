@@ -18,7 +18,7 @@ So Flight is relatively easy to understand. *Mechanics*, when not referring to p
 -- Oxford English Dictionary
 ```
 
-Flight Mechanics allows us to construct a mathematical *model* of an aircraft to analyse and predict flight characteristics. Generally, a model is a simpler representation of a system that has sufficient fidelity to represent the parameters of interest - so we are not concerned with, say, turbulence modelling in this course as this is a higher order parameter when understanding aircraft performance, stability, and control.
+Flight Mechanics allows us to construct a mathematical *model* of an aircraft to analyse and predict flight characteristics. Generally, a model is a simpler representation of a system that has sufficient fidelity to represent the parameters of interest - so we are not concerned with, say, turbulence modeling in this course as this is a higher order parameter when understanding aircraft performance, stability, and control.
 
 Within the field of mechanics, we define **kinematics** as the study of motion, without reference to the forces causing it - problems involving the kinematic equations ($s,u,v,a,t$ equations\...$v=u+a\cdot t$, ). This allows us to solve *some* problems in aircraft flight involving aircraft performance (given an aircraft's position, speed, and acceleration, we can determine basic distance parameters).
 

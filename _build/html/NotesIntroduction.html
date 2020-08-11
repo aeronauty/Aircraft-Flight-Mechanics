@@ -125,6 +125,11 @@
    Climbing Flight
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AircraftPerformance/RangeandEndurance.html">
+   Range and Endurance
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -134,6 +139,11 @@
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="zreferences.html">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zreferences.html#references">
    References
   </a>
  </li>
@@ -256,6 +266,11 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matplotlib-or-plotly">
+     Matplotlib or Plotly
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interactive-content">
      Interactive content
     </a>
@@ -294,6 +309,17 @@
 <p>I’ve discovered that Python is a wonderful and extensible programming language, which can be used to replicate pretty-much all of the functionality in MATLAB - often much more elegantly because of the nature of the language itself. MATLAB, on the other hand, is easy to get started with to perform calculations and you can construct some wonderful programs using MATLAB - but it’s not a very good programming language, <a class="reference external" href="https://www.rath.org/matlab-is-a-terrible-programming-language.html#:~:text=Individually%2C%20none%20of%20them%20make,code%20a%20rather%20painful%20exercise.">which is a common opinion</a>.</p>
 <p>So - the choice is yours; you should complete the exercises using some form of technical computing. I don’t mind what you use, as long as you get the work done. I will offer accompanying examples that will help you understand all the problems, and these will be written in Python. The original MATLAB codes should still be available in the PDF notes.</p>
 <p>As an aeronautical or mechanical engineering student, you should be good at coding - it will help you in your studies, and it will help you in your career. For example, if you want to practice problems for an examination - re-write an example using some programming language, and you can then simply change the input numbers and you’ll have a whole set of answers to check your work against.</p>
+<div class="section" id="matplotlib-or-plotly">
+<h3>Matplotlib or Plotly<a class="headerlink" href="#matplotlib-or-plotly" title="Permalink to this headline">¶</a></h3>
+<p>You will see that I have chosen to use <em>plotly</em> to produce a lot of the figures in this online textbook. There were several reasons for this:</p>
+<ul class="simple">
+<li><p>Plotly allows the figures to be <em>interactive</em> in that you can zoom, pan, hide/show different <em>traces</em></p></li>
+<li><p>Plotly allows the figures to be updated with live data, so this <em>should</em> allow further interactivity</p></li>
+<li><p>I fancied a challenge</p></li>
+</ul>
+<p>There is a drawback to this in that I find plotly to produce plots that aren’t quite so suitable for presentation by contrast to matplotlib. This means that you should probably use matplotlib when submitting homework as a PDF.</p>
+<p>This actually makes it a benefit for me as an instructor in that you <em>should</em> use the source code to see how the plots are made, but then write your own using matplotlib or MATLAB or whatever.</p>
+</div>
 <div class="section" id="interactive-content">
 <h3>Interactive content<a class="headerlink" href="#interactive-content" title="Permalink to this headline">¶</a></h3>
 <p>There is iteractive content that will help you to explore equations, and understand the relationship between different parameters.</p>

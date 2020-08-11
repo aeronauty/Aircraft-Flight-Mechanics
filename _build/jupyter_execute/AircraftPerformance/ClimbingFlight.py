@@ -86,7 +86,7 @@ CD0 = getrandomvalue(CD0)
 K = getrandomvalue(K)
 Clmax = getrandomvalue(Clmax)
 TA = getrandomvalue(TA)
-PA_constant = TA*1e3
+PA_constant = TA*100
 
 glue("W", W/1e3, display=False)
 glue("S", S, display=False)
@@ -120,6 +120,8 @@ Rant aside, I've also chosen not to make the source easily-available for some of
 
 ```
 You can hover over the plots and check the values to see if you get the same answers as the ones I've produced.
+
+Do your best to reproduce these plots as they may help you with a future homework - discuss on Slack and help each other if in doubt how to complete.
 
 import plotly.graph_objects as go
 
@@ -253,6 +255,157 @@ fig.show()
 
 ### Climb Curves - Turboprop
 
-For the same aircraft, with a turboprop capable of producing a constant *power* of {glue:text}`PA_constant`MW 
+For the same aircraft, with a turboprop capable of producing a constant *power* of {glue:text}`PA_constant`MW, the thrust and power curves can be shown similarly: 
 
+
+import plotly.graph_objects as go
+
+
+rho_sl = 1.2255
+
+# Get drag curve parameters
+A = CD0 * 0.5 * rho_sl * S
+B = K * W**2 / 0.5 / rho_sl / S
+
+# Get minimum drag and power speeds
+Vmd = (B/A)**.25
+Vmp = (B/3/A)**.25
+
+md = A * Vmd**2 + B * Vmd**-2
+dmp = A * Vmp**2 + B * Vmp**-2 
+
+# Make a velocity vector
+VE = np.linspace(25, 300, 1000)
+
+D = A*VE**2 + B*VE**-2
+P = A*VE**3 + B*VE**-1
+
+# Power available
+PA = PA_constant
+TA_prop = PA_constant/VE
+
+# Thrust and power deltas
+dT = TA_prop - D
+dP = PA - D*VE
+
+# Get the parameters to label - first best angle (maximum excess thrust)
+index_bestclimb_angle = np.argmax(dT)
+v_bestclimb_angle = VE[index_bestclimb_angle]
+d_bestclimb_angle = D[index_bestclimb_angle]
+dd_bestclimb_angle = dT[index_bestclimb_angle]
+dp_bestclimb_angle = dP[index_bestclimb_angle]
+p_bestclimb_angle = PA
+
+# Then best climb rate - (maxmimum excess power)
+v_bestclimb_rate = Vmp
+d_bestclimb_rate = D[dP == max(dP)][0]
+p_bestclimb_rate = PA
+dp_bestclimb_rate = max(dP)
+dd_bestclimb_rate = PA/Vmp - d_bestclimb_rate
+
+
+########################################################
+
+# Make a plot - first do thrust
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=VE, y=D, name="$T_R$"))
+fig.add_trace(go.Scatter(x=VE, y=TA_prop, mode='lines', name="$T_A$"))
+fig.add_trace(go.Scatter(x=VE, y=dT, name="$T_A - T_R$"))
+
+# Annotations - best angle
+fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[d_bestclimb_angle],\
+                         mode="markers+text", text="$\\theta_{max}$",\
+                         textposition="top center", name="Annotation", marker=dict(
+            color='LightSkyBlue'
+            )))
+fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[dd_bestclimb_angle], mode="markers", text="$\\theta_{max}$", textposition="top center", name="Annotation", marker=dict(
+            color='LightSkyBlue'
+            )))
+
+# Annotations - best rate
+fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[d_bestclimb_rate],\
+                         mode="markers+text", text="$v_{climb,max}$",\
+                         textposition="top center", name="Annotation",\
+                         marker=dict(color='DarkBlue')))
+fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[dd_bestclimb_rate],\
+                         mode="markers", text="$v_{climb,max}$",\
+                         textposition="top center", name="Annotation",\
+                        marker=dict(color='DarkBlue')))
+
+# Dress the plot
+fig.update_layout(
+    title="Thrust Available/Required for Turboprop",
+    xaxis_title="Airspeed m/s EAS",
+    yaxis_title="Thrust Available/Required "
+)
+
+
+fig.update_yaxes(range=[0, 3 * TA])
+
+
+for trace in fig['data']: 
+    if(trace['name'] == "Annotation"): trace['showlegend'] = False
+
+fig.update_xaxes(range=[0, 300])
+
+        
+fig.show()
+
+########################################################
+# Make a plot - second do power
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=VE, y=P, name="$P_R$"))
+fig.add_trace(go.Scatter(x=[min(VE), max(VE)], y=[PA, PA], mode='lines', name="$P_A$"))
+fig.add_trace(go.Scatter(x=VE, y=dP, name="$P_A - P_R$"))
+
+
+
+# Annotations - best angle
+fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[p_bestclimb_angle],\
+                         mode="markers+text", text="$\\theta_{max}$",\
+                         textposition="top center", name="Annotation", marker=dict(
+            color='LightSkyBlue'
+            )))
+fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[dp_bestclimb_angle], mode="markers", text="$\\theta_{max}$", textposition="top center", name="Annotation", marker=dict(
+            color='LightSkyBlue'
+            )))
+
+# Annotations - best rate
+fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[p_bestclimb_rate],\
+                         mode="markers+text", text="$v_{climb,max}$",\
+                         textposition="top center", name="Annotation",\
+                         marker=dict(color='DarkBlue')))
+fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[dp_bestclimb_rate],\
+                         mode="markers", text="$v_{climb,max}$",\
+                         textposition="top center", name="Annotation",\
+                        marker=dict(color='DarkBlue')))
+
+fig.update_yaxes(range=[0, 2 * PA])
+fig.update_xaxes(range=[0, 300])
+
+fig.update_layout(
+    title="Power Available/Required for Turboprop",
+    xaxis_title="Airspeed m/s EAS",
+    yaxis_title="Power Available/Required "
+)
+for trace in fig['data']: 
+    if(trace['name'] == "Annotation"): trace['showlegend'] = False
+
+fig.show()
+
+
+## Climb Performance: Summary
+
+The **maximum climb rate** is given by the **maximum excess power**. You can think of this as the exchange of thrust energy to GPE.
+
+The **maximum climb angle** is given by the **maximum excess thrust**. This is where the least horizontal resistance is experienced.
+
+Look at the table below. Confirm using the plots that this is correct.
+
+|                     | Propeller Aircraft | Jet Aircraft |
+|---------------------|--------------------|--------------|
+| Maximum Climb Rate  | At $V_{mp}$        | $>V_{mp}$    |
+| Maximum Climb Angle | $<V_{md}$          | At $V_{md}$  |
+
+Turboprops tend to have superior climb performance - but occurs at a lower speed.
 

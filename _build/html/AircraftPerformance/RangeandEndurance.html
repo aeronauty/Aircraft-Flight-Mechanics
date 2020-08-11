@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
+    <title>Range and Endurance &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -95,7 +95,7 @@
   Aircraft Performance
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Introduction.html">
    Aircraft Performance
@@ -126,6 +126,11 @@
    Climbing Flight
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Range and Endurance
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -135,6 +140,11 @@
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../zreferences.html">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zreferences.html#references">
    References
   </a>
  </li>
@@ -217,6 +227,26 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/AircraftPerformance/RangeandEndurance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
@@ -225,7 +255,63 @@
             <i class="fas fa-list"></i> On this page
         </div>
         <nav id="bd-toc-nav">
-            
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#range-subdefinitions">
+   Range subdefinitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defining-the-problem">
+   Defining the problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breguet-range-equation">
+   Breguet Range Equation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bre-jet-aircraft">
+   BRE - Jet Aircraft
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-maximises-range">
+     What maximises range?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-is-the-bre-utilised">
+     How is the BRE utilised?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#most-efficient-cruise-climb">
+     Most Efficient - Cruise Climb
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cruise-climb-1-throttle-restricted">
+       Cruise-Climb 1: Throttle Restricted
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cruise-climb-2-throttle-unrestricted">
+       Cruise-Climb 2: Throttle Unrestricted
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constant-altitude-cruise">
+     Constant Altitude Cruise
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
         </nav>
     </div>
 </div>
@@ -234,7 +320,202 @@
         
               <div>
                 
-  
+  <div class="section" id="range-and-endurance">
+<h1>Range and Endurance<a class="headerlink" href="#range-and-endurance" title="Permalink to this headline">¶</a></h1>
+<p>Range and endurance have been mentioned in the preceding sections - and we have introduced that for <em>maximum range</em> the pilot should fly at <span class="math notranslate nohighlight">\(V_{md}\)</span>, whilst to fly for <em>maximum endurance</em> the pilot should fly at <span class="math notranslate nohighlight">\(V_{mp}\)</span>. Range and endurance are intuitive concepts:</p>
+<ul class="simple">
+<li><p><strong>Range</strong> (<span class="math notranslate nohighlight">\(R\)</span>): The maximum horizontal distance that an aircraft can cover.</p></li>
+<li><p><strong>Endurance</strong> (<span class="math notranslate nohighlight">\(E\)</span>): The time an aircraft can remain in flight</p></li>
+</ul>
+<p>In the following analysis, the range and endurance for certain fuel quantities will be determined. For (hopefully) obvious reasons, some further definitions of range will help us here</p>
+<div class="section" id="range-subdefinitions">
+<h2>Range subdefinitions<a class="headerlink" href="#range-subdefinitions" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><strong>Safe Range</strong>: The maximum distance between two airfields, for which an aircraft can fly a safe a reliable mission with a given payload.</p>
+<ul class="simple">
+<li><p>This is an involved calculation involving take-off/landing/weather/diversion allowances etc. - there isn’t an easy means to do this calculation, so tends to be performed computationally.</p></li>
+<li><p>For aircraft performance there are some more simple definitions of <em>range</em>:</p></li>
+</ul>
+</li>
+<li><p><strong>Still Air Range (SAR)</strong>: The maximum distance possible if an aircraft takes off, climbs to cruise altitude, and then cruises until all fuel is expended.</p>
+<ul class="simple">
+<li><p>Obviously not desirable to run out of fuel at altitude, but SAR gives a good indication of the influence of aircraft parameters on range.</p></li>
+</ul>
+</li>
+<li><p><strong>Gross Still Air Range (GSAR)</strong>: The maximum distance possible if an aircraft commences cruise at altitude and continues until all fuel is expended.</p>
+<ul class="simple">
+<li><p>The relationship between SAR and GSAR tends to be easy to define.</p></li>
+<li><p>GSAR much easier to calculate</p></li>
+<li><p>What will be covered here</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="defining-the-problem">
+<h2>Defining the problem<a class="headerlink" href="#defining-the-problem" title="Permalink to this headline">¶</a></h2>
+<p>To calculate GSAR, you might think that we need to:</p>
+<ul class="simple">
+<li><p>find out the fuel flow rate, <span class="math notranslate nohighlight">\(\dot{m}_{fuel}\)</span> for thrust/power associated with <span class="math notranslate nohighlight">\(V_{md}\)</span></p></li>
+<li><p>get the endurance from the fuel mass, <span class="math notranslate nohighlight">\(m_{fuel}\)</span> divided by the flow rate <span class="math notranslate nohighlight">\(E=\frac{m_{fuel}}{\dot{m}_{fuel}}\)</span></p></li>
+<li><p>hence <span class="math notranslate nohighlight">\(R=E\cdot V_{md}\)</span></p></li>
+</ul>
+<p>The above reasoning is effectively how range is determined, but there are some complications that you may/may not be considering:</p>
+<ul class="simple">
+<li><p>Aircraft take-off with a <em>lot</em> of fuel, so the <strong>aircraft weight changes with time</strong> and accordingly so do almost all the parameters we have considered up to this point</p></li>
+<li><p>This means that some trade-offs <em>have</em> to be made in efficiency to allow a reasonable cruise - and we will see these</p></li>
+</ul>
+</div>
+<div class="section" id="breguet-range-equation">
+<h2>Breguet Range Equation<a class="headerlink" href="#breguet-range-equation" title="Permalink to this headline">¶</a></h2>
+<p>The Breguet Range Equation (BRE) is named after a French aircraft designer, but was actually derived in the 1920’s by J G Coffin.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">History and namesakes…</p>
+<p>I’ve loosely read the history of the BRE and it being Coffin who actually came up with it in NACA Report 1969, but I’ve never actually delved into the legacy of this equation. If you wish to, and suggest a correct here, feel free.</p>
+</div>
+<p>The BRE allows a simple means to calculate GSAR, and can be defined in words as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\substack{\text{&quot;The rate of}\\\text{aircraft mass reduction&quot;}}=\substack{\text{&quot;The rate of}\\\text{fuel mass burned&quot;}}\end{split}\]</div>
+<p>A parameter, <span class="math notranslate nohighlight">\(f\)</span>, is introduced which is:</p>
+<ul class="simple">
+<li><p>Thrust Specific Fuel Consumption (TSFC) for a <strong>turbojet</strong>
+<span class="math notranslate nohighlight">\(f\)</span> - <strong>Mass of fuel burned per unit of thrust per second</strong></p></li>
+<li><p>Specific Fuel Consumption (SFC) for a <strong>turboprop</strong>
+<span class="math notranslate nohighlight">\(f\)</span> - <strong>Mass of fuel burned per unit of power per second</strong></p></li>
+</ul>
+<p>The analysis is slightly different for jet and propeller-driven aircraft, so jet aircraft will be explored first.</p>
+</div>
+<div class="section" id="bre-jet-aircraft">
+<h2>BRE - Jet Aircraft<a class="headerlink" href="#bre-jet-aircraft" title="Permalink to this headline">¶</a></h2>
+<p>With <span class="math notranslate nohighlight">\(f\)</span> defined as the <em>mass of fuel burned per unit of thrust per second</em>, the SI units are <span class="math notranslate nohighlight">\(\frac{\text{kg}}{\text{N}\cdot\text{s}}\)</span>, and these are what you <em>must</em> use in equation form (if you’re using SI units), but <span class="math notranslate nohighlight">\(f\)</span> can be defined in other units such as <span class="math notranslate nohighlight">\(\frac{\text{kg}}{\text{kN}\cdot\text{hr}}\)</span> so you must remember to convert.</p>
+<p>The BRE for a jet aircraft is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\text{d}W}{\text{d}t}=-f\,g\,T\]</div>
+<p>which can be rearranged for the time</p>
+<div class="math notranslate nohighlight">
+\[\text{d}t = -\frac{\text{d}W}{f\,g\,T}\]</div>
+<p>since the endurance/range is defined by <em>cruise</em> conditions, the equilibrium steady flight conditions of <span class="math notranslate nohighlight">\(T=D\)</span> and <span class="math notranslate nohighlight">\(L=W\)</span> can be utilised such that</p>
+<div class="math notranslate nohighlight">
+\[T=\frac{D}{L}W=\frac{C_D}{C_L}W\]</div>
+<p>which can be substituted into the BRE to give</p>
+<div class="math notranslate nohighlight">
+\[\text{d}t = -\frac{1}{f\,g}\frac{C_L}{C_D}\frac{\text{d}W}{W}\]</div>
+<p>for constant lift-to-drag ratio and TSFC, the equation above can be integrated with the limits <span class="math notranslate nohighlight">\(t_{end}\)</span> and <span class="math notranslate nohighlight">\(t_{start}\)</span> corresponding to <span class="math notranslate nohighlight">\(W_{end}\)</span> and <span class="math notranslate nohighlight">\(W_{start}\)</span>. This yields the endurance, <span class="math notranslate nohighlight">\(E\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[E=t_{end}-t_{start}=\frac{1}{f\,g}\frac{C_L}{C_D}\ln\left|\frac{W_{start}}{W_{end}}\right|\]</div>
+<p>and hence the range is given if it is assumed TAS remains constant</p>
+<div class="math notranslate nohighlight" id="equation-bre">
+<span class="eqno">(7)<a class="headerlink" href="#equation-bre" title="Permalink to this equation">¶</a></span>\[R=\frac{V}{f\,g}\frac{C_L}{C_D}\ln\left|\frac{W_{start}}{W_{end}}\right|\]</div>
+<div class="section" id="what-maximises-range">
+<h3>What maximises range?<a class="headerlink" href="#what-maximises-range" title="Permalink to this headline">¶</a></h3>
+<p>The equation above gives the design/mission choices that help maximise range:</p>
+<div class="figure align-default" id="cruiseclimbbre">
+<a class="reference internal image-reference" href="../_images/CruiseClimbBRE.png"><img alt="../_images/CruiseClimbBRE.png" src="../_images/CruiseClimbBRE.png" style="height: 300px;" /></a>
+</div>
+</div>
+<div class="section" id="how-is-the-bre-utilised">
+<h3>How is the BRE utilised?<a class="headerlink" href="#how-is-the-bre-utilised" title="Permalink to this headline">¶</a></h3>
+<p>In the Breguet Range Equation, Equation <a class="reference internal" href="#equation-bre">(7)</a>, some parameters are dictated by the problem:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(W_{start}\)</span> is the weight of the aircraft including fuel</p></li>
+<li><p><span class="math notranslate nohighlight">\(W_{end}\)</span> is the weight of the aircraft with no fuel, or with a certain mandated reserve</p></li>
+<li><p><span class="math notranslate nohighlight">\(f\)</span> is the TSFC and will generally be given in a problem</p></li>
+<li><p><span class="math notranslate nohighlight">\(g\)</span> is accleration due to gravity, and since you’re an aerospace engineer you should use <span class="math notranslate nohighlight">\(g=9.80665\frac{\text{m}}{\text{s}^{2}}\)</span></p></li>
+</ul>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><em>When I was an undergrad…</em></p>
+<p>…we went through deriving <span class="math notranslate nohighlight">\(g\)</span> using Newton’s law of gravitation - due to the size of this course, there isn’t enough room. <a class="reference external" href="https://earth.esa.int/web/guest/-/gravity-in-detail-5728">Have a look here instead</a>.</p>
+</div>
+<p>Other parameters are unknown - so <span class="math notranslate nohighlight">\(V\)</span>, <span class="math notranslate nohighlight">\(C_L\)</span>, and <span class="math notranslate nohighlight">\(C_D\)</span> need to be <em>constrained</em> (defined in terms of other parameters) in order to use Equation <a class="reference internal" href="#equation-bre">(7)</a> to determine the possible range.</p>
+<p>In each of these cases, the <em>range function</em> is replaced with something else.</p>
+<div class="figure align-default" id="rangefunction">
+<a class="reference internal image-reference" href="../_images/RangeFunction.png"><img alt="../_images/RangeFunction.png" src="../_images/RangeFunction.png" style="height: 300px;" /></a>
+</div>
+<p>The ‘range function’ is the expression <span class="math notranslate nohighlight">\(V\frac{C_L}{C_D}\)</span> and clearly maximum range is given by the maximum value thereof.</p>
+<p>In practice, this means replacing <span class="math notranslate nohighlight">\(V\frac{C_L}{C_D}\)</span> with an equivalent expression representing the variation of the parameters therein, by finding another means of representing <span class="math notranslate nohighlight">\(V\)</span> as a function of <span class="math notranslate nohighlight">\(C_L\)</span> or <span class="math notranslate nohighlight">\(C_D\)</span>.</p>
+<p>Three different means of doing this will be explored:</p>
+</div>
+<div class="section" id="most-efficient-cruise-climb">
+<h3>Most Efficient - Cruise Climb<a class="headerlink" href="#most-efficient-cruise-climb" title="Permalink to this headline">¶</a></h3>
+<p>The most aerodynamically efficient cruise would be with constant best <span class="math notranslate nohighlight">\(C_L/C_D\)</span>, and constant <span class="math notranslate nohighlight">\(f\)</span>. These have some implications. Have a look at these in the dropdown below:</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Implication of the most efficient cruise</p>
+<p>Above, it was stipulated that the lift-to-drag ratio (<span class="math notranslate nohighlight">\(C_L/C_D\)</span>), TSFC <span class="math notranslate nohighlight">\(f\)</span>, and <span class="math notranslate nohighlight">\(V_{T}\)</span> were constant. These assumptions have some implications:</p>
+<ul class="simple">
+<li><p>Fuel burn causes a reduction in aircraft weight - so as <span class="math notranslate nohighlight">\(W\)</span> drops, the dimensional value of lift, <span class="math notranslate nohighlight">\(L\)</span>, must also drop (<span class="math notranslate nohighlight">\(L=W\)</span>)</p></li>
+<li><p>Since TAS is constant, for <span class="math notranslate nohighlight">\(L\)</span> to drop, either <span class="math notranslate nohighlight">\(C_L\)</span> must drop or <span class="math notranslate nohighlight">\(\sigma\)</span> must reduce</p>
+<ul>
+<li><p>But it was also assumed that the aircraft flies at the best aerodynamic efficiency, and that <span class="math notranslate nohighlight">\(C_L/C_D\)</span> was constant, which implies a constant angle of attack</p></li>
+<li><p>Therefore, <span class="math notranslate nohighlight">\(\sigma\)</span> must reduce, and hence <strong>altitude must increase</strong> for an efficient cruise</p></li>
+</ul>
+</li>
+<li><p>As <span class="math notranslate nohighlight">\(C_L\)</span> reduces, for constant <span class="math notranslate nohighlight">\(C_L/C_D\)</span>, <span class="math notranslate nohighlight">\(C_D\)</span> must reduce in proportion to <span class="math notranslate nohighlight">\(\sigma\)</span> also</p>
+<ul>
+<li><p>Since <span class="math notranslate nohighlight">\(T=D\)</span>, the thrust must reduce with altitude</p></li>
+<li><p>For constant TSFC, <span class="math notranslate nohighlight">\(f\)</span>, the <strong>throttle setting must be constant</strong></p></li>
+<li><p>Hence thrust must be modelled from <span class="math notranslate nohighlight">\(T=T_{SL}\cdot\sigma^n\)</span> with <span class="math notranslate nohighlight">\(n=1\)</span></p></li>
+<li><p>As discussed previously, <span class="math notranslate nohighlight">\(n\)</span> is dependent on altitude and engine type - and the thrust model above is a vast simplification <em>anyway</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(n=1\)</span> is more suitable in the <em>stratosphere</em> (above 11km-ish), where the temperature falls with altitude (slightly more complicated than this, but it works enough for us).</p></li>
+<li><p>Below 11km, in the <em>troposphere</em>, the temperature falls with altitude - and hence <span class="math notranslate nohighlight">\(n&lt;1\)</span>, so thrust falls less rapidly with altitude. To maintain constant <span class="math notranslate nohighlight">\(C_L/C_D\)</span> requires the pilot to reduce the throttle to maintain <span class="math notranslate nohighlight">\(V\)</span> or <span class="math notranslate nohighlight">\(C_L\)</span>, which would change the TSFC</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>The derivation has arrived at the so-called <em>cruise-climb</em> case, whereby the aircraft altitude rises along the cruise to maintain peak aerodynamic efficiency. This is infrequently allowed by air traffic control - but aircraft often follow a stepped-climb, which is a planned series of altitude changes to allow some of the benefits.</p>
+<p>Further to the above, two cruise-climb cases can be explored:</p>
+<ol class="simple">
+<li><p><strong>Throttle Restricted</strong> - The throttle setting is <em>fixed</em>, and the aircraft must vary altitude to maintain constant <span class="math notranslate nohighlight">\(C_L/C_D\)</span></p></li>
+<li><p><strong>Throttle Unrestricted</strong> - The throttle can be altered to maintain constant <span class="math notranslate nohighlight">\(C_L/C_D\)</span></p></li>
+</ol>
+<div class="section" id="cruise-climb-1-throttle-restricted">
+<h4>Cruise-Climb 1: Throttle Restricted<a class="headerlink" href="#cruise-climb-1-throttle-restricted" title="Permalink to this headline">¶</a></h4>
+<p>‘Throttle-restricted’ means that the throttle is kept constant, and the maximum range therefore depends on the variation of thrust with altitude, hence:</p>
+<p><span class="math notranslate nohighlight">\(T=T_{sl}\cdot\sigma\)</span></p>
+<p>Since the variation of altitude is unknown, <span class="math notranslate nohighlight">\(T=D\)</span> will be used to develop an expression for <span class="math notranslate nohighlight">\(V\)</span> that does not contain <span class="math notranslate nohighlight">\(\sigma\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}T &amp;= T_{sl}\cdot\sigma\\
+&amp;= D\end{aligned}\end{split}\]</div>
+<p>from the definition of the drag coefficient</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}T_{sl}\,\sigma&amp;= C_D\,\frac{1}{2}\,\rho_{sl}\,\sigma\,V^2\,S\end{aligned}\]</div>
+<p>and hence velocity can be represented in terms of constants and the drag coefficient</p>
+<div class="math notranslate nohighlight">
+\[\implies V=\sqrt{\frac{T_{sl}}{\frac{1}{2}\,\rho_{sl}\,S\,C_D}}\]</div>
+<p>so the range function becomes</p>
+<div class="math notranslate nohighlight">
+\[V\,\frac{C_L}{C_D}=\sqrt{\frac{T_{sl}}{\frac{1}{2}\,\rho_{sl}\,S\,C_D}}\frac{C_L}{C_D}\]</div>
+<div class="math notranslate nohighlight" id="equation-throttlerestricted">
+<span class="eqno">(8)<a class="headerlink" href="#equation-throttlerestricted" title="Permalink to this equation">¶</a></span>\[V\,\frac{C_L}{C_D}=\sqrt{\frac{2\,T_{sl}}{\rho_{sl}\,S}}\frac{C_L}{C_D^{3/2}}\]</div>
+<p>So for <strong>maximum range for throttle restricted cruise climb</strong> <span class="math notranslate nohighlight">\(\frac{C_L}{C_D^{3/2}}\)</span> must be maximised. In practice it is easier to minimise the reciprocal - inserting the drag equation:</p>
+<div class="math notranslate nohighlight">
+\[\frac{C_D^{3/2}}{C_L} = \frac{\left(C_{D0} + K\cdot C_L^2\right)^{3/2}}{C_L}\]</div>
+<p>via the quotient rule</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>I’m sure you recall the quotient rule, but here it is anyway: <span class="math notranslate nohighlight">\(\text{d}\frac{u}{v}=\frac{v\text{d} u - u\text{d} v}{v^2}\)</span></p>
+</div>
+<div class="math notranslate nohighlight">
+\[\frac{\text{d}\frac{C_D^{3/2}}{C_L}}{\text{d}C_L} = \frac{2\cdot K\cdot C_L^2\tfrac{3}{2}\left(C_{D0}+K\cdot C_L^2\right)^{1/2} - \left(C_{D0} + K\cdot C_L^2\right)^{3/2}}{C_L^2}\]</div>
+<p>which has a maximum at</p>
+<div class="math notranslate nohighlight">
+\[2\cdot C_{D0} = 2\cdot K\cdot C_L^2\]</div>
+<p>hence defining the lift and drag coefficients for Throttle-Restricted Cruise-Climb as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}C_{D_{trcc}} &amp;= \frac{3}{2}\cdot C_{D0}\label{eq:CDmaxRCT}\\
+	C_{L_{trcc}} &amp;= \sqrt{\frac{C_{D0}}{2\cdot K}}\end{aligned}\end{split}\]</div>
+<p>you can see that the aerodynamic coefficients above are defined in terms of constants - so these can be determined from design characteristics. Once these are determined, they are substituted into the range function, Equation <a class="reference internal" href="#equation-throttlerestricted">(8)</a>, which is in turn substituted into the BRE Equation <a class="reference internal" href="#equation-bre">(7)</a> - then this is integrated to yield the range.</p>
+</div>
+<div class="section" id="cruise-climb-2-throttle-unrestricted">
+<h4>Cruise-Climb 2: Throttle Unrestricted<a class="headerlink" href="#cruise-climb-2-throttle-unrestricted" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="constant-altitude-cruise">
+<h3>Constant Altitude Cruise<a class="headerlink" href="#constant-altitude-cruise" title="Permalink to this headline">¶</a></h3>
+<p>A constant altitude cruise starts with te</p>
+</div>
+</div>
+</div>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
