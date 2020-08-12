@@ -468,6 +468,34 @@ fig.add_trace(go.Scatter(x=[CL_mp], y=[200], mode="text",\
                          textposition="bottom center", name="DontPrint",\
                          textfont=dict(color="gold")))
 
+# Overlay lines for the EAS
+def CLtoEAS(CL):
+    V = np.sqrt(Ws/(.5 * rho_sl * S * CL)) /.5144444
+    return V
+
+
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_trcc), CLtoEAS(CL_trcc)], y=[400, 1500], name="DontPrint", mode="lines", line=dict(color="crimson")))
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_tucc), CLtoEAS(CL_tucc)], y=[400, 1500], name="DontPrint", mode="lines", line=dict(color="darkgreen")))
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_md), CLtoEAS(CL_md)], y=[400, 1500], name="DontPrint", mode="lines", line=dict(color="mediumpurple")))
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_mp), CLtoEAS(CL_mp)], y=[400, 1500], name="DontPrint", mode="lines", line=dict(color="gold")))
+
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_trcc)], y=[200], mode="text",\
+                         text="$V_{C_{L,trcc}}$",\
+                         textposition="bottom center", name="DontPrint",\
+                         textfont=dict(color="crimson")))
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_tucc)], y=[300], mode="text",\
+                         text="$V_{C_{L,tucc}}$",\
+                         textposition="bottom center", name="DontPrint",\
+                         textfont=dict(color="darkgreen")))
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_md)], y=[300], mode="text",\
+                         text="$V_{C_{L,md}}$",\
+                         textposition="bottom center", name="DontPrint",\
+                         textfont=dict(color="mediumpurple")))
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_mp)], y=[200], mode="text",\
+                         text="$V_{C_{L,mp}}$",\
+                         textposition="bottom center", name="DontPrint",\
+                         textfont=dict(color="gold")))
+
     
     
 # Remove junk legend entries - this would be more efficient if I weren't lazy
@@ -510,6 +538,15 @@ fig.show()
 fig2.show()
 fig3.show()
 
+Notice that the maximum range is found at a considerably higher speed than both the minimum power and minimum drag speeds, for both types of cruise climb. The ratio between the two speeds and the minimum drag speed may be readily shown.
+
+$$\begin{alignat*}{2}
+	\frac{V_{trcc}}{V_{md}}&=\frac{\sqrt{\sqrt{2}}}{1} \hspace{1cm} \frac{V_{tucc}}{V_{md}} &&= \frac{\sqrt{\sqrt{3}}}{1}\\
+	&= 1.1892 &&= 1.3161
+\end{alignat*}$$
+
+These ratios hold across altitudes, as you should expect.
+
 ## BRE - Propeller Aircraft
 
 The BRE for propeller aircraft is similar to that for jet aircraft, but SFC is used in place of TSFC - the SI units are $\text{kg}/{\text W s}$.
@@ -530,6 +567,79 @@ $$\implies \text{d}t=-\frac{\eta}{f\,g\,V}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
 
 Assuming, as for the jet cruise-climb case, that $\tfrac{C_L}{C_D}$, $f$, and $V$ remain constant, the equation above can be integrated from $W_S$ to $W_E$ to yield the endurance, $E$:
 
-$$E_{propeller}=t_e-t_s=\frac{\eta}{f\,g}\frac{1}{V}\frac{C_L}{C_D}\ln\left|\frac{W_S}{W_E}\right|$$
+```{math}
+:label: PropellerEndurance
+E_{propeller}=t_e-t_s=\frac{\eta}{f\,g}\frac{1}{V}\frac{C_L}{C_D}\ln\left|\frac{W_S}{W_E}\right|
+```
+
+### Propeller Aircraft: Maximum Endurance
+
+Equation {eq}`PropellerEndurance` shows that for the maximum endurance for a propeller-driven aircraft, the quanity $\frac{C_L}{V\,C_D}$ must be maximised, which is different to the jet aircraft case.
+
+$$\frac{C_L}{V\,C_D}=\frac{L}{V\,D}=\frac{W}{V\,D}=\frac{W}{P}$$
+
+Clearly the maximum endurance is found at the **minimum power condition**, thus **for maximum endurance a propeller-driven aircraft should fly at** $V_{mp}$.
+
+### Propeller Aircraft: Maximum Range
+
+The increment in aircraft distance, $\text{d}S$ when flown at velocity $V$ is given by
+
+$$\text{d}S = V\text{d}t=-\frac{\eta}{f\,g}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
+
+Clearly the maximum endurance is found at the **minimum drag condition**, thus **for maximum endurance a propeller-driven aircraft should fly at** $V_{md}$.
+
+## Range and Endurance Summary
+
+The maximum range for propeller-driven aircraft is the same as for a glider - consider that the maximum range is given by the least resistance encountered in the longitudinal direction, enabling the aircraft to fly *furthest*, so this is the *minimum drag speed*. 
+
+The maximum endurance for propeller-driven aircraft is the same as for a glider - this is determined by the speed at which the most work is done with the least energy (most bang for buck), so this is the *minimum power speed*.
+
+These are relatively easy to intuit because in a glider, there is no input *power* - and for a propeller-driven aircraft, the propulsor is directly providing *power*.
+
+For a jet-driven aircraft, the engine provides *thrust*, and hence the power varies with forward speed. To get maximum range, using a cruise-climb method, the problem must be constrained somehow:
+- If the thrust is held constant, and altitude allowed to vary then the best $C_L$ is $\sqrt{\frac{C_{D0}}{2\,K}}$
+- If the thrust is allowed to vary to maintain $C_L$, then the best $C_L$ is $\sqrt{\frac{C_{D0}}{3\,K}}$
+
+The best range is found using the second method, starting at a greater altitude.
+
+The starting altitude does not affect the range using the first method.
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-0pky">Glider</th>
+    <th class="tg-0pky">Jet Aircraft</th>
+    <th class="tg-0lax">Propeller Aircraft</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">Maximum Endurance</td>
+    <td class="tg-0pky">At $V_{mp}$</td>
+    <td class="tg-0pky">At $V_{md}$</td>
+    <td class="tg-0lax">At $V_{mp}$</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Maximum Range</td>
+    <td class="tg-0pky">At $V_{md}$</td>
+    <td class="tg-0pky"> $\gt V_{md}$</td>
+    <td class="tg-0lax">At $V_{md}$</td>
+  </tr>
+</tbody>
+</table>
+
+All of the cruise-climb scenarios are theoretical behaviour, and are reliant on the assumptions made within these models - furthermore, cruise-climb is typically not allowed by ATC. Rather, a series of stepped-climbs are made.
+
+Nonetheless, the methods shown here allow a good estimate of range to be made - and afford the ability to look at the effect of design parameters on range and endurance.
 
 
