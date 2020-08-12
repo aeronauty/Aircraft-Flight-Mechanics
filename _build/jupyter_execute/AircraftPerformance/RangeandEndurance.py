@@ -325,9 +325,9 @@ Using the expressions derived above, the lift coefficient for Thrust restricted 
 
 Using the expressions derived above, the lift coefficient for Thrust unrestricted cruise climb is {glue:text}`CL_tucc:1.3f`, and the drag coefficient is {glue:text}`CD_tucc:1.3f`. This gives the range function as {glue:text}`range_function_tucc:1.3f` which yields a range of {glue:text}`range_tucc:1.0f`km
 
-## Variation of range with lift coefficient
+## Variation of range with lift coefficient, airspeed
 
-Recall that the lift coefficient is effectively a measure of the aircraft *cruise speed*. The range can be plotted vs. lift coefficient and forward speed for the two different cruise-climb cases over a range of altitudes.
+Recall that the lift coefficient is effectively a measure of the aircraft *cruise speed*. The range can be plotted vs. lift coefficient and forward speed for the two different cruise-climb cases over a range of starting altitudes.
 
 ```{admonition} Beware of source for the plots below...
 :class: dropdown
@@ -429,7 +429,13 @@ CL_md = np.sqrt(CD0/K)
 CL_mp = np.sqrt(3*CD0/K)
 
 
-# Overlay lines for different Cls    
+# Overlay lines for different Cls on the first figure only
+fig.add_trace(go.Scatter(x=[CL_trcc, CL_trcc], y=[0, 1500], name="DontPrint", mode="lines"))
+fig.add_trace(go.Scatter(x=[CL_tucc, CL_tucc], y=[0, 1500], name="DontPrint", mode="lines"))
+
+fig.add_trace(go.Scatter(x=[CL_trcc], y=[200], mode="text", text="$C_L=\sqrt{\\frac{C_{D0}}{2\,K}}$", textposition="middle right", name="DontPrint"))
+fig.add_trace(go.Scatter(x=[CL_tucc], y=[200], mode="text", text="$C_L=\sqrt{\\frac{C_{D0}}{3\,K}}$", textposition="middle left", name="DontPrint"))
+
     
     
 # Remove junk legend entries - this would be more efficient if I weren't lazy
@@ -444,19 +450,19 @@ for trace in fig3['data']:
     
 
 fig.update_layout(
-    title="$\\text{Thrust Restricted and Unrestricted Ranges vs. }C_L\\text{ for different altitudes}$",
+    title="Thrust Restricted and Unrestricted Ranges vs. Lift Coefficient for different starting altitudes",
     xaxis_title="$C_L$",
     yaxis_title="Range/km",
 )
 
 fig2.update_layout(
-    title="$\\text{Thrust Restricted and Unrestricted Ranges vs. EAS} \\text{ for different altitudes}$",
+    title="Thrust Restricted and Unrestricted Ranges vs. EAS for different starting altitudes",
     xaxis_title="$V_{E}/\\text{kn}$",
     yaxis_title="Range/km",
 )
 
 fig3.update_layout(
-    title="$\\text{Thrust Restricted and Unrestricted Ranges vs. TAS}\\text{ for different altitudes}$",
+    title="Thrust Restricted and Unrestricted Ranges vs. TAS for different starting altitudes",
     xaxis_title="$V/\\text{kn}$",
     yaxis_title="Range/km",
 )
