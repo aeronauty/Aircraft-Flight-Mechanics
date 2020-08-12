@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Manoeuvres &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
+    <title>Manoeuvres and Aircraft Loading &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -133,7 +133,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Manoeuvres
+   Manoeuvres and Aircraft Loading
   </a>
  </li>
 </ul>
@@ -266,6 +266,11 @@
    Load Factor
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loops">
+   Loops
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -277,26 +282,132 @@
               <div>
                 
   <p><em>(Note: the US spelling is maneuver, but it took me years of muscle memory training to spell manoeuvre correctly, and I won’t be losing it easily.)</em></p>
-<div class="section" id="manoeuvres">
-<h1>Manoeuvres<a class="headerlink" href="#manoeuvres" title="Permalink to this headline">¶</a></h1>
-<p>Manoeuvre will be broken down into horizontal and vertical manoeuvres, comprising curvilinear motion. Such manoeuvres are the result of a force <em>perpendicular</em> to the flight path, giving a normal acceleration.</p>
-<p>Vertical Manoeuvres:</p>
-<ul class="simple">
-<li><p>Loop, pull-up, push-over, outside loop</p></li>
-</ul>
-<p>Horizontal Manoeuvres:</p>
-<ul class="simple">
-<li><p>Banked Turn</p></li>
-</ul>
+<div class="section" id="manoeuvres-and-aircraft-loading">
+<h1>Manoeuvres and Aircraft Loading<a class="headerlink" href="#manoeuvres-and-aircraft-loading" title="Permalink to this headline">¶</a></h1>
+<p>Manoeuvre will be broken down into horizontal (e.g., flat or banked turns) and vertical manoeuvres (e.g., loops, pull-ups), comprising curvilinear motion. Such manoeuvres are the result of a force <em>perpendicular</em> to the flight path, giving a normal acceleration.</p>
 <p>All of the manoevures discussed are the result of a <strong>variation in lift</strong>, which can be <em>large</em>. Consider that the dynamic pressure rises with the square of the forward speed, so a five-fold speed increase results in twenty-five times the aerodynamic forces.</p>
 <div class="section" id="load-factor">
 <h2>Load Factor<a class="headerlink" href="#load-factor" title="Permalink to this headline">¶</a></h2>
 <p>The load that can be safely taken through an aircraft dictates the load limits on an aircraft - for this the <strong>load factor</strong> is introduced as a non-dimensional measure of the load variation.</p>
 <div class="math notranslate nohighlight" id="equation-loadfactor">
-<span class="eqno">(11)<a class="headerlink" href="#equation-loadfactor" title="Permalink to this equation">¶</a></span>\[n\triangleeq\frac{L}{W}\]</div>
-<div class="admonition-so-what-is-the-load-factor-for-steady-level-flight admonition">
+<span class="eqno">(11)<a class="headerlink" href="#equation-loadfactor" title="Permalink to this equation">¶</a></span>\[n=\frac{L}{W}\]</div>
+<div class="dropdown admonition">
 <p class="admonition-title">So - <em>what is the load factor for steady level flight?</em></p>
-<p>An example of an admonition with a title.</p>
+<p>In steady level flight, the equilibrium steady flight condition is <span class="math notranslate nohighlight">\(L=W\)</span> so <span class="math notranslate nohighlight">\(n=1\)</span></p>
+</div>
+</div>
+<div class="section" id="loops">
+<h2>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h2>
+<p>If the pilot pulls back on the stick, provided there is sufficient thrust, the angle of attack will be increased and the lift will also increase. This increases the load factor.</p>
+<p>A ‘perfect’ loop is:</p>
+<ul class="simple">
+<li><p>Constant airspeed</p></li>
+<li><p>Constant radius</p></li>
+</ul>
+<div class="figure align-default" id="loop">
+<a class="reference internal image-reference" href="../_images/Loop.png"><img alt="../_images/Loop.png" src="../_images/Loop.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Constant Radius Loop</span><a class="headerlink" href="#loop" title="Permalink to this image">¶</a></p>
+</div>
+<p>If the angular displacement is denoted by <span class="math notranslate nohighlight">\(\gamma\)</span>, with <span class="math notranslate nohighlight">\(\gamma=0\)</span> being the bottom of the loop, increasing clockwise, then the equations of motion are, in the aircraft longitudinal direction</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>From motion in a circle, recall that centripetal (centre-seeking) acceleration is:</p>
+<p><span class="math notranslate nohighlight">\(a_c = \frac{V^2}{r}\)</span></p>
+<p>hence from Newton’s second law, the force required to maintain a loop of radius <span class="math notranslate nohighlight">\(r\)</span> is:</p>
+<p><span class="math notranslate nohighlight">\(F_c=\frac{m\,V^2}{r}\)</span></p>
+</div>
+<div class="math notranslate nohighlight">
+\[T-D-W\sin\gamma=0\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[L + W\cos\gamma=\frac{W\,V^2}{g\,r}\]</div>
+<p>So, at different points in the circle the equations of motion give, with <span class="math notranslate nohighlight">\(F_c = \frac{W\,V^2}{g\,r}\)</span>:</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:9px 20px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:9px 20px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-zd5i{border-color:inherit;font-size:14px;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-zd5i">Horizontal Equilibrium</th>
+    <th class="tg-zd5i">Vertical Equilibrium</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">Point A</td>
+    <td class="tg-0pky">$T-D=0$</td>
+    <td class="tg-0pky">$L-W=F_c$</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Point B</td>
+    <td class="tg-0pky">$T-D-W=0$</td>
+    <td class="tg-0pky">$L=F_c$</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Point C</td>
+    <td class="tg-0pky">$T-D=0$</td>
+    <td class="tg-0pky">$L+W=F_c$</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Point D</td>
+    <td class="tg-0pky">$T-D+W=0$</td>
+    <td class="tg-0pky">$L=F_c$</td>
+  </tr>
+</tbody>
+</table>
+<p>For the perfect loop, the normal acceleration is <strong>constant</strong>, and the load factor varies, so at the different points of the loop above, the load factor is:</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:9px 20px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:9px 20px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-zd5i{border-color:inherit;font-size:14px;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-zd5i">Load Factor</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">Point A</td>
+    <td class="tg-0pky">$1+\frac{V^2}{g\,r}$</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Point B</td>
+    <td class="tg-0pky">$\frac{V^2}{g\,r}$</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Point C</td>
+    <td class="tg-0pky">$\frac{V^2}{g\,r}-1$</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Point D</td>
+    <td class="tg-0pky"><span style="font-weight:400;font-style:normal">$\frac{V^2}{g\,r}$</span></td>
+  </tr>
+</tbody>
+</table>
+<p>For reasons that can be readily appreciated, the <em>lift</em> and the <em>thrust</em> must be continually varied to maintain constant <span class="math notranslate nohighlight">\(F_C\)</span> required for a constant radius loop. For these reasons, your average loop looks something more like this:</p>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/CrapLoop.png"><img alt="../_images/CrapLoop.png" src="../_images/CrapLoop.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">A more realistic loop</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Think: why is the average loop shaped like a balloon?</p>
+<p>From motion in a circle, a tighter radius of turn <span class="math notranslate nohighlight">\(r\)</span> can be effected by a greater <span class="math notranslate nohighlight">\(F_c\)</span>.</p>
+<p>Without perfect input by the pilot, the weight vector will <em>add</em> to <span class="math notranslate nohighlight">\(F_C\)</span> at the top of the loop, <em>subtract</em> from it at the bottom, and vary between according the equations of motion already shown.</p>
+<p>If the pilot is unable to adjust attitude <em>perfectly</em>, it likely that the turn radius will be lowest at the bottom of the loop, and largest at the top - resulting the ‘imperfect’ shape shown.</p>
 </div>
 </div>
 </div>
