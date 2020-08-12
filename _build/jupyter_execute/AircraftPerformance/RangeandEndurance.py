@@ -1,6 +1,12 @@
+Range and endurance have been mentioned in the preceding sections - and we have introduced that for *maximum range* the pilot should fly at $V_{md}$, whilst to fly for *maximum endurance* the pilot should fly at $V_{mp}$.
+
+However - the above speeds are valid **only for unpowered flight**. So these speeds are suitable for a glider, but once an engine is introduced to an aircraft, these speeds no longer give the maximum range or the maximum endurance.
+
+Furthermore, the propulsor type changes the speeds for both. In the following section, the best range and endurance speeds for jet and propeller-driven aircraft will be explored.
+
 # Range and Endurance
 
-Range and endurance have been mentioned in the preceding sections - and we have introduced that for *maximum range* the pilot should fly at $V_{md}$, whilst to fly for *maximum endurance* the pilot should fly at $V_{mp}$. Range and endurance are intuitive concepts:
+Range and endurance are intuitive concepts:
 - **Range** ($R$): The maximum horizontal distance that an aircraft can cover.
 - **Endurance** ($E$): The time an aircraft can remain in flight
 
@@ -37,6 +43,7 @@ The Breguet Range Equation (BRE) is named after a French aircraft designer, but 
 
 ```{admonition} History and namesakes...
 :class: dropdown
+
 I've loosely read the history of the BRE and it being Coffin who actually came up with it in NACA Report 1969, but I've never actually delved into the legacy of this equation. If you wish to, and suggest a correct here, feel free.
 ```
 The BRE allows a simple means to calculate GSAR, and can be defined in words as:
@@ -74,15 +81,23 @@ $$\text{d}t = -\frac{1}{f\,g}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
 
 for constant lift-to-drag ratio and TSFC, the equation above can be integrated with the limits $t_{end}$ and $t_{start}$ corresponding to $W_{end}$ and $W_{start}$. This yields the endurance, $E$:
 
-$$E=t_{end}-t_{start}=\frac{1}{f\,g}\frac{C_L}{C_D}\ln\left|\frac{W_{start}}{W_{end}}\right|$$
+```{math}
+:label: EnduranceJet
+E=t_{end}-t_{start}=\frac{1}{f\,g}\frac{C_L}{C_D}\ln\left|\frac{W_{start}}{W_{end}}\right|
+````
 
-and hence the range is given if it is assumed TAS remains constant 
+### Jet Aircraft: Maximum Endurance
+
+For a given $f$ and $W_{start}$, Equation {eq}`EnduranceJet` shows that the **best endurance for a jet aircraft is found at the minimum drag speed** .
+
+To find the range, the equation above needs to be modified - the range is given by the following if it is assumed TAS remains constant 
 
 ```{math}
 :label: BRE
-R=\frac{V}{f\,g}\frac{C_L}{C_D}\ln\left|\frac{W_{start}}{W_{end}}\right|
-```
 
+R=\frac{V}{f\,g}\frac{C_L}{C_D}\ln\left|\frac{W_{start}}{W_{end}}\right|
+
+```
 
 ### What maximises range?
 
@@ -143,7 +158,6 @@ Above, it was stipulated that the lift-to-drag ratio ($C_L/C_D$), TSFC $f$, and 
     - As discussed previously, $n$ is dependent on altitude and engine type - and the thrust model above is a vast simplification *anyway*
     - $n=1$ is more suitable in the *stratosphere* (above 11km-ish), where the temperature falls with altitude (slightly more complicated than this, but it works enough for us).
     - Below 11km, in the *troposphere*, the temperature falls with altitude - and hence $n<1$, so thrust falls less rapidly with altitude. To maintain constant $C_L/C_D$ requires the pilot to reduce the throttle to maintain $V$ or $C_L$, which would change the TSFC
-
 ```
 The derivation has arrived at the so-called *cruise-climb* case, whereby the aircraft altitude rises along the cruise to maintain peak aerodynamic efficiency. This is infrequently allowed by air traffic control - but aircraft often follow a stepped-climb, which is a planned series of altitude changes to allow some of the benefits.
 
@@ -238,7 +252,9 @@ $$\begin{align}
 	R = S_E - S_S &= \sqrt{\frac{8}{\rho S}}\frac{1}{fg}\frac{C_L^{1/2}}{C_D}\left(W_S^{1/2}-W_E^{1/2}\right)
 \end{align}$$
 
-for this case, altitude and $C_L$ are held constant. As $W$ reduces, $L$ reduces, so $V$ must reduce. Hence the range must be less as the aircraft is flying *slower* from $t>0$.
+Note that for the maximum range, $\frac{C_L^{1/2}}{C_D}$ must be maximised - which is the same as for the thrust unrestricted cruise-climb case.
+
+For this case, altitude and $C_L$ are held constant. As $W$ reduces, $L$ reduces, so $V$ must reduce. Hence the range must be less as the aircraft is flying *slower* from $t>0$.
 
 Since $C_D$ is constant, $D$ and hence $T$ must reduce - so throttle must be reduced and a variation in the fuel consumption will occur.
 
@@ -248,7 +264,7 @@ For this case, an average value of $f$ must be used, or treat as a series of sho
 
 A third, and much more common cruise profile is to cruise at a constant altitude, at a constant $V$. Hence to reduce $L$ to match the reduction in weight, $\alpha$ must be reduced, changing $C_L/C_D$. This is a more complex analysis and beyond the scope of this course.
 
-## Cruise Comparisons
+### Cruise Comparisons
 
 For an aircraft with the following parameters:
 
@@ -317,15 +333,15 @@ glue("range_function_tucc", range_function_tucc, display=False);
 glue("range_tucc", range_tucc/1e3, display=False);
 
 
-### Thrust Restricted
+#### Thrust Restricted
 
 Using the expressions derived above, the lift coefficient for Thrust restricted cruise climb is {glue:text}`CL_trcc:1.3f`, and the drag coefficient is {glue:text}`CD_trcc:1.3f`. This gives the range function as {glue:text}`range_function_trcc:1.3f` which yields a range of {glue:text}`range_trcc:1.0f`km
 
-### Thrust Unrestricted
+#### Thrust Unrestricted
 
 Using the expressions derived above, the lift coefficient for Thrust unrestricted cruise climb is {glue:text}`CL_tucc:1.3f`, and the drag coefficient is {glue:text}`CD_tucc:1.3f`. This gives the range function as {glue:text}`range_function_tucc:1.3f` which yields a range of {glue:text}`range_tucc:1.0f`km
 
-## Variation of range with lift coefficient, airspeed
+### Variation of jet range with lift coefficient, airspeed
 
 Recall that the lift coefficient is effectively a measure of the aircraft *cruise speed*. The range can be plotted vs. lift coefficient and forward speed for the two different cruise-climb cases over a range of starting altitudes.
 
@@ -430,11 +446,27 @@ CL_mp = np.sqrt(3*CD0/K)
 
 
 # Overlay lines for different Cls on the first figure only
-fig.add_trace(go.Scatter(x=[CL_trcc, CL_trcc], y=[0, 1500], name="DontPrint", mode="lines"))
-fig.add_trace(go.Scatter(x=[CL_tucc, CL_tucc], y=[0, 1500], name="DontPrint", mode="lines"))
+fig.add_trace(go.Scatter(x=[CL_trcc, CL_trcc], y=[400, 1500], name="DontPrint", mode="lines", line=dict(color="crimson")))
+fig.add_trace(go.Scatter(x=[CL_tucc, CL_tucc], y=[400, 1500], name="DontPrint", mode="lines", line=dict(color="darkgreen")))
+fig.add_trace(go.Scatter(x=[CL_md, CL_md], y=[400, 1500], name="DontPrint", mode="lines", line=dict(color="mediumpurple")))
+fig.add_trace(go.Scatter(x=[CL_mp, CL_mp], y=[400, 1500], name="DontPrint", mode="lines", line=dict(color="gold")))
 
-fig.add_trace(go.Scatter(x=[CL_trcc], y=[200], mode="text", text="$C_L=\sqrt{\\frac{C_{D0}}{2\,K}}$", textposition="middle right", name="DontPrint"))
-fig.add_trace(go.Scatter(x=[CL_tucc], y=[200], mode="text", text="$C_L=\sqrt{\\frac{C_{D0}}{3\,K}}$", textposition="middle left", name="DontPrint"))
+fig.add_trace(go.Scatter(x=[CL_trcc], y=[200], mode="text",\
+                         text="$C_{L,trcc}=\sqrt{\\frac{C_{D0}}{2\,K}}$",\
+                         textposition="bottom center", name="DontPrint",\
+                         textfont=dict(color="crimson")))
+fig.add_trace(go.Scatter(x=[CL_tucc], y=[300], mode="text",\
+                         text="$C_{L,tucc}=\sqrt{\\frac{C_{D0}}{3\,K}}$",\
+                         textposition="bottom center", name="DontPrint",\
+                         textfont=dict(color="darkgreen")))
+fig.add_trace(go.Scatter(x=[CL_md], y=[300], mode="text",\
+                         text="$C_{L,md}=\sqrt{\\frac{C_{D0}}{K}}$",\
+                         textposition="bottom center", name="DontPrint",\
+                         textfont=dict(color="mediumpurple")))
+fig.add_trace(go.Scatter(x=[CL_mp], y=[200], mode="text",\
+                         text="$C_{L,mp}=\sqrt{\\frac{3\,C_{D0}}{2\,K}}$",\
+                         textposition="bottom center", name="DontPrint",\
+                         textfont=dict(color="gold")))
 
     
     
@@ -477,4 +509,27 @@ fig.show()
 
 fig2.show()
 fig3.show()
+
+## BRE - Propeller Aircraft
+
+The BRE for propeller aircraft is similar to that for jet aircraft, but SFC is used in place of TSFC - the SI units are $\text{kg}/{\text W s}$.
+
+The BRE for propeller aircraft is
+
+$$\frac{\text{d}W}{\text{d}t}=-f\,g\,P$$
+
+where $P$ is the power delivered to the aircraft from the propeller. With $\eta$ as the propeller efficiency, the power *delivered* is function of the power *required*
+
+$$\eta P=D\,V$$
+
+so the BRE becomes
+
+$$\frac{\text{d}W}{\text{d}t}=-f\,g\,\frac{D\,V}{\eta}$$
+
+$$\implies \text{d}t=-\frac{\eta}{f\,g\,V}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
+
+Assuming, as for the jet cruise-climb case, that $\tfrac{C_L}{C_D}$, $f$, and $V$ remain constant, the equation above can be integrated from $W_S$ to $W_E$ to yield the endurance, $E$:
+
+$$E_{propeller}=t_e-t_s=\frac{\eta}{f\,g}\frac{1}{V}\frac{C_L}{C_D}\ln\left|\frac{W_S}{W_E}\right|$$
+
 
