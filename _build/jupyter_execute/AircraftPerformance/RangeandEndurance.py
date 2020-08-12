@@ -122,7 +122,7 @@ The 'range function' is the expression $V\frac{C_L}{C_D}$ and clearly maximum ra
 
 In practice, this means replacing $V\frac{C_L}{C_D}$ with an equivalent expression representing the variation of the parameters therein, by finding another means of representing $V$ as a function of $C_L$ or $C_D$.
 
-Three different means of doing this will be explored:
+Three different means of doing this will be explored - first the theory will be explained, and then numerical examples will follow.
 
 ### Most Efficient - Cruise Climb
 
@@ -202,9 +202,273 @@ you can see that the aerodynamic coefficients above are defined in terms of cons
 
 #### Cruise-Climb 2: Throttle Unrestricted 
 
+If the throttle can change to maximise aerodynamic efficiency, then the velocity can remain constant. Hence $V$ is defined by the start altitude and weight. In this case, the Aircraft Speed Equation {eq}`ACSpeedEquation` can be used to set $V$:
+
+$$\begin{aligned}
+    V &= \sqrt{\frac{W}{\tfrac{1}{2}\cdot\sigma_1\cdot\rho_{SL}\cdot S\cdot C_L}}\\
+    \therefore V\cdot\frac{C_L}{C_D} &= \sqrt{\frac{W}{\tfrac{1}{2}\cdot\sigma_1\cdot\rho_{SL}\cdot S}}\cdot\frac{C_L^{1/2}}{C_D}\label{eq:unconstrainedRF}\end{aligned}$$
+    
+So for **maximum range for throttle unrestricted cruise-climb**, we need to find cruise $C_L$ such that $\frac{C_L^{\tfrac{1}{2}}}{C_D}$ is a maximum:
+
+$$\begin{aligned}\frac{C_D}{C_L^{1/2}} &= \frac{C_{D0}+K\cdot C_L^2}{C_L^{1/2}}\\
+ &= \frac{C_{D0}}{C_L^{1/2} + K\cdot C_L^{3/2}}\\
+ \frac{\text{d}\frac{C_D}{C_L^{1/2}}}{\text{d}C_L} &= -\frac{1}{2}\frac{C_{D0}}{C_L^{3/2}}+K\cdot\frac{3}{2}\cdot C_L^{1/2}\end{aligned}$$
+
+
+max range given at the minima of this equation
+
+$$\begin{aligned}C_{D0}&=3\cdot K\cdot C_L^2\\
+    \therefore C_{D_{tucc}}&=\frac{4}{3}C_{D0}\label{eq:cdmaxr2}\\
+    \therefore C_{L_{tucc}}&=\sqrt{\frac{C_{D0}}{3K}}\label{eq:clmaxr2}\end{aligned}$$
+    
+the above $C_L$ and $C_D$ are used as before the find the maximum range.
+
 ### Constant Altitude Cruise
 
-A constant altitude cruise starts with te 
+Instead of cruise-climb, a constant altitude cruise allows the velocity to vary - the range will obviously be different.
+
+Starting again with the the differential range expression where $dS$ is the differential displacement:
+
+$$\text{d}S = -\frac{V}{f\,g}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
+
+Since $\sigma$ is held constant, the aircraft speed equation can be substituted in the above
+
+$$\begin{align}
+	dS &= -\frac{1}{fg}\cdot\sqrt{\frac{2}{\rho S}}\frac{C_L^{1/2}}{C_D}\cdot\frac{\text{d} W}{W^{1/2}}\\
+	R = S_E - S_S &= \sqrt{\frac{8}{\rho S}}\frac{1}{fg}\frac{C_L^{1/2}}{C_D}\left(W_S^{1/2}-W_E^{1/2}\right)
+\end{align}$$
+
+for this case, altitude and $C_L$ are held constant. As $W$ reduces, $L$ reduces, so $V$ must reduce. Hence the range must be less as the aircraft is flying *slower* from $t>0$.
+
+Since $C_D$ is constant, $D$ and hence $T$ must reduce - so throttle must be reduced and a variation in the fuel consumption will occur.
+
+For this case, an average value of $f$ must be used, or treat as a series of shorter steps and integrate numerically.
+
+### Actual Cruise
+
+A third, and much more common cruise profile is to cruise at a constant altitude, at a constant $V$. Hence to reduce $L$ to match the reduction in weight, $\alpha$ must be reduced, changing $C_L/C_D$. This is a more complex analysis and beyond the scope of this course.
+
+## Cruise Comparisons
+
+For an aircraft with the following parameters:
+
+|          |             |
+|:--------:|:-----------:|
+|  $W_S$   |    100kN    |
+|  $W_F$   |    60kN     |
+|   $S$    |   50m$^2$   |
+| $C_{D0}$ |    0.02     |
+|   $K$    |    0.05     |
+| $T_{SL}$ |    20kN     |
+|   $f$    | 0.0001kg/Ns |
+
+For a cruise starting at 12km altitude, the three different cruise ranges can be calculated
+
+The code below calculates the different cruise-climb cases - note that these calculations could easily be performed by hand.
+
+import numpy as np
+from myst_nb import glue
+from ambiance import Atmosphere
 
 
+# Aircraft parameters
+Ws = 100*1e3
+We = 60*1e3
+S = 50
+CD0 = 0.02
+K = 0.05
+T_sl = 20*1e3
+f = 0.0001
+alt = 12 # altitude in km
+
+g = 9.80665 # Gravitational acceleration
+rho_sl = 1.225
+
+############################################
+## Thrust restricted cruise-climb parameters
+############################################
+CL_trcc = np.sqrt(CD0/2/K)
+CD_trcc = 3/2 * CD0
+range_function_trcc = np.sqrt(2 * T_sl / rho_sl / S) * CL_trcc / CD_trcc ** (3/2)
+range_trcc = 1 / f / g * range_function_trcc * np.log(Ws/We)
+
+# Save these values
+glue("CD_trcc", CD_trcc, display=False);
+glue("CL_trcc", CL_trcc, display=False);
+glue("range_function_trcc", range_function_trcc, display=False);
+glue("range_trcc", range_trcc/1e3, display=False);
+
+############################################
+## Thrust unrestricted cruise-climb parameters
+############################################
+mosphere = Atmosphere(alt*1000)
+rho = mosphere.density[0]
+sig_1 = rho/rho_sl
+
+CL_tucc = np.sqrt(CD0/3/K)
+CD_tucc = 4/3 * CD0
+range_function_tucc = np.sqrt(Ws / (0.5 * sig_1 * rho_sl * S)) * CL_tucc ** .5 / CD_tucc
+range_tucc = 1 / f / g * range_function_tucc * np.log(Ws/We)
+
+# Save these values
+glue("CD_tucc", CD_tucc, display=False);
+glue("CL_tucc", CL_tucc, display=False);
+glue("range_function_tucc", range_function_tucc, display=False);
+glue("range_tucc", range_tucc/1e3, display=False);
+
+
+### Thrust Restricted
+
+Using the expressions derived above, the lift coefficient for Thrust restricted cruise climb is {glue:text}`CL_trcc:1.3f`, and the drag coefficient is {glue:text}`CD_trcc:1.3f`. This gives the range function as {glue:text}`range_function_trcc:1.3f` which yields a range of {glue:text}`range_trcc:1.0f`km
+
+### Thrust Unrestricted
+
+Using the expressions derived above, the lift coefficient for Thrust unrestricted cruise climb is {glue:text}`CL_tucc:1.3f`, and the drag coefficient is {glue:text}`CD_tucc:1.3f`. This gives the range function as {glue:text}`range_function_tucc:1.3f` which yields a range of {glue:text}`range_tucc:1.0f`km
+
+## Variation of range with lift coefficient
+
+Recall that the lift coefficient is effectively a measure of the aircraft *cruise speed*. The range can be plotted vs. lift coefficient and forward speed for the two different cruise-climb cases over a range of altitudes.
+
+```{admonition} Beware of source for the plots below...
+:class: dropdown
+
+Producing the plots below is fairly simple - but in order to get the labels and legend to work correctly, there's a bit of obscure logic flow in the way the plot is created.
+
+That is, it makes it look more complicated than it actually is (and it probably could be done better if I knew my way around plotly better).
+```
+
+import plotly.graph_objects as go
+## Note that there's a lot of slightly peculiar logic in the code below that enables the annotation and the legend
+# to to be printed. You don't need to worry about it.
+
+# Define a range of Cls
+CLrange = np.linspace(.1, 1.2, 1000)
+
+# Drag is given from the drag model
+CDrange = CD0 + K * CLrange**2
+
+# The CL and CD for TRCC and TUCC are defined above, so they can be reused here
+
+# Open three figures
+fig = go.Figure()
+fig2 = go.Figure()
+fig3 = go.Figure()
+
+
+# Make sigma function for convenience
+def sigma_function(alt):
+    mosphere = Atmosphere(alt)
+    rho = mosphere.density[0]
+    sig = rho/rho_sl
+    return sig
+
+# Iterate over altitudes
+for i, h in enumerate(np.arange(4, 14, 2)*1e3):
+    # Get the density ratio
+    sig = sigma_function(h)
+    
+    # Determine the cruise speed in TAS at this altitude
+    Vtas_knots = np.sqrt(Ws / (.5 * sig * rho_sl * S * CLrange)) /.5144444
+    Veas_knots = np.sqrt(Ws / (.5 * rho_sl * S * CLrange)) /.5144444
+    
+    ######## Thrust Restricted
+    # Get the range function (thrust restricted)
+    range_funct_trcc = np.sqrt(2 * T_sl / (rho_sl * S)) * CLrange / CDrange ** (3/2)
+    
+    # Get the range for this altitude
+    R_trcc = 1 / f / g * range_funct_trcc * np.log(Ws/We) / 1e3
+    
+    # Plot it
+    if i == 0:
+        fig.add_trace(go.Scatter(x=CLrange, y=R_trcc, mode="lines", name=f"Thrust-Restricted",  line=dict(width=4,
+                              dash='dash', color='red')))
+        fig2.add_trace(go.Scatter(x=Veas_knots, y=R_trcc, mode="lines", name=f"Thrust-Restricted",  line=dict(width=4,
+                              dash='dash', color='red')))
+        fig3.add_trace(go.Scatter(x=Vtas_knots, y=R_trcc, mode="lines", name=f"Thrust-Restricted",  line=dict(width=4,
+                              dash='dash', color='red')))
+    else:
+        fig.add_trace(go.Scatter(x=CLrange, y=R_trcc, mode="lines", name="DontPrint",  line=dict(width=4,
+                              dash='dash', color='red')))
+        fig2.add_trace(go.Scatter(x=Veas_knots, y=R_trcc, mode="lines", name="DontPrint",  line=dict(width=4,
+                              dash='dash', color='red')))
+        fig3.add_trace(go.Scatter(x=Vtas_knots, y=R_trcc, mode="lines", name="DontPrint",  line=dict(width=4,
+                              dash='dash', color='red')))
+    
+   
+    ######## Thrust Unrestricted
+    # Get the range function (thrust unrestricted)
+    range_funct_tucc = np.sqrt(Ws / (0.5 * sig * rho_sl * S)) * CLrange ** .5 / CDrange
+    
+    # Get the range for this altitude
+    R_tucc = 1 / f / g * range_funct_tucc * np.log(Ws/We) / 1e3
+    
+    # Plot it
+    if i == 0:
+        fig.add_trace(go.Scatter(x=CLrange, y=R_tucc, mode="lines", name="Thrust-Unrestricted", line=dict(width=4, color='blue')))
+        fig2.add_trace(go.Scatter(x=Veas_knots, y=R_tucc, mode="lines", name="Thrust-Unrestricted", line=dict(width=4, color='blue')))
+        fig3.add_trace(go.Scatter(x=Vtas_knots, y=R_tucc, mode="lines", name="Thrust-Unrestricted", line=dict(width=4, color='blue')))
+    else:
+        fig.add_trace(go.Scatter(x=CLrange, y=R_tucc, mode="lines", name="DontPrint", line=dict(width=4, color='blue')))
+        fig2.add_trace(go.Scatter(x=Veas_knots, y=R_tucc, mode="lines", name="DontPrint", line=dict(width=4, color='blue')))
+        fig3.add_trace(go.Scatter(x=Vtas_knots, y=R_tucc, mode="lines", name="DontPrint", line=dict(width=4, color='blue')))
+    
+    ######## Label the altitudes: 
+    if i == 0: fig.add_trace(go.Scatter(x=[CLrange[0]], y=[R_trcc[0]], mode="text", text="All altitudes", textposition="middle right", name="Annotation"))
+    fig.add_trace(go.Scatter(x=[CLrange[0]], y=[R_tucc[0]], mode="text", text=f"{h/1e3:1.0f}km", textposition="middle left", name="DontPrint"))
+    
+    if i == 0: fig2.add_trace(go.Scatter(x=[Veas_knots[0]+16*i + 2], y=[R_trcc[0]], mode="text", text="All altitudes", textposition="middle right", name="Annotation"))        
+    fig2.add_trace(go.Scatter(x=[Veas_knots[0]+2], y=[R_tucc[0]], mode="text", text=f"{h/1e3:1.0f}km", textposition="middle right", name="Annotation"))
+    
+    fig3.add_trace(go.Scatter(x=[Vtas_knots[0]], y=[R_tucc[0]], mode="text", text=f"{h/1e3:1.0f}km", textposition="bottom center", name="Annotation"))
+    fig3.add_trace(go.Scatter(x=[Vtas_knots[0]], y=[R_trcc[0]], mode="text", text=f"{h/1e3:1.0f}km", textposition="bottom center", name="Annotation"))
+
+# Determine the different Cls to plot for comparison    
+CL_trcc = np.sqrt(CD0/2/K)
+CL_tucc = np.sqrt(CD0/3/K)
+CL_md = np.sqrt(CD0/K)
+CL_mp = np.sqrt(3*CD0/K)
+
+
+# Overlay lines for different Cls    
+    
+    
+# Remove junk legend entries - this would be more efficient if I weren't lazy
+for trace in fig['data']: 
+    if (trace['name'] == "DontPrint") or (trace['name'] == "Annotation"): trace['showlegend'] = False
+
+for trace in fig2['data']: 
+    if (trace['name'] == "DontPrint") or (trace['name'] == "Annotation"): trace['showlegend'] = False
+        
+for trace in fig3['data']: 
+    if (trace['name'] == "DontPrint") or (trace['name'] == "Annotation"): trace['showlegend'] = False
+    
+
+fig.update_layout(
+    title="$\\text{Thrust Restricted and Unrestricted Ranges vs. }C_L\\text{ for different altitudes}$",
+    xaxis_title="$C_L$",
+    yaxis_title="Range/km",
+)
+
+fig2.update_layout(
+    title="$\\text{Thrust Restricted and Unrestricted Ranges vs. EAS} \\text{ for different altitudes}$",
+    xaxis_title="$V_{E}/\\text{kn}$",
+    yaxis_title="Range/km",
+)
+
+fig3.update_layout(
+    title="$\\text{Thrust Restricted and Unrestricted Ranges vs. TAS}\\text{ for different altitudes}$",
+    xaxis_title="$V/\\text{kn}$",
+    yaxis_title="Range/km",
+)
+    
+# Figure 1
+fig.update_xaxes(range=[0, 1.5])
+fig.update_yaxes(range=[0, 1500])
+fig2.update_yaxes(range=[0, 1500])
+fig2.update_xaxes(range=[0, 500])
+fig3.update_yaxes(range=[0, 1500])
+fig.show()
+
+fig2.show()
+fig3.show()
 
