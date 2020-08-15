@@ -50,7 +50,7 @@ The **maximum rate of climb** requires the maximum **excess power**
 
 This should feel intuitively correct to you, based upon what we know about glide angle/rate and $D_{min}/P_{min}$ and - obviously - these do not occur at the same speed. These depend on the powerplant type, and individual engine characteristics.
 
-Furthermore, the small angle assumption cannot be made, so the climb rate and angles must be determined numerically. The following assumptions are a simplification, but will help to understand the relationships between excess thrust and power, and climbing flight.
+For propeller and turbojet engines, there are some simplifications that can be made about the propulsor that allows easy determination of *one* of the parameters - *excess thrust* for a turbojet, and *excess power* for a turboprop. 
 
 ### Powerplant assumptions
 

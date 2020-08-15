@@ -279,23 +279,28 @@ h_in = 12000
 
 print(f"At {h_in}m, the density ratio is {sigma_density(h_in)[0]:1.6f}")
 
-The inputs can also be ```numpy``` arrays
+The inputs can also be ```numpy``` arrays 
 
 alts = np.arange(1, 10)
 sigmas = sigma_density(alts, 'miles')
 
 for alt, sigma in zip(alts, sigmas):
-    print(f"At an altitude of {alt} mile, the density ratio is {sigma}")
+    if alt == 1:
+        print(f"At an altitude of {alt} mile, the density ratio is {sigma}")
+    else:
+        print(f"At an altitude of {alt} miles, the density ratio is {sigma}")
+         
+# Note that the syntax to write mile/miles for single vs. any other quatity is completely unnecessary but nice
 
 #### Approximate density correction
 
-For altitudes below about 16km, we can use the approximation
+For altitudes below about 16km, the approximation can be used
 
 $$\sigma=\frac{20-H}{20+H}$$
 
 where $H$ is the altitude in $km$.
 
-The error in this approximation is easily shown using the functions we have created:
+The error in this approximation is easily shown using the functions created above:
 
 def sigma_approx(H):
     sigma = (20 - H ) / (20 + H)
@@ -370,12 +375,12 @@ else:
 
 
 # my_variable = "here is some text!"
-glue("altitude", (alt));
-glue("vc", (vc));
-glue("Vt", (Vt));
-glue("Vtabs", abs(Vt));
-glue("wind", (wind));
-glue("winddir", (winddir));
+glue("altitude", (alt), display=False);
+glue("vc", (vc), display=False);
+glue("Vt", (Vt), display=False);
+glue("Vtabs", abs(Vt), display=False);
+glue("wind", (wind), display=False);
+glue("winddir", (winddir), display=False);
 
 ### Problem 1.1 - Conversion between airspeeds
 
@@ -385,7 +390,7 @@ a) How long will it take to cover 100 miles?
 
 b) How long will it take to cover 200km?
 
-c) If instead of Vc = {glue:text}`vc`kn, we have Vc = {glue:text}`vc`kn, with a position error of $\Delta V_P=+2kn$, what do the above answers change to?
+c) If instead of Vc = {glue:text}`vc`kn, you have Vc = {glue:text}`vc`kn, with a position error of $\Delta V_P=+2kn$, what do the above answers change to?
 
 Try and tackle the problem yourself before you see the solution below. The numbers in this problem will change each time the notes are updated. 
 
@@ -517,17 +522,17 @@ The first step is to take Vc to Ve via the pressure correction.
 
 For the altitude of {glue:text}`altitude`ft, with a calibrated airspeed of {glue:text}`vc`kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction({glue:text}`altitude`, {glue:text}`vc`).
 
-This gives a value of {glue:text}`press_correction:1.3f` for the pressure correction, and this enables us to determine the equivalent airspeed from $V_e = V_c\cdot f$ so, $V_e=${glue:text}`Ve:1.3f`kn.
+This gives a value of {glue:text}`press_correction:1.3f` for the pressure correction, and this determination pf the equivalent airspeed from $V_e = V_c\cdot f$ so, $V_e=${glue:text}`Ve:1.3f`kn.
 
-We need to know the density correction - $\sigma=\frac{\rho}{\rho_{sl}}$, and this is found to be $\sigma=${glue:text}`dens_correction:1.3f`kn. Since this is an altitude _above_ sea level, this has to be a number smaller than one - if it's not, then you've done something wrong.
+For EAS to TAS, the density ratio is required - $\sigma=\frac{\rho}{\rho_{sl}}$, and this is found to be $\sigma=${glue:text}`dens_correction:1.3f`kn. Since this is an altitude _above_ sea level, this has to be a number smaller than one - if it's not, then you've done something wrong.
 
-We get true airspeed from the relationship $V=V_e\cdot\sigma^{-\frac{1}{2}}$ which yields $V$={glue:text}`V:1.3f`kn.
+True airspeed is obtained from the relationship $V=V_e\cdot\sigma^{-\frac{1}{2}}$ which yields $V$={glue:text}`V:1.3f`kn.
 
 Note that at no point have the units had to be converted into SI to make the corrections - that's the smart part of the density and pressure corrections; they are both non-dimensional corrections. If you have velocity in knots, you use them and get velocity in knots out.
 
-Since the wind is a {glue:text}`wind`, this is {glue:text}`winddir` the value above to yield the groundspeed in knots as {glue:text}`Vg:1.3f`kn.
+Since the wind is a {glue:text}`wind`, this is {glue:text}`winddir` the value above to yield the groundspeed in knots as {glue:text}`Vg:1.3f`kn. This gives the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.
 
-With the velocity in knots we can convert it to m/s by mutliplying by 0.5144444 which yields $V$={glue:text}`Vms:1.3f`m/s. This gives us the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.
+With the velocity in knots it may be easily converted to m/s by multiplying by 0.5144444 which yields $V$={glue:text}`Vms:1.3f`m/s. 
 
 100 miles is 160,934m, and hence this is covered in {glue:text}`time1:1.1f`s or {glue:text}`text_time1`
 
