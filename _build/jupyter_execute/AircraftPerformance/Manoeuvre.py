@@ -220,7 +220,7 @@ $$n_{stall}=\frac{C_{L,max}\,\tfrac{1}{2}\rho V^2\,S}{W}$$
 If the aircraft is taken to have a wing area of 16m$^2$, and a weight of 53kN, and a $C_{L,max}$ of 1.6 with a $C_{L,min}$ of -1.0, then the variation of $n_{stall}$ can be overlaid on the previous graph
 
 ```{margin}
-You might not have considered Clmin before - but it's the condition at which the wing will separate due to *negative* incidence
+You might not have considered Clmin before - but it's the condition at which the flow around the wing will separate due to *negative* incidence
 ```
 
 
@@ -320,7 +320,7 @@ fig.add_trace(go.Scatter(x=VE, y=n_stall,
 fig.add_trace(go.Scatter(x=VE[n_stall <= n_l[1]], y=n_stall[n_stall <= n_l[1]],
     mode='lines',
     line_color='red',
-    showlegend=False))
+    showlegend=False, name="Positive Stall"))
 
 ## Put some filled areas in here to show the positive stall limit
 V_stall_limited = np.linspace(0.1, Va, 100)
@@ -346,7 +346,7 @@ fig.add_trace(go.Scatter(x=VE, y=n_stall_negative,
 fig.add_trace(go.Scatter(x=VE[n_stall_negative >= n_l[0]], y=n_stall_negative[n_stall_negative >= n_l[0]],
     mode='lines',
     line_color='green',
-    showlegend=False))
+    showlegend=False, name ="Negative Stall"))
 
 ## Put some filled areas in here to show the negative stall limit
 V_stall_limited = np.linspace(0.1, Va2, 100)
@@ -361,11 +361,6 @@ fig.add_trace(go.Scatter(
     y=[0.5 * np.array([n_l[0] * np.ones(V_stall_limited.shape)]).mean()],
     mode='text',
     text="Stall Limited", showlegend=False, hoverinfo="none"))
-
-
-
-
-
 
 
 
@@ -423,7 +418,7 @@ fig.update_yaxes(range= [1.2 * n_u[0], 1.2 * n_u[1]])
 
 fig.update_layout(
     title="Representative Structural Damage and Failure Load Factors",
-    xaxis_title="$V_E/\\text{m/s}$",
+    xaxis_title="$EAS in m/s$",
     yaxis_title="$n$",
 )
 
@@ -434,33 +429,30 @@ fig.update_layout(
 fig.update_yaxes(zeroline=True, zerolinewidth=2, zerolinecolor='black')
 fig.show()
 
-import numpy as np
-import plotly.graph_objects as go
+#### Manoeuvre Speed
 
+The intersection of the stall boundary and the limit load defines $V_A$, the **Manoeuvre Speed**. 
 
-## make a V-n diagram - note that the data has been taken from here: 
-# http://www.aviationchief.com/operating-flight-strength-v-g--v-n-diagrams.html
-# and from general internet searching about the aircraft, but the methodology is different
+At speeds below $V_A$, fore/aft motion of the stick cannot produce enough load for structural damage to occur as the flow will separate before reaching an incidence at which $n_l$ would occur. Hence at speeds below $V_A$, the aircraft is *stall limited*.
 
-# Data for Gulfstream G-450
-Vs_kn_EAS = 98
-Vs_kn_EAS_negative = 125
-m = 22680
-S = 88.29
+Hence $V_A$ is the **highest speed for safe application of maximum control deflection**, whereas **at speeds above $V_A$, the controls inputs must be limited to avoid overloading the airframe**.
 
-g = 9.80665
+##### Manoeuvre Speed on a real aircraft
 
-# knots to m/s
-Vs_ms_EAS = Vs_kn_EAS * 0.5144444
+On a real aircraft, $V_A$ may be defined at a *lower* speed allowing for a dynamic overshoot.
 
-# Determine Clmax
-Clmax = m * g / (0.5 * 1.225 * S * Vs_ms_EAS**2)
-print(Clmax)
+Furthermore, $V_A$ is defined **only for pure pitching motion**. Combinations of pitch, roll, and yaw can lead to increased loads, as can *dynamic motion* which allows flow to stay *attached* for higher angles of attack than the steady state condition.
 
-# Make a vector for EAS (in m/s)
-Ve = np.linspace(0.1, 200, 1000)
+The latter proved fatal in 2001, when American Airlines Flight 587 took off from JFK. The Airbus A300-605R followed Japan Airlines Flight 47, and encountered *wake turbulence*.
 
-# Determine the stall n for each 
+The First Officer applied repeated opposite rudder inputs (which, as an aside, is a great way to set up a *Dutch Roll* oscillation), which increased the load on the vertical stabiliser until it ultimately sheared off - which occurred in <7s.
+
+```{epigraph}
+*The National Transportation Safety Board determines that the probable cause of this accident was the in-flight separation of the vertical stabilizer as a result of the loads beyond ultimate design that were created by the first officer’s unnecessary and excessive rudder pedal inputs. Contributing to these rudder pedal inputs were characteristics of the Airbus A300-600 rudder system design and elements of the American Airlines Advanced Aircraft Maneuvering Program (AAMP).*
+
+-- [NTSB Accident Report](https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR0404.pdf)
+```
+There were other contributing factors to the accident, such as the light pedal forces on the aircraft misleading the pilots to the tail aerodynamic forces. But the salient point here is that **the airframe was destroyed due to aerodynamic load at a velocity far lower than the manoeuvring speed**.
 
 
 ## Loops
