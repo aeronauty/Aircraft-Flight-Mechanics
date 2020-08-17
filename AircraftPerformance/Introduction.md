@@ -28,9 +28,8 @@ By the end of this Chapter, you should be able to:
 
 - Define an aircraft's load factor, an understand a manoeuvre flight envelope ($V-n$ diagram).
 
-- Understand the effects of gusts on steady flight, and aircraft load factor.
+- Draw a $V-n$ diagram given load factors, and some means to define aircraft stall and dive speed.
 
-- Understand field performance (take off and landing), and estimate landing field length, and take-off distance based on FAR 23 and 25.
 
 These calculations are obviously dependent on the aircraft upon which we are working, and since 1903, aircraft have changed a tremendous amount:
 
