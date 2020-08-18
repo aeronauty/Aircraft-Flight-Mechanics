@@ -37,9 +37,11 @@ This is a *large* course, comprising five interrelated modules:
 ````{tabs}
 ```{tab} Aircraft Performance
 
+- Understanding how speed is measured on an aircraft using a pitot-static
+- Defining and converting between Indicated, Calibrated, Equivalent, True Airspeed, and Groundspeed
 - Defining relationships between basic forces and motion in steady, level flight, with aircraft represented by a point mass. 
-- Understanding take-off, landing, and steady turns. 
 - Range calculations.
+- Understanding aircraft loading in accelerated flight.
 
 ```
 ```{tab} Aircraft Equations of Motion

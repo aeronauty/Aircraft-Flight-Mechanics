@@ -209,6 +209,8 @@ fig.update_layout(hovermode="x unified")
 fig.update_yaxes(zeroline=True, zerolinewidth=2, zerolinecolor='black')
 fig.show()
 
+#### Stall limits on V-n diagram
+
 At this stage, the $V-n$ diagram isn't particularly useful. You can hover over the graph and see that values of allowable load is constant with airspeed. 
 
 The graph will be adapted by inclusion of other limitations. The first of which is that **at certain airspeeds, the aircraft will stall prior to $n_l$ being reached**, and therefore this influences the speed at which manoeuvres can be attempted safely.
@@ -418,7 +420,7 @@ fig.update_yaxes(range= [1.2 * n_u[0], 1.2 * n_u[1]])
 
 fig.update_layout(
     title="Representative Structural Damage and Failure Load Factors",
-    xaxis_title="$EAS in m/s$",
+    xaxis_title="$EAS/m/s$",
     yaxis_title="$n$",
 )
 
@@ -431,7 +433,7 @@ fig.show()
 
 #### Manoeuvre Speed
 
-The intersection of the stall boundary and the limit load defines $V_A$, the **Manoeuvre Speed**. 
+The intersection of the stall boundary and the limit load defines $V_A$, the **Manoeuvre Speed**. Sometimes this is called the *corner speed*. 
 
 At speeds below $V_A$, fore/aft motion of the stick cannot produce enough load for structural damage to occur as the flow will separate before reaching an incidence at which $n_l$ would occur. Hence at speeds below $V_A$, the aircraft is *stall limited*.
 
@@ -447,6 +449,8 @@ The latter proved fatal in 2001, when American Airlines Flight 587 took off from
 
 The First Officer applied repeated opposite rudder inputs (which, as an aside, is a great way to set up a *Dutch Roll* oscillation), which increased the load on the vertical stabiliser until it ultimately sheared off - which occurred in <7s.
 
+All 260 people aboard the aircraft, and 5 people on the ground were killed in the crash. This is America's second-deadliest aviation accident.
+
 ```{epigraph}
 *The National Transportation Safety Board determines that the probable cause of this accident was the in-flight separation of the vertical stabilizer as a result of the loads beyond ultimate design that were created by the first officer’s unnecessary and excessive rudder pedal inputs. Contributing to these rudder pedal inputs were characteristics of the Airbus A300-600 rudder system design and elements of the American Airlines Advanced Aircraft Maneuvering Program (AAMP).*
 
@@ -454,6 +458,527 @@ The First Officer applied repeated opposite rudder inputs (which, as an aside, i
 ```
 There were other contributing factors to the accident, such as the light pedal forces on the aircraft misleading the pilots to the tail aerodynamic forces. But the salient point here is that **the airframe was destroyed due to aerodynamic load at a velocity far lower than the manoeuvring speed**.
 
+The sobering story here is included to show the real world application, and limitations of the theory taught in this class. Manoeuvring speed is a useful tool to understand loads on an airframe, and we will use it to understand the limits in certain manoevures - whether they are *stall limited* or $n$ *limited*.
+
+However, maoeuvring speed is is often poorly understood, and this can be disastrous.
+
+
+#### High-Speed Limit
+
+The graph above has been present with all speeds up the speed of sound at sea-level. Not all aircraft can achieve this speed, some due to powerplant limitations, and others due to dangerous aerodynamic phenomena including:
+- **Torsional Divergence** - where the wings twist up to the point that they snap off. Less common with wing aft-sweep, and impossible for certain planforms (*e.g.,* the *Spitfire* had an *imaginary* divergence speed).
+- **Flutter** - a coupled bend/twist oscillation that is _negatively aerodynamically damped_ which, again, can lead to the wings or other aerodynamic surface snapping off.
+- **Control Reversal** - where the moment provided by the control surface causes the entire wing to flex to the point that the incremental aerodynamic change due to control surface deflection is negated by the change to flexure of the wing. At speeds above the _control reversal speed_ the controls are...well...reversed.
+- **Buffeting** - high frequency oscillatory aerodynamic phenomena that may occur at high speeds.
+
+The mechanism of action is not of interest of this course - though if you took MMAE 304 Aerostructures, you will know how to determine *divergence speed* and *control reversal speed*.
+
+Fundamentally, there will be a *defined speed* that the aircraft cannot fly above and this needs to be represented on the $V-n$ diagram. This is called the **dive speed**, $V_D$.
+
+For the jet trainer aircraft, consider $V_D=300$m/s. This can be represented on the figure as a vertical line on the right-hand side.
+
+import numpy as np
+import plotly.graph_objects as go
+
+# Limit loads
+n_l = [-3.0, 7.0]
+
+# Ultimate loads
+n_u = [-5.0, 11.0]
+
+# Make a figure
+fig = go.Figure()
+
+# Make a vector of equivalent airspeed (m/s)
+VE = np.linspace(0, 340, 1000)
+
+# Plot the Structural damage area
+x_structural_damage = [VE.min(), VE.max()]
+y_structural_damage = [n_l[1], n_l[1]]
+y_structural_failure = [n_u[1], n_u[1]]
+
+## Positive strucutral damage
+# Plot a line of the structural damage
+fig.add_trace(go.Scatter(x=VE, y=n_l[1] * np.ones(VE.shape),
+    fill=None,
+    mode='lines',
+    line_color='indigo', name="+nl",
+    showlegend=False))
+
+# Then a line of the structural failure that is filled to the structural damage
+fig.add_trace(go.Scatter(
+    x=x_structural_damage,
+    y=y_structural_failure,
+    fill='tonexty', # fill area between structural failure and structural Damage
+    mode='none', fillcolor='rgba(255, 0, 0, 0.25)', name="Structural Damage", showlegend=False))
+
+# Annotate the structural failure area
+fig.add_trace(go.Scatter(
+    x=[np.mean(x_structural_damage)],
+    y=[0.5 * (n_l[1] + n_u[1])],
+    mode='text',
+    text="Structural Damage", showlegend=False))
+
+# Add the ultimate load factor
+fig.add_trace(go.Scatter(x=VE, y=n_u[1] * np.ones(VE.shape),
+    mode='lines',
+    line_color='red', name="+nu",
+    showlegend=False))
+
+# Then a line of the structural failure that is filled to the structural damage
+fig.add_trace(go.Scatter(
+    x=VE, y=3*n_u[1] * np.ones(VE.shape),
+    fill='tonexty', # fill area between structural failure and structural Damage
+    mode='none', fillcolor='rgba(255, 0, 0, 0.55)', name="Structural Damage", showlegend=False, hoverinfo="none"))
+
+# Annotate the structural failure area
+fig.add_trace(go.Scatter(
+    x=[np.mean(x_structural_damage)],
+    y=[n_u[1] + 0.05 * (n_l[1] + n_u[1])],
+    mode='text',
+    text="Structural Failure", showlegend=False, hoverinfo="none"))
+
+
+# Add in stall
+S = 16
+W = 53e3
+Clmax = 1.6
+Clmin = -1.0
+n_stall = Clmax * 0.5 * 1.225 * VE**2 * S / W
+n_stall_negative = Clmin * 0.5 * 1.225 * VE**2 * S / W
+
+## Get the maneovure speeds
+Va = np.sqrt(n_l[1] * W / (Clmax * 0.5 * 1.225 * S))
+fig.add_trace(go.Scatter(x=[Va], y=[n_l[1]],
+    mode='markers+text',
+    text="$V_A$",
+    textposition="bottom right",
+    showlegend=False))
+
+Va2 = np.sqrt(n_l[0] * W / (Clmin * 0.5 * 1.225 * S))
+fig.add_trace(go.Scatter(x=[Va2], y=[n_l[0]],
+    mode='markers+text',
+    text="$V_{A2}$",
+    textposition="top right",
+    showlegend=False))
+
+# Overlay the stall n diagrams
+# Positive
+fig.add_trace(go.Scatter(x=VE, y=n_stall,
+    mode='lines',
+    line_color='red', name="Positive Stall",
+    showlegend=False))
+
+# Redo just up to Va to make sure the next fill is correct (else it fills above the limit load)
+fig.add_trace(go.Scatter(x=VE[n_stall <= n_l[1]], y=n_stall[n_stall <= n_l[1]],
+    mode='lines',
+    line_color='red',
+    showlegend=False, name="Positive Stall"))
+
+## Put some filled areas in here to show the positive stall limit
+V_stall_limited = np.linspace(0.1, Va, 100)
+fig.add_trace(go.Scatter(
+    x=V_stall_limited, y=n_l[1] * np.ones(V_stall_limited.shape),
+    fill='tonexty', fillcolor='rgba(255, 255, 0, 0.55)', 
+    name="Stall Limited", showlegend=False, hoverinfo="none"))
+
+# Annotate the postitive stall limit
+fig.add_trace(go.Scatter(
+    x=[np.mean(V_stall_limited)],
+    y=[0.5 * np.array([n_l[1] * np.ones(V_stall_limited.shape)]).mean()],
+    mode='text',
+    text="Stall Limited", showlegend=False, hoverinfo="none"))
+
+# Negative
+fig.add_trace(go.Scatter(x=VE, y=n_stall_negative,
+    mode='lines',
+    line_color='green', name="Negative Stall",
+    showlegend=False))
+
+# Redo just up to Va to make sure the next fill is correct (else it fills above the limit load)
+fig.add_trace(go.Scatter(x=VE[n_stall_negative >= n_l[0]], y=n_stall_negative[n_stall_negative >= n_l[0]],
+    mode='lines',
+    line_color='green',
+    showlegend=False, name ="Negative Stall"))
+
+## Put some filled areas in here to show the negative stall limit
+V_stall_limited = np.linspace(0.1, Va2, 100)
+fig.add_trace(go.Scatter(
+    x=V_stall_limited, y=n_l[0] * np.ones(V_stall_limited.shape),
+    fill='tonexty', fillcolor='rgba(255, 255, 0, 0.55)', 
+    name="Stall Limited", showlegend=False, hoverinfo="none"))
+
+# Annotate the negative stall limit
+fig.add_trace(go.Scatter(
+    x=[np.mean(V_stall_limited)],
+    y=[0.5 * np.array([n_l[0] * np.ones(V_stall_limited.shape)]).mean()],
+    mode='text',
+    text="Stall Limited", showlegend=False, hoverinfo="none"))
+
+
+
+
+### Negative side
+## Negative structural damage
+x_structural_damage = [VE.min(), VE.max()]
+y_structural_damage = [n_l[0], n_l[0]]
+y_structural_failure = [n_u[0], n_u[0]]
+# Plot a line of the structural damage
+fig.add_trace(go.Scatter(x=VE, y=n_l[0] * np.ones(VE.shape),
+    fill=None,
+    mode='lines',
+    line_color='indigo',
+    name="-nl",
+    showlegend=False))
+
+# Then a line of the structural failure that is filled to the structural damage
+fig.add_trace(go.Scatter(
+    x=x_structural_damage,
+    y=y_structural_failure,
+    fill='tonexty', # fill area between trace0 and trace1
+    mode='none', fillcolor='rgba(255, 0, 0, 0.25)', name="Structural Damage", showlegend=False))
+
+# Annotate the structural damage area
+fig.add_trace(go.Scatter(
+    x=[np.mean(x_structural_damage)],
+    y=[0.5 * (n_l[0] + n_u[0])],
+    mode='text',
+    text="Structural Damage", showlegend=False))
+
+# Add the ultimate load factor
+fig.add_trace(go.Scatter(x=VE, y=n_u[0] * np.ones(VE.shape),
+    fill=None,
+    mode='lines',
+    line_color='red', name="-nu",
+    showlegend=False))
+
+# Then a line of the structural failure that is filled to the structural damage
+fig.add_trace(go.Scatter(
+    x=VE, y=3*n_u[0] * np.ones(VE.shape),
+    fill='tonexty', # fill area between structural failure and structural Damage
+    mode='none', fillcolor='rgba(255, 0, 0, 0.55)', name="Structural Damage", showlegend=False, hoverinfo="none"))
+
+
+# Annotate the structural failure area
+fig.add_trace(go.Scatter(
+    x=[np.mean(x_structural_damage)],
+    y=[n_u[0] + 0.05 * (n_l[0] + n_u[0])],
+    mode='text',
+    text="Structural Failure", showlegend=False, hoverinfo="none"))
+
+
+
+# Add the Dive Speed
+
+Vd = 300
+
+fig.add_trace(go.Scatter(x=[Vd, Vd], y=[n_l[0], n_l[1]],
+    fill=None,
+    mode='lines',
+    line_color='violet', name="Dive Speed",
+    showlegend=True))
+
+# Add a line of the dynamic damage
+fig.add_trace(go.Scatter(
+    x=[340, 340], y=[n_l[0], n_l[1]],
+    fill='tonextx', # fill area between structural failure and structural Damage
+    mode='none', fillcolor='rgba(255, 0, 255, 0.55)', name="Structural Damage", showlegend=False, hoverinfo="none"))
+
+# Annotate the negative stall limit
+fig.add_trace(go.Scatter(
+    x=[315],
+    y=[0.5 * (n_l[0] + n_l[1])],
+    mode='text',
+    text="Dynamic", showlegend=False, hoverinfo="none"))
+
+fig.add_trace(go.Scatter(
+    x=[315],
+    y=[0.2 * (n_l[0] + n_l[1])],
+    mode='text',
+    text="Phenomena", showlegend=False, hoverinfo="none"))
+
+# Change the limits
+fig.update_yaxes(range= [1.2 * n_u[0], 1.2 * n_u[1]])
+
+fig.update_layout(
+    title="Representative Structural Damage and Failure Load Factors",
+    xaxis_title="$EAS/m/s$",
+    yaxis_title="$n$",
+)
+
+# Dick around with the hover behaviour
+# fig.update_traces(hovertemplate=None)
+# fig.update_layout(hovermode="x unified")
+
+fig.update_yaxes(zeroline=True, zerolinewidth=2, zerolinecolor='black')
+fig.show()
+
+The area inside the graph above represents the *envelope*, and is the source of the phrase *out of the envelope*.
+
+
+
+import numpy as np
+import plotly.graph_objects as go
+
+# Limit loads
+n_l = [-3.0, 7.0]
+
+# Ultimate loads
+n_u = [-5.0, 11.0]
+
+# Make a figure
+fig = go.Figure()
+
+# Make a vector of equivalent airspeed (m/s) - only up to dive speed
+VE = np.linspace(0, Vd, 1000)
+
+# Make the positive and negative stall limits
+S = 16
+W = 53e3
+Clmax = 1.6
+Clmin = -1.0
+n_stall = Clmax * 0.5 * 1.225 * VE**2 * S / W
+n_stall_negative = Clmin * 0.5 * 1.225 * VE**2 * S / W
+
+# Make vectors of positive and negative limit loads
+n_l_positive = n_l[1] * np.ones(VE.shape)
+n_l_negative = n_l[0] * np.ones(VE.shape)
+
+# Make an array of the MINIMUM of the stall or the n_l
+n_limit_positive = [min(nstall, nlim) for nstall, nlim in zip(n_stall, n_l_positive)]
+n_limit_negative = [max(nstall, nlim) for nstall, nlim in zip(n_stall_negative, n_l_negative)]
+
+
+# Plot the negative limit
+fig.add_trace(go.Scatter(x=VE, y=n_limit_negative,
+    fill=None,
+    mode='lines',
+    line_color='indigo', name="+nl",
+    showlegend=False))
+
+# Then a line of the structural failure that is filled to the structural damage
+fig.add_trace(go.Scatter(
+    x=VE,
+    y=n_limit_positive,
+    fill='tonexty', # fill area between structural failure and structural Damage
+    mode='none', fillcolor='rgba(0, 0, 255, 0.25)', name="Flight Envelope", showlegend=False))
+
+
+# # Plot the Structural damage area
+# x_structural_damage = [VE.min(), VE.max()]
+# y_structural_damage = [n_l[1], n_l[1]]
+# y_structural_failure = [n_u[1], n_u[1]]
+
+# ## Positive strucutral damage
+# # Plot a line of the structural damage
+# fig.add_trace(go.Scatter(x=VE, y=n_l[1] * np.ones(VE.shape),
+#     fill=None,
+#     mode='lines',
+#     line_color='indigo', name="+nl",
+#     showlegend=False))
+
+# # Then a line of the structural failure that is filled to the structural damage
+# fig.add_trace(go.Scatter(
+#     x=x_structural_damage,
+#     y=y_structural_failure,
+#     fill='tonexty', # fill area between structural failure and structural Damage
+#     mode='none', fillcolor='rgba(255, 0, 0, 0.25)', name="Structural Damage", showlegend=False))
+
+# # Annotate the structural failure area
+# fig.add_trace(go.Scatter(
+#     x=[np.mean(x_structural_damage)],
+#     y=[0.5 * (n_l[1] + n_u[1])],
+#     mode='text',
+#     text="Structural Damage", showlegend=False))
+
+# # Add the ultimate load factor
+# fig.add_trace(go.Scatter(x=VE, y=n_u[1] * np.ones(VE.shape),
+#     mode='lines',
+#     line_color='red', name="+nu",
+#     showlegend=False))
+
+# # Then a line of the structural failure that is filled to the structural damage
+# fig.add_trace(go.Scatter(
+#     x=VE, y=3*n_u[1] * np.ones(VE.shape),
+#     fill='tonexty', # fill area between structural failure and structural Damage
+#     mode='none', fillcolor='rgba(255, 0, 0, 0.55)', name="Structural Damage", showlegend=False, hoverinfo="none"))
+
+# # Annotate the structural failure area
+# fig.add_trace(go.Scatter(
+#     x=[np.mean(x_structural_damage)],
+#     y=[n_u[1] + 0.05 * (n_l[1] + n_u[1])],
+#     mode='text',
+#     text="Structural Failure", showlegend=False, hoverinfo="none"))
+
+
+# # Add in stall
+# S = 16
+# W = 53e3
+# Clmax = 1.6
+# Clmin = -1.0
+# n_stall = Clmax * 0.5 * 1.225 * VE**2 * S / W
+# n_stall_negative = Clmin * 0.5 * 1.225 * VE**2 * S / W
+
+# ## Get the maneovure speeds
+# Va = np.sqrt(n_l[1] * W / (Clmax * 0.5 * 1.225 * S))
+# fig.add_trace(go.Scatter(x=[Va], y=[n_l[1]],
+#     mode='markers+text',
+#     text="$V_A$",
+#     textposition="bottom right",
+#     showlegend=False))
+
+# Va2 = np.sqrt(n_l[0] * W / (Clmin * 0.5 * 1.225 * S))
+# fig.add_trace(go.Scatter(x=[Va2], y=[n_l[0]],
+#     mode='markers+text',
+#     text="$V_{A2}$",
+#     textposition="top right",
+#     showlegend=False))
+
+# # Overlay the stall n diagrams
+# # Positive
+# fig.add_trace(go.Scatter(x=VE, y=n_stall,
+#     mode='lines',
+#     line_color='red', name="Positive Stall",
+#     showlegend=False))
+
+# # Redo just up to Va to make sure the next fill is correct (else it fills above the limit load)
+# fig.add_trace(go.Scatter(x=VE[n_stall <= n_l[1]], y=n_stall[n_stall <= n_l[1]],
+#     mode='lines',
+#     line_color='red',
+#     showlegend=False, name="Positive Stall"))
+
+# ## Put some filled areas in here to show the positive stall limit
+# V_stall_limited = np.linspace(0.1, Va, 100)
+# fig.add_trace(go.Scatter(
+#     x=V_stall_limited, y=n_l[1] * np.ones(V_stall_limited.shape),
+#     fill='tonexty', fillcolor='rgba(255, 255, 0, 0.55)', 
+#     name="Stall Limited", showlegend=False, hoverinfo="none"))
+
+# # Annotate the postitive stall limit
+# fig.add_trace(go.Scatter(
+#     x=[np.mean(V_stall_limited)],
+#     y=[0.5 * np.array([n_l[1] * np.ones(V_stall_limited.shape)]).mean()],
+#     mode='text',
+#     text="Stall Limited", showlegend=False, hoverinfo="none"))
+
+# # Negative
+# fig.add_trace(go.Scatter(x=VE, y=n_stall_negative,
+#     mode='lines',
+#     line_color='green', name="Negative Stall",
+#     showlegend=False))
+
+# # Redo just up to Va to make sure the next fill is correct (else it fills above the limit load)
+# fig.add_trace(go.Scatter(x=VE[n_stall_negative >= n_l[0]], y=n_stall_negative[n_stall_negative >= n_l[0]],
+#     mode='lines',
+#     line_color='green',
+#     showlegend=False, name ="Negative Stall"))
+
+# ## Put some filled areas in here to show the negative stall limit
+# V_stall_limited = np.linspace(0.1, Va2, 100)
+# fig.add_trace(go.Scatter(
+#     x=V_stall_limited, y=n_l[0] * np.ones(V_stall_limited.shape),
+#     fill='tonexty', fillcolor='rgba(255, 255, 0, 0.55)', 
+#     name="Stall Limited", showlegend=False, hoverinfo="none"))
+
+# # Annotate the negative stall limit
+# fig.add_trace(go.Scatter(
+#     x=[np.mean(V_stall_limited)],
+#     y=[0.5 * np.array([n_l[0] * np.ones(V_stall_limited.shape)]).mean()],
+#     mode='text',
+#     text="Stall Limited", showlegend=False, hoverinfo="none"))
+
+
+
+
+# ### Negative side
+# ## Negative structural damage
+# x_structural_damage = [VE.min(), VE.max()]
+# y_structural_damage = [n_l[0], n_l[0]]
+# y_structural_failure = [n_u[0], n_u[0]]
+# # Plot a line of the structural damage
+# fig.add_trace(go.Scatter(x=VE, y=n_l[0] * np.ones(VE.shape),
+#     fill=None,
+#     mode='lines',
+#     line_color='indigo',
+#     name="-nl",
+#     showlegend=False))
+
+# # Then a line of the structural failure that is filled to the structural damage
+# fig.add_trace(go.Scatter(
+#     x=x_structural_damage,
+#     y=y_structural_failure,
+#     fill='tonexty', # fill area between trace0 and trace1
+#     mode='none', fillcolor='rgba(255, 0, 0, 0.25)', name="Structural Damage", showlegend=False))
+
+# # Annotate the structural damage area
+# fig.add_trace(go.Scatter(
+#     x=[np.mean(x_structural_damage)],
+#     y=[0.5 * (n_l[0] + n_u[0])],
+#     mode='text',
+#     text="Structural Damage", showlegend=False))
+
+# # Add the ultimate load factor
+# fig.add_trace(go.Scatter(x=VE, y=n_u[0] * np.ones(VE.shape),
+#     fill=None,
+#     mode='lines',
+#     line_color='red', name="-nu",
+#     showlegend=False))
+
+# # Then a line of the structural failure that is filled to the structural damage
+# fig.add_trace(go.Scatter(
+#     x=VE, y=3*n_u[0] * np.ones(VE.shape),
+#     fill='tonexty', # fill area between structural failure and structural Damage
+#     mode='none', fillcolor='rgba(255, 0, 0, 0.55)', name="Structural Damage", showlegend=False, hoverinfo="none"))
+
+
+# # Annotate the structural failure area
+# fig.add_trace(go.Scatter(
+#     x=[np.mean(x_structural_damage)],
+#     y=[n_u[0] + 0.05 * (n_l[0] + n_u[0])],
+#     mode='text',
+#     text="Structural Failure", showlegend=False, hoverinfo="none"))
+
+# # Add the Dive Speed
+# fig.add_trace(go.Scatter(x=[300, 300], y=[n_l[0], n_l[1]],
+#     fill=None,
+#     mode='lines',
+#     line_color='violet', name="Dive Speed",
+#     showlegend=True))
+
+# # Add a line of the dynamic damage
+# fig.add_trace(go.Scatter(
+#     x=[340, 340], y=[n_l[0], n_l[1]],
+#     fill='tonextx', # fill area between structural failure and structural Damage
+#     mode='none', fillcolor='rgba(255, 0, 255, 0.55)', name="Structural Damage", showlegend=False, hoverinfo="none"))
+
+# # Annotate the negative stall limit
+# fig.add_trace(go.Scatter(
+#     x=[315],
+#     y=[0.5 * (n_l[0] + n_l[1])],
+#     mode='text',
+#     text="Dynamic", showlegend=False, hoverinfo="none"))
+
+# fig.add_trace(go.Scatter(
+#     x=[315],
+#     y=[0.2 * (n_l[0] + n_l[1])],
+#     mode='text',
+#     text="Phenomena", showlegend=False, hoverinfo="none"))
+
+# # Change the limits
+# fig.update_yaxes(range= [1.2 * n_u[0], 1.2 * n_u[1]])
+
+# fig.update_layout(
+#     title="Representative Structural Damage and Failure Load Factors",
+#     xaxis_title="$EAS/m/s$",
+#     yaxis_title="$n$",
+# )
+
+# # Dick around with the hover behaviour
+# # fig.update_traces(hovertemplate=None)
+# # fig.update_layout(hovermode="x unified")
+
+# fig.update_yaxes(zeroline=True, zerolinewidth=2, zerolinecolor='black')
+fig.show()
 
 ## Loops
 

@@ -390,7 +390,7 @@ a) How long will it take to cover 100 miles?
 
 b) How long will it take to cover 200km?
 
-c) If instead of Vc = {glue:text}`vc`kn, you have Vc = {glue:text}`vc`kn, with a position error of $\Delta V_P=+2kn$, what do the above answers change to?
+c) If instead of $V_C$ = {glue:text}`vc`kn, you have $V_I$ = {glue:text}`vc`kn, with a position error of $\Delta V_P=+2kn$, what do the above answers change to?
 
 Try and tackle the problem yourself before you see the solution below. The numbers in this problem will change each time the notes are updated. 
 
@@ -423,10 +423,10 @@ Ve = press_correction * vc
 V = Ve * np.sqrt(1/dens_correction)
 
 
-glue("press_correction", press_correction);
-glue("dens_correction", dens_correction);
-glue("Ve", (Ve));
-glue("V", (V));
+glue("press_correction", press_correction, display=False);
+glue("dens_correction", dens_correction, display=False);
+glue("Ve", (Ve), display=False);
+glue("V", (V), display=False);
 
 Vtabs = abs(Vt)
 
@@ -446,15 +446,15 @@ time1 = dist / Vms
 # 200km 
 time2 = 200 * 1e3 / Vms
 
-glue("Vg", Vg);
-glue("Vms", Vms);
-glue("dist1", dist);
-glue("dist2", 200 * 1e3);
-glue("time1", time1);
-glue("time2", time2);
+glue("Vg", Vg, display=False);
+glue("Vms", Vms, display=False);
+glue("dist1", dist, display=False);
+glue("dist2", 200 * 1e3, display=False);
+glue("time1", time1, display=False);
+glue("time2", time2, display=False);
 
-glue("text_time1", hms(time1));
-glue("text_time2", hms(time2));
+glue("text_time1", hms(time1), display=False);
+glue("text_time2", hms(time2), display=False);
 
 
 
@@ -476,11 +476,11 @@ elif wind == "headwind":
 # V to SI
 Vms = Vg * 0.514444444    
     
-glue("Vc2", vc);
-glue("Ve2", Ve);
-glue("V2", V);
-glue("Vg2", Vg);
-glue("Vms2", Vms);
+glue("Vc2", vc, display=False);
+glue("Ve2", Ve, display=False);
+glue("V2", V, display=False);
+glue("Vg2", Vg, display=False);
+glue("Vms2", Vms, display=False);
     
 # Miles to m
 dist = 100 * 1609.34
@@ -491,11 +491,11 @@ time1_2 = dist / Vms
 # 200km 
 time2_2 = 200 * 1e3 / Vms
 
-glue("time1_2", time1_2);
-glue("time2_2", time2_2);
+glue("time1_2", time1_2, display=False);
+glue("time2_2", time2_2, display=False);
 
-glue("text_time1_2", hms(time1_2));
-glue("text_time2_2", hms(time2_2));
+glue("text_time1_2", hms(time1_2), display=False);
+glue("text_time2_2", hms(time2_2), display=False);
 
 # Time deltas
 dT1 = time1_2 - time1
@@ -505,10 +505,10 @@ if dT1 > 0:
 else:
     time_text = 'faster'
     
-glue("dT1", hms(dT1));
-glue("dT2", hms(dT2));
+glue("dT1", hms(dT1), display=False);
+glue("dT2", hms(dT2), display=False);
 
-glue("time_text", time_text);
+glue("time_text", time_text, display=False);
 
     
 
