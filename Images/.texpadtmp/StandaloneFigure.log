@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  12 AUG 2020 16:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  22 AUG 2020 09:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -81,34 +81,53 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/array.sty
+Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
+\col@sep=\dimen105
+\ar@mcellbox=\box28
+\extrarowheight=\dimen106
+\NC@list=\toks16
+\extratabsurround=\skip43
+\backup@length=\skip44
+\ar@cellbox=\box29
+)
+\TX@col@width=\dimen107
+\TX@old@table=\dimen108
+\TX@old@col=\dimen109
+\TX@target=\dimen110
+\TX@delta=\dimen111
+\TX@cols=\count91
+\TX@ftn=\toks17
 ) (/Users/harrysmith/Dropbox/Aircraft-Flight-Mechanics/Images/.texpadtmp/StandaloneFigure.aux)
 \openout1 = `StandaloneFigure.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
  (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count91
-\scratchdimen=\dimen105
-\scratchbox=\box28
-\nofMPsegments=\count92
-\nofMParguments=\count93
-\everyMPshowfont=\toks16
-\MPscratchCnt=\count94
-\MPscratchDim=\dimen106
-\MPnumerator=\count95
-\makeMPintoPDFobject=\count96
-\everyMPtoPDFconversion=\toks17
+\scratchcounter=\count92
+\scratchdimen=\dimen112
+\scratchbox=\box30
+\nofMPsegments=\count93
+\nofMParguments=\count94
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count95
+\MPscratchDim=\dimen113
+\MPnumerator=\count96
+\makeMPintoPDFobject=\count97
+\everyMPtoPDFconversion=\toks19
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
  (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/infwarerr.sty
@@ -138,74 +157,48 @@ Package grfext Info: Graphics extension search list:
 (grfext)             \AppendGraphicsExtensions on input line 456.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-)) (./Loop.pdf_tex
-<Loop.pdf, id=1, page=1, 634.75885pt x 575.50328pt>
-File: Loop.pdf Graphic file (type pdf)
-<use Loop.pdf, page 1>
-Package pdftex.def Info: Loop.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 345.0pt x 312.79565pt.
+)) (./ClimbForces.pdf_tex
+<ClimbForces.pdf, id=1, page=1, 752.8125pt x 324.46219pt>
+File: ClimbForces.pdf Graphic file (type pdf)
+<use ClimbForces.pdf, page 1>
+Package pdftex.def Info: ClimbForces.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 345.0pt x 148.6999pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 57.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 57.
-<Loop.pdf, id=2, page=2, 634.75885pt x 575.50328pt>
-File: Loop.pdf Graphic file (type pdf)
-<use Loop.pdf, page 2>
-Package pdftex.def Info: Loop.pdf , page2 used on input line 58.
-(pdftex.def)             Requested size: 345.0pt x 312.79565pt.
-
-./Loop.pdf_tex:59: Undefined control sequence.
-<argument> ...n {tabular}[t]{l}$\color {red}\text 
-                                                  {Lift}$\end {tabular}
-l.59 ...l}$\color{red}\text{Lift}$\end{tabular}}}}
-                                                  %
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./Loop.pdf_tex:60: Undefined control sequence.
-<argument> ...ular}[t]{l}$\color {darkgreen}\text 
-                                                  {Weight}$\end {tabular}
-l.60 ...r{darkgreen}\text{Weight}$\end{tabular}}}}
-                                                  %
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./Loop.pdf_tex:61: Undefined control sequence.
-<argument> ... {tabular}[t]{l}$\color {blue}\text 
-                                                  {Drag}$\end {tabular}
-l.61 ...}$\color{blue}\text{Drag}$\end{tabular}}}}
-                                                  %
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
+<ClimbForces.pdf, id=2, page=2, 752.8125pt x 324.46219pt>
+File: ClimbForces.pdf Graphic file (type pdf)
+<use ClimbForces.pdf, page 2>
+Package pdftex.def Info: ClimbForces.pdf , page2 used on input line 58.
+(pdftex.def)             Requested size: 345.0pt x 148.6999pt.
+<ClimbForces.pdf, id=3, page=3, 752.8125pt x 324.46219pt>
+File: ClimbForces.pdf Graphic file (type pdf)
+<use ClimbForces.pdf, page 3>
+Package pdftex.def Info: ClimbForces.pdf , page3 used on input line 62.
+(pdftex.def)             Requested size: 345.0pt x 148.6999pt.
 ) [1
 
-{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Loop.pdf> <./Loop.pdf
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./ClimbForces.pdf> <./ClimbForces.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Loop.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./ClimbForces.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+> <./ClimbForces.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./ClimbForces.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >] (/Users/harrysmith/Dropbox/Aircraft-Flight-Mechanics/Images/.texpadtmp/StandaloneFigure.aux) ) 
 Here is how much of TeX's memory you used:
- 2353 strings out of 492616
- 35017 string characters out of 6129482
- 103375 words of memory out of 5000000
- 6256 multiletter control sequences out of 15000+600000
- 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 2457 strings out of 492616
+ 36409 string characters out of 6129482
+ 105303 words of memory out of 5000000
+ 6354 multiletter control sequences out of 15000+600000
+ 3986 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,14n,56p,242b,277s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on /Users/harrysmith/Dropbox/Aircraft-Flight-Mechanics/Images/.texpadtmp/StandaloneFigure.pdf (1 page, 556415 bytes).
+ 39i,15n,56p,242b,290s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on /Users/harrysmith/Dropbox/Aircraft-Flight-Mechanics/Images/.texpadtmp/StandaloneFigure.pdf (1 page, 48484 bytes).
 PDF statistics:
- 20 PDF objects out of 1000 (max. 8388607)
- 12 compressed objects within 1 object stream
+ 29 PDF objects out of 1000 (max. 8388607)
+ 18 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

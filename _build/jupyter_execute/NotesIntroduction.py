@@ -9,7 +9,9 @@ It does mean that my pipedream of getting them published as a textbook is over -
 
 ## Lectures
 
-Due to COVID-19, my Fall 2020 class is entirely online - and I've chosen to pre-record all my lectures, which will be available on YouTube. For students in the class at IIT, there is content available via Slack and I will be hosting regular review sessions via Zoom.
+Due to COVID-19, my Fall 2020 class is entirely online - and I've chosen to pre-record all my lectures, [which will be available on YouTube](https://www.youtube.com/playlist?list=PLVyHCaFIZQV9kw5wtU82dwEYvp4ZB7n3V), and will get updated as I record/release them in batches. 
+
+For students in the class at IIT, there is content available via Slack and I will be hosting regular review sessions via Zoom.
 
 In the interest of open access, I've decided to release my lectures for all in addition to this content. 
 

@@ -627,7 +627,13 @@ Hence the minimum drag speed in EAS is a function of the constants $K$ and $C_{D
 
 ### Range vs Endurance
 
-The aircraft *drag* can be considered as the force required to propel the aircraft forward. For this reason, it is useful to determine the condition of minimum drag, as this means the aircraft is flying with the greatest aerodynamic efficiency - when flying at this condition, the aircraft can go the farthest. This defines the **maximum range**. Hence, if a pilot wishes to fly the longest distance for a certain amount of fuel, they should fly at $V_{md} = \left[\frac{B}{A}\right]^{-\frac{1}{4}}$.
+The aircraft *drag* can be considered as the force required to propel the aircraft forward. For this reason, it is useful to determine the condition of minimum drag, as this means the aircraft is flying with the greatest aerodynamic efficiency - when flying at this condition, the aircraft can go the farthest. This defines the **maximum range** (see the note below). Hence, if a pilot wishes to fly the longest distance (in a glider or propeller-drive aircraft) for a certain amount of fuel, they should fly at $V_{md} = \left[\frac{B}{A}\right]^{-\frac{1}{4}}$.
+
+```{admonition} Actually...
+The maximum range is found at $V_{md}$ for a glider or a propeller-driven aircraft, for reasons that we'll get to.
+
+The maximum range for a turbojet is found at the minimum power speed - so this is another reason why we need to look at power.
+```
 
 However, they will not be able to fly for the longest period of time at this speed. For certain aircraft missions, it is desirable to seek _endurance_ as opposed to _range_.
 
@@ -972,7 +978,7 @@ For an aircraft with a drag equation described by:
 
 $$C_D = 0.016 + 0.045\cdot C_L^2$$
 
-with a wing area of 50m$^2$, a weight of 160 tonnes, a $C_{L,max}=1.5$, flying at sea-level **determine the maximum and minimum flight speeds for a constant thrust of 10kN**
+with a wing area of 50m$^2$, a weight of 160kN, a $C_{L,max}=1.5$, flying at sea-level **determine the maximum and minimum flight speeds for a constant thrust of 10kN**
 
 ```{admonition} Solution procedure - attempt the question before looking at the answer.
 :class: dropdown

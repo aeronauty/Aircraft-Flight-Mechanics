@@ -1,0 +1,73 @@
+%% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'ReferenceAnglesXZ.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{949.26269531bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.62119313)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{ReferenceAnglesXZ.pdf}}%
+    \put(0.29586151,0.33198206){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$\alpha$}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{ReferenceAnglesXZ.pdf}}%
+    \put(0.396955,0.18466402){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$\theta$}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{ReferenceAnglesXZ.pdf}}%
+    \put(0.64463938,0.59605675){\color[rgb]{0,0,0}\rotatebox{-15}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{red}{Lift}\end{tabular}}}}}%
+    \put(0.71572526,0.22884917){\color[rgb]{0,0,0}\rotatebox{-15}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{red}{Drag}\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{ReferenceAnglesXZ.pdf}}%
+    \put(0.03701933,0.39855925){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{red}{$V_\infty$}\end{tabular}}}}%
+    \put(0.25952179,0.27799162){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$\gamma$}\end{tabular}}}}%
+    \put(0.50564251,0.01945149){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{blue}{Weight}\end{tabular}}}}%
+    \put(0.78218225,0.1521791){\color[rgb]{0,0,0}\rotatebox{-30}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{darkgreen}{Thrust}\end{tabular}}}}}%
+    \put(0.0093458,0.21776252){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{blue}{Earth}\end{tabular}}}}%
+    \put(0.01854173,0.32740671){\color[rgb]{0,0,0}\rotatebox{-10}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{red}{Wind}\end{tabular}}}}}%
+    \put(0.02820971,0.57338667){\color[rgb]{0,0,0}\rotatebox{-30}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{darkgreen}{Body}\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{ReferenceAnglesXZ.pdf}}%
+  \end{picture}%
+\endgroup%

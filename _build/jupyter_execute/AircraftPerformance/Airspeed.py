@@ -210,6 +210,8 @@ h = presscorr[:, 0]
 VC = np.array([100, 125, 150, 175, 200, 225, 250, 275, 300])
 table = presscorr[:, 1:]
 
+
+
 f_corr = interp2d(VC, h, table, kind='linear')
 
 def f_correction(VC=125, h=45000, ):
@@ -217,9 +219,9 @@ def f_correction(VC=125, h=45000, ):
     return f
 
 
-VC = 125
-h = 45000
-f = f_corr(125, 4500)
+VC = 182
+h = 39500
+f = f_correction(VC, h)
 print(f"For a CAS of {VC}, at an altitude of {h} feet, the pressure correction factor is {f}")
 
 ### True Airspeed
@@ -264,6 +266,8 @@ from ambiance import Atmosphere
 def sigma_density(h=10000, alt_units='m'):
     if alt_units == 'm':
         factor = 1
+    elif alt_units == 'km':
+        factor = 1000
     elif alt_units == 'ft':
         factor = 0.3048
     elif alt_units == 'miles':
@@ -275,9 +279,61 @@ def sigma_density(h=10000, alt_units='m'):
     sigma = atmospheric_properties.density / sea_level.density
     return sigma
     
-h_in = 12000
+h_in = 39500
 
-print(f"At {h_in}m, the density ratio is {sigma_density(h_in)[0]:1.6f}")
+h_unit = 'ft'
+
+print(f"At {h_in}{h_unit}, the density ratio is {sigma_density(h_in, h_unit)[0]:1.6f}")
+
+atm = Atmosphere(39000*.3048)
+print(atm.temperature)
+
+```{admonition} A word about atmospheres
+:class: dropdown
+
+The ambiance module for Python implments the ICAO (International Civial Aviation Organisation) atmopshere, which is an extension of ISA (International Standard Atmosphere).
+
+Printed in the old notes is the US Standard Atmosphere, which is another extension of the ISA model.
+
+Both are equal in the ranges used in this course - but in the printed tables, the values have been truncated. This can lead to differences when interpolating from the table, and when using the routines. See the code dropdown below to understand this further.
+```
+
+# Get four different atmospheres
+atmo_sl = Atmosphere(0*.3048)
+atmo_35kft = Atmosphere(35000*.3048)
+atmo_40kft = Atmosphere(40000*.3048)
+atmo_395kft = Atmosphere(39500*.3048)
+
+
+# Conversions
+kg_to_slugs = 1/14.59390
+m_to_feet = 3.28084
+
+# Convert the densities
+dens_imperial_sl = atmo_sl.density * kg_to_slugs / m_to_feet**3
+dens_imperial_35kft = atmo_35kft.density * kg_to_slugs / m_to_feet**3
+dens_imperial_40kft = atmo_40kft.density * kg_to_slugs / m_to_feet**3
+dens_imperial_395kft = atmo_395kft.density * kg_to_slugs / m_to_feet**3
+
+print(f"The density at 35,000ft from the table is {7.38*1e-4:1.4e}slugs/ft**3 and from ICAO it is {dens_imperial_35kft[0]:1.4e}slugs/ft**3")
+print(f"The density at 40,000ft from the table is {5.87*1e-4:1.4e}slugs/ft**3 and from ICAO it is {dens_imperial_40kft[0]:1.4e}slugs/ft**3")
+print("")
+
+# Interpolate the densities
+dens_interpolated_39500_ambiance = dens_imperial_35kft + 4500/5000 * (dens_imperial_40kft - dens_imperial_35kft)
+dens_interpolated_39500_table = 7.38e-4 + 4500/5000 * (5.87e-4 - 7.38e-4)
+
+print(f"The density at 39,500ft from ICAO is {dens_imperial_395kft[0]:1.4e}slugs/ft**3 and interpolated between 35000 and 40000 ICAO it is {dens_interpolated_39500_ambiance[0]:1.4e}slugs/ft**3")
+
+print("")
+# Get sigmas
+sigma_ambiance_direct = (atmo_395kft.density/atmo_sl.density)[0]
+sigma_table = dens_interpolated_39500_table/(23.77*1e-4)
+sigma_ambiance = dens_interpolated_39500_ambiance/dens_imperial_sl
+
+
+print(f"Sigma from the table is {sigma_table:1.4f}, \n from ambiance (at 39000) is is {sigma_ambiance_direct:1.4f}, \n and from ambiance (interpolated between 35000 and 40000) is is {sigma_ambiance[0]:1.4f}")
+
 
 The inputs can also be ```numpy``` arrays 
 

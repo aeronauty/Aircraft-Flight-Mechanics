@@ -2,7 +2,7 @@
 
 In climbing flight, $T>D$, so the aircraft cannot maintain equilibrium in straight and level flight.
 
-The aircraft *ascends* with climb angle $\theta$, with the horizontal component of the aircraft weight opposing the thrust.
+The aircraft *ascends* with climb angle $\bar{\gamma}$, with the horizontal component of the aircraft weight opposing the thrust.
 
 
 ```{figure} ../Images/ClimbForces.png
@@ -24,23 +24,23 @@ Using the same reasoning as before, you can see that the aircraft is converting 
 
 As for the glide angle, the climb angle can be determined by resolving forces perpendicular to the flight path
 
-$$L=W\cos\theta$$
+$$L=W\cos\bar{\gamma}$$
 
 and parallel to the flight path
 
-$$T-D=W\sin\theta$$
+$$T-D=W\sin\bar{\gamma}$$
 
 and from trigonometry, the climb angle is simply
 
-$$\sin\theta=\frac{T-D}{W}$$
+$$\sin\bar{\gamma}=\frac{T-D}{W}$$
 
-the rate of climb is $v_{climb}=-w_e$ and is
+the rate of climb is $V_{climb}$ and is
 
-$$-w_e=V\sin\theta=\frac{V\left(T-D\right)}{W}$$
+$$V_{climb}=V\sin\bar{\gamma}=\frac{V\left(T-D\right)}{W}$$
 
 which gives the rate of increase of GPE
 
-$$\underbrace{W\cdot v_{climb}}_{\substack{\text{Rate of increase}\\\text{of potential energy}}} = \underbrace{T\,V}_{\substack{\text{Thrust}\\\text{Power}}} - \underbrace{D\,V}_{\substack{\text{Drag}\\\text{Power}}}$$
+$$\underbrace{W\cdot V_{climb}}_{\substack{\text{Rate of increase}\\\text{of potential energy}}} = \underbrace{T\,V}_{\substack{\text{Thrust}\\\text{Power}}} - \underbrace{D\,V}_{\substack{\text{Drag}\\\text{Power}}}$$
 
 ## Climb Performance
 
@@ -177,7 +177,7 @@ fig.add_trace(go.Scatter(x=VE, y=dT, name="$T_A - T_R$"))
 
 # Annotations - best angle
 fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[d_bestclimb_angle],\
-                         mode="markers+text", text="$\\theta_{max}$",\
+                         mode="markers+text", text="$\\bar{\\gamma}_{max}$",\
                          textposition="top center", name="Annotation", marker=dict(
             color='LightSkyBlue'
             )))
@@ -187,11 +187,11 @@ fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[dd_bestclimb_angle], mode="ma
 
 # Annotations - best rate
 fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[d_bestclimb_rate],\
-                         mode="markers+text", text="$v_{climb,max}$",\
+                         mode="markers+text", text="$V_{climb,max}$",\
                          textposition="top center", name="Annotation",\
                          marker=dict(color='DarkBlue')))
 fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[dd_bestclimb_rate],\
-                         mode="markers", text="$v_{climb,max}$",\
+                         mode="markers", text="$V_{climb,max}$",\
                          textposition="top center", name="Annotation",\
                         marker=dict(color='DarkBlue')))
 
@@ -222,7 +222,7 @@ fig.add_trace(go.Scatter(x=VE, y=dP, name="$P_A - P_R$"))
 
 # Annotations - best angle
 fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[p_bestclimb_angle],\
-                         mode="markers+text", text="$\\theta_{max}$",\
+                         mode="markers+text", text="$\\bar{\\gamma}_{max}$",\
                          textposition="top center", name="Annotation", marker=dict(
             color='LightSkyBlue'
             )))
@@ -232,11 +232,11 @@ fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[dp_bestclimb_angle], mode="ma
 
 # Annotations - best rate
 fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[p_bestclimb_rate],\
-                         mode="markers+text", text="$v_{climb,max}$",\
+                         mode="markers+text", text="$V_{climb,max}$",\
                          textposition="top center", name="Annotation",\
                          marker=dict(color='DarkBlue')))
 fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[dp_bestclimb_rate],\
-                         mode="markers", text="$v_{climb,max}$",\
+                         mode="markers", text="$V_{climb,max}$",\
                          textposition="top center", name="Annotation",\
                         marker=dict(color='DarkBlue')))
 
@@ -275,7 +275,7 @@ md = A * Vmd**2 + B * Vmd**-2
 dmp = A * Vmp**2 + B * Vmp**-2 
 
 # Make a velocity vector
-VE = np.linspace(25, 300, 1000)
+VE = np.linspace(10, 300, 1000)
 
 D = A*VE**2 + B*VE**-2
 P = A*VE**3 + B*VE**-1
@@ -314,7 +314,7 @@ fig.add_trace(go.Scatter(x=VE, y=dT, name="$T_A - T_R$"))
 
 # Annotations - best angle
 fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[d_bestclimb_angle],\
-                         mode="markers+text", text="$\\theta_{max}$",\
+                         mode="markers+text", text="$\\bar{\\gamma}_{max}$",\
                          textposition="top center", name="Annotation", marker=dict(
             color='LightSkyBlue'
             )))
@@ -324,11 +324,11 @@ fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[dd_bestclimb_angle], mode="ma
 
 # Annotations - best rate
 fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[d_bestclimb_rate],\
-                         mode="markers+text", text="$v_{climb,max}$",\
+                         mode="markers+text", text="$V_{climb,max}$",\
                          textposition="top center", name="Annotation",\
                          marker=dict(color='DarkBlue')))
 fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[dd_bestclimb_rate],\
-                         mode="markers", text="$v_{climb,max}$",\
+                         mode="markers", text="$V_{climb,max}$",\
                          textposition="top center", name="Annotation",\
                         marker=dict(color='DarkBlue')))
 
@@ -362,7 +362,7 @@ fig.add_trace(go.Scatter(x=VE, y=dP, name="$P_A - P_R$"))
 
 # Annotations - best angle
 fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[p_bestclimb_angle],\
-                         mode="markers+text", text="$\\theta_{max}$",\
+                         mode="markers+text", text="$\\bar{\\gamma}_{max}$",\
                          textposition="top center", name="Annotation", marker=dict(
             color='LightSkyBlue'
             )))
@@ -372,11 +372,11 @@ fig.add_trace(go.Scatter(x=[v_bestclimb_angle], y=[dp_bestclimb_angle], mode="ma
 
 # Annotations - best rate
 fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[p_bestclimb_rate],\
-                         mode="markers+text", text="$v_{climb,max}$",\
+                         mode="markers+text", text="$V_{climb,max}$",\
                          textposition="top center", name="Annotation",\
                          marker=dict(color='DarkBlue')))
 fig.add_trace(go.Scatter(x=[v_bestclimb_rate], y=[dp_bestclimb_rate],\
-                         mode="markers", text="$v_{climb,max}$",\
+                         mode="markers", text="$V_{climb,max}$",\
                          textposition="top center", name="Annotation",\
                         marker=dict(color='DarkBlue')))
 

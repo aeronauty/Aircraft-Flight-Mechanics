@@ -57,9 +57,10 @@
     \put(0.25352339,0.25953875){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V$\end{tabular}}}}%
     \put(0.25654094,0.29876674){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Flightspeed\end{tabular}}}}%
     \put(0.76147584,0.25752712){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sink Rate\end{tabular}}}}%
-    \put(0.76248168,0.22030353){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w_e$\end{tabular}}}}%
-    \put(0.37422507,0.06238577){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u_e$\end{tabular}}}}%
+    \put(0.76248168,0.22030353){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V_{sink}$\end{tabular}}}}%
+    \put(0.37422507,0.06238577){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V\cdot\cos\bar{\gamma}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{GlideVelocities.pdf}}%
-    \put(0.39937114,0.15593663){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\theta$\end{tabular}}}}%
+    \put(0.39937114,0.15593663){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\bar{\gamma}$\end{tabular}}}}%
+    \put(0.76248168,0.1830873){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V\cdot\sin\bar{\gamma}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
