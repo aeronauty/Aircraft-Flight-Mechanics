@@ -26,9 +26,9 @@ To gain further insight, we need to understand the forces that cause motion - th
 
 ## Recommended Textbooks
 
-These notes, and the materials presented in the class are sufficient to gain a full understanding of any examinable material. These notes are based on the previous course structure, which utilises "*Introduction to Aircraft Flight Mechanics*" by Tom Yechout {cite}`Yechout:2014vg`.
+These notes, and the materials presented in the class are sufficient to gain a full understanding of any examinable material. I have drawn from a range of materials, including my undergraduate notes and a range of textbooks.
 
-Other supplementary texts that may be useful are "*Aerodynamics for Engineering Students*" {cite}`Houghton:2012vl` and "*Aircraft Flight*" {cite}`Barnard:2010td`
+Supplementary texts that may be useful are "*Aircraft Performance and Design*" {cite}`Anderson:1999AP`,  "*Aerodynamics for Engineering Students*" {cite}`Houghton:2012vl`, and "*Aircraft Flight*" {cite}`Barnard:2010td`
 
 ## Course Structure
 

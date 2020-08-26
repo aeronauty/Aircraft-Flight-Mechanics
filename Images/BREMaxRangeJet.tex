@@ -1,0 +1,71 @@
+\documentclass{report}
+
+\usepackage{pgfplots} 
+\usepackage{amsmath}
+
+\usetikzlibrary{external}
+\tikzexternalenable
+\usetikzlibrary{positioning}
+\tikzset{>=stealth}
+\usepackage{graphicx} % Include figures
+\newcommand{\tikzmark}[3][]{\tikz[remember picture,baseline] \node [anchor=base,#1](#2) {$#3$};}
+
+%\usepackage[active, tightpage]{preview}
+
+
+\usepackage{varwidth}
+
+
+\def\ie{\textsl{i.e.,~}}
+
+
+\definecolor{BRG}{RGB}{18,112,16}
+\definecolor{darkgreen}{RGB}{0, 108, 18}
+\definecolor{i1}{RGB}{150, 46, 255}
+\definecolor{i2}{RGB}{150, 51, 153}
+\definecolor{limegreen}{RGB}{57, 255, 20}
+\definecolor{highlightB}{RGB}{70, 173, 212}
+
+\begin{document}
+
+
+
+%\begin{preview}
+\vphantom{Some text}\\\vspace{.1cm}\hspace{5cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vphantom{SOme more rest}\vspace{2cm}
+
+\begin{center}
+\begin{equation*}
+%	R = \frac{1}{\tikzmark[blue]{f2}{c_t}}\cdot\tikzmark[red]{RangeFunct}{V\cdot{\frac{C_L}{C_D}}}\cdot\ln\left|\tikzmark[blue]{W2}{\frac{W_0}{W_1}}\right|\label{eq:rangefunctiondefined}
+	R= \frac{1}{\tikzmark[blue]{ct}{c_t}\,g}\sqrt{\frac{8}{\tikzmark[red]{rho}{\rho}\,S}}\tikzmark[darkgreen]{clcd}{\displaystyle\frac{C_L^{1/2}}{C_D}}\tikzmark[i2]{weight}{\left[W_0^{\frac{1}{2}} - W_1^{\frac{1}{2}}\right]}
+\end{equation*}
+\end{center}
+
+\hphantom{30cm}
+
+\vspace{2cm}
+\begin{tikzpicture}[overlay, remember picture,node distance =1.5cm]
+\node[blue,text width=3cm] (Rdesc) [below left = of ct]{\textsl{\centering Maximise engine efficiency}};
+\draw[blue,->,thick] (Rdesc) to [in=-90,out=-0] (ct.south);
+\node[red,text width=3cm] (rhodesc) [below = of rho]{\textsl{\centering Increase altitude}};
+\draw[red,->,thick] (rhodesc) to [in=-90,out=90] (rho.south);
+\node[darkgreen,text width=3cm] (clcddesc) [above = of clcd]{\textsl{\centering Maximise $\displaystyle\frac{C_L^{1/2}}{C_D}$}};
+\draw[darkgreen,->,thick] (clcddesc) to [in=90,out=-90] (clcd.north);
+\node[i2,text width=3cm] (Wdesc) [below right = of weight]{\textsl{\centering Fly with a lot of fuel}};
+\draw[i2,->,thick] (Wdesc) to [in=-90,out=180] (weight.south);
+%\node[blue,text width=3cm] (known) [below =of RangeFunct]{\textsl{\begin{center}Constants\end{center}}};
+%\draw[blue,->,thick] (known) to [in=-90,out=90] (f2.south);
+%\draw[blue,->,thick] (known) to [in=-90,out=90] (W2.south);
+\end{tikzpicture}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\end{preview}
+
+\end{document}

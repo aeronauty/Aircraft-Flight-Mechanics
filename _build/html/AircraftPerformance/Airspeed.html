@@ -127,6 +127,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="RangeandEndurance.html">
+   Range and Endurance
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Manoeuvre.html">
    Acceleration, Manoeuvres, and Aircraft Loading
   </a>
@@ -252,7 +257,7 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+            <i class="fas fa-list"></i> On this page
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -850,32 +855,32 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
 </div>
 <div class="section" id="problem-1-1-conversion-between-airspeeds">
 <h3>Problem 1.1 - Conversion between airspeeds<a class="headerlink" href="#problem-1-1-conversion-between-airspeeds" title="Permalink to this headline">¶</a></h3>
-<p>An aircraft is flying at an altitude of <span class="pasted-text">15000</span>ft, with a calibrated airspeed of <span class="pasted-text">140</span>kn, with a <span class="pasted-text">18</span>kn <span class="pasted-text">headwind</span>:</p>
+<p>An aircraft is flying at an altitude of <span class="pasted-text">45000</span>ft, with a calibrated airspeed of <span class="pasted-text">165</span>kn, with a <span class="pasted-text">3</span>kn <span class="pasted-text">tailwind</span>:</p>
 <p>a) How long will it take to cover 100 miles?</p>
 <p>b) How long will it take to cover 200km?</p>
-<p>c) If instead of <span class="math notranslate nohighlight">\(V_C\)</span> = <span class="pasted-text">140</span>kn, you have <span class="math notranslate nohighlight">\(V_I\)</span> = <span class="pasted-text">140</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
+<p>c) If instead of <span class="math notranslate nohighlight">\(V_C\)</span> = <span class="pasted-text">165</span>kn, you have <span class="math notranslate nohighlight">\(V_I\)</span> = <span class="pasted-text">165</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
 <p>Try and tackle the problem yourself before you see the solution below. The numbers in this problem will change each time the notes are updated.</p>
 <div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the solution…</p>
 <p>The first step is to take Vc to Ve via the pressure correction.</p>
-<p>For the altitude of <span class="pasted-text">15000</span>ft, with a calibrated airspeed of <span class="pasted-text">140</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">15000</span>, <span class="pasted-text">140</span>).</p>
-<p>This gives a value of <span class="pasted-text">0.996</span> for the pressure correction, and this determination pf the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">139.412</span>kn.</p>
-<p>For EAS to TAS, the density ratio is required - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.629</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
-<p>True airspeed is obtained from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">175.718</span>kn.</p>
+<p>For the altitude of <span class="pasted-text">45000</span>ft, with a calibrated airspeed of <span class="pasted-text">165</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">45000</span>, <span class="pasted-text">165</span>).</p>
+<p>This gives a value of <span class="pasted-text">0.960</span> for the pressure correction, and this determination pf the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">158.400</span>kn.</p>
+<p>For EAS to TAS, the density ratio is required - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.194</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
+<p>True airspeed is obtained from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">359.179</span>kn.</p>
 <p>Note that at no point have the units had to be converted into SI to make the corrections - that’s the smart part of the density and pressure corrections; they are both non-dimensional corrections. If you have velocity in knots, you use them and get velocity in knots out.</p>
-<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">157.718</span>kn. This gives the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
-<p>With the velocity in knots it may be easily converted to m/s by multiplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">81.137</span>m/s.</p>
-<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">1983.5</span>s or <span class="pasted-text">33 minutes, 3 seconds</span></p>
-<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">2465.0</span>s or <span class="pasted-text">41 minutes, 4 seconds</span></p>
+<p>Since the wind is a <span class="pasted-text">tailwind</span>, this is <span class="pasted-text">added to</span> the value above to yield the groundspeed in knots as <span class="pasted-text">362.179</span>kn. This gives the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
+<p>With the velocity in knots it may be easily converted to m/s by multiplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">186.321</span>m/s.</p>
+<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">863.7</span>s or <span class="pasted-text">14 minutes, 23 seconds</span></p>
+<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">1073.4</span>s or <span class="pasted-text">17 minutes, 53 seconds</span></p>
 <hr class="docutils" />
 <p>For the last part of the question, this is solved by recalling that <span class="math notranslate nohighlight">\(V_c = V_I + \Delta V_p\)</span> and hence the speeds calculated are now:</p>
-<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">142.000</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">141.381</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">178.200</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">196.200</span>kn = <span class="pasted-text">100.934</span>m/s</p>
-<p>The times taken are found to be <span class="pasted-text">26 minutes, 34 seconds</span> and  <span class="pasted-text">33 minutes, 1 seconds</span>, for a respective  <span class="pasted-text">6 minutes, 29 seconds</span> and  <span class="pasted-text">8 minutes, 3 seconds</span> <span class="pasted-text">faster</span>.</p>
+<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">167.000</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">160.186</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">363.230</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">366.230</span>kn = <span class="pasted-text">188.405</span>m/s</p>
+<p>The times taken are found to be <span class="pasted-text">14 minutes, 14 seconds</span> and  <span class="pasted-text">17 minutes, 41 seconds</span>, for a respective  <span class="pasted-text">9 seconds</span> and  <span class="pasted-text">11 seconds</span> <span class="pasted-text">faster</span>.</p>
 </div>
 </div>
 <div class="section" id="problem-1-2-theory">

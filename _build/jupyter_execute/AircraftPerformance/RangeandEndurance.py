@@ -48,84 +48,122 @@ I've loosely read the history of the BRE and it being Coffin who actually came u
 ```
 The BRE allows a simple means to calculate GSAR, and can be defined in words as:
 
-$$\substack{\text{"The rate of}\\\text{aircraft mass reduction"}}=\substack{\text{"The rate of}\\\text{fuel mass burned"}}$$
+$$\substack{\text{"The rate of}\\\text{aircraft weight reduction"}}=\substack{\text{"The rate of}\\\text{fuel weight burned"}}$$
 
-A parameter, $f$, is introduced which is:
+The BRE was first implemented for propeller aircraft, and is derived differently for thrust and power engines. In the following it will be derived separately for the two engines types.
+
+### Engine fuel burn
+
+To calculate the engine fuel burn of both types of engine, two new parameters are introduced
+
+A parameter, $c_t$, is introduced which is:
 - Thrust Specific Fuel Consumption (TSFC) for a **turbojet**
-    $f$ - **Mass of fuel burned per unit of thrust per second**
+    $c_t$ - **mass of fuel burned per unit of thrust per second**
     
 - Specific Fuel Consumption (SFC) for a **turboprop**
-    $f$ - **Mass of fuel burned per unit of power per second**
+    $c$ - **mass of fuel burned per unit of power per second**
+
+#### Thrust specific fuel consumption - units
+
+In the above, the SI units are $\left\{c_t\right\}=\left\{\frac{kg}{N\cdot s}\right\}$ which has dimensions of $\left[\frac{\text{L}}{\text{T}}\right]$. You might see this expressed as $\frac{g}{kN\,s}$, which is actually the same units.
+
+In US customary units, this is  $\left\{c_t\right\}=\left\{\frac{lb}{lbf\cdot s}\right\}$.
+
+You may see some slightly different units such as $\left[\frac{kg}{kN\cdot hr}\right]$ so be sure to convert to SI or US customary base units
+
+#### Specific fuel consumption - units
+
+In the above, the SI units are $\left\{c\right\}=\left\{\frac{kg}{W\cdot s}\right\}$ which has dimensions of $\left[\frac{\text{T}^2}{\text{L}^2}\right]$. You might see this expressed as $\frac{g}{kW\,s}$, which is actually the same units.
+
+In US customary units, this is  $\left\{c_t\right\}=\left\{\frac{lb}{hp\cdot s}\right\}$.
+
+You may see some slightly different units such as $\left[\frac{kg}{kW\cdot hr}\right]$ so be sure to convert to SI or US customary base units
     
 The analysis is slightly different for jet and propeller-driven aircraft, so jet aircraft will be explored first.
 
 ## BRE - Jet Aircraft
 
-With $f$ defined as the *mass of fuel burned per unit of thrust per second*, the SI units are $\frac{\text{kg}}{\text{N}\cdot\text{s}}$, and these are what you *must* use in equation form (if you're using SI units), but $f$ can be defined in other units such as $\frac{\text{kg}}{\text{kN}\cdot\text{hr}}$ so you must remember to convert.
+The fundamental concept is, again:
 
-The BRE for a jet aircraft is:
+$$\substack{\text{"The rate of}\\\text{aircraft weight reduction"}}=\substack{\text{"The rate of}\\\text{fuel weight burned"}}$$
 
-$$\frac{\text{d}W}{\text{d}t}=-f\,g\,T$$
+So for a jet aircraft this is
+
+$$\frac{\text{d}W}{\text{d}t}=-c_t\,T\, g$$
 
 which can be rearranged for the time
 
-$$\text{d}t = -\frac{\text{d}W}{f\,g\,T}$$
+$$\text{d}t = -\frac{\text{d}W}{c_t\,T\, g}$$
 
 since the endurance/range is defined by *cruise* conditions, the equilibrium steady flight conditions of $T=D$ and $L=W$ can be utilised such that
+
+```{margin}
+*Substitution for thrust*
+
+This always seems like a bit of a *trick* in the derivation - but what's really occurring is that the thrust is defined in terms of aerodynamic variables so the condition for maximum range can be determined.
+```
 
 $$T=\frac{D}{L}W=\frac{C_D}{C_L}W$$
 
 which can be substituted into the BRE to give
 
-$$\text{d}t = -\frac{1}{f\,g}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
+$$\text{d}t = -\frac{1}{c_t\, g}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
 
-for constant lift-to-drag ratio and TSFC, the equation above can be integrated with the limits $t_{end}$ and $t_{start}$ corresponding to $W_{end}$ and $W_{start}$. This yields the endurance, $E$:
+for constant lift-to-drag ratio and TSFC, the equation above can be integrated with the limits $t_{0}$ and $t_{1}$ corresponding to $W_{0}$ and $W_{1}$ where 0 denotes the start of cruise, and 1 denotes the end. 
+
+$$\int^{t_1}_{t_0}\text{d}t = -\frac{1}{c_t\, g}\frac{C_L}{C_D}\int^{W_1}_{W_0}\frac{\text{d}W}{W}$$
+$$t_1 - t_0 = -\frac{1}{c_t\, g}\frac{C_L}{C_D}\left[\ln W_1 - \ln W_0\right]$$
+
+This yields the endurance, $E$:
 
 ```{math}
 :label: EnduranceJet
-E=t_{end}-t_{start}=\frac{1}{f\,g}\frac{C_L}{C_D}\ln\left|\frac{W_{start}}{W_{end}}\right|
+E=t_{1}-t_{0}=\frac{1}{c_t\, g}\frac{C_L}{C_D}\ln\left|\frac{W_{0}}{W_{1}}\right|
 ````
 
 ### Jet Aircraft: Maximum Endurance
 
-For a given $f$ and $W_{start}$, Equation {eq}`EnduranceJet` shows that the **best endurance for a jet aircraft is found at the minimum drag speed** .
+For a given $c_t$, $W_0$, and $W_{1}$, Equation {eq}`EnduranceJet` shows that the **best endurance for a jet aircraft is found at the minimum drag speed**. If you're unsure why it shows this - look at the equation and consider what can be maximised.
 
-To find the range, the equation above needs to be modified - the range is given by the following if it is assumed TAS remains constant 
+To find the range, the equation above needs to be modified - the range is given by the following if it is assumed TAS remains constant.
+```{margin}
+Is constant airspeed speed a valid assumption? we'll come back at the end consider the effect of our assumptions, don't worry.
+```
+
+
+
+### Jet Aircraft: Range
+
+If constant true airspeed is assumed, then the range is given by the endurance multiplied by the range
+
+$$R=E\,V$$
+
+or
 
 ```{math}
-:label: BRE
+:label: BREjet
 
-R=\frac{V}{f\,g}\frac{C_L}{C_D}\ln\left|\frac{W_{start}}{W_{end}}\right|
+R=\frac{V}{c_t\, g}\frac{C_L}{C_D}\ln\left|\frac{W_{0}}{W_{1}}\right|
 
 ```
 
-### What maximises range?
+#### The Range Function
 
 The equation above gives the design/mission choices that help maximise range:
 
-```{figure} ../Images/CruiseClimbBRE.png
+```{figure} ../Images/BRE_annotated.png
 ---
 height: 300px
 name: CruiseClimbBRE
 ---
 ```
 
-### How is the BRE utilised?
-
 In the Breguet Range Equation, Equation {eq}`BRE`, some parameters are dictated by the problem:
-- $W_{start}$ is the weight of the aircraft including fuel
-- $W_{end}$ is the weight of the aircraft with no fuel, or with a certain mandated reserve
-- $f$ is the TSFC and will generally be given in a problem
-- $g$ is accleration due to gravity, and since you're an aerospace engineer you should use $g=9.80665\frac{\text{m}}{\text{s}^{2}}$
+- $W_{1}$ is the weight of the aircraft including fuel
+- $W_{0}$ is the weight of the aircraft with no fuel, or with a certain mandated reserve
+- $c_t$ is the TSFC and will generally be given in a problem
 
-```{margin}
-*When I was an undergrad...*
-
-...we went through deriving $g$ using Newton's law of gravitation - due to the size of this course, there isn't enough room. [Have a look here instead](https://earth.esa.int/web/guest/-/gravity-in-detail-5728).
-```
-Other parameters are unknown - so $V$, $C_L$, and $C_D$ need to be *constrained* (defined in terms of other parameters) in order to use Equation {eq}`BRE` to determine the possible range.
-
-In each of these cases, the *range function* is replaced with something else.
+Other parameters are unknown - so the **range function** needs to be constrained (written in terms of other parameters) in order to use Equation {eq}`BRE` to determine the possible range. This will yield the _speed_ for best range, and hence also enable determination of the flight duration.
 
 ```{figure} ../Images/RangeFunction.png
 ---
@@ -137,7 +175,177 @@ The 'range function' is the expression $V\frac{C_L}{C_D}$ and clearly maximum ra
 
 In practice, this means replacing $V\frac{C_L}{C_D}$ with an equivalent expression representing the variation of the parameters therein, by finding another means of representing $V$ as a function of $C_L$ or $C_D$.
 
-Three different means of doing this will be explored - first the theory will be explained, and then numerical examples will follow.
+Different means of doing this will be explored - first the theory will be explained, and then numerical examples will follow.
+
+#### Best Jet Range
+
+To find the best range, the aircraft speed equation, Eq {eq}`ACSpeedEquation` can be used to substitute $V$ for aerodynamic and inertial parameters:
+
+$$V=\sqrt{\frac{2\, W}{\rho\,S\,C_L}}$$
+
+which has $W$ in it, so this needs to be substituted *before* the integration over $W$. Defining the incremental distance covered, $dS$ as $dS=dE\cdot V$:
+
+$$\text{d}S = -\frac{V}{c_t\, g}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
+
+$$\begin{align}
+\text{d}S &= -\frac{1}{c_t\, g}\sqrt{\frac{2\, W}{\rho\,S\,C_L}}\frac{C_L}{C_D}\frac{\text{d}W}{W}\\
+ &= -\frac{1}{c_t\, g}\sqrt{\frac{2}{\rho\,S}}\frac{C_L^{1/2}}{C_D}\frac{W^{1/2}}{W}\text{d}W\\
+  &= -\frac{1}{c_t\, g}\sqrt{\frac{2}{\rho\,S}}\frac{C_L^{1/2}}{C_D}\frac{1}{W^{1/2}}\text{d}W
+\end{align}$$
+
+The range, $R$, is the integration of the equation above
+
+$$\begin{align}
+R &= -\frac{1}{c_t\, g}\sqrt{\frac{2\, W}{\rho\,S\,C_L}}\frac{C_L}{C_D}\int^{W_1}_{W_0}\frac{\text{d}W}{W}\\
+ &= \frac{1}{c_t\, g}\sqrt{\frac{2}{\rho\,S}}\frac{C_L^{1/2}}{C_D}\left[2W_0^{\frac{1}{2}} - 2W_1^{\frac{1}{2}}\right]
+\end{align}$$
+
+which yields
+
+```{math}
+:label: BREjetmaxrange
+R= \frac{1}{c_t\,g}\sqrt{\frac{8}{\rho\,S}}\frac{C_L^{1/2}}{C_D}\left[W_0^{\frac{1}{2}} - W_1^{\frac{1}{2}}\right]
+```
+Looking at {eq}`BREjetmaxrange`, the choice that can be made to maximise range can be determined:
+
+```{figure} ../Images/BREMaxRangeJet.png
+---
+height: 300px
+name: MaxJetRange
+---
+```
+
+We can see that for a jet aircraft, the range is a function of the starting altitude. That is, start a cruise _high_ to fly far.
+
+Of the other choices above, the one that is of interest to us is the aerodynamic consideration - maximise $\frac{C_L^{1/2}}{C_D}$. You should be able to easily show that this is achieved by a value of $C_L$
+
+$$C_L=\sqrt{\frac{C_{D0}}{3\,K}}$$
+
+Which is found at the flightspeed
+
+$$V=\sqrt{\frac{2\,W}{\rho\,S\sqrt{\frac{C_{D0}}{3\,K}}}}=\sqrt{\sqrt{3}}\sqrt{\frac{2\,W}{\rho\,S\sqrt{\frac{C_{D0}}{3\,K}}}}$$
+
+So the speed for best range in a jet aicraft is
+
+$$V\simeq1.32\cdot V_{md}$$
+
+Which is an interesting result - since it is the product of $V$ and $\frac{C_L}{C_D}$ that needs to be maximum, this is achieved at a speed *above* $V_{md}$ and hence at a lower value of $\frac{C_L}{C_D}$.
+
+So to go _far_ in a jet aircraft, the speed above gives a lower _endurance_ but but the faster TAS allows more ground to be covered than for the best endurance speed, $V_{md}$. 
+
+## Numerical Example
+
+
+```{admonition} About units
+:class: dropdown
+
+You (that's you, IIT student) should be able to do these calculations *both* in SI units and US customary units. Since I got my degree and PhD outside of America, I have an *appreciation* (to use the term loosely) for US customary units, but my actual application has always been to convert to SI at the start, and then convert the answer *back* to US customary units if I need to provide one.
+
+For this reason, I work in SI in written examples for class but I will provide examples with US customary units used throughout. I simply don't want to make a mistake when going through work in class, and end up a factor of 32 out, or have mixed up lb for lbf or whatever else I could have done.
+
+I managed to find this whilst googling about the US and the metric system, if you want some further reading. https://www.nist.gov/system/files/documents/pml/wmd/metric/1136a.pdf
+```
+This is an adaptation of Example 5.19 in Anderson{cite}`Anderson:1999AP` - I claim no originality or authorship for the data provided, but I've used it to confirm my US customary calculation is correct before adapting.
+
+```{admonition} Question:
+
+Estimate the maximum range at altitudes of 20,000, 30,000, and 40,000 feet for the Gulfstream IV given the following:
+
+Mass of aircraft without fuel: 43,500lb. Mass of usable fuel: 29,500lb.
+Drag model: $C_D=0.015 + 0.08\cdot C_L^2$
+Wing area: 950 square feet
+TSFC: 0.69 lb of fuel consumed per pound of thrust per hour.
+
+```
+
+import numpy as np
+from ambiance import Atmosphere
+
+h1 = 20000
+h2 = 30000
+h3 = 40000
+
+m_1 = 43500 # mass in lbs of aircraft without fuel
+m_fuel = 29500 # mass in lbs of fuel
+
+# # Unit conversions
+lb_to_kilo = 0.453592
+pound_to_newton = 4.44822
+hour_to_second = 3600
+ft_to_metre = 0.3048
+metre_to_miles = 0.000621371
+km_to_miles = 0.621371
+g = 9.80665 # Gravitational acceleration
+kg_to_slugs = 0.0685218
+miles_to_feet = 5280 # Because everyone recalls this number...
+
+# The start weight of the aircraft is equal to the end weight plus the fuel weight
+m_0 = m_1 + m_fuel
+
+# Aircraft drag model - from Anderson
+CD0 = 0.015
+K = 0.08
+S = 950 # In square feet
+
+# Thrust specific fuel consumption
+c_t = 0.69 # c_t in lb of fuel per pound of thrust per hour
+
+# Convert c_t to consistent units (lb of fuel per pound of thrust per second, not per hour)
+c_t = c_t / 3600
+
+# Find the Cl and Cd for max range
+Cl = np.sqrt(CD0/3/K)
+Cd = CD0 + K * Cl**2
+
+# Iterate over the altitudes
+for h_ft in [h1, h2, h3]:
+    
+    ############################################################################
+    ################### First do the calculation in US customary units
+    ############################################################################
+    # Get density for this altitude - this will be in SI
+    h = h_ft * ft_to_metre
+    Atmopshere_for_30k = Atmosphere(h)
+    rho_SI = Atmopshere_for_30k.density[0]
+    
+    print(f"For an altitude of {h_ft:1.0f}ft/{h/1e3:1.1f}km")
+
+    # Convert to US customary density units of slugs per cubic feet 
+    rho_US = rho_SI * kg_to_slugs * ft_to_metre**3 # i.e., dividing be the reciprocal of ft_to_metre**3
+
+    # Now get range - which will be in feet (US Customary base units), so convert to miles for readability
+    ## Note that since c_t has been defined as a mass, and so has the aircraft mass - we can avoid using "g" by
+    # keeping the aircraft mass as mass since "g" is in the denominator of the BRE
+    # If you don't want to do this you can save g in US customary as 32.17405ft/s^2, but the pounds/pounds/poundal
+    # conversion can be a real pain
+
+    R = 2/c_t * np.sqrt(2/rho_US/S) * Cl**.5 / Cd * (m_0**.5 - m_1**.5) / miles_to_feet
+
+    print(f"The range is {R:1.0f} miles")
+
+
+    ############################################################################
+    ################### Now in SI units
+    ############################################################################
+    # Do the conversion into SI units
+    c_t = c_t * lb_to_kilo * g / pound_to_newton
+
+    # Find the Cl and Cd for best range
+    Cl = np.sqrt(CD0/3/K)
+    Cd = CD0 + K * Cl**2
+
+    # wing area
+    S_SI = S * ft_to_metre**2
+
+    # Convert units
+    w_0 = m_0 * lb_to_kilo * g
+    w_1 = m_1 * lb_to_kilo * g
+
+    # Determine range in km
+    R = 2/c_t * np.sqrt(2/rho_SI/S_SI) * Cl**.5 / Cd * (w_0**.5 - w_1**.5) / 1e3
+
+    print(f"The range is {R:1.0f}km which is equal to {R*km_to_miles:1.0f} miles")
+    print(" ")
 
 ### Most Efficient - Cruise Climb
 
@@ -165,7 +373,7 @@ Further to the above, two cruise-climb cases can be explored:
 1. **Throttle Restricted** - The throttle setting is *fixed*, and the aircraft must vary altitude to maintain constant $C_L/C_D$
 2. **Throttle Unrestricted** - The throttle can be altered to maintain constant $C_L/C_D$
 
-#### Cruise-Climb 1: Throttle Restricted
+<!-- #### Cruise-Climb 1: Throttle Restricted
 
 'Throttle-restricted' means that the throttle is kept constant, and the maximum range therefore depends on the variation of thrust with altitude, hence:
 
@@ -235,7 +443,7 @@ $$\begin{aligned}C_{D0}&=3\cdot K\cdot C_L^2\\
     \therefore C_{D_{tucc}}&=\frac{4}{3}C_{D0}\label{eq:cdmaxr2}\\
     \therefore C_{L_{tucc}}&=\sqrt{\frac{C_{D0}}{3K}}\label{eq:clmaxr2}\end{aligned}$$
     
-the above $C_L$ and $C_D$ are used as before the find the maximum range.
+the above $C_L$ and $C_D$ are used as before the find the maximum range. -->
 
 ### Constant Altitude Cruise
 

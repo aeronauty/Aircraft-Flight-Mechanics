@@ -118,6 +118,7 @@ AircraftPerformance/Airspeed
 AircraftPerformance/SteadyLevelFlight
 AircraftPerformance/GlidingFlight
 AircraftPerformance/ClimbingFlight
+AircraftPerformance/RangeandEndurance
 AircraftPerformance/Manoeuvre
 ```
 

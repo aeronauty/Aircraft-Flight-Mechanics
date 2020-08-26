@@ -58,7 +58,7 @@ you will note that the swing, *sweep*, which is a measure of how far back the ti
 
 $$\begin{aligned}
     \text{Wing taper ratio: } \lambda &= \frac{c_t}{c_0}\\
-    \text{Wing area: } S &= \frac{c_t + c_0}{2}\cdot =\bar{c}\cdot b\\
+    \text{Wing area: } S &= \frac{c_t + c_0}{2}\cdot b =\bar{c}\cdot b\\
     \text{Standard Mean chord: } \bar{c} &= \frac{c_t + c_0}{2}=\frac{S}{b}\\
     \text{Aspect Ratio: } \bar{AR} &= \frac{b}{\bar{c}}=\frac{b^2}{S}\\
     \text{Mean aerodynamic chord: } \bar{\bar{c}} &= \frac{1}{S}\int^{+s}_{-s}c^2\text{d}y
