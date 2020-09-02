@@ -27,6 +27,7 @@ launch_buttons:
 
 
 execute_notebooks: force
+jupyter_execute_notebooks: force
 
 sphinx:
   extra_extensions:
