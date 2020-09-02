@@ -1,0 +1,67 @@
+\documentclass{report}
+
+\usepackage{pgfplots} 
+\usepackage{amsmath}
+
+\usetikzlibrary{external}
+\tikzexternalenable
+\usetikzlibrary{positioning}
+\tikzset{>=stealth}
+\usepackage{graphicx} % Include figures
+\newcommand{\tikzmark}[3][]{\tikz[remember picture,baseline] \node [anchor=base,#1](#2) {$#3$};}
+
+\usepackage[active, tightpage]{preview}
+
+
+\usepackage{varwidth}
+
+
+\def\ie{\textsl{i.e.,~}}
+
+
+\definecolor{BRG}{RGB}{18,112,16}
+\definecolor{darkgreen}{RGB}{0, 108, 18}
+\definecolor{i1}{RGB}{204, 46, 255}
+\definecolor{i2}{RGB}{255, 51, 153}
+\definecolor{limegreen}{RGB}{57, 255, 20}
+\definecolor{highlightB}{RGB}{70, 173, 212}
+
+\begin{document}
+
+
+
+\begin{preview}
+\vphantom{Some text}\\\vspace{.1cm}\hspace{1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vphantom{SOme more rest}\vspace{2cm}
+
+\begin{center}
+\begin{equation*}
+	dS = -\frac{1}{\tikzmark[red]{ct}{c_t}\,g}\sqrt{\frac{2\,\tikzmark[blue]{W}{W}}{\tikzmark[darkgreen]{rho}{\rho} S}}\tikzmark[i1]{clcd}{\displaystyle\frac{C_L^{1/2}}{C_D}}\frac{1}{\tikzmark[blue]{W2}{W}}\text{d}W
+\end{equation*}
+\end{center}
+
+\vspace{2cm}
+\begin{tikzpicture}[overlay, remember picture,node distance =1.5cm]
+\node[red,text width=3cm] (ctdesc) [below left = of ct]{\textsl{\centering Fly with low $c_t$}};
+\draw[red,->,thick] (ctdesc) to [in=-90,out=0] (ct.south);
+\node[blue,text width=1cm] (Wdesc) [above left =of W]{\textsl{\centering Fly light}};
+\draw[blue,->,thick] (Wdesc) to [in=90,out=0] (W.north);
+\draw[blue,->,thick] (Wdesc) to [in=0,out=0] (W2.east);
+\node[darkgreen,text width=1cm] (rhodesc) [below =of rho]{\textsl{\centering Fly high}};
+\draw[darkgreen,->,thick] (rhodesc) to [in=-90,out=90] (rho.south);
+\node[i1,text width=4cm] (i1desc) [below right =of clcd]{\textsl{\centering Fly with max $\displaystyle\frac{C_L^{1/2}}{C_D}$}};
+\draw[i1,->,thick] (i1desc) to [in=-90,out=90] (clcd.south);
+%\draw[blue,->,thick] (known) to [in=-90,out=90] (W2.south);
+\end{tikzpicture}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{preview}
+
+\end{document}

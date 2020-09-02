@@ -12,7 +12,7 @@
   - file: AircraftPerformance/SteadyLevelFlight
   - file: AircraftPerformance/GlidingFlight
   - file: AircraftPerformance/ClimbingFlight
-#  - file: AircraftPerformance/RangeandEndurance
+  - file: AircraftPerformance/RangeandEndurance
   - file: AircraftPerformance/Manoeuvre
 
 - chapter: Aircraft Equations of Motion

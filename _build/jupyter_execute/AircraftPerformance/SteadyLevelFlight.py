@@ -278,8 +278,8 @@ The above should make sense to you *intuitively*. Profile drag is largely viscou
 From the drag equation in dimensional form, the minmum drag speed can be shown
 
 $$D = A\,V^2 + B\,V^{-2}$$
-$$\frac{\partial D}{\partial V} = 2\cdot A\,V - 2 B\,V^{-3}$$
-$$\implies V_{md} = \left[\frac{B}{A}\right]^{-\frac{1}{4}}$$
+$$\frac{\text{d} D}{\text{d} V} = 2\cdot A\,V - 2 B\,V^{-3}$$
+$$\implies V_{md} = \left[\frac{B}{A}\right]^{\frac{1}{4}}$$
 $$=\left[\frac{2\,W}{\rho\,S}\right]^{\frac{1}{2}}\left[\frac{K}{C_{D0}}\right]^{\frac{1}{4}}$$
 ```{admonition} Alternative method
 :class: dropdown
