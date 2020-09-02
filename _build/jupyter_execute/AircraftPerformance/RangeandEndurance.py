@@ -208,6 +208,8 @@ R=\frac{1}{c_t\, g}\sqrt{\frac{8}{\rho_0 S}}\frac{C_L}{C_D}\ln\left[W_0^{1/2} - 
 
 ```
 
+Similarly, the variation of velocity can be yielded from the aircraft weight to velocity ratio.
+
 
 
 
@@ -229,7 +231,8 @@ This is an adaptation of Example 5.19 in Anderson{cite}`Anderson:1999AP` - I cla
 
 Estimate the maximum range at altitudes of 20,000, 30,000, and 40,000 feet for the Gulfstream IV given the following:
 
-Mass of aircraft without fuel: 43,500lb. Mass of usable fuel: 29,500lb.
+Mass of aircraft without fuel: 43,500lb. 
+Mass of usable fuel: 29,500lb.
 Drag model: $C_D=0.015 + 0.08\cdot C_L^2$
 Wing area: 950 square feet
 TSFC: 0.69 lb of fuel consumed per pound of thrust per hour.
@@ -370,21 +373,11 @@ for i, h_ft in enumerate([h1, h2, h3]):
     print("-------------------------------------------------------------- ")
     print(" ")
 
-
-
-
-
-
-
-
-
-
-
-
-
 ### Variation of jet range with lift coefficient, airspeed
 
-Recall that the lift coefficient is effectively a measure of the aircraft *cruise speed*. The range can be plotted vs. lift coefficient and forward speed for the two different cruise-climb cases over a range of starting altitudes.
+Recall that the lift coefficient is effectively a measure of the aircraft *cruise speed*. The range can be plotted vs. lift coefficient and forward speed for the two different jet cruise cases over a range of starting altitudes.
+
+You can click on the entries in the legend to hide/show different plots.
 
 ```{admonition} Beware of source for the plots below...
 :class: dropdown
@@ -394,14 +387,195 @@ Producing the plots below is fairly simple - but in order to get the labels and 
 That is, it makes it look more complicated than it actually is (and it probably could be done better if I knew my way around plotly better).
 ```
 
+import numpy as np
+import plotly.graph_objects as go
+
+import plotly.express as px
+
+plotcols = px.colors.qualitative.Plotly
 
 
-Notice that the maximum range is found at a considerably higher speed than both the minimum power and minimum drag speeds, for both types of cruise climb. The ratio between the two speeds and the minimum drag speed may be readily shown.
 
-$$\begin{alignat*}{2}
-	\frac{V_{trcc}}{V_{md}}&=\frac{\sqrt{\sqrt{2}}}{1} \hspace{1cm} \frac{V_{tucc}}{V_{md}} &&= \frac{\sqrt{\sqrt{3}}}{1}\\
-	&= 1.1892 &&= 1.3161
-\end{alignat*}$$
+## Note that there's a lot of slightly peculiar logic in the code below that enables the annotation and the legend
+# to to be printed. You don't need to worry about it.
+
+# Aircraft drag model - from Anderson
+CD0 = 0.015
+K = 0.08
+S = 950 # In square feet
+
+S = S * ft_to_metre**2
+
+rho_sl = 1.2255
+
+# Define a range of Cls
+CLrange = np.linspace(.1, 1.2, 1000)
+
+# Drag is given from the drag model
+CDrange = CD0 + K * CLrange**2
+
+# The CL and CD for TRCC and TUCC are defined above, so they can be reused here
+
+# Open three figures
+fig = go.Figure()
+fig2 = go.Figure()
+fig3 = go.Figure()
+
+
+# Make sigma function for convenience
+def sigma_function(alt):
+    mosphere = Atmosphere(alt)
+    rho = mosphere.density[0]
+    sig = rho/rho_sl
+    return sig
+
+# Iterate over altitudes
+for i, h in enumerate(np.arange(4, 14, 2)*1e3):
+    # Get the density ratio
+    sig = sigma_function(h)
+    
+    # Determine the cruise speed in TAS at this altitude
+    Vtas_knots = np.sqrt(w_0 / (.5 * sig * rho_sl * S * CLrange)) /.5144444
+    Veas_knots = np.sqrt(w_0 / (.5 * rho_sl * S * CLrange)) /.5144444
+    
+    ######## Get the two speeds
+    Range_constant_speed = 1/c_t_SI/g  * np.sqrt(2*w_0/rho_sl/sig/S_SI) * CLrange**.5 / CDrange * (np.log(w_0/w_1)) / 1e3
+    Range_constant_altitude = 1/c_t_SI/g  * np.sqrt(8/rho_sl/sig/S_SI) * CLrange**.5 / CDrange * (w_0**.5 - w_1**.5) / 1e3
+    
+
+    
+    # Plot it
+    if i == 0:
+        fig.add_trace(go.Scatter(x=CLrange, y=Range_constant_speed, legendgroup = "Constant Speed",  mode="lines", name=f"Constant Speed - {h/1e3:1.0f}km",  line=dict(width=4,
+                              dash='dash', color=plotcols[i])))
+        fig2.add_trace(go.Scatter(x=Veas_knots, y=Range_constant_speed, legendgroup = "Constant Speed", mode="lines", name=f"Constant Speed - {h/1e3:1.0f}km",  line=dict(width=4,
+                              dash='dash', color=plotcols[i])))
+        fig3.add_trace(go.Scatter(x=Vtas_knots, y=Range_constant_speed, legendgroup = "Constant Speed", mode="lines", name=f"Constant Speed - {h/1e3:1.0f}km",  line=dict(width=4,
+                              dash='dash', color=plotcols[i])))
+    else:
+        fig.add_trace(go.Scatter(x=CLrange, y=Range_constant_speed, legendgroup = "Constant Speed", mode="lines", showlegend=True, name=f"Constant Speed - {h/1e3:1.0f}km",  line=dict(width=4,
+                              dash='dash', color=plotcols[i])))
+        fig2.add_trace(go.Scatter(x=Veas_knots, y=Range_constant_speed, legendgroup = "Constant Speed", mode="lines", showlegend=True, name=f"Constant Speed - {h/1e3:1.0f}km",  line=dict(width=4,
+                              dash='dash', color=plotcols[i])))
+        fig3.add_trace(go.Scatter(x=Vtas_knots, y=Range_constant_speed, legendgroup = "Constant Speed", mode="lines", showlegend=True, name=f"Constant Speed - {h/1e3:1.0f}km",  line=dict(width=4,
+                              dash='dash', color=plotcols[i])))
+    
+   
+    # Plot it
+    if i == 0:
+        fig.add_trace(go.Scatter(x=CLrange, y=Range_constant_altitude, legendgroup = "Constant Altitude", mode="lines", name=f"Constant Altitude - {h/1e3:1.0f}km", line=dict(width=4, color=plotcols[i])))
+        fig2.add_trace(go.Scatter(x=Veas_knots, y=Range_constant_altitude, mode="lines", legendgroup = "Constant Altitude",  name=f"Constant Altitude - {h/1e3:1.0f}km", line=dict(width=4, color=plotcols[i])))
+        fig3.add_trace(go.Scatter(x=Vtas_knots, y=Range_constant_altitude, mode="lines", legendgroup = "Constant Altitude",  name=f"Constant Altitude - {h/1e3:1.0f}km", line=dict(width=4, color=plotcols[i])))
+    else:
+        fig.add_trace(go.Scatter(x=CLrange, y=Range_constant_altitude, mode="lines", legendgroup = "Constant Altitude", name=f"Constant Altitude - {h/1e3:1.0f}km",  showlegend=True, line=dict(width=4, color=plotcols[i])))
+        fig2.add_trace(go.Scatter(x=Veas_knots, y=Range_constant_altitude, mode="lines", legendgroup = "Constant Altitude", name=f"Constant Altitude - {h/1e3:1.0f}km",  showlegend=True, line=dict(width=4, color=plotcols[i])))
+        fig3.add_trace(go.Scatter(x=Vtas_knots, y=Range_constant_altitude, mode="lines", legendgroup = "Constant Altitude", name=f"Constant Altitude - {h/1e3:1.0f}km",  showlegend=True, line=dict(width=4, color=plotcols[i])))
+    
+#     ####### Label the altitudes: 
+#     if i == 0: fig.add_trace(go.Scatter(x=[CLrange[0]], y=[R_trcc[0]], mode="text", text="All altitudes", textposition="middle right", name="Annotation"))
+#     fig.add_trace(go.Scatter(x=[CLrange[0]], y=[R_tucc[0]], mode="text", text=f"{h/1e3:1.0f}km", textposition="middle left", showlegend=False))
+    
+#     if i == 0: fig2.add_trace(go.Scatter(x=[Veas_knots[0]+16*i + 2], y=[R_trcc[0]], mode="text", text="All altitudes", textposition="middle right", name="Annotation"))        
+#     fig2.add_trace(go.Scatter(x=[Veas_knots[0]+2], y=[R_tucc[0]], mode="text", text=f"{h/1e3:1.0f}km", textposition="middle right", name="Annotation"))
+    
+#     fig3.add_trace(go.Scatter(x=[Vtas_knots[0]], y=[R_tucc[0]], mode="text", text=f"{h/1e3:1.0f}km", textposition="bottom center", name="Annotation"))
+#     fig3.add_trace(go.Scatter(x=[Vtas_knots[0]], y=[R_trcc[0]], mode="text", text=f"{h/1e3:1.0f}km", textposition="bottom center", name="Annotation"))
+
+# Determine the different Cls to plot for comparison    
+CL_mr = np.sqrt(CD0/3/K)
+CL_md = np.sqrt(CD0/K)
+CL_mp = np.sqrt(3*CD0/K)
+
+
+# Overlay lines for different Cls on the first figure only
+fig.add_trace(go.Scatter(x=[CL_mr, CL_mr], y=[3000, 12000], showlegend=False, mode="lines", line=dict(color="darkgreen")))
+fig.add_trace(go.Scatter(x=[CL_md, CL_md], y=[3000, 12000], showlegend=False, mode="lines", line=dict(color="mediumpurple")))
+fig.add_trace(go.Scatter(x=[CL_mp, CL_mp], y=[3000, 12000], showlegend=False, mode="lines", line=dict(color="crimson")))
+
+
+fig.add_trace(go.Scatter(x=[CL_mr], y=[2000], mode="text",\
+                         text="$C_{L,mr}=\sqrt{\\frac{C_{D0}}{3\,K}}$",\
+                         textposition="bottom center", showlegend=False,\
+                         textfont=dict(color="darkgreen")))
+fig.add_trace(go.Scatter(x=[CL_md], y=[2000], mode="text",\
+                         text="$C_{L,md}=\sqrt{\\frac{C_{D0}}{K}}$",\
+                         textposition="bottom center", showlegend=False,\
+                         textfont=dict(color="mediumpurple")))
+fig.add_trace(go.Scatter(x=[CL_mp], y=[2000], mode="text",\
+                         text="$C_{L,mp}=\sqrt{\\frac{3\,C_{D0}}{K}}$",\
+                         textposition="bottom center", showlegend=False,\
+                         textfont=dict(color="crimson")))
+
+# Overlay lines for the EAS
+def CLtoEAS(CL):
+    V = np.sqrt(w_0/(.5 * rho_sl * S * CL)) /.5144444
+    return V
+
+
+
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_mr), CLtoEAS(CL_mr)], y=[3000, 12000], showlegend=False, mode="lines", line=dict(color="darkgreen")))
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_md), CLtoEAS(CL_md)], y=[3000, 12000], showlegend=False, mode="lines", line=dict(color="mediumpurple")))
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_mp), CLtoEAS(CL_mp)], y=[3000, 12000], showlegend=False, mode="lines", line=dict(color="crimson")))
+
+
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_mr)], y=[2000], mode="text",\
+                         text="$V_{C_{L,mr}}$",\
+                         textposition="bottom center", showlegend=False,\
+                         textfont=dict(color="darkgreen")))
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_md)], y=[2000], mode="text",\
+                         text="$V_{C_{L,md}}$",\
+                         textposition="bottom center", showlegend=False,\
+                         textfont=dict(color="mediumpurple")))
+fig2.add_trace(go.Scatter(x=[CLtoEAS(CL_mp)], y=[2000], mode="text",\
+                         text="$V_{C_{L,mp}}$",\
+                         textposition="bottom center", showlegend=False,\
+                         textfont=dict(color="crimson")))
+
+    
+    
+# Remove junk legend entries - this would be more efficient if I weren't lazy
+for trace in fig['data']: 
+    if (trace['name'] == "DontPrint") or (trace['name'] == "Annotation"): trace['showlegend'] = False
+
+for trace in fig2['data']: 
+    if (trace['name'] == "DontPrint") or (trace['name'] == "Annotation"): trace['showlegend'] = False
+        
+for trace in fig3['data']: 
+    if (trace['name'] == "DontPrint") or (trace['name'] == "Annotation"): trace['showlegend'] = False
+    
+
+fig.update_layout(
+    title="Constant speed and constant altitude ranges vs. Lift Coefficient for different starting altitudes",
+    xaxis_title="$C_L$",
+    yaxis_title="Range/km",
+)
+
+fig2.update_layout(
+    title="Constant speed and constant altitude ranges vs. EAS for different starting altitudes",
+    xaxis_title="$V_{E}/\\text{kn}$",
+    yaxis_title="Range/km",
+)
+
+fig3.update_layout(
+    title="Constant speed and constant altitude ranges vs. TAS for different starting altitudes",
+    xaxis_title="$V/\\text{kn}$",
+    yaxis_title="Range/km",
+)
+    
+# Figure 1
+fig.update_xaxes(range=[0, 1.5])
+fig.update_yaxes(range=[0, 12000])
+fig2.update_yaxes(range=[0, 12000])
+fig2.update_xaxes(range=[0, 500])
+fig3.update_yaxes(range=[0, 12000])
+fig.show()
+
+fig2.show()
+fig3.show()
+
+Notice that the maximum range is found at a considerably higher speed than both the minimum power and minimum drag speeds, for both types of cruise climb. The ratio between the best range speed and the minimum drag speed may be readily shown.
+
+$$\frac{V_{mr}}{V_{md}} = \frac{\sqrt{\sqrt{3}}}{1} = 1.3161$$
 
 These ratios hold across altitudes, as you should expect.
 
@@ -411,7 +585,7 @@ The BRE for propeller aircraft is similar to that for jet aircraft, but SFC is u
 
 The BRE for propeller aircraft is
 
-$$\frac{\text{d}W}{\text{d}t}=-f\,g\,P$$
+$$\frac{\text{d}W}{\text{d}t}=-c\,g\,P$$
 
 where $P$ is the power delivered to the aircraft from the propeller. With $\eta$ as the propeller efficiency, the power *delivered* is function of the power *required*
 
@@ -419,15 +593,15 @@ $$\eta P=D\,V$$
 
 so the BRE becomes
 
-$$\frac{\text{d}W}{\text{d}t}=-f\,g\,\frac{D\,V}{\eta}$$
+$$\frac{\text{d}W}{\text{d}t}=-c\,g\,\frac{D\,V}{\eta}$$
 
-$$\implies \text{d}t=-\frac{\eta}{f\,g\,V}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
+$$\implies \text{d}t=-\frac{\eta}{c\,g\,V}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
 
 Assuming, as for the jet cruise-climb case, that $\tfrac{C_L}{C_D}$, $f$, and $V$ remain constant, the equation above can be integrated from $W_S$ to $W_E$ to yield the endurance, $E$:
 
 ```{math}
 :label: PropellerEndurance
-E_{propeller}=t_e-t_s=\frac{\eta}{f\,g}\frac{1}{V}\frac{C_L}{C_D}\ln\left|\frac{W_S}{W_E}\right|
+E_{propeller}=t_e-t_s=\frac{\eta}{c\,g}\frac{1}{V}\frac{C_L}{C_D}\ln\left|\frac{W_S}{W_E}\right|
 ```
 
 ### Propeller Aircraft: Maximum Endurance
@@ -442,9 +616,14 @@ Clearly the maximum endurance is found at the **minimum power condition**, thus 
 
 The increment in aircraft distance, $\text{d}S$ when flown at velocity $V$ is given by
 
-$$\text{d}S = V\text{d}t=-\frac{\eta}{f\,g}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
+$$\text{d}S = V\text{d}t=-\frac{\eta}{c\,g}\frac{C_L}{C_D}\frac{\text{d}W}{W}$$
 
 Clearly the maximum endurance is found at the **minimum drag condition**, thus **for maximum endurance a propeller-driven aircraft should fly at** $V_{md}$.
+
+Hence the maximum range is given by the integration $R=\int\text{d}S$
+
+$$R = \frac{\eta}{c\,g}\frac{C_L}{C_D}\ln\frac{W_0}{W_1}$$
+
 
 ## Range and Endurance Summary
 
