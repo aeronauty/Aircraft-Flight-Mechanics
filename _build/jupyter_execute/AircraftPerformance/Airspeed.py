@@ -43,7 +43,7 @@ This is why LHR-ORD takes typically 8h50m, but ORD-LHR takes 7h30m, yet in each 
 
 ## Airspeed Measurement
 
-Clearly aerospace engineers require a means of determining the true airspeed, in order to determine aircraft powerplane/aerodynamic performance, and in order to calculate groundspeed and thus facilitate speed/time calculations.
+Clearly aerospace engineers require a means of determining the true airspeed, in order to determine aircraft powerplant/aerodynamic performance, and in order to calculate groundspeed and thus facilitate speed/time calculations.
 
 Equation {eq}`TASequation` may be developed from the isentropic flow equations, and allows us to determine **true airspeed** as a function of density and pressure:
 

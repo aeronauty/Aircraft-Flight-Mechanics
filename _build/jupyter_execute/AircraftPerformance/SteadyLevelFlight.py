@@ -129,7 +129,7 @@ Equation {eq}`DragEquation` assumes that the minimum drag occurs at zero lift. T
 
 $$C_D = C_{D, min} + K\left(C_L - C_{L0}\right)^2$$
 
-The second equation is more realistic for real aircraft - but adds complexity to the algebra. For simplicity, Equation {eq}`DragEquation` will be used in development of the Aircraft Performance Equations.
+The second equation is more realistic for real aircraft - but adds complexity to the algebra, and the difference between $C_{D0}$ and $C_{D,min}$ is very small even for wings of moderate camber{cite}`Anderson:1999AP`. For simplicity, Equation {eq}`DragEquation` will be used in development of the Aircraft Performance Equations.
 
 Equation {eq}`ACSpeedEquation` and Equation {eq}`DragEquation` underpin the basics of aircraft performance.
 

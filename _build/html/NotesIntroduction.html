@@ -2,9 +2,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introduction to this website &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
@@ -29,7 +30,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -133,6 +134,28 @@
  <li class="toctree-l1">
   <a class="reference internal" href="AircraftPerformance/Manoeuvre.html">
    Acceleration, Manoeuvres, and Aircraft Loading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AircraftPerformance/Examples.html">
+   Questions and Solutions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Static Stability
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="StaticStability/StaticStability.html">
+   Defining Static Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StaticStability/StaticStability.html#aircraft-body-axes">
+   Aircraft Body Axes
   </a>
  </li>
 </ul>
@@ -299,6 +322,7 @@
 <p>This website comprises the course notes for MMAE 410 Aircraft Flight Mechanics at the Illinois Institute of Technology - this text originally started as a PDF file written using LaTeX, with links to code and other tidbits. These notes started as my means of ensuring my own competence with the material and, accordingly, they get updated regularly and requiring students to download an updated PDF file every few weeks proved to not be the ideal solution.</p>
 <p>So now these notes are being transferred into Jupyter notebooks which are bundled together into this document - any changes made to the notes should be reflected in the website within minutes, and this format allows handy things like <em>interactive content,</em> which simply isn’t possible (easily) within a PDF.</p>
 <p>It does mean that my pipedream of getting them published as a textbook is over - but in the spirit of open access and education for all, I’d simply rather that they just got used for their intended purpose. Hence; use these notes to supplement your own learning, and to further your knowledge of the discipline.</p>
+<p><strong>Note: these are getting written and updated as the course is being taught, so they’re only as up-to-date as they need to be</strong></p>
 <div class="section" id="lectures">
 <h2>Lectures<a class="headerlink" href="#lectures" title="Permalink to this headline">¶</a></h2>
 <p>Due to COVID-19, my Fall 2020 class is entirely online - and I’ve chosen to pre-record all my lectures, <a class="reference external" href="https://www.youtube.com/playlist?list=PLVyHCaFIZQV9kw5wtU82dwEYvp4ZB7n3V">which will be available on YouTube</a>, and will get updated as I record/release them in batches.</p>
@@ -379,6 +403,8 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 </div>
@@ -431,6 +457,16 @@
     </div>
 
     <script src="_static/js/index.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-178506186-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
     
   </body>
 </html>

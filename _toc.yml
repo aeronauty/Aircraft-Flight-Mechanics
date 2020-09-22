@@ -12,8 +12,13 @@
   - file: AircraftPerformance/SteadyLevelFlight
   - file: AircraftPerformance/GlidingFlight
   - file: AircraftPerformance/ClimbingFlight
-#  - file: AircraftPerformance/RangeandEndurance
+  - file: AircraftPerformance/RangeandEndurance
   - file: AircraftPerformance/Manoeuvre
+  - file: AircraftPerformance/Examples
+
+- chapter: Static Stability
+  sections:
+  - file: StaticStability/StaticStability
 
 - chapter: Aircraft Equations of Motion
   sections:
