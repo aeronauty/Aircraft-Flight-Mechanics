@@ -432,7 +432,7 @@ fig.show()
 
 #### Variation of drag with aircraft weight
 
-By contrast to the density, the aircraft weight *only* appears in the **induced drag** term, $B=\frac{K\,W}{\frac{1}{2}\rho S}$, and hence the profile drag stays constant whilst the induced drag increases with aircraft weight.
+By contrast to the density, the aircraft weight *only* appears in the **induced drag** term, $B=\frac{K\,W^2}{\frac{1}{2}\rho S}$, and hence the profile drag stays constant whilst the induced drag increases with aircraft weight.
 
 This makes sense as the wetted area of the aircraft is unchanged, hence the viscous drag would be constant. The dimensional value of lift is increased, therefore the cruise $C_L$ is also increased, and the circulation *must* be increased hence the trailing vortex system is given more energy - more drag.
 
@@ -499,14 +499,14 @@ fig.show()
 
 In the drag equation, the combination of $V^2$ and $V^{-2}$ terms gives a minima in the total drag curve at the minimum drag speed, $V_{md}$ which can be determined directly from $V_{md}=\left[\frac{B}{A}\right]^{\frac{1}{4}}$.
 
-At *low speed*, the induced drag term $B=\frac{K\,W}{\frac{1}{2}\rho\,S}$ dominates.
+At *low speed*, the **induced drag** term $B=\frac{K\,W}{\frac{1}{2}\rho\,S}$ dominates.
 
 ```{admonition} Think: where in a flight regime is this important?
 :class: dropdown
 
 Take-off, landing, and air combat.
 ```
-At *high speed*, the induced drag term $A=\frac{1}{2}\rho C_{D0}S$ dominates.
+At *high speed*, the **profile drag** term $A=\frac{1}{2}\rho C_{D0}S$ dominates.
 
 ```{admonition} Think: where in a flight regime is this important?
 :class: dropdown

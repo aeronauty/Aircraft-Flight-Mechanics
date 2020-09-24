@@ -1,0 +1,87 @@
+%% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'CMQ.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{1107.77983898bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.73710863)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{CMQ.pdf}}%
+    \put(0.57512949,0.41143839){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Q$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{CMQ.pdf}}%
+    \put(0.5656912,0.38094545){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$M$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{CMQ.pdf}}%
+    \put(0.42100708,0.20531832){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$l$\end{tabular}}}}%
+    \put(0.62823945,0.48302365){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$l$\end{tabular}}}}%
+    \put(0.75104382,0.28835082){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$l\cdot Q$\end{tabular}}}}%
+    \put(0.27292466,0.39859564){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$l\cdot Q$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{CMQ.pdf}}%
+    \put(0.0251052,0.44370378){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V_\infty$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{CMQ.pdf}}%
+    \put(0.59449003,0.04452283){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$l\cdot Q$\end{tabular}}}}%
+    \put(0.73919237,0.10971512){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V_\infty$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{CMQ.pdf}}%
+    \put(0.75563789,0.01956921){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V^\prime$\end{tabular}}}}%
+    \put(0.70230785,0.06415617){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$+\Delta\alpha$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{CMQ.pdf}}%
+    \put(0.07516941,0.65299076){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$l\cdot Q$\end{tabular}}}}%
+    \put(0.22099148,0.58862583){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V_\infty$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{CMQ.pdf}}%
+    \put(0.22574763,0.67869108){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V^\prime$\end{tabular}}}}%
+    \put(0.19774457,0.63073719){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$-\Delta\alpha$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{CMQ.pdf}}%
+    \put(0.39376178,0.51467147){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Downwash\end{tabular}}}}%
+    \put(0.58468819,0.15717147){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Upwash\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{CMQ.pdf}}%
+    \put(0.37975603,0.48349485){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$l\cdot Q$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{CMQ.pdf}}%
+    \put(0.72456451,0.1633648){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$l\cdot Q$\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

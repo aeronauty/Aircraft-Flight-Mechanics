@@ -154,6 +154,16 @@
    Defining Static Stability
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/StaticStability.html#aircraft-body-axes">
+   Aircraft Body Axes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/StaticStability.html#aerodynamic-angles">
+   Aerodynamic Angles
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -873,32 +883,32 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
 </div>
 <div class="section" id="problem-1-1-conversion-between-airspeeds">
 <h3>Problem 1.1 - Conversion between airspeeds<a class="headerlink" href="#problem-1-1-conversion-between-airspeeds" title="Permalink to this headline">¶</a></h3>
-<p>An aircraft is flying at an altitude of <span class="pasted-text">40000</span>ft, with a calibrated airspeed of <span class="pasted-text">285</span>kn, with a <span class="pasted-text">12</span>kn <span class="pasted-text">headwind</span>:</p>
+<p>An aircraft is flying at an altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">125</span>kn, with a <span class="pasted-text">10</span>kn <span class="pasted-text">headwind</span>:</p>
 <p>a) How long will it take to cover 100 miles?</p>
 <p>b) How long will it take to cover 200km?</p>
-<p>c) If instead of <span class="math notranslate nohighlight">\(V_C\)</span> = <span class="pasted-text">285</span>kn, you have <span class="math notranslate nohighlight">\(V_I\)</span> = <span class="pasted-text">285</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
+<p>c) If instead of <span class="math notranslate nohighlight">\(V_C\)</span> = <span class="pasted-text">125</span>kn, you have <span class="math notranslate nohighlight">\(V_I\)</span> = <span class="pasted-text">125</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
 <p>Try and tackle the problem yourself before you see the solution below. The numbers in this problem will change each time the notes are updated.</p>
 <div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the solution…</p>
 <p>The first step is to take Vc to Ve via the pressure correction.</p>
-<p>For the altitude of <span class="pasted-text">40000</span>ft, with a calibrated airspeed of <span class="pasted-text">285</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">40000</span>, <span class="pasted-text">285</span>).</p>
-<p>This gives a value of <span class="pasted-text">0.922</span> for the pressure correction, and this determination pf the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">262.770</span>kn.</p>
-<p>For EAS to TAS, the density ratio is required - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.247</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
-<p>True airspeed is obtained from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">528.639</span>kn.</p>
+<p>For the altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">125</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">35000</span>, <span class="pasted-text">125</span>).</p>
+<p>This gives a value of <span class="pasted-text">0.986</span> for the pressure correction, and this determination pf the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">123.250</span>kn.</p>
+<p>For EAS to TAS, the density ratio is required - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.311</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
+<p>True airspeed is obtained from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">221.158</span>kn.</p>
 <p>Note that at no point have the units had to be converted into SI to make the corrections - that’s the smart part of the density and pressure corrections; they are both non-dimensional corrections. If you have velocity in knots, you use them and get velocity in knots out.</p>
-<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">516.639</span>kn. This gives the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
-<p>With the velocity in knots it may be easily converted to m/s by multiplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">265.782</span>m/s.</p>
-<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">605.5</span>s or <span class="pasted-text">10 minutes, 5 seconds</span></p>
-<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">752.5</span>s or <span class="pasted-text">12 minutes, 32 seconds</span></p>
+<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">211.158</span>kn. This gives the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
+<p>With the velocity in knots it may be easily converted to m/s by multiplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">108.629</span>m/s.</p>
+<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">1481.5</span>s or <span class="pasted-text">24 minutes, 41 seconds</span></p>
+<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">1841.1</span>s or <span class="pasted-text">30 minutes, 41 seconds</span></p>
 <hr class="docutils" />
 <p>For the last part of the question, this is solved by recalling that <span class="math notranslate nohighlight">\(V_c = V_I + \Delta V_p\)</span> and hence the speeds calculated are now:</p>
-<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">287.000</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">264.384</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">531.887</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">543.887</span>kn = <span class="pasted-text">279.800</span>m/s</p>
-<p>The times taken are found to be <span class="pasted-text">9 minutes, 35 seconds</span> and  <span class="pasted-text">11 minutes, 54 seconds</span>, for a respective  <span class="pasted-text">30 seconds</span> and  <span class="pasted-text">37 seconds</span> <span class="pasted-text">faster</span>.</p>
+<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">127.000</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">125.171</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">224.606</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">234.606</span>kn = <span class="pasted-text">120.692</span>m/s</p>
+<p>The times taken are found to be <span class="pasted-text">22 minutes, 13 seconds</span> and  <span class="pasted-text">27 minutes, 37 seconds</span>, for a respective  <span class="pasted-text">2 minutes, 28 seconds</span> and  <span class="pasted-text">3 minutes, 4 seconds</span> <span class="pasted-text">faster</span>.</p>
 </div>
 </div>
 <div class="section" id="problem-1-2-theory">
@@ -968,6 +978,12 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
           By Harry Smith<br/>
         
             &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            <div>
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
+</div>
+
+          </div>
       </p>
     </div>
   </footer>

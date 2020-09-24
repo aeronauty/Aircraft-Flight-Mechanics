@@ -7,7 +7,7 @@ So now these notes are being transferred into Jupyter notebooks which are bundle
 
 It does mean that my pipedream of getting them published as a textbook is over - but in the spirit of open access and education for all, I'd simply rather that they just got used for their intended purpose. Hence; use these notes to supplement your own learning, and to further your knowledge of the discipline.
 
-**Note: these are getting written and updated as the course is being taught, so they're only as up-to-date as they need to be**
+**Note: these are getting written and updated as the course is being taught, so they're only as up-to-date as they need to be**\
 
 ## Lectures
 
