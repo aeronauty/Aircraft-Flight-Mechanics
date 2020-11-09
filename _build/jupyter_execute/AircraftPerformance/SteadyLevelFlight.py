@@ -158,6 +158,9 @@ Cd = np.array([0.033099, 0.035185, 0.035214, 0.041961, 0.051143,\
 Cl = np.array([0.1454, -0.09219, 0.38303, 0.6238, 0.86305, 1.09772,\
 1.31082, 1.45757, 1.51784, 1.55342, 1.58437, 1.60452, 1.58455])
 
+a = np.asarray([Cl, Cd])
+np.savetxt("CessnaDragPolar.csv", a.transpose(), delimiter=",", header="Cl, Cd")
+
 plt.plot(Cd, Cl, 'x', label='Data')
 
 # Put the drag model on top

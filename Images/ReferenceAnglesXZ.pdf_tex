@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{949.26269531bp}%
+    \setlength{\unitlength}{640.94177727bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,24 +50,25 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.62119313)%
+  \begin{picture}(1,1.0212766)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{ReferenceAnglesXZ.pdf}}%
-    \put(0.29586151,0.33198206){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$\alpha$}\end{tabular}}}}%
+    \put(0.68557925,0.61938531){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$\alpha$}\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{ReferenceAnglesXZ.pdf}}%
-    \put(0.396955,0.18466402){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$\theta$}\end{tabular}}}}%
+    \put(0.71572107,0.52777775){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$\gamma$}\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{ReferenceAnglesXZ.pdf}}%
-    \put(0.64463938,0.59605675){\color[rgb]{0,0,0}\rotatebox{-15}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{red}{Lift}\end{tabular}}}}}%
-    \put(0.71572526,0.22884917){\color[rgb]{0,0,0}\rotatebox{-15}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{red}{Drag}\end{tabular}}}}}%
+    \put(0.52534294,0.42272918){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$\theta$}\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{ReferenceAnglesXZ.pdf}}%
-    \put(0.03701933,0.39855925){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{red}{$V_\infty$}\end{tabular}}}}%
-    \put(0.25952179,0.27799162){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$\gamma$}\end{tabular}}}}%
-    \put(0.50564251,0.01945149){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{blue}{Weight}\end{tabular}}}}%
-    \put(0.78218225,0.1521791){\color[rgb]{0,0,0}\rotatebox{-30}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{darkgreen}{Thrust}\end{tabular}}}}}%
-    \put(0.0093458,0.21776252){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{blue}{Earth}\end{tabular}}}}%
-    \put(0.01854173,0.32740671){\color[rgb]{0,0,0}\rotatebox{-10}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{red}{Wind}\end{tabular}}}}}%
-    \put(0.02820971,0.57338667){\color[rgb]{0,0,0}\rotatebox{-30}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{darkgreen}{Body}\end{tabular}}}}}%
+    \put(0.20004442,0.49599208){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{${\color{red}D}$}\end{tabular}}}}%
+    \put(0.23155617,1.00459884){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{${\color{red}L}$}\end{tabular}}}}%
+    \put(0.54662865,0.7025347){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{${\color{darkgreen}T}$}\end{tabular}}}}%
+    \put(0.3114304,0.21465123){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{${\color{blue}W}$}\end{tabular}}}}%
+    \put(0.35654448,0.03313415){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{${\color{blue}z_e}$}\end{tabular}}}}%
+    \put(0.80287425,0.48447892){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{${\color{blue}x_e}$}\end{tabular}}}}%
+    \put(0.5972617,0.11504484){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{${\color{darkgreen}z}$}\end{tabular}}}}%
+    \put(0.7450591,0.70986447){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{${\color{darkgreen}x}$}\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{ReferenceAnglesXZ.pdf}}%
+    \put(0.94364064,0.63185029){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{${\color{red}V_f}$}\end{tabular}}}}%
   \end{picture}%
 \endgroup%

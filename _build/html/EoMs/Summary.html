@@ -1,0 +1,535 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summary of the equations of motion &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Road so Far…" href="../Linearisation/Introduction.html" />
+    <link rel="prev" title="Inertia Tensor Calculation \(\def\dif{\text{d}}\)" href="InertiaTensor.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/Logo2.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Aircraft Flight Mechanics by Harry Smith, PhD</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CourseIntroduction.html">
+   Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Prerequisites/Prerequisites.html">
+   Assumed knowledge
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Performance
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Introduction.html">
+   Aircraft Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Airspeed.html">
+   Defining Aircraft ‘Speed’
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/SteadyLevelFlight.html">
+   Steady Level Flight
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/GlidingFlight.html">
+   Climbing and Gliding Caveat
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/GlidingFlight.html#gliding-flight-unpowered-descent">
+   Gliding Flight (Unpowered Descent)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/ClimbingFlight.html">
+   Climbing Flight
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/RangeandEndurance.html">
+   Range and Endurance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Manoeuvre.html">
+   Acceleration, Manoeuvres, and Aircraft Loading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Examples.html">
+   Questions and Solutions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Static Stability
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/StaticStability.html">
+   Defining Static Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Angles.html">
+   Co-ordinate system and Angles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/LSS.html">
+   Longitudinal Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Nondimensionalrates.html">
+   Non-dimensional rates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Lateral.html">
+   Lateral Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Directional.html">
+   Directional Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/CrossCouplings.html">
+   Cross-couplings
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Equations of Motion
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EulerTransforms.html">
+   Axes Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="RelativeMotion.html">
+   Absolute Acceleration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Translation.html">
+   EoMs for Translation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Rotation.html">
+   EoMs for Rotation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="InertiaTensor.html">
+   Inertia Tensor Calculation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Summary of the equations of motion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Linearisation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Introduction.html">
+   The Road so Far…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Linearisation.html">
+   Linearisation Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/AerodynamicDerivatives.html">
+   Stability Derivatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Concise.html">
+   Concise Form of Dimensional EoMs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Aerodynamic.html">
+   Linear Aerodynamic Terms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Nondimensional.html">
+   Nondimensional Equations of Motion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/StateSpaceExample.html">
+   Worked Example
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  References and Resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zreferences.html">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zreferences.html#references">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/EoMs/Summary.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/issues/new?title=Issue%20on%20page%20%2FEoMs/Summary.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/edit/master/EoMs/Summary.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/EoMs/Summary.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#translational-motion">
+   Translational Motion:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#angular-motion">
+   Angular Motion:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#body-angular-rate-due-to-an-attitude-rate">
+   Body angular rate due to an attitude rate:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#attitude-rate-due-to-a-body-rate">
+   Attitude rate due to a body rate
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="summary-of-the-equations-of-motion">
+<h1>Summary of the equations of motion<a class="headerlink" href="#summary-of-the-equations-of-motion" title="Permalink to this headline">¶</a></h1>
+<p>With the translational (Eq. <a class="reference internal" href="Translation.html#equation-eq-translationaleom">(28)</a>) and rotational (Eq. <a class="reference internal" href="Rotation.html#equation-eq-rotationaleom">(32)</a>) defined, and the relationship between the Euler angles and the body rates (Eqs. <code class="xref eq docutils literal notranslate"><span class="pre">eq:eulerratetoomega</span></code> and <a class="reference internal" href="EulerTransforms.html#equation-eq-omegatoeulerrate">(17)</a>), fully unconstrained flight in 6DoF can be described.</p>
+<p>In total twelve equations have been derived (body/attitude rates are only three but the matrix is tough to invert, so I’ll include both versions below) that can describe aircraft position and attitude in a Newtonian framework:</p>
+<div class="section" id="translational-motion">
+<h2>Translational Motion:<a class="headerlink" href="#translational-motion" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}m\begin{bmatrix} \dot{U} + Q\,W - R\,V \\ \dot{V} + R\,U-P\,W\\\dot{W}+P\,V-Q\,U\end{bmatrix}=\begin{matrix} -mg\sin\theta - D\cos\alpha + L\sin\alpha + T\cos\theta_T\\mg\sin\phi\cos\theta + F_{A_Y} + F_{T_Y}\\mg\cos\phi\cos\theta - D\sin\alpha - L\cos\alpha - T\sin\theta_T\end{matrix}\end{split}\]</div>
+</div>
+<div class="section" id="angular-motion">
+<h2>Angular Motion:<a class="headerlink" href="#angular-motion" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[{\begin{matrix} \dot{P}\cdot I_{xx} \\ \dot{Q}\cdot I_{yy} \\\dot{R}\cdot I_{zz}\end{matrix}} \hspace{.5cm} \begin{matrix} + \\+\\+\end{matrix} \hspace{.5cm} {\begin{matrix} Q\cdot R\left(I_{zz} - I_{yy}\right) \\ P\cdot R\left(I_{xx} - I_{zz}\right) \\ P\cdot Q\left(I_{yy} - I_{xx}\right)\end{matrix}} \hspace{.5cm} \begin{matrix} - \\+\\+\end{matrix} \hspace{.5cm} {\begin{matrix}\left(\dot{R} + P\cdot Q\right) I_{xz} \\ \left(P^2 - R^2\right) I_{xz} \\ \left(Q\cdot R - \dot{P}\right) I_{xz}\end{matrix}} \right] = \begin{bmatrix} L \\ M \\ N\end{bmatrix}\end{split}\]</div>
+</div>
+<div class="section" id="body-angular-rate-due-to-an-attitude-rate">
+<h2>Body angular rate due to an attitude rate:<a class="headerlink" href="#body-angular-rate-due-to-an-attitude-rate" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \begin{bmatrix} P\\Q\\R\end{bmatrix} &amp;= \begin{bmatrix}
+    1 &amp; 0 &amp; -\sin\theta\\
+    0 &amp; \cos\phi &amp; \sin\phi\cos\theta\\
+    0 &amp; -\sin\phi &amp; \cos\phi\cos\theta
+ \end{bmatrix}\begin{bmatrix} \dot{\phi}\\\dot{\theta}\\\dot{\psi}\end{bmatrix}\end{aligned}\end{split}\]</div>
+</div>
+<div class="section" id="attitude-rate-due-to-a-body-rate">
+<h2>Attitude rate due to a body rate<a class="headerlink" href="#attitude-rate-due-to-a-body-rate" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\begin{bmatrix} \dot{\phi}\\\dot{\theta}\\\dot{\psi}\end{bmatrix}&amp;= \begin{bmatrix}
+    1 &amp; \sin\phi\tan\theta &amp; \cos\phi\tan\theta\\
+    0 &amp; \cos\phi &amp; -\sin\phi    \\
+    0 &amp; \frac{\sin\phi}{\cos\theta} &amp; \frac{\cos\phi}{\cos\theta}
+ \end{bmatrix}\begin{bmatrix} P\\Q\\R\end{bmatrix}\end{aligned}\end{split}\]</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "aeronauty/Aircraft-Flight-Mechanics",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./EoMs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="InertiaTensor.html" title="previous page">Inertia Tensor Calculation <span class="math notranslate nohighlight">\(\def\dif{\text{d}}\)</span></a>
+    <a class='right-next' id="next-link" href="../Linearisation/Introduction.html" title="next page">The Road so Far…</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Harry Smith<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            <div>
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-178506186-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

@@ -1,0 +1,688 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EoMs for Rotation \(\def\dif{\text{d}}\) &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Inertia Tensor Calculation \(\def\dif{\text{d}}\)" href="InertiaTensor.html" />
+    <link rel="prev" title="EoMs for Translation" href="Translation.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/Logo2.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Aircraft Flight Mechanics by Harry Smith, PhD</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CourseIntroduction.html">
+   Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Prerequisites/Prerequisites.html">
+   Assumed knowledge
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Performance
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Introduction.html">
+   Aircraft Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Airspeed.html">
+   Defining Aircraft ‘Speed’
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/SteadyLevelFlight.html">
+   Steady Level Flight
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/GlidingFlight.html">
+   Climbing and Gliding Caveat
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/GlidingFlight.html#gliding-flight-unpowered-descent">
+   Gliding Flight (Unpowered Descent)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/ClimbingFlight.html">
+   Climbing Flight
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/RangeandEndurance.html">
+   Range and Endurance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Manoeuvre.html">
+   Acceleration, Manoeuvres, and Aircraft Loading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Examples.html">
+   Questions and Solutions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Static Stability
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/StaticStability.html">
+   Defining Static Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Angles.html">
+   Co-ordinate system and Angles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/LSS.html">
+   Longitudinal Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Nondimensionalrates.html">
+   Non-dimensional rates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Lateral.html">
+   Lateral Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Directional.html">
+   Directional Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/CrossCouplings.html">
+   Cross-couplings
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Equations of Motion
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EulerTransforms.html">
+   Axes Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="RelativeMotion.html">
+   Absolute Acceleration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Translation.html">
+   EoMs for Translation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   EoMs for Rotation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="InertiaTensor.html">
+   Inertia Tensor Calculation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Summary.html">
+   Summary of the equations of motion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Linearisation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Introduction.html">
+   The Road so Far…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Linearisation.html">
+   Linearisation Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/AerodynamicDerivatives.html">
+   Stability Derivatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Concise.html">
+   Concise Form of Dimensional EoMs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Aerodynamic.html">
+   Linear Aerodynamic Terms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Nondimensional.html">
+   Nondimensional Equations of Motion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/StateSpaceExample.html">
+   Worked Example
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  References and Resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zreferences.html">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zreferences.html#references">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/EoMs/Rotation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/issues/new?title=Issue%20on%20page%20%2FEoMs/Rotation.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/edit/master/EoMs/Rotation.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/EoMs/Rotation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#determination-of-angular-momentum-vector">
+   Determination of angular momentum vector
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-determine-absolute-velocity-of-dif-m-with-vec-omega-neq0">
+     Step 1 - Determine absolute velocity of
+     <span class="math notranslate nohighlight">
+      \(\dif m\)
+     </span>
+     with
+     <span class="math notranslate nohighlight">
+      \(\vec{\omega}\neq0\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-determine-the-linear-momentum-of-dif-m">
+     Step 2 - Determine the linear momentum of
+     <span class="math notranslate nohighlight">
+      \(\dif m\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-determine-the-angular-momentum-dif-vec-h-dif-m">
+     Step 3 - Determine the angular momentum,
+     <span class="math notranslate nohighlight">
+      \(\dif \vec{H}_{\dif m}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-integrate-over-the-entire-aircraft">
+     Step 4 - Integrate over the entire aircraft
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simplification-of-the-inertia-tensor-via-symmetry">
+       Simplification of the Inertia Tensor via symmetry
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-5-determine-the-absolute-rate-of-change-of-angular-momentum">
+     Step 5 - Determine the absolute rate of change of angular momentum
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="math notranslate nohighlight">
+\[\def\dif{\text{d}}\]</div>
+<div class="section" id="eoms-for-rotation-def-dif-text-d">
+<h1>EoMs for Rotation <span class="math notranslate nohighlight">\(\def\dif{\text{d}}\)</span><a class="headerlink" href="#eoms-for-rotation-def-dif-text-d" title="Permalink to this headline">¶</a></h1>
+<p>Newton’s second law relates mass to acceleration, and it is apparent that mass may be considered as a body’s tendency to resist a change in velocity. The analogue for rotation is <em>moment of inertia</em>. In a Newtonian framework, it is assumed that our aircraft is rigid and may be represented by a <em>point mass</em>, at the aircraft Centre of Gravity. In order to develop a Newtonian relationship for rotation, a means to represent the aircraft’s <em>mass distribution</em> is required, and how the mass distribution affects its tendency to resist rotational motion.</p>
+<p>Newton’s second law (NII herein) can further be defined as <em>the rate of change of inertia is equivalent to the applied force</em>.</p>
+<p>NII can be defined for rotational motion as <em>the angular acceleration is proportional to the net torque and inversely proportional to the moment of inertia</em>. <em>angular momentum</em> is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-eq-ang-mom">
+<span class="eqno">(29)<a class="headerlink" href="#equation-eq-ang-mom" title="Permalink to this equation">¶</a></span>\[\vec{H} = \vec{r} \times \left( m\vec{V}\right)\]</div>
+<p>to define NII for angular motion, and determine the relationship between angular body rates and applied moments:</p>
+<div class="math notranslate nohighlight">
+\[\left.\frac{d\vec{H}}{dt}\right|_{abs}=\vec{M}\]</div>
+<div class="math notranslate nohighlight">
+\[\def\ii{\hat{\boldsymbol{\imath}}}\]</div>
+<div class="math notranslate nohighlight">
+\[\def\jj{\hat{\boldsymbol{\jmath}}}\]</div>
+<div class="math notranslate nohighlight">
+\[\def\kk{\hat{\boldsymbol{k}}}\]</div>
+<div class="section" id="determination-of-angular-momentum-vector">
+<h2>Determination of angular momentum vector<a class="headerlink" href="#determination-of-angular-momentum-vector" title="Permalink to this headline">¶</a></h2>
+<p>The left hand side is will be built up by describing the aircraft as a system of discrete point masses - these are defined at positions <span class="math notranslate nohighlight">\(\vec{r}_{\dif m}\)</span> in aircraft body axes.</p>
+<div class="figure align-default" id="figacpointmasses">
+<a class="reference internal image-reference" href="../_images/ACPointMasses.png"><img alt="../_images/ACPointMasses.png" src="../_images/ACPointMasses.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text">Aircraft represented as point masses</span><a class="headerlink" href="#figacpointmasses" title="Permalink to this image">¶</a></p>
+</div>
+<p><span class="math notranslate nohighlight">\(\def\dif{\text{d}}\)</span>
+For an elemental mass, <span class="math notranslate nohighlight">\(\dif m\)</span>, located at <span class="math notranslate nohighlight">\(\vec{r}_{\dif m}\)</span>, we perform the following steps to build our equations of motion:</p>
+<ol class="simple">
+<li><p>Determine an expression for the translational velocity of <span class="math notranslate nohighlight">\(\dif m\)</span> due to aircraft rotation about the axis origin (aircraft centre of gravity), taking into account <em>relative motion</em>.</p></li>
+<li><p>From this, develop an expression for the linear momentum of <span class="math notranslate nohighlight">\(\dif m\)</span></p></li>
+<li><p>Use Eq. <a class="reference internal" href="#equation-eq-ang-mom">(29)</a> to develop an expression for the elemental angular momentum, given the linear momentum from the previous step.</p></li>
+<li><p>Integrate the elemental masses over the entire aircraft to determine the angular momentum of the entire aircraft</p></li>
+<li><p>Take into account the rate of change of angular momentum with respect to the inertially-fixed reference frame</p></li>
+</ol>
+<div class="section" id="step-1-determine-absolute-velocity-of-dif-m-with-vec-omega-neq0">
+<h3>Step 1 - Determine absolute velocity of <span class="math notranslate nohighlight">\(\dif m\)</span> with <span class="math notranslate nohighlight">\(\vec{\omega}\neq0\)</span><a class="headerlink" href="#step-1-determine-absolute-velocity-of-dif-m-with-vec-omega-neq0" title="Permalink to this headline">¶</a></h3>
+<p>Consider an elemental mass of the aircraft, <span class="math notranslate nohighlight">\(\dif m\)</span>, at radius <span class="math notranslate nohighlight">\(\vec{r}_{\dif m}\)</span> - the velocity vector of this in body axes is simply the time rate of change of the position vector,</p>
+<div class="math notranslate nohighlight">
+\[\left.\frac{d\vec{r}_{\dif m}}{dt}\right|_{Oxyz}\]</div>
+<p>In flight mechanics the aircraft is assumed to be rigid<a class="footnote-reference brackets" href="#id2" id="id1">1</a> so:</p>
+<div class="math notranslate nohighlight">
+\[\left.\frac{d\vec{r}_{\dif m}}{dt}\right|_{Oxyz}=0\]</div>
+<p>Just as for translation, the absolute velocity vector is required. Absolute velocity comprises components due to the velocity as defined in body axes, and also <em>apparent</em> velocity due to the time rate of change of the rotation vector, <span class="math notranslate nohighlight">\(\vec{\omega}\)</span>.</p>
+<p>As before, the Coriolis identities are integral to this process:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gathered}
+    \left.\frac{d\ddagger}{dt}  \right|_{abs} = \left.\frac{d\ddagger}{dt}  \right|_{Oxyz} + \vec{\omega}\times\ddagger\\
+    \left.\frac{d^2\ddagger}{dt^2}  \right|_{abs} = \left.\frac{d^2\ddagger}{dt^2}\right|_{Oxyz} + \dot{\vec{\omega}} \times\ddagger + 2\cdot\vec{\omega}\times\left.\frac{d\ddagger}{dt}\right|_{Oxyz}+\vec{\omega}\times\left(\vec{\omega}\times\ddagger\right)\end{gathered}\end{split}\]</div>
+<p>To determine the absolute velocity we the first order identity:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    V_{\dif m} = \left.\frac{d\vec{r}_{\dif m}}{dt}    \right|_{abs} &amp;= {\left.\frac{d\vec{r}_{\dif m}}{dt}  \right|_{Oxyz}} + \vec{\omega}\times\vec{r}_{\dif m}  \\
+    &amp;= \vec{\omega}\times\vec{r}_{\dif m}\\
+    &amp;=\left|\begin{matrix}\ii &amp; \jj &amp; \kk \\P &amp; Q &amp; R \\ x_{\dif m} &amp; y_{\dif m} &amp; z_{\dif m}\end{matrix}\right|\\
+    &amp;= \begin{matrix} Q\cdot z_{\dif m} - R\cdot y_{\dif m}\\R\cdot x_{\dif m} - R\cdot z_{\dif m}\\P\cdot y_{\dif m}-Q\cdot x_{\dif m}\end{matrix}\label{eq:Step1}\end{aligned}\end{split}\]</div>
+<p>Hence we have an expression for the absolute velocity of elemental mass, <span class="math notranslate nohighlight">\(\dif m\)</span>.</p>
+</div>
+<div class="section" id="step-2-determine-the-linear-momentum-of-dif-m">
+<h3>Step 2 - Determine the linear momentum of <span class="math notranslate nohighlight">\(\dif m\)</span><a class="headerlink" href="#step-2-determine-the-linear-momentum-of-dif-m" title="Permalink to this headline">¶</a></h3>
+<p>Normally, linear momentum has symbol <span class="math notranslate nohighlight">\(P\)</span>, but this will cause issues with the term for roll rate, so <span class="math notranslate nohighlight">\(\dif m\vec{V}\)</span> will be used to represent the linear momentum:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \dif m\vec{V}_{\dif m}= \dif m\cdot\begin{bmatrix} Q\cdot z_{\dif m} - R\cdot y_{\dif m}\\R\cdot x_{\dif m} - P\cdot z_{\dif m}\\P\cdot y_{\dif m}-Q\cdot x_{\dif m}\end{bmatrix}  \end{aligned}\end{split}\]</div>
+<p>Note that the components of linear momentum in each axis consist solely of cross-coupling with terms from the other axes - if you get to this point, and you have direct terms in any row, then you have messed up one of your cross products.</p>
+</div>
+<div class="section" id="step-3-determine-the-angular-momentum-dif-vec-h-dif-m">
+<h3>Step 3 - Determine the angular momentum, <span class="math notranslate nohighlight">\(\dif \vec{H}_{\dif m}\)</span><a class="headerlink" href="#step-3-determine-the-angular-momentum-dif-vec-h-dif-m" title="Permalink to this headline">¶</a></h3>
+<p>Using Equation <a class="reference internal" href="#equation-eq-ang-mom">(29)</a>, the angular momentum may be determined:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \dif \vec{H}_{\dif m}&amp;=\vec{r}_{\dif m}\times \dif m\vec{V}_{\dif m}\\
+        &amp;=\dif m\begin{vmatrix} \ii &amp; \jj &amp; \kk \\ x_{\dif m} &amp; y_{\dif m} &amp; z_{\dif m} \\ \left(Q\cdot z_{\dif m} - R\cdot y_{\dif m}\right) &amp; \left(R\cdot x_{\dif m} -P\cdot z_{\dif m}\right) &amp; \left(P\cdot y_{\dif m}-Q\cdot x_{\dif m}\right)\end{vmatrix}\\
+    &amp;=\dif m \begin{bmatrix} P\left(y_{\dif m}^2 + z_{\dif m}^2\right) - Q\cdot x_{\dif m}\cdot y_{\dif m} - R\cdot x_{\dif m}\cdot z_{\dif m} \\ Q\left(x_{\dif m}^2 + z_{\dif m}^2\right) - R\cdot y_{\dif m}\cdot z_{\dif m} - P\cdot x_{\dif m}\cdot y_{\dif m} \\ R\left(x_{\dif m}^2 + y_{\dif m}^2\right) - P\cdot x_{\dif m}\cdot z_{\dif m} - Q\cdot y_{\dif m}\cdot z_{\dif m}\end{bmatrix}\end{aligned}\end{split}\]</div>
+</div>
+<div class="section" id="step-4-integrate-over-the-entire-aircraft">
+<h3>Step 4 - Integrate over the entire aircraft<a class="headerlink" href="#step-4-integrate-over-the-entire-aircraft" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[H= \int \dif H \dif m\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-totalh">
+<span class="eqno">(30)<a class="headerlink" href="#equation-eq-totalh" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}    &amp;=\begin{matrix} 
+    p\int\left(y_{\dif m}^2 + z_{\dif m}^2\right)\dif m - Q\int x_{\dif m}\cdot y_{\dif m}\dif m - R\int x_{\dif m}\cdot z_{\dif m}\dif m \\ 
+    q\int\left(x_{\dif m}^2 + z_{\dif m}^2\right) \dif m- R\int y_{\dif m}\cdot z_{\dif m}\dif m - P\int x_{\dif m}\cdot y_{\dif m}\dif m \\
+    r\int\left(x_{\dif m}^2 + y_{\dif m}^2\right) \dif m- P\int x_{\dif m}\cdot z_{\dif m}\dif m - Q\int y_{\dif m}\cdot z_{\dif m}\dif m
+    \end{matrix}\end{aligned}\end{split}\]</div>
+<p>The integral operators above are well-defined and standard quantities, called <strong>moments of inertia</strong> and <strong>products of inertia</strong>. The moments of inertia are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+ I_{xx} = \int\left(y_{\dif m}^2 + z_{\dif m}^2\right)\dif m\\
+ I_{yy} = \int\left(x_{\dif m}^2 + z_{\dif m}^2\right)\dif m\\
+ I_{zz} = \int\left(x_{\dif m}^2 + y_{\dif m}^2\right)\dif m\end{aligned}\end{split}\]</div>
+<p>The moments of inertia are always positive, and refer to a body’s tendency to resist motion about a given axis - and is a function of the mass distribution in a plane normal to that axis.</p>
+<p>The products of inertia are:
+<span class="math notranslate nohighlight">\(\def\itensor{\begin{bmatrix}I\end{bmatrix}}\)</span>
+<span class="math notranslate nohighlight">\($\begin{aligned}
+ I_{xy} = I_{yx} = \int x_{\dif m}\cdot y_{\dif m}\dif m\\
+ I_{xz} = I_{zx} = \int x_{\dif m}\cdot z_{\dif m}\dif m\\
+ I_{yz} = I_{zy} =\int y_{\dif m}\cdot z_{\dif m}\dif m\end{aligned}\)</span>$</p>
+<p>Products of inertia can be positive or negative, and are a little less intuitive to interpret, physically. They correspond to the net torque required to rotate at a constant rate about a given axis, and gives a measure of the degree of asymmetry of a body. An axisymmetric body (a well-balanced car tyre) has zero product of inertia about the axis of rotation, which results in a smoother ride - no net torque produced under constant rotation, and no net force at any instant. Conversely, if a car tyre is poorly-balanced, then there is a non-zero product of inertia, and a bumpier ride, and a non-zero net torque/force normal to the rotation axis.</p>
+<p>We can substitute these into Equation <a class="reference internal" href="#equation-eq-totalh">(30)</a> to get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \vec{H}=\begin{matrix} H_x\\H_y\\H_z\end{matrix}&amp;=\begin{matrix} 
+    P\cdot I_{xx} - Q\cdot I_{xy} - R\cdot I_{xz} \\ 
+    Q\cdot I_{yy} - R\cdot I_{yz} - P\cdot I_{xy} \\ 
+    R\cdot I_{zz} - P\cdot I_{xz} - Q\cdot I_{yz}  \end{matrix}\\
+    &amp;=\begin{bmatrix} I_{xx} &amp; -I_{xy} &amp; -I_{xz} \\
+    -I_{yx} &amp; I_{yy} &amp; -I_{yz}\\
+    -I_{zx} &amp; -I_{zy} &amp; I_{zz}\end{bmatrix}\begin{bmatrix}P\\Q\\R\end{bmatrix}\end{aligned}\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-inertiatensor">
+<span class="eqno">(31)<a class="headerlink" href="#equation-eq-inertiatensor" title="Permalink to this equation">¶</a></span>\[\begin{aligned}   &amp;= \itensor\vec{\omega}\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\itensor\)</span> is the <em>inertia tensor</em>.</p>
+<div class="section" id="simplification-of-the-inertia-tensor-via-symmetry">
+<h4>Simplification of the Inertia Tensor via symmetry<a class="headerlink" href="#simplification-of-the-inertia-tensor-via-symmetry" title="Permalink to this headline">¶</a></h4>
+<p>In general, most aircraft are symmetric about a longitudinal/vertical plane (slice it down the middle), and will also tend to have the principal yaw tensor axis aligned with <span class="math notranslate nohighlight">\(z_b\)</span>. This means we can assume that: <span class="math notranslate nohighlight">\($I_{xy}=I_{yx}=I_{yz}=I_{zy}=0\)</span>$</p>
+<p>thus the equation for angular momentum is simplified to: <span class="math notranslate nohighlight">\($\begin{aligned}
+    \vec{H}&amp;=\begin{bmatrix} I_{xx} &amp; 0 &amp; -I_{xz} \\
+    0 &amp; I_{yy} &amp; 0\\
+    -I_{zx} &amp; 0 &amp; I_{zz}\end{bmatrix}\begin{bmatrix}P\\Q\\R\end{bmatrix}\\
+    &amp;= \itensor\vec{\omega}\\
+    \begin{bmatrix} H_x \\ H_y \\ H_z \end{bmatrix} &amp;= \begin{bmatrix} I_{xx}\cdot P - I_{xz}\cdot R \\ I_{yy}\cdot Q \\ -I_{xz}\cdot P + I_{zz}\cdot R \end{bmatrix} \end{aligned}\)</span>$</p>
+</div>
+</div>
+<div class="section" id="step-5-determine-the-absolute-rate-of-change-of-angular-momentum">
+<h3>Step 5 - Determine the absolute rate of change of angular momentum<a class="headerlink" href="#step-5-determine-the-absolute-rate-of-change-of-angular-momentum" title="Permalink to this headline">¶</a></h3>
+<p>Again, using Equation <a class="reference internal" href="RelativeMotion.html#equation-eq-coriolis1">(25)</a> to determine the absolute rate of change of angular momentum:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \frac{\dif\vec{H}}{\dif t}_{abs}&amp;=\frac{\dif\vec{H}}{\dif t}_{Oxyz} + \vec{\omega}\times\vec{H}_{Oxyz}\\
+    &amp;=\frac{\dif\itensor\vec{\omega}}{\dif t}_{Oxyz} + \vec{\omega}\times\left(\itensor\vec{\omega}\right)\\
+    &amp;=\frac{\dif\itensor}{\dif t}\vec{\omega}+\itensor\frac{\dif\vec{\omega}}{\dif t} + \begin{vmatrix} \ii &amp; \jj &amp; \kk \\ P &amp; Q &amp; R \\ \left(I_{xx}\cdot P - I_{xz}\cdot R\right) &amp; \left(I_{yy}\cdot Q\right) &amp; \left(-I_{xz}\cdot P + I_{zz}\cdot R \right) \end{vmatrix}\end{aligned}\end{split}\]</div>
+<p>since the rigid aircraft assumption has already been invoked, the products and moments of inertia are constant in time, hence the time rate of change of <span class="math notranslate nohighlight">\(\itensor\)</span> cancels to zero</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    &amp;={\frac{\dif\itensor}{\dif t}}\cdot\vec{\omega}+{\frac{\dif\vec{\omega}}{\dif t}\cdot\itensor} \hspace{1cm}+ \begin{vmatrix} \ii &amp; \jj &amp; \kk \\ P &amp; Q &amp; R \\ \left(I_{xx}\cdot P - I_{xz}\cdot R\right)&amp; \left(I_{yy}\cdot Q\right) &amp; \left(-I_{xz}\cdot P + I_{zz}\cdot R \right) \end{vmatrix}\\
+    &amp;= \begin{bmatrix}I_{xx}\cdot\dot{P} - I_{xz}\cdot\dot{R}\\I_{yy}\cdot\dot{Q}\\I_{zz}\cdot\dot{r} - I_{xz}\cdot\dot{P}\end{bmatrix} + \begin{bmatrix} Q\left(I_{zz}\cdot R - I_{xz}\cdot P\right) - R\left(I_{yy}\cdot Q\right) \\ R\left(I_{xx}\cdot P - I_{xz}\cdot R \right) - P\left(I_{zz}\cdot R - I_{xx}\cdot P \right) \\ P\left(I_{yy}\cdot Q\right) - Q\left(I_{xx}\cdot P - I_{xz}\cdot R\right)\end{bmatrix}\end{aligned}\end{split}\]</div>
+<p>collecting terms of the moments and products of inertia yields</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}\begin{bmatrix} \dot{H}_x\\ \dot{H}_y\\ \dot{H}_z\end{bmatrix}_{abs} &amp;= \left[\color{blue}{\begin{matrix} \dot{P}\cdot I_{xx} \\ \dot{Q}\cdot I_{yy} \\\dot{R}\cdot I_{zz}\end{matrix}} \hspace{.5cm} \begin{matrix} + \\+\\+\end{matrix} \hspace{.5cm} \color{red}{\begin{matrix} Q\cdot R\left(I_{zz} - I_{yy}\right) \\ P\cdot R\left(I_{xx} - I_{zz}\right) \\ P\cdot Q\left(I_{yy} - I_{xx}\right)\end{matrix}} \hspace{.5cm} \begin{matrix} - \\+\\+\end{matrix} \hspace{.5cm} \color{green}{\begin{matrix}\left(\dot{R} + P\cdot Q\right) I_{xz} \\ \left(P^2 - R^2\right) I_{xz} \\ \left(Q\cdot R - \dot{P}\right) I_{xz}\end{matrix}} \right]\end{aligned}\end{split}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\color{blue}{\text{Blue terms}}\)</span> represent a <strong>change to angular momentum due to a change in angular rate about that axis</strong>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\color{red}{\text{Red terms}}\)</span>   terms represent <strong>gyroscopic precession</strong>, which causes an increase in angular momentum about an axis due to <em>the product of angular rates about other axes, and the respective differences in their moments of inertia</em>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\color{green}{\text{Green terms}}\)</span>   terms represent an increase to angular momentum <strong>cross-coupling</strong> (due to the off-diagonal terms of the inertia matrix), wh ich is caused by a combination of angular acceleration around a coupled axis, and the product of combination of angular rates about two other axes. It should be appreciated that if we did not simplify the inertia matrix, the number of green terms would be much larger.</p></li>
+</ul>
+<p>Thus the rotational equations of motion have been derived, and the right hand side is the non-conservative moments which is the <em>moments</em> applied to the airframe.</p>
+<div class="math notranslate nohighlight" id="equation-eq-rotationaleom">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-rotationaleom" title="Permalink to this equation">¶</a></span>\[\begin{split}\left[{\begin{matrix} \dot{P}\cdot I_{xx} \\ \dot{Q}\cdot I_{yy} \\\dot{R}\cdot I_{zz}\end{matrix}} \hspace{.5cm} \begin{matrix} + \\+\\+\end{matrix} \hspace{.5cm} {\begin{matrix} Q\cdot R\left(I_{zz} - I_{yy}\right) \\ P\cdot R\left(I_{xx} - I_{zz}\right) \\ P\cdot Q\left(I_{yy} - I_{xx}\right)\end{matrix}} \hspace{.5cm} \begin{matrix} - \\+\\+\end{matrix} \hspace{.5cm} {\begin{matrix}\left(\dot{R} + P\cdot Q\right) I_{xz} \\ \left(P^2 - R^2\right) I_{xz} \\ \left(Q\cdot R - \dot{P}\right) I_{xz}\end{matrix}} \right] = \begin{bmatrix} L \\ M \\ N\end{bmatrix}\end{split}\]</div>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>The study of flexible aircraft is called <em>aeroelasticity</em>, and is easier to explore with a Lagrangian approach, as opposed to the Newtonian approach of this course. Hopefully more on that to come at IIT.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "aeronauty/Aircraft-Flight-Mechanics",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./EoMs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Translation.html" title="previous page">EoMs for Translation</a>
+    <a class='right-next' id="next-link" href="InertiaTensor.html" title="next page">Inertia Tensor Calculation <span class="math notranslate nohighlight">\(\def\dif{\text{d}}\)</span></a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Harry Smith<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            <div>
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-178506186-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

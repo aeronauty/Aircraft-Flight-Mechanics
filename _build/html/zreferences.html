@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Acknowledgements &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
@@ -40,7 +40,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Defining Static Stability" href="StaticStability/StaticStability.html" />
+    <link rel="prev" title="Worked Example" href="Linearisation/StateSpaceExample.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -154,13 +154,123 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="StaticStability/StaticStability.html#aircraft-body-axes">
-   Aircraft Body Axes
+  <a class="reference internal" href="StaticStability/Angles.html">
+   Co-ordinate system and Angles
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="StaticStability/StaticStability.html#aerodynamic-angles">
-   Aerodynamic Angles
+  <a class="reference internal" href="StaticStability/LSS.html">
+   Longitudinal Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StaticStability/Nondimensionalrates.html">
+   Non-dimensional rates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StaticStability/Lateral.html">
+   Lateral Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StaticStability/Directional.html">
+   Directional Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StaticStability/CrossCouplings.html">
+   Cross-couplings
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Equations of Motion
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="EoMs/Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EoMs/EulerTransforms.html">
+   Axes Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EoMs/RelativeMotion.html">
+   Absolute Acceleration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EoMs/Translation.html">
+   EoMs for Translation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EoMs/Rotation.html">
+   EoMs for Rotation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EoMs/InertiaTensor.html">
+   Inertia Tensor Calculation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EoMs/Summary.html">
+   Summary of the equations of motion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Linearisation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation/Introduction.html">
+   The Road so Far…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation/Linearisation.html">
+   Linearisation Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation/AerodynamicDerivatives.html">
+   Stability Derivatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation/Concise.html">
+   Concise Form of Dimensional EoMs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation/Aerodynamic.html">
+   Linear Aerodynamic Terms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation/Nondimensional.html">
+   Nondimensional Equations of Motion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation/StateSpaceExample.html">
+   Worked Example
   </a>
  </li>
 </ul>
@@ -278,8 +388,9 @@
                 
   <div class="section" id="acknowledgements">
 <h1>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h1>
-<p>The formal references in this website are included in the section below, but a wealth of the content has been formed from a combination of my own undergraduate notes and content shared with me from a former colleague (almost all of the aircraft performance section has been developed from his content) - <a class="reference external" href="https://www.linkedin.com/in/doug-greenwell-583b9830/">Dr Doug Greenwell</a>. Doug is the Chief Aerodynamist at the Aircraft Research Association, where I used to work - I sought his guidance on all things, and we worked together heavily in data analysis for fault investigation. He kindly shared his own material from his former role at City University, and I’ve adapted it with his permission.</p>
+<p>The formal references in this website are included in the section below, but a wealth of the content has been formed from a combination of my own undergraduate notes and content shared with me from a former colleague (almost all of the aircraft performance section has been developed from his content) - <a class="reference external" href="https://www.linkedin.com/in/doug-greenwell-583b9830/">Dr Doug Greenwell</a>. Doug is the Chief Aerodynamicist at the Aircraft Research Association, where I used to work - I sought his guidance on all things, and we worked together heavily in data analysis for fault investigation. He kindly shared his own material from his former role at City University, and I’ve adapted it with his permission.</p>
 <p>Thanks, Doug - I couldn’t have done any of this without your help.</p>
+<p>For the linearisation and flight dynamics sections, a wealth of material has been developed from <a class="reference external" href="https://www.gla.ac.uk/schools/engineering/staff/douglasthomson/">Dr. Douglas Thomson</a>’s material which I have from my own undergradate studies. He helpfully provided me with his source material when I started teaching at IIT. Thanks, Dougie.</p>
 </div>
 <div class="section" id="references">
 <h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
@@ -293,11 +404,17 @@
 <dt class="bibtex label" id="haberkorn-2016bj"><span class="brackets">Hab16</span></dt>
 <dd><p>Thomas Haberkorn. <em>Aircraft separation in uncontrolled airspace including human factors</em>. PhD thesis, Graz University of Technology, 04 2016.</p>
 </dd>
+<dt class="bibtex label" id="heffley-1972wb"><span class="brackets">HJ72</span></dt>
+<dd><p>Robert K Heffley and Wayne F Jewell. Aircraft Handling Qualities Data. Technical Report, NASA, Washington DC, 1972. URL: <a class="reference external" href="https://ntrs.nasa.gov/citations/19730003312">https://ntrs.nasa.gov/citations/19730003312</a>.</p>
+</dd>
 <dt class="bibtex label" id="houghton-2012vl"><span class="brackets">HCCV12</span></dt>
 <dd><p>E L Houghton, P W Carpenter, Steven Collicott, and Daniel Valentine. <em>Aerodynamics for Engineering Students</em>. Elsevier, Oxford, February 2012.</p>
 </dd>
 <dt class="bibtex label" id="maccormick-1995wq"><span class="brackets">Mac95</span></dt>
 <dd><p>Barnes W MacCormick. <em>Aerodynamics, Aeronautics, and Flight Mechanics</em>. Wiley, 1995.</p>
+</dd>
+<dt class="bibtex label" id="schmidt-1998fd"><span class="brackets">Sch98</span></dt>
+<dd><p>L.V. Schmidt. <em>Introduction to Aircraft Flight Dynamics</em>. AIAA Education Series. American Institute of Aeronautics &amp; Astronautics, 1998. ISBN 9781600860775. URL: <a class="reference external" href="https://books.google.com/books?id=AUWCXVepMKEC">https://books.google.com/books?id=AUWCXVepMKEC</a>.</p>
 </dd>
 <dt class="bibtex label" id="yechout-2014vg"><span class="brackets">YMB+14</span></dt>
 <dd><p>Thomas R Yechout, Steven L Morris, David E Bossert, Wayne F Hallgren, and James K Hall. <em>Introduction to Aircraft Flight Mechanics</em>. Performance, Static Stability, Dynamic Stability, Classical Feedback Control, and State-space Foundations. American Institute of Aeronautics &amp; Astronautics, 2014.</p>
@@ -334,7 +451,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="StaticStability/StaticStability.html" title="previous page">Defining Static Stability</a>
+    <a class='left-prev' id="prev-link" href="Linearisation/StateSpaceExample.html" title="previous page">Worked Example</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

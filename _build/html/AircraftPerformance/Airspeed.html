@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Defining Aircraft ‘Speed’ &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
@@ -155,13 +155,123 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/StaticStability.html#aircraft-body-axes">
-   Aircraft Body Axes
+  <a class="reference internal" href="../StaticStability/Angles.html">
+   Co-ordinate system and Angles
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/StaticStability.html#aerodynamic-angles">
-   Aerodynamic Angles
+  <a class="reference internal" href="../StaticStability/LSS.html">
+   Longitudinal Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Nondimensionalrates.html">
+   Non-dimensional rates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Lateral.html">
+   Lateral Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Directional.html">
+   Directional Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/CrossCouplings.html">
+   Cross-couplings
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Equations of Motion
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/EulerTransforms.html">
+   Axes Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/RelativeMotion.html">
+   Absolute Acceleration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Translation.html">
+   EoMs for Translation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Rotation.html">
+   EoMs for Rotation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/InertiaTensor.html">
+   Inertia Tensor Calculation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Summary.html">
+   Summary of the equations of motion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Linearisation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Introduction.html">
+   The Road so Far…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Linearisation.html">
+   Linearisation Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/AerodynamicDerivatives.html">
+   Stability Derivatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Concise.html">
+   Concise Form of Dimensional EoMs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Aerodynamic.html">
+   Linear Aerodynamic Terms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Nondimensional.html">
+   Nondimensional Equations of Motion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/StateSpaceExample.html">
+   Worked Example
   </a>
  </li>
 </ul>
@@ -883,32 +993,32 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
 </div>
 <div class="section" id="problem-1-1-conversion-between-airspeeds">
 <h3>Problem 1.1 - Conversion between airspeeds<a class="headerlink" href="#problem-1-1-conversion-between-airspeeds" title="Permalink to this headline">¶</a></h3>
-<p>An aircraft is flying at an altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">125</span>kn, with a <span class="pasted-text">10</span>kn <span class="pasted-text">headwind</span>:</p>
+<p>An aircraft is flying at an altitude of <span class="pasted-text">15000</span>ft, with a calibrated airspeed of <span class="pasted-text">165</span>kn, with a <span class="pasted-text">12</span>kn <span class="pasted-text">headwind</span>:</p>
 <p>a) How long will it take to cover 100 miles?</p>
 <p>b) How long will it take to cover 200km?</p>
-<p>c) If instead of <span class="math notranslate nohighlight">\(V_C\)</span> = <span class="pasted-text">125</span>kn, you have <span class="math notranslate nohighlight">\(V_I\)</span> = <span class="pasted-text">125</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
+<p>c) If instead of <span class="math notranslate nohighlight">\(V_C\)</span> = <span class="pasted-text">165</span>kn, you have <span class="math notranslate nohighlight">\(V_I\)</span> = <span class="pasted-text">165</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
 <p>Try and tackle the problem yourself before you see the solution below. The numbers in this problem will change each time the notes are updated.</p>
 <div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the solution…</p>
 <p>The first step is to take Vc to Ve via the pressure correction.</p>
-<p>For the altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">125</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">35000</span>, <span class="pasted-text">125</span>).</p>
-<p>This gives a value of <span class="pasted-text">0.986</span> for the pressure correction, and this determination pf the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">123.250</span>kn.</p>
-<p>For EAS to TAS, the density ratio is required - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.311</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
-<p>True airspeed is obtained from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">221.158</span>kn.</p>
+<p>For the altitude of <span class="pasted-text">15000</span>ft, with a calibrated airspeed of <span class="pasted-text">165</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">15000</span>, <span class="pasted-text">165</span>).</p>
+<p>This gives a value of <span class="pasted-text">0.994</span> for the pressure correction, and this determination pf the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">164.076</span>kn.</p>
+<p>For EAS to TAS, the density ratio is required - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.629</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
+<p>True airspeed is obtained from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">206.805</span>kn.</p>
 <p>Note that at no point have the units had to be converted into SI to make the corrections - that’s the smart part of the density and pressure corrections; they are both non-dimensional corrections. If you have velocity in knots, you use them and get velocity in knots out.</p>
-<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">211.158</span>kn. This gives the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
-<p>With the velocity in knots it may be easily converted to m/s by multiplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">108.629</span>m/s.</p>
-<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">1481.5</span>s or <span class="pasted-text">24 minutes, 41 seconds</span></p>
-<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">1841.1</span>s or <span class="pasted-text">30 minutes, 41 seconds</span></p>
+<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">194.805</span>kn. This gives the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
+<p>With the velocity in knots it may be easily converted to m/s by multiplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">100.216</span>m/s.</p>
+<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">1605.9</span>s or <span class="pasted-text">26 minutes, 45 seconds</span></p>
+<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">1995.7</span>s or <span class="pasted-text">33 minutes, 15 seconds</span></p>
 <hr class="docutils" />
 <p>For the last part of the question, this is solved by recalling that <span class="math notranslate nohighlight">\(V_c = V_I + \Delta V_p\)</span> and hence the speeds calculated are now:</p>
-<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">127.000</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">125.171</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">224.606</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">234.606</span>kn = <span class="pasted-text">120.692</span>m/s</p>
-<p>The times taken are found to be <span class="pasted-text">22 minutes, 13 seconds</span> and  <span class="pasted-text">27 minutes, 37 seconds</span>, for a respective  <span class="pasted-text">2 minutes, 28 seconds</span> and  <span class="pasted-text">3 minutes, 4 seconds</span> <span class="pasted-text">faster</span>.</p>
+<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">167.000</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">166.051</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">209.295</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">221.295</span>kn = <span class="pasted-text">113.844</span>m/s</p>
+<p>The times taken are found to be <span class="pasted-text">23 minutes, 33 seconds</span> and  <span class="pasted-text">29 minutes, 16 seconds</span>, for a respective  <span class="pasted-text">3 minutes, 12 seconds</span> and  <span class="pasted-text">3 minutes, 58 seconds</span> <span class="pasted-text">faster</span>.</p>
 </div>
 </div>
 <div class="section" id="problem-1-2-theory">

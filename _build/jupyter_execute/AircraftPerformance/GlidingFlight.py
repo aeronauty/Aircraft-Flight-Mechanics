@@ -31,7 +31,7 @@ In reality, $\gamma=\theta$ if and only if (iff) $\alpha=0$.
 
 The distinction is made because this course later requires us to use $\theta$, and I don't want you getting confused about what the angles mean. 
 
-Since $\gamma$ is defined as positive in a *climb* and *negative* in a glide, it leads to requiring a negative angle continually in the glide expressions. {cite}`Yechout:2014vg` uses a good approach and introduces
+Since the flight path angle, $\gamma$, is defined as positive in a *glide* and *negative* in a climb (positive $\gamma$ gives positive $W_e$ which is velocity _towards_ the earth), it leads to requiring a negative angle continually in the climb expressions. {cite}`Yechout:2014vg` uses a good approach and introduces
 
 $$\bar{\gamma}=\left|\gamma\right|$$
 

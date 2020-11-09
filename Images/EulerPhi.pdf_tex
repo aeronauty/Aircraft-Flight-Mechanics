@@ -1,0 +1,68 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'EulerPhi.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{430.46587606bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.67615299)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{EulerPhi.pdf}}%
+    \put(0.80108764,0.57712507){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{\color{i1}{$y_{2}$}}}}}%
+    \put(0.26016422,0.04041947){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{\color{i1}{$z_{2}$}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{EulerPhi.pdf}}%
+    \put(0.7292395,0.31513841){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{\color{red}{$y$}}}}}%
+    \put(-0.00225955,0.10389392){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{\color{red}{$z$}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{EulerPhi.pdf}}%
+    \put(0.19035319,0.27688515){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{$\phi$}}}}%
+    \put(0.57499255,0.49772328){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{$\phi$}}}}%
+    \put(0.32864429,0.48147603){\color[rgb]{0,0,0}\rotatebox{-29.99999933}{\makebox(0,0)[lb]{\smash{\textit{\color{blue}{$y_2\cdot\cos\phi$}}}}}}%
+    \put(0.68642518,0.39353485){\color[rgb]{0,0,0}\rotatebox{60.00000067}{\makebox(0,0)[lb]{\smash{\textit{\color{blue}{$y_2\cdot\sin\phi$}}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{EulerPhi.pdf}}%
+    \put(0.04907997,0.29763852){\color[rgb]{0,0,0}\rotatebox{60.00000067}{\makebox(0,0)[lb]{\smash{\textit{\color{blue}{$z_2\cdot\cos\phi$}}}}}}%
+    \put(0.0725109,0.16328137){\color[rgb]{0,0,0}\rotatebox{-29.99999933}{\makebox(0,0)[lb]{\smash{\textit{\color{blue}{$z_2\cdot\sin\phi$}}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{EulerPhi.pdf}}%
+  \end{picture}%
+\endgroup%

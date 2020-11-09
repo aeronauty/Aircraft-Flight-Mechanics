@@ -54,7 +54,11 @@ name: WingAreas
 Aircraft Wing Areas
 ```
 
-you will note that the swing, *sweep*, which is a measure of how far back the tip is compared to the root, is measured by the sweep of the quarter-chord line. The *chord* is the length of the wing in the direction of travel (hence vertical in the image). The so-called **root chord** is usually defined on the aircraft centerline, and not at the actual aircraft root. We can define a few parameters:
+you will note that the swing, *sweep*, which is a measure of how far back the tip is compared to the root, is measured by the sweep of the quarter-chord line. The *chord* is the length of the wing in the direction of travel (hence vertical in the image). The so-called **root chord** is usually defined on the aircraft centerline, and not at the actual aircraft root. 
+
+(wing-parameters)=
+### Wing parameters
+We can define a few parameters:
 
 $$\begin{aligned}
     \text{Wing taper ratio: } \lambda &= \frac{c_t}{c_0}\\
@@ -201,27 +205,39 @@ def naca4(number='0012', n=1000):
         yc[x <= p] = m / p**2 * (2 * p * x[x <= p] - x[x <= p] **2)
         yc[x > p] = m / (1 - p)**2 * ((1 - 2 * p) + 2 * p * x[x > p] - x[x > p]**2)
 
+    # Get the gradient of the lines
+    dyc_dx = np.zeros(x.shape)
+    if p > 0:
+        dyc_dx[x <= p] = 2 * m / p**2 * (p-x[x <= p])
+        dyc_dx[x > p] = 2 * m / (1-p)**2 * (p-x[x > p])
+    
+    theta = np.arctan(dyc_dx)
+        
     # Get the upper and lower surfaces
-    yu = yc + yt
-    yl = yc - yt
+    yu = yc + yt * np.cos(theta)
+    yl = yc - yt * np.cos(theta)
+    
+    xu = x - yt * np.sin(theta)
+    xl = x + yt * np.sin(theta)
     
     # Put into Selig format
-    Y = np.concatenate((yu[::-1], yl))
-    X = np.concatenate((x[::-1], x))
+#     Y = np.concatenate((yu[::-1], yl))
+#     X = np.concatenate((x[::-1], x))
     
     plt.figure()
-    plt.plot(x, yu, label="Upper Surface")
-    plt.plot(x, yl, label="Lower Surface")
+    plt.plot(xu, yu, label="Upper Surface")
+    plt.plot(xl, yl, label="Lower Surface")
     plt.plot(x, yc, label="Camber Line")
     plt.plot([x[0], x[-1]], [yc[0], yc[-1]], '--', label='Chord Line')
     plt.legend()
     plt.gca().set_aspect('equal')
-    plt.gca().axis('off')
+#     plt.gca().axis('off')
     plt.title(f"Normalised aerofoil for NACA {number}")
     plt.gca().legend(bbox_to_anchor=(1.1, 1.05))
     return
 
-naca4('2412')
+%matplotlib notebook
+naca4('2406')
 
 The most important parameter for lift is *angle of attack*. We define the incident velocity at $V_\infty$, and the angle of attack is the angle it makes with the chord line of the aerofoil. This angle is given the symbol $\alpha$ - see {numref}`AoAAlpha`.
 

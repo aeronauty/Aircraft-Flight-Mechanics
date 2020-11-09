@@ -1,0 +1,691 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Concise Form of Dimensional EoMs &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linear Aerodynamic Terms" href="Aerodynamic.html" />
+    <link rel="prev" title="Stability Derivatives" href="AerodynamicDerivatives.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/Logo2.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Aircraft Flight Mechanics by Harry Smith, PhD</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CourseIntroduction.html">
+   Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Prerequisites/Prerequisites.html">
+   Assumed knowledge
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Performance
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Introduction.html">
+   Aircraft Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Airspeed.html">
+   Defining Aircraft ‘Speed’
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/SteadyLevelFlight.html">
+   Steady Level Flight
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/GlidingFlight.html">
+   Climbing and Gliding Caveat
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/GlidingFlight.html#gliding-flight-unpowered-descent">
+   Gliding Flight (Unpowered Descent)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/ClimbingFlight.html">
+   Climbing Flight
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/RangeandEndurance.html">
+   Range and Endurance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Manoeuvre.html">
+   Acceleration, Manoeuvres, and Aircraft Loading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Examples.html">
+   Questions and Solutions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Static Stability
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/StaticStability.html">
+   Defining Static Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Angles.html">
+   Co-ordinate system and Angles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/LSS.html">
+   Longitudinal Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Nondimensionalrates.html">
+   Non-dimensional rates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Lateral.html">
+   Lateral Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Directional.html">
+   Directional Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/CrossCouplings.html">
+   Cross-couplings
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Equations of Motion
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/EulerTransforms.html">
+   Axes Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/RelativeMotion.html">
+   Absolute Acceleration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Translation.html">
+   EoMs for Translation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Rotation.html">
+   EoMs for Rotation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/InertiaTensor.html">
+   Inertia Tensor Calculation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Summary.html">
+   Summary of the equations of motion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Linearisation
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   The Road so Far…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation.html">
+   Linearisation Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AerodynamicDerivatives.html">
+   Stability Derivatives
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Concise Form of Dimensional EoMs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Aerodynamic.html">
+   Linear Aerodynamic Terms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Nondimensional.html">
+   Nondimensional Equations of Motion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StateSpaceExample.html">
+   Worked Example
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  References and Resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zreferences.html">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zreferences.html#references">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Linearisation/Concise.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/issues/new?title=Issue%20on%20page%20%2FLinearisation/Concise.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/edit/master/Linearisation/Concise.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/Linearisation/Concise.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#longitudinal-eoms">
+   Longitudinal EoMs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lateral-directional-eoms">
+   Lateral/Directional EoMs
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="concise-form-of-dimensional-eoms">
+<h1>Concise Form of Dimensional EoMs<a class="headerlink" href="#concise-form-of-dimensional-eoms" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\pd}[2]{\frac{\partial#1}{\partial#2}}\]</div>
+<div class="math notranslate nohighlight">
+\[\newcommand{\ppd}[2]{\frac{\partial^2#1}{\partial#2^2}}\]</div>
+<div class="math notranslate nohighlight">
+\[\newcommand{\pppd}[2]{\frac{\partial^3#1}{\partial#2^3}}\]</div>
+<p>As demonstrated above, the dimensional EoMs are either symmetric (a.k.a. longitudinal), where <span class="math notranslate nohighlight">\(u,w,q\)</span> are controlled by <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\delta_e\)</span>, or asymmetric (a.k.a. lateral/directional) where <span class="math notranslate nohighlight">\(v,p,r\)</span> are controlled by <span class="math notranslate nohighlight">\(\delta_a\)</span> and <span class="math notranslate nohighlight">\(\delta_r\)</span>. This is a consequence of our assumptions made to remove stability derivatives.</p>
+<p>That is, this was <em>enforced</em> by the <a class="reference external" href="assmption:cross-coupling">assumption of zero cross-coupling</a> rather than being a natural consequence of the physics.</p>
+<p>Since these assumptions have been made, the two sets of equations may be treated in isolation from each other and presented in a matrix form. First, look at the symmetric equations:</p>
+<div class="math notranslate nohighlight" id="equation-eq-fwdspeedeqn">
+<span class="eqno">(68)<a class="headerlink" href="#equation-eq-fwdspeedeqn" title="Permalink to this equation">¶</a></span>\[\color{red}{m\dot{u}= \left.\pd{X}{u}\right|_0u + \left.\pd{X}{w}\right|_0w - mg\cdot\cos\theta_0\cdot\theta^\prime}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-heaveequation">
+<span class="eqno">(69)<a class="headerlink" href="#equation-eq-heaveequation" title="Permalink to this equation">¶</a></span>\[\color{red}{m\dot{w}= \left.\pd{Z}{u}\right|_0u + \left.\pd{Z}{w}\right|_0w + mU_0q - mg\cdot\sin\Theta_0\cdot\theta^\prime + \left.\pd{Z}{\delta_e}\right|_0\delta_e}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-pitchmomentequation">
+<span class="eqno">(70)<a class="headerlink" href="#equation-eq-pitchmomentequation" title="Permalink to this equation">¶</a></span>\[\color{red}{I_{yy}\dot{q} = \left.\pd{M}{u}\right|_0u+\left.\pd{M}{w}\right|_0w+\left.\pd{M}{\dot{w}}\right|_0\dot{w}+\left.\pd{M}{q}\right|_0q+\left.\pd{M}{\delta_e}\right|_0\delta_e}\]</div>
+<div class="section" id="longitudinal-eoms">
+<h2>Longitudinal EoMs<a class="headerlink" href="#longitudinal-eoms" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>The X-Force equation (<em>forward speed equation</em>):</p>
+<p>Taking Equation <a class="reference internal" href="#equation-eq-fwdspeedeqn">(68)</a> and dividing by <span class="math notranslate nohighlight">\(m\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-concisex">
+<span class="eqno">(71)<a class="headerlink" href="#equation-eq-concisex" title="Permalink to this equation">¶</a></span>\[\dot{u} = X_uu + X_ww - g\cdot\cos\theta_0\theta^\prime\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[X_u\triangleq \frac{1}{m}\left.\pd{X}{u}\right|_0, X_w\triangleq \frac{1}{m}\left.\pd{X}{w}\right|_0\]</div>
+</li>
+<li><p>The Z-Force equation (<em>heave equation</em>):</p>
+<p>Taking Equation <a class="reference internal" href="#equation-eq-heaveequation">(69)</a> and dividing by <span class="math notranslate nohighlight">\(m\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-concisew">
+<span class="eqno">(72)<a class="headerlink" href="#equation-eq-concisew" title="Permalink to this equation">¶</a></span>\[\dot{w} = Z_uu + Z_ww + U_eq - g\cdot\sin\theta_0\cdot\theta^\prime + Z_{\delta_e}\delta_e\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[Z_u\triangleq \frac{1}{m}\left.\pd{Z}{u}\right|_0, Z_w\triangleq \frac{1}{m}\left.\pd{Z}{w}\right|_0,  Z_{\delta_e}\triangleq \frac{1}{m}\left.\pd{Z}{\delta_e}\right|_0\]</div>
+</li>
+<li><p>The M-Moment equation (<em>pitching moment equation</em>):</p>
+<p>If we take Equation <a class="reference internal" href="#equation-eq-pitchmomentequation">(70)</a> and divide by <span class="math notranslate nohighlight">\(I_{yy}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\dot{q} = M_uu + M_ww + M_{\dot{w}}\dot{w} + M_qq + M_{\delta_e}\delta_e\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[M_u\triangleq \frac{1}{I_{yy}}\left.\pd{M}{u}\right|_0, \text{and the rest of the pattern should be clear}\]</div>
+<p>There is already an expression for <span class="math notranslate nohighlight">\(\dot{w}\)</span>, Equation <a class="reference internal" href="#equation-eq-concisew">(72)</a>, which may be substituted in:</p>
+<div class="math notranslate nohighlight">
+\[\dot{q} = M_uu + M_ww + M_{\dot{w}}\left(Z_uu + Z_ww + U_eq - g\cdot\sin\theta_0\cdot\theta^\prime + Z_{\delta_e}\delta_e \right) + M_qq + M_{\delta_e}\delta_e\]</div>
+<p>and can be simplified<a class="footnote-reference brackets" href="#id2" id="id1">1</a> to:</p>
+<div class="math notranslate nohighlight" id="equation-eq-conciseq">
+<span class="eqno">(73)<a class="headerlink" href="#equation-eq-conciseq" title="Permalink to this equation">¶</a></span>\[\dot{q} = M_u^*u + M_w^*w +M_\omega^*\omega + M_q^*q + M_{\delta_e}^*\delta_e\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-eq-conciseqterms">
+<span class="eqno">(74)<a class="headerlink" href="#equation-eq-conciseqterms" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{split}&amp;M_u^*\triangleq M_u + M_{\dot{w}}Z_u\hphantom{======} M_w^*\triangleq M_w+M_{\dot{w}}Z_w\hphantom{======}M_q^*\triangleq M_q+M_{\dot{w}}U_0\\
+&amp;M_{\delta_e}^*\triangleq M_{\delta_e}+M_{\dot{w}}Z_{\delta_e}\hphantom{======}M_{\theta}^*\triangleq-M_{\dot{w}}g\sin\theta_0
+        \end{split}\end{split}\]</div>
+</li>
+<li><p>The linearised Euler pitch equation (<em>pitch rate kinematic equation</em>):</p>
+<p><span class="math notranslate nohighlight">\(q\)</span> is pitch rate, from Eq <a class="reference internal" href="Linearisation.html#equation-eq-pitchratekinematic">(48)</a>:</p>
+<div class="math notranslate nohighlight">
+\[\dot{\theta}^\prime = q\]</div>
+</li>
+</ol>
+<p>Now Equations <a class="reference internal" href="#equation-eq-concisex">(71)</a>, <a class="reference internal" href="#equation-eq-concisew">(72)</a>, <a class="reference internal" href="#equation-eq-conciseq">(73)</a>, and <a class="reference internal" href="Linearisation.html#equation-eq-pitchratekinematic">(48)</a> can be written in matrix form to give the <strong>linearised equation of longitudinal motion in concise form</strong>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-conciselon">
+<span class="eqno">(75)<a class="headerlink" href="#equation-eq-conciselon" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+    \begin{bmatrix} \dot{u}\\\dot{w}\\\dot{q}\\\dot{\theta}\end{bmatrix} &amp;= \begin{bmatrix}
+        X_u &amp; X_w &amp; 0 &amp; -g\cdot\cos\Theta_e\\
+        Z_u &amp; Z_w &amp; U_0 &amp; -g\cdot\sin\Theta_e\\
+        M_u^* &amp; M_w^* &amp; M_q^* &amp; M_\theta^*\\
+        0 &amp; 0 &amp; 1 &amp; 0   
+    \end{bmatrix}\begin{bmatrix}
+        {u}\\{w}\\{q}\\{\theta}         
+    \end{bmatrix} + \begin{bmatrix}
+        0\\Z_{\delta_e}\\M_{\delta_e}^*\\0          
+    \end{bmatrix}\left[\delta_e\right]\end{aligned}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\dot{\vec{x}} =  A\vec{x} + B\vec{u}\]</div>
+<p>Which is in state space form. Equation <a class="reference internal" href="#equation-eq-conciselon">(75)</a> is a series of simultaneous 1st order ODEs with constant coefficients which may solved to find the longitudinal response (<span class="math notranslate nohighlight">\(u,v,q,\theta\)</span>) of an aircraft due to elevator deflection (<span class="math notranslate nohighlight">\(\delta_e\)</span>).</p>
+</div>
+<div class="section" id="lateral-directional-eoms">
+<h2>Lateral/Directional EoMs<a class="headerlink" href="#lateral-directional-eoms" title="Permalink to this headline">¶</a></h2>
+<p>The asymmetric or lateral/directional EoMs may be similarly manipulated.</p>
+<div class="math notranslate nohighlight" id="equation-eq-sideslipequation">
+<span class="eqno">(76)<a class="headerlink" href="#equation-eq-sideslipequation" title="Permalink to this equation">¶</a></span>\[\color{darkgreen}{m\dot{v}=\left.\pd{Y}{v}\right|_0v - mU_0r+mg\cdot cos\theta_0\cdot\phi^\prime\left.\pd{Y}{\delta_r}\right|_0\delta_r}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-rollmomentequation">
+<span class="eqno">(77)<a class="headerlink" href="#equation-eq-rollmomentequation" title="Permalink to this equation">¶</a></span>\[\color{darkgreen}{I_{xx}\dot{p} - I_{xz}\dot{r} = \left.\pd{L}{v}\right|_0v + \left.\pd{L}{p}\right|_0p+\left.\pd{L}{r}\right|_0r+\left.\pd{L}{\delta_r}\right|_0\delta_r+\left.\pd{L}{\delta_a}\right|_0\delta_a}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-yawmomentequation">
+<span class="eqno">(78)<a class="headerlink" href="#equation-eq-yawmomentequation" title="Permalink to this equation">¶</a></span>\[\color{darkgreen}{I_{zz}\dot{r}-I_{xz}\dot{p} = \left.\pd{N}{v}\right|_0v+ \left.\pd{N}{p}\right|_0p + \left.\pd{N}{r}\right|_0r +  \left.\pd{N}{\delta_r}\right|_0\delta_r+ \left.\pd{N}{\delta_a}\right|_0\delta_a}\]</div>
+<ol>
+<li><p>The Y-Force equation (<em>sideslip equation</em>): Taking Equation <a class="reference internal" href="#equation-eq-sideslipequation">(76)</a> and dividing by <span class="math notranslate nohighlight">\(m\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\dot{v} = Y_vv-U_er + g\cdot\cos\theta_0\phi + Y_{\delta_r}{\delta_r}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[Y_v\triangleq\frac{1}{m}\pd{Y}{v},\,Y_{\delta_r}\triangleq\frac{1}{m}\pd{Y}{\delta_r}\]</div>
+</li>
+<li><p>The two moment equations are coupled, so need to be decoupled. Dividing Equation <a class="reference internal" href="#equation-eq-rollmomentequation">(77)</a> by the rolling moment of inertia, <span class="math notranslate nohighlight">\(I_xx\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-rollingint">
+<span class="eqno">(79)<a class="headerlink" href="#equation-eq-rollingint" title="Permalink to this equation">¶</a></span>\[\dot{p} = \frac{I_{xz}}{I_{xx}}\dot{r} + L_vv + L_pp + L_rr + L_{\delta_r}{\delta_r} + L_{\delta_a}\delta_a\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[L_v\triangleq\frac{1}{I_{xx}}\pd{L}{v},\,L_{p}\triangleq\frac{1}{I_{xx}}\pd{L}{p},\,\text{etc.}\]</div>
+<p>the same can be performed for <a class="reference internal" href="#equation-eq-yawmomentequation">(78)</a>, dividing by the yawing moment of inertia <span class="math notranslate nohighlight">\(I_{zz}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-yawingint">
+<span class="eqno">(80)<a class="headerlink" href="#equation-eq-yawingint" title="Permalink to this equation">¶</a></span>\[\dot{r} = \frac{I_{xz}}{I_{zz}}\dot{p} + N_vv+N_pp + N_rr + N_{\delta_r}\delta_r+N_{\delta_a}\delta_a\]</div>
+<p>Clearly Equations <a class="reference internal" href="#equation-eq-rollingint">(79)</a> and <a class="reference internal" href="#equation-eq-yawingint">(80)</a> are coupled, and must be decoupled if we want to use them in standard form. Substituting equation <a class="reference internal" href="#equation-eq-yawingint">(80)</a> into <a class="reference internal" href="#equation-eq-rollingint">(79)</a>, after a little manipulation (if you do this yourself, I promise you’ll understand this subject better), the following is achieved:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}\dot{p}\left(1-\frac{I_{xz}^2}{I_{xx}I_{zz}}\right) &amp;= \left(L_v + \frac{I_{xz}}{I_{xx}}N_v\right)v + \left(L_p + \frac{I_{xz}}{I_{xx}}N_p\right)p+\left(L_r+\frac{I_{xz}}{I_{xx}}N_r\right)r +\ldots\\ &amp;\left(L_{\delta_r} + \frac{I_{xz}}{I_{xx}N_{\delta_r}}\right)\delta_r + \left(L_{\delta_a}+\frac{I_{xz}}{I_{xx}}N_{\delta_a}\right)\delta_a\end{split}\end{split}\]</div>
+<p>Noting that:</p>
+<div class="math notranslate nohighlight">
+\[1-\frac{I_{xz}^2}{I_{xx}I_{zz}} = \frac{I_{xx}I_{zz}-I_{zz}^2}{I_{xx}I_{zz}}\]</div>
+<p>hence, the <strong>rolling moment equation</strong> may be weitten as:</p>
+<div class="math notranslate nohighlight">
+\[\dot{p} = L_v^*v + L_p^*p + L_r^*r+L_{\delta_r}^*\delta_r+L_{\delta_a}^*\delta_a\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gathered}
+            L_v^* = \frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(L_v+\frac{I_{xz}}{I_{xx}}N_v\right) \,\,\,\,\,\,\,\,\,\,\,\,\,\,\, L_p^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(L_p+\frac{I_{xz}}{I_{xx}}N_p\right)\\
+            L_r^* = \frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(L_r+\frac{I_{xz}}{I_{xx}}N_r\right) \,\,\,\,\,\,\,\,\,\,\,\,\,\,\, L_{\delta_r}^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(L_{\delta_r}+\frac{I_{xz}}{I_{xx}}N_{\delta_r}\right)\\
+            L_{\delta_a}^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(L_{\delta_a}+\frac{I_{xz}}{I_{xx}}N_{\delta_a}\right)
+        \end{gathered}\end{split}\]</div>
+<p>Similarly, by substituting <a class="reference internal" href="#equation-eq-rollingint">(79)</a> into <a class="reference internal" href="#equation-eq-yawingint">(80)</a>, the <strong>yawing moment equation</strong> is yielded:</p>
+<div class="math notranslate nohighlight">
+\[\dot{r} = N_v^*v + N_p^*p + N_r^*r + N_{\delta_r}^*\delta_r + N_{\delta_a}^*\delta_a\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gathered}
+            N_v^* = \frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_v+\frac{I_{xz}}{I_{zz}}L_v\right) \,\,\,\,\,\,\,\,\,\,\,\,\,\,\, N_p^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_p+\frac{I_{xz}}{I_{zz}}L_p\right)\\
+            N_r^* = \frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_r+\frac{I_{xz}}{I_{zz}}L_r\right) \,\,\,\,\,\,\,\,\,\,\,\,\,\,\, N_{\delta_r}^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_{\delta_r}+\frac{I_{xz}}{I_{zz}}L_{\delta_r}\right)\\
+            N_{\delta_a}^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_{\delta_a}+\frac{I_{xz}}{I_{zz}}L_{\delta_a}\right)        
+        \end{gathered}\end{split}\]</div>
+<p>often <span class="math notranslate nohighlight">\(I_{xz}\)</span> is small compared to <span class="math notranslate nohighlight">\(I_{xx}\)</span> and <span class="math notranslate nohighlight">\(I_{zz}\)</span>, so for these circumstances <span class="math notranslate nohighlight">\(N_v^*\simeq N_v\)</span>, <span class="math notranslate nohighlight">\(L_v^*\simeq L_v\)</span></p>
+</li>
+<li><p>Lastly, the yaw rate and body rate kinematic equations give:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+            r &amp;= \dot{\psi}\cos\theta_0\\
+            \implies \dot{\psi} &amp;= r\cdot\sec\theta_0\\
+            p &amp;= \dot{\phi}-\dot{\psi}\sin\theta_0\\
+            \implies\dot{\phi} &amp;= p + r\cdot\tan\theta_0
+        \end{aligned}\end{split}\]</div>
+</li>
+</ol>
+<p>So finally, the <em>linearised lateral/directional equations of motion</em> may be expressed in <em>state-space form:</em></p>
+<div class="math notranslate nohighlight" id="equation-eq-conciselat">
+<span class="eqno">(81)<a class="headerlink" href="#equation-eq-conciselat" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix}\dot{v}\\\dot{p}\\\dot{r}\\\dot{\phi}\\\dot{\psi}\end{bmatrix}=\begin{bmatrix}Y_v &amp; 0 &amp; -U_0 &amp; g\cdot\cos\theta_0 &amp; 0\\L_v^* &amp; L_p^* &amp; L_r^* &amp; 0 &amp; 0\\N_v^* &amp; N_p^* &amp; N_r^* &amp; 0 &amp; 0\\0 &amp; 1 &amp; \tan\theta_0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; \sec\theta_0 &amp; 0 &amp; 0\end{bmatrix}\begin{bmatrix}v\\p\\r\\\phi\\\psi\end{bmatrix}+\begin{bmatrix}Y_{\delta_r} &amp; 0\\L_{\delta_r}^* &amp; L_{\delta_a}^*\\N_{\delta_r}^* &amp; N_{\delta_a}^*\\0 &amp; 0\\0 &amp; 0\end{bmatrix}\begin{bmatrix}\delta_r\\\delta_a\end{bmatrix}\end{split}\]</div>
+<p>These are a series of linear differential equations which may be solved to give the aircraft lateral/directional response to inputs of rudder and aileron. You can observe that only the final equation has terms that involve <span class="math notranslate nohighlight">\(\psi\)</span>, and it may solved in isolation.</p>
+<p>The two sets of matrix equations, <a class="reference internal" href="#equation-eq-conciselon">(75)</a> and <a class="reference internal" href="#equation-eq-conciselat">(81)</a>, are known as <em>the equations of motion in concise form</em>.</p>
+<p>As will prove to be integral to Module 5, these are in <strong>state space form</strong></p>
+<div class="math notranslate nohighlight">
+\[\dot{\vec{x}} = \boldsymbol{A}\vec{x} + \boldsymbol{B}\vec{u}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\vec{x} = \text{the state vector (n)}\]</div>
+<div class="math notranslate nohighlight">
+\[\vec{u} = \text{the control matrix (m)}\]</div>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{A} = \text{the system matrix (n by n)}\]</div>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{B} = \text{the control matrix (n by m)}\]</div>
+<p>for a system with <span class="math notranslate nohighlight">\(n\)</span> states and <span class="math notranslate nohighlight">\(m\)</span> controls. There are three reasons why we write the equations of motion in state space form:</p>
+<ul class="simple">
+<li><p>The aircraft stability characteristics are obtained directly from the system matrix, <span class="math notranslate nohighlight">\(\boldsymbol{A}\)</span> - this will be explored in the final module.</p></li>
+<li><p>In studies of aircraft control systems, the state space form is easiest to analyse.</p></li>
+<li><p>Since <span class="math notranslate nohighlight">\(\boldsymbol{A}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{B}\)</span> are constant matrices, we can numerically integrate the equations of motion (using a Runge-Kutta method) to obtain the <strong>time response</strong> of the aircraft to a given control displacement - we may wish to calculate the longitudinal response (time histories of <span class="math notranslate nohighlight">\(u,w,q,\theta\)</span>) to a step change in elevator, <span class="math notranslate nohighlight">\(\delta_e\)</span>.</p></li>
+</ul>
+<p>For the longitudinal equations in state space form, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\boldsymbol{A}=\begin{bmatrix}
+        X_u &amp; X_w &amp; 0 &amp; -g\cdot\cos\theta_0\\
+        Z_u &amp; Z_w &amp; U_0 &amp; -g\cdot\sin\theta_0\\
+        M_u^* &amp; M_w^* &amp; M_q^* &amp; M_\theta^*\\
+        0 &amp; 0 &amp; 1 &amp; 0   
+    \end{bmatrix}, \vec{x}=\begin{bmatrix}
+        {u}\\{w}\\{q}\\{\theta}         
+    \end{bmatrix}, \boldsymbol{B}= \begin{bmatrix}
+        0\\Z_{\delta_e}\\M_{\delta_e}^*\\0          
+    \end{bmatrix}, \vec{u}=\left[\delta_e\right]\end{split}\]</div>
+<p>For the lateral/directional equations in state space form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\boldsymbol{A}=\begin{bmatrix}Y_v &amp; 0 &amp; -U_0 &amp; g\cdot\cos\theta_0 &amp; 0\\L_v^* &amp; L_p^* &amp; L_r^* &amp; 0 &amp; 0\\N_v^* &amp; N_p^* &amp; N_r^* &amp; 0 &amp; 0\\0 &amp; 1 &amp; \tan\theta_0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; \sec\theta_0 &amp; 0 &amp; 0\end{bmatrix}, \vec{x} = \begin{bmatrix}v\\p\\r\\\phi\\\psi\end{bmatrix}, \boldsymbol{B}=\begin{bmatrix}Y_{\delta_r} &amp; Y_{\delta_a}\\L_{\delta_r}^* &amp; L_{\delta_a}^*\\N_{\delta_r}^* &amp; N_{\delta_a}^*\\0 &amp; 0\\0 &amp; 0\end{bmatrix}, \vec{u}=\begin{bmatrix}\delta_r\\\delta_a\end{bmatrix}\end{split}\]</div>
+<p>Some aircraft may have derivatives listed that have been neglected in the preceding - for example, you may find an aircraft with a nonzero <span class="math notranslate nohighlight">\(C_{D_q}\)</span>, which is the nondimensional form of <span class="math notranslate nohighlight">\(X_q\)</span>. You can hopefully appreciate that it can be readily re-inserted into the longitudinal equations of motion by choosing the logical place to insert into the system matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\boldsymbol{A}=\begin{bmatrix}
+        X_u &amp; X_w &amp; \color{red}{X_q} &amp; -g\cdot\cos\theta_0\\
+        Z_u &amp; Z_w &amp; U_0 &amp; -g\cdot\sin\theta_0\\
+        M_u^* &amp; M_w^* &amp; M_q^* &amp; M_\theta^*\\
+        0 &amp; 0 &amp; 1 &amp; 0   
+    \end{bmatrix}\end{split}\]</div>
+<p>Similarly, if you have an aircraft with a <span class="math notranslate nohighlight">\(C_{X_{\delta_e}}\)</span> and hence <span class="math notranslate nohighlight">\(\cdot X_{\delta_e}\)</span> term, then this would be inserted into the control matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\boldsymbol{B}= \begin{bmatrix}
+        \color{red}{X_{\delta_e}}\\Z_{\delta_e}\\M_{\delta_e}^*\\0          
+    \end{bmatrix}\end{split}\]</div>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>recalling that <em>simplify</em> often means <em>make look nicer, but complicate the matter by introducing new terminology</em></p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "aeronauty/Aircraft-Flight-Mechanics",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Linearisation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="AerodynamicDerivatives.html" title="previous page">Stability Derivatives</a>
+    <a class='right-next' id="next-link" href="Aerodynamic.html" title="next page">Linear Aerodynamic Terms</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Harry Smith<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            <div>
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-178506186-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

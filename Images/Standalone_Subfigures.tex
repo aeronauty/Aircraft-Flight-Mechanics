@@ -1,0 +1,48 @@
+\documentclass{report}
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage{tabularx}
+
+%\pagecolor[RGB]{1,1,1}
+\definecolor{darkgreen}{RGB}{0, 108, 18}
+\definecolor{BRG}{RGB}{18,112,16}
+\definecolor{darkgreen}{RGB}{0, 108, 18}
+\definecolor{i1}{RGB}{204, 46, 255}
+\definecolor{i2}{RGB}{255, 51, 153}
+\definecolor{limegreen}{RGB}{57, 255, 20}
+\definecolor{highlightB}{RGB}{70, 173, 212}
+
+\begin{document}
+         % you need to set the size of the picture. as standalone, it basically sets the ratio of image to text size (because text size is fixed in pt while image size is variable).
+        \def\svgwidth{1\textwidth}
+        % this is the inkscape generated Tex code file
+\begin{figure}
+	\begin{subfigure}{.5\textwidth} % width of left subfigure
+		\def\svgwidth{1\textwidth}\centering
+		\import{}{EulerPsi_1.pdf_tex}
+		\caption{Draw the unrotated axis set}\label{fig:euler1} % subcaption
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth} % width of left subfigure
+	    \def\svgwidth{1\textwidth}\centering
+		\import{}{EulerPsi_2.pdf_tex}
+		\caption{Overlay the rotated axis set \textbf{in the correct direction}}\label{fig:euler2} % subcaption
+	\end{subfigure}
+	\quad
+	\begin{subfigure}{0.5\textwidth} % width of left subfigure
+	    \def\svgwidth{1\textwidth}\centering
+		\import{}{EulerPsi_3.pdf_tex}
+		\caption{Make one of the unrotated axes the hypotenuse of a right-angle triangle, and determine its constituent vectors from the problem geometry.}\label{fig:euler3}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth} % width of left subfigure
+	    \def\svgwidth{1\textwidth}\centering
+		\import{}{EulerPsi_4.pdf_tex}
+		\caption{Do the same with the other\vspace{1cm}}\label{fig:euler4}
+	\end{subfigure}
+	\caption{Steps to perform an Euler transform from Earth axes to intermediate axes $X_1, Y_1, Z_1$.}\label{fig:transform1} % caption for whole figure
+\end{figure}
+
+\end{document}

@@ -1,0 +1,83 @@
+%% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'Wing_HT_Layout.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{716.61655696bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.58001161)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{Wing_HT_Layout.pdf}}%
+    \put(-0.00105612,0.26509572){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V_\infty$\end{tabular}}}}%
+    \put(0.15856554,0.29563836){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\alpha$\end{tabular}}}}%
+    \put(0.92491313,0.3180146){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\delta_e$\end{tabular}}}}%
+    \put(0.25435309,0.52357782){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$L_w$\end{tabular}}}}%
+    \put(0.78230416,0.54222827){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$L_t$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{Wing_HT_Layout.pdf}}%
+    \put(0.69366014,0.4310226){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$i_t$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{Wing_HT_Layout.pdf}}%
+    \put(0.7649027,0.36066288){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V_\infty$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{Wing_HT_Layout.pdf}}%
+    \put(0.76619508,0.29455972){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V^\prime$\end{tabular}}}}%
+    \put(0.79968383,0.33301398){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w_i$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{Wing_HT_Layout.pdf}}%
+    \put(0.70626848,0.37139721){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\epsilon$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{Wing_HT_Layout.pdf}}%
+    \put(0.29257078,0.35228924){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$M_0$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{Wing_HT_Layout.pdf}}%
+    \put(0.31688273,0.56239804){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\bar{c}$\end{tabular}}}}%
+    \put(0.20319881,0.12617107){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$h_0\bar{c}$\end{tabular}}}}%
+    \put(0.35537413,0.03782718){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$h\bar{c}$\end{tabular}}}}%
+    \put(0.64987815,0.0396176){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$l_t$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{Wing_HT_Layout.pdf}}%
+    \put(0.52961185,0.2120919){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$W$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{Wing_HT_Layout.pdf}}%
+    \put(0.50071519,0.12339055){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\bar{l_t}$\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

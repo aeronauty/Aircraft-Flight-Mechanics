@@ -132,6 +132,12 @@ AircraftPerformance/Examples
 :caption: Static Stability
 
 StaticStability/StaticStability
+StaticStability/Angles
+StaticStability/LSS
+StaticStability/Nondimensionalrates
+StaticStability/Lateral
+StaticStability/Directional
+StaticStability/CrossCouplings
 ```
 
 
@@ -140,7 +146,29 @@ StaticStability/StaticStability
 :titlesonly:
 :caption: Aircraft Equations of Motion
 
-EoM/Introduction
+EoMs/Introduction
+EoMs/EulerTransforms
+EoMs/RelativeMotion
+EoMs/Translation
+EoMs/Rotation
+EoMs/InertiaTensor
+EoMs/AngularRates
+EoMs/Summary
+```
+
+
+```{toctree}
+:hidden:
+:titlesonly:
+:caption: Linearisation
+
+Linearisation/Introduction
+Linearisation/Linearisation
+Linearisation/AerodynamicDerivatives
+Linearisation/Concise
+Linearisation/Aerodynamic
+Linearisation/Nondimensional
+Linearisation/StateSpaceExample
 ```
 
 

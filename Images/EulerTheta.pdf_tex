@@ -1,0 +1,68 @@
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'EulerTheta.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{320.89881476bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.21671197)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{EulerTheta.pdf}}%
+    \put(0.73168622,0.72583683){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{\color{i1}{$x_{1}$}}}}}%
+    \put(0.006071,0.00587949){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{\color{i1}{$z_{1}$}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{EulerTheta.pdf}}%
+    \put(0.62981742,1.07543399){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{\color{i2}{$x_2$}}}}}%
+    \put(0.374472,0.10112479){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{\color{i2}{$z_2$}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{EulerTheta.pdf}}%
+    \put(0.08966039,0.31529291){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{$\theta$}}}}%
+    \put(0.36412113,0.83161857){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textit{$\theta$}}}}%
+    \put(0.06876007,0.82776021){\color[rgb]{0,0,0}\rotatebox{30}{\makebox(0,0)[lb]{\smash{\textit{\color{blue}{$x_1\cdot\cos\theta$}}}}}}%
+    \put(0.58750761,0.99128831){\color[rgb]{0,0,0}\rotatebox{-60}{\makebox(0,0)[lb]{\smash{\textit{\color{blue}{$x_1\cdot\sin\theta$}}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{EulerTheta.pdf}}%
+    \put(0.19028575,0.60001473){\color[rgb]{0,0,0}\rotatebox{-60}{\makebox(0,0)[lb]{\smash{\textit{\color{blue}{$z_1\cdot\cos\theta$}}}}}}%
+    \put(0.11468702,0.0527708){\color[rgb]{0,0,0}\rotatebox{30}{\makebox(0,0)[lb]{\smash{\textit{\color{blue}{$z_1\cdot\sin\theta$}}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{EulerTheta.pdf}}%
+  \end{picture}%
+\endgroup%

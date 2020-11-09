@@ -1,0 +1,766 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nondimensional Equations of Motion &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Worked Example" href="StateSpaceExample.html" />
+    <link rel="prev" title="Linear Aerodynamic Terms" href="Aerodynamic.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/Logo2.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Aircraft Flight Mechanics by Harry Smith, PhD</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CourseIntroduction.html">
+   Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Prerequisites/Prerequisites.html">
+   Assumed knowledge
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Performance
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Introduction.html">
+   Aircraft Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Airspeed.html">
+   Defining Aircraft ‘Speed’
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/SteadyLevelFlight.html">
+   Steady Level Flight
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/GlidingFlight.html">
+   Climbing and Gliding Caveat
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/GlidingFlight.html#gliding-flight-unpowered-descent">
+   Gliding Flight (Unpowered Descent)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/ClimbingFlight.html">
+   Climbing Flight
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/RangeandEndurance.html">
+   Range and Endurance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Manoeuvre.html">
+   Acceleration, Manoeuvres, and Aircraft Loading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AircraftPerformance/Examples.html">
+   Questions and Solutions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Static Stability
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/StaticStability.html">
+   Defining Static Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Angles.html">
+   Co-ordinate system and Angles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/LSS.html">
+   Longitudinal Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Nondimensionalrates.html">
+   Non-dimensional rates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Lateral.html">
+   Lateral Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/Directional.html">
+   Directional Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StaticStability/CrossCouplings.html">
+   Cross-couplings
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Aircraft Equations of Motion
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/EulerTransforms.html">
+   Axes Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/RelativeMotion.html">
+   Absolute Acceleration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Translation.html">
+   EoMs for Translation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Rotation.html">
+   EoMs for Rotation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/InertiaTensor.html">
+   Inertia Tensor Calculation
+   <span class="math notranslate nohighlight">
+    \(\def\dif{\text{d}}\)
+   </span>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../EoMs/Summary.html">
+   Summary of the equations of motion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Linearisation
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   The Road so Far…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation.html">
+   Linearisation Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AerodynamicDerivatives.html">
+   Stability Derivatives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Concise.html">
+   Concise Form of Dimensional EoMs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Aerodynamic.html">
+   Linear Aerodynamic Terms
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Nondimensional Equations of Motion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StateSpaceExample.html">
+   Worked Example
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  References and Resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zreferences.html">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zreferences.html#references">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Linearisation/Nondimensional.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/issues/new?title=Issue%20on%20page%20%2FLinearisation/Nondimensional.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/edit/master/Linearisation/Nondimensional.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/Linearisation/Nondimensional.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-longitudinal-equations-in-non-dimensional-form">
+   The Longitudinal Equations in Non-Dimensional Form:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-lateral-directional-equations-in-non-dimensional-form">
+   The Lateral/Directional Equations in Non-Dimensional Form:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nondimensional-stability-derivatives">
+   Nondimensional stability derivatives
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#converting-from-nondimensional-to-dimensional-stability-derivatives">
+     Converting from nondimensional to dimensional stability derivatives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="nondimensional-equations-of-motion">
+<h1>Nondimensional Equations of Motion<a class="headerlink" href="#nondimensional-equations-of-motion" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\od}[2]{\frac{\text{d}#1}{\text{d}#2}}\]</div>
+<div class="math notranslate nohighlight">
+\[\newcommand{\pd}[2]{\frac{\partial#1}{\partial#2}}\]</div>
+<div class="math notranslate nohighlight">
+\[\newcommand{\ppd}[2]{\frac{\partial^2#1}{\partial#2^2}}\]</div>
+<div class="math notranslate nohighlight">
+\[\newcommand{\pppd}[2]{\frac{\partial^3#1}{\partial#2^3}}\]</div>
+<p>The equations of motion are sometimes used in non-dimensional form, where all the states and derivatives are non-dimensionalised. Different nondimensionalision schemes can be found, but they are of the form:</p>
+<table class="colwidths-auto table" id="nondimensionalisationscheme">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Nondimensionalisation Scheme for Equations of Motion</span><a class="headerlink" href="#nondimensionalisationscheme" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Quantity</p></th>
+<th class="text-align:center head"><p>Divisor</p></th>
+<th class="text-align:center head"><p>Non-dimensional Form</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(X,Y,Z\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{2}\rho V^2S\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(C_X,C_Y,C_Z\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(L,M,N\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\rho V^2Sl\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(C_l, C_m, C_n\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(u,v,w\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(U_0\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\hat{u},\beta,\alpha\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(p,q,r\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{t^*}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\hat{p},\hat{q}, \hat{r}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\dot{\alpha},\dot{\beta}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{t^*}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(D\alpha,D\beta\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(m\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\rho Sl\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mu\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(I_{xx},\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\rho S l^3\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(i_{xx},\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(t\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(t^*\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\hat{t}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that <span class="math notranslate nohighlight">\(D=\od{}{\hat{t}}\)</span> and <span class="math notranslate nohighlight">\(t^*=\frac{l}{U_e}\)</span>.<br />
+The representative distance <span class="math notranslate nohighlight">\(l\)</span> is <span class="math notranslate nohighlight">\(\frac{\bar{c}}{2}\)</span> when dealing with the longitudinal equations, and <span class="math notranslate nohighlight">\(\frac{b}{2}\)</span> for the lateral/directional equations.</p>
+<p>We will not use the equations of motion in non-dimensional form, but they are presented below for completeness and for your future reference. There are advantages to the nondimensional form:</p>
+<ul class="simple">
+<li><p>The stability derivatives become <em>coefficients</em> which enables comparison between aircraft</p></li>
+</ul>
+<p>But the drawbacks are:</p>
+<ul class="simple">
+<li><p>A whole new set of nomenclature</p></li>
+<li><p>The output from solution of the equations are <em>also</em> <strong>nondimensional states</strong> so need to be converted for interpretation</p></li>
+</ul>
+<div class="section" id="the-longitudinal-equations-in-non-dimensional-form">
+<h2>The Longitudinal Equations in Non-Dimensional Form:<a class="headerlink" href="#the-longitudinal-equations-in-non-dimensional-form" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight" id="equation-eq-lonnondimensional">
+<span class="eqno">(83)<a class="headerlink" href="#equation-eq-lonnondimensional" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix} 
+            2\mu &amp; 0 &amp; 0 &amp; 0\\
+            0 &amp; 2\mu &amp; 0 &amp; 0\\
+            0 &amp; -C_{m_\alpha} &amp; i_{yy} &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        D\hat{u}\\D\alpha\\D\hat{q}\\D\theta
+    \end{bmatrix}=
+    \begin{bmatrix}
+        \left(C_{x_u} + 2C_{L_0}\tan\Theta_e\right) &amp; C_{x_\alpha} &amp; 0 &amp; -C_{L_0}\\
+        \left(C_{z_u} - 2C_{L_0}\right) &amp; C_{z_u} &amp; 2\mu &amp; -C_{L_0}\tan\Theta_e\\
+        C_{m_u} &amp; C_{m_\alpha} &amp; C_{m_q} &amp; 0\\
+        0 &amp; 0 &amp; 1 &amp; 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \hat{u} \\ \alpha \\ \hat{q} \\ \theta
+    \end{bmatrix} + 
+    \begin{bmatrix}
+        0 \\ C_{z_{\delta_e}} \\ C_{m_{\delta_e}} \\ 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \delta_e
+    \end{bmatrix}
+\end{split}\]</div>
+</div>
+<div class="section" id="the-lateral-directional-equations-in-non-dimensional-form">
+<h2>The Lateral/Directional Equations in Non-Dimensional Form:<a class="headerlink" href="#the-lateral-directional-equations-in-non-dimensional-form" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight" id="equation-eq-latnondimensional">
+<span class="eqno">(84)<a class="headerlink" href="#equation-eq-latnondimensional" title="Permalink to this equation">¶</a></span>\[\begin{split}
+    \begin{bmatrix} 
+        2\mu &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+        0 &amp; i_{xx} &amp; -i_{xz} &amp; 0 &amp; 0\\
+        0 &amp; -i_{xz} &amp; i_{zz} &amp; 0 &amp; 0\\
+        0 &amp; 0 &amp; 0 &amp; 1 &amp; 0\\
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        D\beta\\D\hat{p}\\D\hat{r}\\D\phi\\D\psi
+    \end{bmatrix}=
+    \begin{bmatrix}
+        C_{y_\beta} &amp; 0 &amp; -2\mu &amp; C_{L_0} &amp; 0\\
+        C_{l_\beta} &amp; C_{l_p} &amp; C_{l_r} &amp; 0 &amp; 0\\
+        C_{n_\beta} &amp; C_{n_p} &amp; C_{n_r} &amp; 0 &amp; 0\\
+        0 &amp; 1 &amp; \tan\Theta_e &amp; 0 &amp; 0\\
+        0 &amp; 0 &amp; \sec\Theta_e &amp; 0 &amp; 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \beta \\ \hat{p} \\ \hat{r} \\\phi \\ \psi
+    \end{bmatrix} + 
+    \begin{bmatrix}
+        0 &amp; C_{y_{\delta_r}} \\ C_{l_{\delta_a}} &amp; C_{l_{\delta_r}} \\ C_{n_{\delta_a}} &amp; C_{n_{\delta_r}} \\ 0&amp; 0\\0 &amp; 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \delta_a\\\delta_r
+    \end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{A_1}D\vec{x} = \boldsymbol{A_2}\vec{x} + \boldsymbol{B_1}\vec{u}\]</div>
+<p>where the matrices <span class="math notranslate nohighlight">\(\boldsymbol{A_1}\)</span> are taken directly from <code class="xref eq docutils literal notranslate"><span class="pre">(eq:latnondimensional)</span></code> and <a class="reference internal" href="#equation-eq-lonnondimensional">(83)</a>, and <span class="math notranslate nohighlight">\(\vec{x}=[\hat{u},\alpha,\hat{q},\theta]^T\)</span>. To express this in state space form, one must determine:</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{A} = \boldsymbol{A_1}^{-1}\boldsymbol{A_2}\text{, and } \boldsymbol{B} = \boldsymbol{A_1}^{-1}\boldsymbol{B_1}\]</div>
+</div>
+<div class="section" id="nondimensional-stability-derivatives">
+<h2>Nondimensional stability derivatives<a class="headerlink" href="#nondimensional-stability-derivatives" title="Permalink to this headline">¶</a></h2>
+<p>The procedure via which the stability derivatives are nondimensionalised is involved and you will not be expected to repeat the following, but the process will be demonstrated before a summary of the conversions is included.</p>
+<p>Taking the speed damping derivative, <span class="math notranslate nohighlight">\(X_u\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[X_u=\frac{1}{m}\pd{X}{u}\]</div>
+<p>the <span class="math notranslate nohighlight">\(X\)</span> force can be written as</p>
+<div class="math notranslate nohighlight">
+\[X=q\,S\,C_X\]</div>
+<p>where, <span class="math notranslate nohighlight">\(q\)</span> is dynamic pressure and not perturbational pitch rate. Hence</p>
+<div class="math notranslate nohighlight">
+\[X_u=\frac{1}{m}\pd{}{u}\left[q\,S\,C_X\right]\]</div>
+<p>the next step is convoluted by the fact that the dynamic pressure is a function of the perturbation forward speed, so the product rule must be used</p>
+<div class="math notranslate nohighlight">
+\[X_u=\frac{1}{m}S\left[q_0\pd{C_X}{u} + \pd{q}{u}\cdot C_{X_0}\right]\]</div>
+<p>the partial derivative <span class="math notranslate nohighlight">\(\pd{C_X}{u}\)</span> is NOT equal to the non-dimensional derivative <span class="math notranslate nohighlight">\(C_{X_u}\)</span> because the non-dimensional derivatives are, well, non-dimensional so</p>
+<div class="math notranslate nohighlight">
+\[C_{X_u}\triangleq\pd{C_X}{\hat{u}}=\pd{C_X}{\frac{u}{U_0}}\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\pd{C_X}{u} = \pd{C_X}{\frac{u}{U_0}}\pd{\frac{u}{U_0}}{u}=\frac{1}{U_0}C_{X_u}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-xu1">
+<span class="eqno">(85)<a class="headerlink" href="#equation-eq-xu1" title="Permalink to this equation">¶</a></span>\[X_u=\frac{1}{m}S\left[q C_{X_u}\frac{1}{U_0} + \pd{q}{u}\cdot C_{X_0}\right]\]</div>
+<p>where the term <span class="math notranslate nohighlight">\(C_{X_u}\)</span> is the rate of change of <span class="math notranslate nohighlight">\(X\)</span> force coefficient with non-dimensional forward speed, and <span class="math notranslate nohighlight">\(C_{X_0}\)</span> is the trim value of <span class="math notranslate nohighlight">\(X\)</span> force coefficient. The partial derivative <span class="math notranslate nohighlight">\(\pd{q}{u}\)</span> will need a little evaluation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}\pd{q}{u} &amp;= \pd{}{u}\frac{1}{2}\rho\left[U_0+u\right]^2\\
+&amp;= \frac{1}{2}\rho\pd{}{u}\left[U_0^2 + 2U_0\,u+u^2\right]\\
+&amp;= \frac{1}{2}\rho\left[2U_0 +2u\right]\end{align}\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(U_0\gg u\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}\pd{q}{u} &amp;= \frac{1}{2}\rho\left[U_0\right]\cdot2\\
+&amp;=\frac{2\cdot q}{U_0}\end{align}\end{split}\]</div>
+<p>so this can be substituted into <a class="reference internal" href="#equation-eq-xu1">(85)</a></p>
+<div class="math notranslate nohighlight">
+\[X_u=\frac{q\,S}{m\,U_0}\left[C_{X_u}+2C_{X_0}\right]\]</div>
+<p>various expressions are presented in the literature for <span class="math notranslate nohighlight">\(C_{X_u}\)</span> incorporating lift terms, but in stability axes these are very small, and the only term of significance in <span class="math notranslate nohighlight">\(C_{X_u}\)</span> is the compressibility effect due to drag, <span class="math notranslate nohighlight">\(-M\,C_{D_M}\)</span> where <span class="math notranslate nohighlight">\(M\)</span> is Mach number. The trim <span class="math notranslate nohighlight">\(C_{X_0}\)</span> term is, by definition in stability axes, <span class="math notranslate nohighlight">\(-C_{D_0}\)</span>.
+Hence</p>
+<div class="math notranslate nohighlight">
+\[X_u=-\frac{q\,S}{m\,U_0}\left[2\,C_{D_0}+M\,C_{D_M}\right]\]</div>
+<p>You will appreciate that the process to go from each dimensional derivative to the non-dimensional derivative is involved, hence I will not expect you to go over the whole process, rather that you should have an appreciation of the entire process and be able to relate to the quantities below.</p>
+<p>In practice, you will often start with the non-dimensional derivatives and convert to the dimensional form. For this, the table below will be useful</p>
+<div class="section" id="converting-from-nondimensional-to-dimensional-stability-derivatives">
+<h3>Converting from nondimensional to dimensional stability derivatives<a class="headerlink" href="#converting-from-nondimensional-to-dimensional-stability-derivatives" title="Permalink to this headline">¶</a></h3>
+<p>Conversion between the nondimensional and dimensional longitudinal stability derivatives is as follows.</p>
+<p>In the tables below, the rates are given as nondimensional rates e.g., <span class="math notranslate nohighlight">\(C_{m_{\hat{q}}}\)</span> to <em>remind</em> you that they’re nondimensional. You’ll often just seem them listed as <span class="math notranslate nohighlight">\(C_{m_q}\)</span> in the literature</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>X</p></th>
+<th class="head"><p>Z</p></th>
+<th class="head"><p>M</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X_u = \frac{q_\infty\,S}{m\,U_0}\left[2C_{X_0} + C_{X_u}\right]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z_u = \frac{q_\infty\,S}{m\,U_0}\left[2C_{Z_0} + C_{Z_u}\right]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(M_u = \frac{q_\infty\,S\,\bar{c}}{I_{yy}\,U_0}C_{m_u}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(w\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X_w= \frac{q_\infty\,S}{m\,U_0}C_{X_\alpha}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z_w= \frac{q_\infty\,S}{m\,U_0}C_{Z_\alpha}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(M_w= \frac{q_\infty\,S\,\bar{c}}{I_{yy}\,U_0}C_{m_\alpha}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\dot{w}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X_{\dot{w}}=\frac{q\,S\,\bar{c}}{2\,m\,U_0^2}C_{X_\dot{\alpha}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z_{\dot{w}}=\frac{q\,S\,\bar{c}}{2\,m\,U_0^2}C_{Z_\dot{\alpha}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(M_{\dot{w}}=\frac{q\,S\,\bar{c}^2}{2\,m\,U_0^2}C_{m_\dot{\alpha}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(q\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X_q=\frac{q\,S\,\bar{c}}{2\,m\,U_0}C_{X_\hat{q}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z_q=\frac{q\,S\,\bar{c}}{2\,m\,U_0}C_{Z_\hat{q}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(M_q=\frac{q\,S\,\bar{c}^2}{2\,I_{yy}\,U_0}C_{m_\hat{q}}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\delta\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X_{\delta}=\frac{q\,S}{m}C_{\delta}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z_{\delta}=\frac{q\,S}{m}C_{\delta}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(M_{\delta}=\frac{q\,S\,\bar{c}}{I_{yy}}C_{\delta}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The same can be performed for the lateral-directional stability derivatives</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Y</p></th>
+<th class="head"><p>L</p></th>
+<th class="head"><p>N</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(v\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Y_v = \frac{q_\infty\,S}{m\,U_0}C_{y_\beta}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_v=\frac{q_\infty\,S\,b}{I_{xx}\,U_0}C_{\ell_\beta}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(N_v=\frac{q_\infty\,S\,b}{I_{zz}\,U_0}C_{n_\beta}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Y_p= \frac{q_\infty\,S\,b}{2\,m\,U_0}C_{y_{\hat{p}}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_p=\frac{q_\infty\,S\,b^2}{2\,I_{xx}\,U_0}C_{\ell_{\hat{p}}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(N_p=\frac{q_\infty\,S\,b^2}{2\,I_{zz}\,U_0}C_{n_{\hat{p}}}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(r\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Y_r=\frac{q\,S\,b}{2\,m\,U_0}C_{y_{\hat{r}}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_r=\frac{q_\infty\,S\,b^2}{2\,I_{xx}\,U_0}C_{\ell_{\hat{r}}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(N_r=\frac{q_\infty\,S\,b^2}{2\,I_{zz}\,U_0}C_{n_{\hat{r}}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\delta\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Y_{\delta}=\frac{q\,S}{m}C_{\delta}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_{\delta}=\frac{q\,S\,b}{I_{xx}}C_{\delta}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(N_{\delta}=\frac{q\,S\,b}{I_{zz}}C_{\delta}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>We must be careful as data are often not presented in the form of <span class="math notranslate nohighlight">\(C_{Z_\alpha}\)</span>, for example, rather as <span class="math notranslate nohighlight">\(C_{L_\alpha}\)</span>. In such case, we simply note that in stability axes</p>
+<div class="math notranslate nohighlight">
+\[C_{Z_\alpha}= -C_{L_\alpha}\]</div>
+<p>Furthermore, you often wont see data presented for terms like <span class="math notranslate nohighlight">\(C_{X_u}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[C_{X_u}\triangleq\pd{C_X}{\frac{u}{U_0}}\]</div>
+<p>or the rate of change of <span class="math notranslate nohighlight">\(X\)</span> force with non-dimensional forward speed. But you <em>will</em> often see this presented as a compressibility effect, <span class="math notranslate nohighlight">\(C_{D_M}\)</span>. Noting that in stability axes, <span class="math notranslate nohighlight">\(C_X=-C_D\)</span>, then we can see</p>
+<div class="math notranslate nohighlight">
+\[C_{X_u}=-M\,C_{D_M}\]</div>
+<p>Hopefully it’ll all become clear after an example</p>
+</div>
+<div class="section" id="id1">
+<h3><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "aeronauty/Aircraft-Flight-Mechanics",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Linearisation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Aerodynamic.html" title="previous page">Linear Aerodynamic Terms</a>
+    <a class='right-next' id="next-link" href="StateSpaceExample.html" title="next page">Worked Example</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Harry Smith<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            <div>
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-178506186-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

@@ -33,7 +33,12 @@ launch_buttons:
 execute_notebooks: force
 jupyter_execute_notebooks: force
 
+parse:
+  myst_extended_syntax: true
+
 sphinx:
+  config:
+    myst_amsmath_enable: true
   extra_extensions:
   - sphinx_tabs.tabs
 

@@ -1,0 +1,84 @@
+%% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'RollDamping.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{1098.33636475bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.80134965)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{RollDamping.pdf}}%
+    \put(0.70647197,0.40070934){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Roll Rate, $P$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{RollDamping.pdf}}%
+    \put(0.35839075,0.74218638){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$+y$\end{tabular}}}}%
+    \put(0.54732277,0.74433334){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$-y$\end{tabular}}}}%
+    \put(0.00889813,0.51593935){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Upwash=$P\,y$\end{tabular}}}}%
+    \put(0.69904738,0.69407946){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Downwash=$P\,|y|$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{RollDamping.pdf}}%
+    \put(0.31139603,0.61511607){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{RollDamping.pdf}}%
+    \put(0.02320124,0.24225405){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V_\infty$\end{tabular}}}}%
+    \put(0.13147704,0.16459026){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y\cdot P$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{RollDamping.pdf}}%
+    \put(-0.00053233,0.19860802){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\alpha^\prime$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{RollDamping.pdf}}%
+    \put(0.19355385,0.39518623){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$dC_L^\prime\cos\alpha$\end{tabular}}}}%
+    \put(0.11439768,0.39225273){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$dC_L^\prime$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{RollDamping.pdf}}%
+    \put(0.51621963,0.2053801){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V_\infty$\end{tabular}}}}%
+    \put(0.60254592,0.29994578){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$|-y|\cdot P$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{RollDamping.pdf}}%
+    \put(0.50175852,0.24196797){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\alpha^\prime$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{RollDamping.pdf}}%
+    \put(0.62108868,0.050604){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$dC_L^\prime$\end{tabular}}}}%
+    \put(0.68855922,0.05191069){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$dC_L^\prime\cos\alpha$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{RollDamping.pdf}}%
+    \put(0.68435883,0.52207197){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$-y$\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

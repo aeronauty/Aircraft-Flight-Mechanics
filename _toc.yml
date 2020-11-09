@@ -19,10 +19,36 @@
 - chapter: Static Stability
   sections:
   - file: StaticStability/StaticStability
+  - file: StaticStability/Angles
+  - file: StaticStability/LSS
+  - file: StaticStability/Nondimensionalrates
+  - file: StaticStability/Lateral
+  - file: StaticStability/Directional
+  - file: StaticStability/CrossCouplings
+
 
 - chapter: Aircraft Equations of Motion
   sections:
-  - file: EoM/Introduction
+  - file: EoMs/Introduction
+  - file: EoMs/EulerTransforms
+  - file: EoMs/RelativeMotion
+  - file: EoMs/Translation
+  - file: EoMs/Rotation
+  - file: EoMs/InertiaTensor
+  - file: EoMs/AngularRates
+  - file: EoMs/Summary
+
+- chapter: Linearisation
+  sections:
+  - file: Linearisation/Introduction
+  - file: Linearisation/Linearisation
+  - file: Linearisation/AerodynamicDerivatives
+  - file: Linearisation/Concise
+  - file: Linearisation/Aerodynamic
+  - file: Linearisation/Nondimensional
+  - file: Linearisation/StateSpaceExample
+
+
 
 - chapter: References and Resources
   sections:
