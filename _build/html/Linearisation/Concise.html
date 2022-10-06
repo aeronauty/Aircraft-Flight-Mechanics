@@ -2,10 +2,9 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Concise Form of Dimensional EoMs &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
@@ -30,7 +29,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -260,6 +259,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="#units">
+   Units
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Aerodynamic.html">
    Linear Aerodynamic Terms
   </a>
@@ -272,6 +276,38 @@
  <li class="toctree-l1">
   <a class="reference internal" href="StateSpaceExample.html">
    Worked Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LinearvsNonlinear.html">
+   Comparison of the Linear and Nonlinear Equations of Motion: Aircraft Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LinearvsNonlinear.html#numerical-linearisation-of-the-equations-of-motion">
+   Numerical Linearisation of the Equations of Motion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Flight Dynamics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Dynamics/Intro.html">
+   Dynamic Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Dynamics/ModesofMotion.html">
+   Aircraft Modes of Motion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Dynamics/CherokeeExample.html">
+   Final Examples
   </a>
  </li>
 </ul>
@@ -395,7 +431,7 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> On this page
+            <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -484,8 +520,8 @@
 <div class="math notranslate nohighlight" id="equation-eq-conciselon">
 <span class="eqno">(75)<a class="headerlink" href="#equation-eq-conciselon" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
     \begin{bmatrix} \dot{u}\\\dot{w}\\\dot{q}\\\dot{\theta}\end{bmatrix} &amp;= \begin{bmatrix}
-        X_u &amp; X_w &amp; 0 &amp; -g\cdot\cos\Theta_e\\
-        Z_u &amp; Z_w &amp; U_0 &amp; -g\cdot\sin\Theta_e\\
+        X_u &amp; X_w &amp; 0 &amp; -g\cdot\cos\theta_0\\
+        Z_u &amp; Z_w &amp; U_0 &amp; -g\cdot\sin\theta_0\\
         M_u^* &amp; M_w^* &amp; M_q^* &amp; M_\theta^*\\
         0 &amp; 0 &amp; 1 &amp; 0   
     \end{bmatrix}\begin{bmatrix}
@@ -545,7 +581,7 @@
 <p>where:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{gathered}
-            N_v^* = \frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_v+\frac{I_{xz}}{I_{zz}}L_v\right) \,\,\,\,\,\,\,\,\,\,\,\,\,\,\, N_p^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_p+\frac{I_{xz}}{I_{zz}}L_p\right)\\
+            N_v^* = \frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_v+\frac{I_{xz}}{I_{zz}}L_v\right) \,\,\,\,\,\,\,\,\,\,\,\,\,\,\, N_p^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_p+\frac{I_{xz}}{newI_{zz}}L_p\right)\\
             N_r^* = \frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_r+\frac{I_{xz}}{I_{zz}}L_r\right) \,\,\,\,\,\,\,\,\,\,\,\,\,\,\, N_{\delta_r}^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_{\delta_r}+\frac{I_{xz}}{I_{zz}}L_{\delta_r}\right)\\
             N_{\delta_a}^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_{\delta_a}+\frac{I_{xz}}{I_{zz}}L_{\delta_a}\right)        
         \end{gathered}\end{split}\]</div>
@@ -612,6 +648,14 @@
 \[\begin{split}\boldsymbol{B}= \begin{bmatrix}
         \color{red}{X_{\delta_e}}\\Z_{\delta_e}\\M_{\delta_e}^*\\0          
     \end{bmatrix}\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="units">
+<h1>Units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h1>
+<p>As we’ll discover, it’s useful to know the dimensions of the different derivatives. Rather than writing them all out, the following guide will help:</p>
+<div class="section" id="force-derivative-wrt-velocity-perturbation">
+<h2>Force Derivative wrt Velocity Perturbation<a class="headerlink" href="#force-derivative-wrt-velocity-perturbation" title="Permalink to this headline">¶</a></h2>
+<p>This is the terms like <span class="math notranslate nohighlight">\(X_u\)</span> or <span class="math notranslate nohighlight">\(Z_w\)</span>. These all have units of <span class="math notranslate nohighlight">\(\left[\text{T}^{-1}\right]\)</span> or <span class="math notranslate nohighlight">\(s^{-1}\)</span></p>
 <hr class="docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
@@ -663,7 +707,7 @@
           <div class="extra_footer">
             <div>
     <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
-</div>
+</div><div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
 
           </div>
       </p>

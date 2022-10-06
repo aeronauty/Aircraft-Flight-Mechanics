@@ -169,6 +169,18 @@ Linearisation/Concise
 Linearisation/Aerodynamic
 Linearisation/Nondimensional
 Linearisation/StateSpaceExample
+Linearisation/LinearvsNonlinear
+```
+
+
+```{toctree}
+:hidden:
+:titlesonly:
+:caption: Flight Dynamics
+
+Dynamics/Intro
+Dynamics/ModesofMotion
+Dynamics/CherokeeExample
 ```
 
 

@@ -2,10 +2,9 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Acknowledgements &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
@@ -30,7 +29,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -40,7 +39,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Worked Example" href="Linearisation/StateSpaceExample.html" />
+    <link rel="prev" title="Final Examples" href="Dynamics/CherokeeExample.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -259,6 +258,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation/Concise.html#units">
+   Units
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Linearisation/Aerodynamic.html">
    Linear Aerodynamic Terms
   </a>
@@ -271,6 +275,38 @@
  <li class="toctree-l1">
   <a class="reference internal" href="Linearisation/StateSpaceExample.html">
    Worked Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation/LinearvsNonlinear.html">
+   Comparison of the Linear and Nonlinear Equations of Motion: Aircraft Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linearisation/LinearvsNonlinear.html#numerical-linearisation-of-the-equations-of-motion">
+   Numerical Linearisation of the Equations of Motion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Flight Dynamics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Dynamics/Intro.html">
+   Dynamic Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Dynamics/ModesofMotion.html">
+   Aircraft Modes of Motion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Dynamics/CherokeeExample.html">
+   Final Examples
   </a>
  </li>
 </ul>
@@ -374,7 +410,7 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> On this page
+            <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
             
@@ -391,6 +427,7 @@
 <p>The formal references in this website are included in the section below, but a wealth of the content has been formed from a combination of my own undergraduate notes and content shared with me from a former colleague (almost all of the aircraft performance section has been developed from his content) - <a class="reference external" href="https://www.linkedin.com/in/doug-greenwell-583b9830/">Dr Doug Greenwell</a>. Doug is the Chief Aerodynamicist at the Aircraft Research Association, where I used to work - I sought his guidance on all things, and we worked together heavily in data analysis for fault investigation. He kindly shared his own material from his former role at City University, and I’ve adapted it with his permission.</p>
 <p>Thanks, Doug - I couldn’t have done any of this without your help.</p>
 <p>For the linearisation and flight dynamics sections, a wealth of material has been developed from <a class="reference external" href="https://www.gla.ac.uk/schools/engineering/staff/douglasthomson/">Dr. Douglas Thomson</a>’s material which I have from my own undergradate studies. He helpfully provided me with his source material when I started teaching at IIT. Thanks, Dougie.</p>
+<p>Some of my worked examples have been inspired those originally from <a class="reference external" href="https://uk.linkedin.com/in/stewart-houston-24b848138">Dr. Stewart Houston</a> who taught me Flight Mechanics and Rotorcraft Aeromechanics during my undergraduate studies, and served as an ongoing casual adviaor during my PhD. Cheers, Stewart.</p>
 </div>
 <div class="section" id="references">
 <h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
@@ -409,6 +446,9 @@
 </dd>
 <dt class="bibtex label" id="houghton-2012vl"><span class="brackets">HCCV12</span></dt>
 <dd><p>E L Houghton, P W Carpenter, Steven Collicott, and Daniel Valentine. <em>Aerodynamics for Engineering Students</em>. Elsevier, Oxford, February 2012.</p>
+</dd>
+<dt class="bibtex label" id="lanchester-1908pp"><span class="brackets">Lan08</span></dt>
+<dd><p>F W Lanchester. <em>Aerodonetics: Constituting the second volume of a complete work on aerial flight</em>. Archibald Constable and Co, 1908.</p>
 </dd>
 <dt class="bibtex label" id="maccormick-1995wq"><span class="brackets">Mac95</span></dt>
 <dd><p>Barnes W MacCormick. <em>Aerodynamics, Aeronautics, and Flight Mechanics</em>. Wiley, 1995.</p>
@@ -451,7 +491,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="Linearisation/StateSpaceExample.html" title="previous page">Worked Example</a>
+    <a class='left-prev' id="prev-link" href="Dynamics/CherokeeExample.html" title="previous page">Final Examples</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
@@ -464,7 +504,7 @@
           <div class="extra_footer">
             <div>
     <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
-</div>
+</div><div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
 
           </div>
       </p>

@@ -1,0 +1,76 @@
+%% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'Phugoid_Victor.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{540.08114312bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.46273575)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{Phugoid_Victor.pdf}}%
+    \put(0.02975743,0.16862549){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$U=U_0$\end{tabular}}}}%
+    \put(0.02975743,0.13192464){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$L>mg$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{Phugoid_Victor.pdf}}%
+    \put(0.18350416,0.10018336){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Aircraft Receives Headwind Gust \end{tabular}}}}%
+    \put(0.18350416,0.07240977){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$U>U_0$, $L>mg$, $C_m\neq 0$\end{tabular}}}}%
+    \put(0.18251224,0.03967658){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$L>mg$, $w_e<0$, BUT $\theta>\theta_0$, $\alpha\simeq\alpha_0$\end{tabular}}}}%
+    \put(0.18350416,0.0128949){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Aircraft Climbs with CONSTANT AoA\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{Phugoid_Victor.pdf}}%
+    \put(0.30685788,0.22234047){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$dH_1$\end{tabular}}}}%
+    \put(0.56286505,0.24022591){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$dH_2$\end{tabular}}}}%
+    \put(0.39462237,0.32041964){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Aircraft climbs until $L<mg$ due to kinetic energy\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{Phugoid_Victor.pdf}}%
+    \put(0.43951131,0.1513848){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Since $L<mg$, aircraft falls\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{Phugoid_Victor.pdf}}%
+    \put(0.56506002,0.18224593){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Aircraft falls until $L>mg$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{Phugoid_Victor.pdf}}%
+    \put(0.2328613,0.42504202){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}{\color{red}$u$}\end{tabular}}}}%
+    \put(0.2328613,0.33245862){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}{\color{blue}$w_e$}\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

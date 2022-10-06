@@ -41,6 +41,17 @@ This is why LHR-ORD takes typically 8h50m, but ORD-LHR takes 7h30m, yet in each 
 
 
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5107176300009857"
+     data-ad-slot="7122611277"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Airspeed Measurement
 
 Clearly aerospace engineers require a means of determining the true airspeed, in order to determine aircraft powerplant/aerodynamic performance, and in order to calculate groundspeed and thus facilitate speed/time calculations.
@@ -224,6 +235,17 @@ h = 39500
 f = f_correction(VC, h)
 print(f"For a CAS of {VC}, at an altitude of {h} feet, the pressure correction factor is {f}")
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5107176300009857"
+     data-ad-slot="7122611277"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ### True Airspeed
 
 Finally, **True Airspeed** may be calculated from **Equivalent Airspeed**, by accounting for the actual density at the correct altitude:
@@ -347,6 +369,17 @@ for alt, sigma in zip(alts, sigmas):
         print(f"At an altitude of {alt} miles, the density ratio is {sigma}")
          
 # Note that the syntax to write mile/miles for single vs. any other quatity is completely unnecessary but nice
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5107176300009857"
+     data-ad-slot="7122611277"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 #### Approximate density correction
 
@@ -609,6 +642,17 @@ $V_g$ = {glue:text}`Vg2:1.3f`kn = {glue:text}`Vms2:1.3f`m/s
 The times taken are found to be {glue:text}`text_time1_2` and  {glue:text}`text_time2_2`, for a respective  {glue:text}`dT1` and  {glue:text}`dT2` {glue:text}`time_text`.
 
 ```
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5107176300009857"
+     data-ad-slot="7122611277"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ### Problem 1.2 - Theory
 

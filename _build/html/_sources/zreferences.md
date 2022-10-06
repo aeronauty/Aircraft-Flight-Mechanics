@@ -6,6 +6,8 @@ Thanks, Doug - I couldn't have done any of this without your help.
 
 For the linearisation and flight dynamics sections, a wealth of material has been developed from [Dr. Douglas Thomson](https://www.gla.ac.uk/schools/engineering/staff/douglasthomson/)'s material which I have from my own undergradate studies. He helpfully provided me with his source material when I started teaching at IIT. Thanks, Dougie.
 
+Some of my worked examples have been inspired those originally from [Dr. Stewart Houston](https://uk.linkedin.com/in/stewart-houston-24b848138) who taught me Flight Mechanics and Rotorcraft Aeromechanics during my undergraduate studies, and served as an ongoing casual adviaor during my PhD. Cheers, Stewart.
+
 
 # References
 ```{bibliography} Bibliography2.bib

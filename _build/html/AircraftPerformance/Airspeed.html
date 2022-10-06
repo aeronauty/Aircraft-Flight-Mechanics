@@ -2,10 +2,9 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Defining Aircraft ‘Speed’ &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
@@ -30,7 +29,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -260,6 +259,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/Concise.html#units">
+   Units
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../Linearisation/Aerodynamic.html">
    Linear Aerodynamic Terms
   </a>
@@ -272,6 +276,38 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../Linearisation/StateSpaceExample.html">
    Worked Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/LinearvsNonlinear.html">
+   Comparison of the Linear and Nonlinear Equations of Motion: Aircraft Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Linearisation/LinearvsNonlinear.html#numerical-linearisation-of-the-equations-of-motion">
+   Numerical Linearisation of the Equations of Motion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Flight Dynamics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Dynamics/Intro.html">
+   Dynamic Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Dynamics/ModesofMotion.html">
+   Aircraft Modes of Motion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Dynamics/CherokeeExample.html">
+   Final Examples
   </a>
  </li>
 </ul>
@@ -395,7 +431,7 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> On this page
+            <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -495,6 +531,16 @@
 <p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Aircraft With Tailwind</span><a class="headerlink" href="#tailwind" title="Permalink to this image">¶</a></p>
 </div>
 <p>This is why LHR-ORD takes typically 8h50m, but ORD-LHR takes 7h30m, yet in each case, the aircraft is flying at typical cruise velocity, requiring the same amount of total thrust.</p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<p><ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5107176300009857"
+     data-ad-slot="7122611277"></ins></p>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 <div class="section" id="airspeed-measurement">
 <h2>Airspeed Measurement<a class="headerlink" href="#airspeed-measurement" title="Permalink to this headline">¶</a></h2>
 <p>Clearly aerospace engineers require a means of determining the true airspeed, in order to determine aircraft powerplant/aerodynamic performance, and in order to calculate groundspeed and thus facilitate speed/time calculations.</p>
@@ -762,6 +808,16 @@
 </div>
 </div>
 </div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<p><ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5107176300009857"
+     data-ad-slot="7122611277"></ins></p>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </div>
 <div class="section" id="true-airspeed">
 <h3>True Airspeed<a class="headerlink" href="#true-airspeed" title="Permalink to this headline">¶</a></h3>
@@ -934,6 +990,16 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
 </div>
 </div>
 </div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<p><ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5107176300009857"
+     data-ad-slot="7122611277"></ins></p>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 <div class="section" id="approximate-density-correction">
 <h4>Approximate density correction<a class="headerlink" href="#approximate-density-correction" title="Permalink to this headline">¶</a></h4>
 <p>For altitudes below about 16km, the approximation can be used</p>
@@ -993,34 +1059,43 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
 </div>
 <div class="section" id="problem-1-1-conversion-between-airspeeds">
 <h3>Problem 1.1 - Conversion between airspeeds<a class="headerlink" href="#problem-1-1-conversion-between-airspeeds" title="Permalink to this headline">¶</a></h3>
-<p>An aircraft is flying at an altitude of <span class="pasted-text">15000</span>ft, with a calibrated airspeed of <span class="pasted-text">165</span>kn, with a <span class="pasted-text">12</span>kn <span class="pasted-text">headwind</span>:</p>
+<p>An aircraft is flying at an altitude of <span class="pasted-text">30000</span>ft, with a calibrated airspeed of <span class="pasted-text">260</span>kn, with a <span class="pasted-text">4</span>kn <span class="pasted-text">headwind</span>:</p>
 <p>a) How long will it take to cover 100 miles?</p>
 <p>b) How long will it take to cover 200km?</p>
-<p>c) If instead of <span class="math notranslate nohighlight">\(V_C\)</span> = <span class="pasted-text">165</span>kn, you have <span class="math notranslate nohighlight">\(V_I\)</span> = <span class="pasted-text">165</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
+<p>c) If instead of <span class="math notranslate nohighlight">\(V_C\)</span> = <span class="pasted-text">260</span>kn, you have <span class="math notranslate nohighlight">\(V_I\)</span> = <span class="pasted-text">260</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
 <p>Try and tackle the problem yourself before you see the solution below. The numbers in this problem will change each time the notes are updated.</p>
 <div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the solution…</p>
 <p>The first step is to take Vc to Ve via the pressure correction.</p>
-<p>For the altitude of <span class="pasted-text">15000</span>ft, with a calibrated airspeed of <span class="pasted-text">165</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">15000</span>, <span class="pasted-text">165</span>).</p>
-<p>This gives a value of <span class="pasted-text">0.994</span> for the pressure correction, and this determination pf the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">164.076</span>kn.</p>
-<p>For EAS to TAS, the density ratio is required - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.629</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
-<p>True airspeed is obtained from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">206.805</span>kn.</p>
+<p>For the altitude of <span class="pasted-text">30000</span>ft, with a calibrated airspeed of <span class="pasted-text">260</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">30000</span>, <span class="pasted-text">260</span>).</p>
+<p>This gives a value of <span class="pasted-text">0.961</span> for the pressure correction, and this determination pf the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">249.756</span>kn.</p>
+<p>For EAS to TAS, the density ratio is required - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.375</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
+<p>True airspeed is obtained from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">407.998</span>kn.</p>
 <p>Note that at no point have the units had to be converted into SI to make the corrections - that’s the smart part of the density and pressure corrections; they are both non-dimensional corrections. If you have velocity in knots, you use them and get velocity in knots out.</p>
-<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">194.805</span>kn. This gives the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
-<p>With the velocity in knots it may be easily converted to m/s by multiplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">100.216</span>m/s.</p>
-<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">1605.9</span>s or <span class="pasted-text">26 minutes, 45 seconds</span></p>
-<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">1995.7</span>s or <span class="pasted-text">33 minutes, 15 seconds</span></p>
+<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">403.998</span>kn. This gives the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
+<p>With the velocity in knots it may be easily converted to m/s by multiplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">207.835</span>m/s.</p>
+<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">774.3</span>s or <span class="pasted-text">12 minutes, 54 seconds</span></p>
+<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">962.3</span>s or <span class="pasted-text">16 minutes, 2 seconds</span></p>
 <hr class="docutils" />
 <p>For the last part of the question, this is solved by recalling that <span class="math notranslate nohighlight">\(V_c = V_I + \Delta V_p\)</span> and hence the speeds calculated are now:</p>
-<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">167.000</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">166.051</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">209.295</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">221.295</span>kn = <span class="pasted-text">113.844</span>m/s</p>
-<p>The times taken are found to be <span class="pasted-text">23 minutes, 33 seconds</span> and  <span class="pasted-text">29 minutes, 16 seconds</span>, for a respective  <span class="pasted-text">3 minutes, 12 seconds</span> and  <span class="pasted-text">3 minutes, 58 seconds</span> <span class="pasted-text">faster</span>.</p>
+<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">262.000</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">251.551</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">410.931</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">414.931</span>kn = <span class="pasted-text">213.459</span>m/s</p>
+<p>The times taken are found to be <span class="pasted-text">12 minutes, 33 seconds</span> and  <span class="pasted-text">15 minutes, 36 seconds</span>, for a respective  <span class="pasted-text">20 seconds</span> and  <span class="pasted-text">25 seconds</span> <span class="pasted-text">faster</span>.</p>
 </div>
-</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<p><ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5107176300009857"
+     data-ad-slot="7122611277"></ins></p>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
 <div class="section" id="problem-1-2-theory">
 <h3>Problem 1.2 - Theory<a class="headerlink" href="#problem-1-2-theory" title="Permalink to this headline">¶</a></h3>
 <p>a) When converting between different airspeeds, how can you ‘sense check’ your numbers?</p>
@@ -1091,7 +1166,7 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
           <div class="extra_footer">
             <div>
     <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
-</div>
+</div><div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
 
           </div>
       </p>

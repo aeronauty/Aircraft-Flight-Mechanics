@@ -1,0 +1,79 @@
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'Victor_RollMode.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{716.25bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.70052356)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{Victor_RollMode.pdf}}%
+    \put(0.19474107,0.4825487){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$p$ (Roll Rate)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{Victor_RollMode.pdf}}%
+    \put(0.36480673,0.37828657){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$y$}}}%
+    \put(0.66541967,0.47824407){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$-y$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{Victor_RollMode.pdf}}%
+    \put(0.13604629,0.18789542){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\alpha^\prime$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{Victor_RollMode.pdf}}%
+    \put(0.12963653,0.24549173){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$x_b$}}}%
+    \put(0.04743758,0.13397341){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$z_b$}}}%
+    \put(0.18997299,0.21302631){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$U_e$}}}%
+    \put(0.26431854,0.16171741){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$w^\prime=py$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{Victor_RollMode.pdf}}%
+    \put(0.7328523,0.14883624){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$-\alpha^\prime$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{Victor_RollMode.pdf}}%
+    \put(0.68565748,0.24235037){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$x_b$}}}%
+    \put(0.60345852,0.13083205){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$z_b$}}}%
+    \put(0.74605558,0.11177135){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$U_e$}}}%
+    \put(0.85372028,0.17374761){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$w^\prime=-py$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{Victor_RollMode.pdf}}%
+    \put(0.02465886,0.05229332){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Starboard wing section profile view:}}}%
+    \put(0.02465886,0.02716243){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textsl{Increase} in effective aerodynamic}}}%
+    \put(0.02465886,-0.0000627){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{incidence due to $p$}}}%
+    \put(0.57334996,0.05543469){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Port wing section profile view:}}}%
+    \put(0.57334996,0.0303038){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textsl{Decrease} in effective aerodynamic}}}%
+    \put(0.57334996,0.00307866){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{incidence due to $p$}}}%
+  \end{picture}%
+\endgroup%

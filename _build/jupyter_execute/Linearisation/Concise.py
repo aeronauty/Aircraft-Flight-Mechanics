@@ -78,8 +78,8 @@ Now Equations {eq}`eq:concisex`, {eq}`eq:concisew`, {eq}`eq:conciseq`, and {eq}
 
 $$\begin{aligned}
     \begin{bmatrix} \dot{u}\\\dot{w}\\\dot{q}\\\dot{\theta}\end{bmatrix} &= \begin{bmatrix}
-        X_u & X_w & 0 & -g\cdot\cos\Theta_e\\
-        Z_u & Z_w & U_0 & -g\cdot\sin\Theta_e\\
+        X_u & X_w & 0 & -g\cdot\cos\theta_0\\
+        Z_u & Z_w & U_0 & -g\cdot\sin\theta_0\\
         M_u^* & M_w^* & M_q^* & M_\theta^*\\
         0 & 0 & 1 & 0   
     \end{bmatrix}\begin{bmatrix}
@@ -150,7 +150,7 @@ $$\color{darkgreen}{I_{zz}\dot{r}-I_{xz}\dot{p} = \left.\pd{N}{v}\right|_0v+ \le
     where:
 
     $$\begin{gathered}
-            N_v^* = \frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_v+\frac{I_{xz}}{I_{zz}}L_v\right) \,\,\,\,\,\,\,\,\,\,\,\,\,\,\, N_p^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_p+\frac{I_{xz}}{I_{zz}}L_p\right)\\
+            N_v^* = \frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_v+\frac{I_{xz}}{I_{zz}}L_v\right) \,\,\,\,\,\,\,\,\,\,\,\,\,\,\, N_p^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_p+\frac{I_{xz}}{newI_{zz}}L_p\right)\\
             N_r^* = \frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_r+\frac{I_{xz}}{I_{zz}}L_r\right) \,\,\,\,\,\,\,\,\,\,\,\,\,\,\, N_{\delta_r}^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_{\delta_r}+\frac{I_{xz}}{I_{zz}}L_{\delta_r}\right)\\
             N_{\delta_a}^*=\frac{I_{xx}I_{zz}}{I_{xx}I_{zz}-I_{xz}^2}\left(N_{\delta_a}+\frac{I_{xz}}{I_{zz}}L_{\delta_a}\right)        
         \end{gathered}$$
@@ -227,5 +227,11 @@ $$\boldsymbol{B}= \begin{bmatrix}
         \color{red}{X_{\delta_e}}\\Z_{\delta_e}\\M_{\delta_e}^*\\0          
     \end{bmatrix}$$
 
+## Units
 
+As we'll discover, it's useful to know the dimensions of the different derivatives. Rather than writing them all out, the following guide will help:
+
+#### Force Derivative wrt Velocity Perturbation
+
+This is the terms like $X_u$ or $Z_w$. These all have units of $\left[\text{T}^{-1}\right]$ or $s^{-1}$
 

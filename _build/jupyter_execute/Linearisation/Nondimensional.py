@@ -148,6 +148,10 @@ Hence
 
 $$X_u=-\frac{q\,S}{m\,U_0}\left[2\,C_{D_0}+M\,C_{D_M}\right]$$
 
+Similarly it can be shown
+
+$$Z_u=-\frac{q\,S}{m\,U_0}\left[2\,C_{L_0}+M\,C_{L_M}\right]$$
+
 You will appreciate that the process to go from each dimensional derivative to the non-dimensional derivative is involved, hence I will not expect you to go over the whole process, rather that you should have an appreciation of the entire process and be able to relate to the quantities below.
 
 In practice, you will often start with the non-dimensional derivatives and convert to the dimensional form. For this, the table below will be useful
@@ -186,8 +190,26 @@ or the rate of change of $X$ force with non-dimensional forward speed. But you _
 
 $$C_{X_u}=-M\,C_{D_M}$$
 
+#### Angle of attack derivatives
 
+There are terms such as $C_{X_\alpha}$, above, that again aren't explicitly mentioned in the presented data for different aircraft. Let's explore them all - first, $C_{X_\alpha}$. Though we're in stability axes, any perturbation in angle of attack will cause a change to the direction of the lift and drag so:
 
-Hopefully it'll all become clear after an example
+$$C_X=C_T - C_D\cos\alpha + C_L\sin\alpha$$
+
+which, for small perturbations is
+
+$$C_X=C_T - C_D + C_L\alpha$$
+
+and hence the rate of change with alpha, assuming small alpha along the way, is
+
+$$C_{X_\alpha} = -C_{D_\alpha} + C_{L_0}$$
+
+The Z-force derivative, $C_{Z_{\alpha}}$ can be found similarly:
+
+$$C_Z=-C_D\cdot\alpha - C_L$$
+
+$$\implies C_{Z_\alpha}=-C_{D_0}-C_L$$
+
+Hopefully it'll all become clear after an example - look at the worked example and see how the different nondimensional derivatives feed into the construction of the dimensional derivatives. The table above, and the notes about the Mach terms, and the angle of attack derivatives are all that's needed (and a bit of patience...)
 
 ### 

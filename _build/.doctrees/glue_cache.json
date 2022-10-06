@@ -1,185 +1,5 @@
 {
   "AircraftPerformance/Airspeed": {
-    "time2_2": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "time2_2",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "1756.7898476360378"
-      }
-    },
-    "winddir": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "winddir",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "'subtracted from'"
-      }
-    },
-    "V": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "V",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "206.80516096745683"
-      }
-    },
-    "Vg": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "Vg",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "194.80516096745683"
-      }
-    },
-    "text_time1_2": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "text_time1_2",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "'23 minutes, 33 seconds'"
-      }
-    },
-    "dT2": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "dT2",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "'3 minutes, 58 seconds'"
-      }
-    },
-    "time2": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "time2",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "1995.6806939469955"
-      }
-    },
-    "Ve": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "Ve",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "164.076"
-      }
-    },
-    "Ve2": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "Ve2",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "166.05144"
-      }
-    },
-    "vc": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "vc",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "165"
-      }
-    },
-    "text_time2": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "text_time2",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "'33 minutes, 15 seconds'"
-      }
-    },
-    "V2": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "V2",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "209.2950509402838"
-      }
-    },
-    "dT1": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "dT1",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "'3 minutes, 12 seconds'"
-      }
-    },
-    "dist2": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "dist2",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "200000.0"
-      }
-    },
-    "Vms": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "Vms",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "100.21643272223383"
-      }
-    },
     "Vtabs": {
       "output_type": "display_data",
       "metadata": {
@@ -189,19 +9,19 @@
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "12"
+        "application/papermill.record/text/plain": "4"
       }
     },
-    "text_time1": {
+    "altitude": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "text_time1",
+          "name": "altitude",
           "mime_prefix": "application/papermill.record/"
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "'26 minutes, 45 seconds'"
+        "application/papermill.record/text/plain": "30000"
       }
     },
     "time_text": {
@@ -216,16 +36,64 @@
         "application/papermill.record/text/plain": "'faster'"
       }
     },
-    "Vms2": {
+    "Vms": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "Vms2",
+          "name": "Vms",
           "mime_prefix": "application/papermill.record/"
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "113.84400944092597"
+        "application/papermill.record/text/plain": "207.8347326553352"
+      }
+    },
+    "Vc2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Vc2",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "262"
+      }
+    },
+    "time1": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "time1",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "774.3364063545938"
+      }
+    },
+    "time1_2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "time1_2",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "753.9334509259567"
+      }
+    },
+    "Ve2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Ve2",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "251.55143999999999"
       }
     },
     "Vt": {
@@ -237,7 +105,43 @@
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "-12"
+        "application/papermill.record/text/plain": "-4"
+      }
+    },
+    "text_time1": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "text_time1",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "'12 minutes, 54 seconds'"
+      }
+    },
+    "time2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "time2",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "962.3030638082615"
+      }
+    },
+    "V": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "V",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "407.9984007589655"
       }
     },
     "press_correction": {
@@ -249,55 +153,7 @@
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "0.9944"
-      }
-    },
-    "Vg2": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "Vg2",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "221.2950509402838"
-      }
-    },
-    "dist1": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "dist1",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "160934.0"
-      }
-    },
-    "altitude": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "altitude",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "15000"
-      }
-    },
-    "dens_correction": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "dens_correction",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "0.6294588940083963"
+        "application/papermill.record/text/plain": "0.9606"
       }
     },
     "wind": {
@@ -312,16 +168,40 @@
         "application/papermill.record/text/plain": "'headwind'"
       }
     },
-    "time1": {
+    "Vg2": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "time1",
+          "name": "Vg2",
           "mime_prefix": "application/papermill.record/"
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "1605.8643839983288"
+        "application/papermill.record/text/plain": "414.9314099705907"
+      }
+    },
+    "dist2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "dist2",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "200000.0"
+      }
+    },
+    "text_time2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "text_time2",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "'16 minutes, 2 seconds'"
       }
     },
     "text_time2_2": {
@@ -333,35 +213,167 @@
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "'29 minutes, 16 seconds'"
+        "application/papermill.record/text/plain": "'15 minutes, 36 seconds'"
       }
     },
-    "Vc2": {
+    "Vms2": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "Vc2",
+          "name": "Vms2",
           "mime_prefix": "application/papermill.record/"
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "167"
+        "application/papermill.record/text/plain": "213.4591585004566"
       }
     },
-    "time1_2": {
+    "Vg": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "time1_2",
+          "name": "Vg",
           "mime_prefix": "application/papermill.record/"
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "1413.6360866972907"
+        "application/papermill.record/text/plain": "403.9984007589655"
+      }
+    },
+    "text_time1_2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "text_time1_2",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "'12 minutes, 33 seconds'"
+      }
+    },
+    "Ve": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Ve",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "249.756"
+      }
+    },
+    "vc": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "vc",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "260"
+      }
+    },
+    "winddir": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "winddir",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "'subtracted from'"
+      }
+    },
+    "dist1": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "dist1",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "160934.0"
+      }
+    },
+    "time2_2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "time2_2",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "936.9473833073889"
+      }
+    },
+    "dT1": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "dT1",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "'20 seconds'"
+      }
+    },
+    "V2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "V2",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "410.9314099705907"
+      }
+    },
+    "dens_correction": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "dens_correction",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "0.37472695926137356"
+      }
+    },
+    "dT2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "dT2",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "'25 seconds'"
       }
     }
   },
   "AircraftPerformance/ClimbingFlight": {
+    "TA": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "TA",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "17.0"
+      }
+    },
     "K": {
       "output_type": "display_data",
       "metadata": {
@@ -371,7 +383,7 @@
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "0.030000000000000002"
+        "application/papermill.record/text/plain": "0.045000000000000005"
       }
     },
     "S": {
@@ -383,19 +395,7 @@
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "75"
-      }
-    },
-    "TA": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "TA",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "15.0"
+        "application/papermill.record/text/plain": "45"
       }
     },
     "PA_constant": {
@@ -407,31 +407,7 @@
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "1.5"
-      }
-    },
-    "Clmax": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "Clmax",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "1.7500000000000002"
-      }
-    },
-    "W": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "W",
-          "mime_prefix": "application/papermill.record/"
-        }
-      },
-      "data": {
-        "application/papermill.record/text/plain": "160.0"
+        "application/papermill.record/text/plain": "1.7"
       }
     },
     "CD0": {
@@ -443,11 +419,47 @@
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "0.008"
+        "application/papermill.record/text/plain": "0.01"
+      }
+    },
+    "Clmax": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Clmax",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "1.55"
+      }
+    },
+    "W": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "W",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "150.0"
       }
     }
   },
   "AircraftPerformance/SteadyLevelFlight": {
+    "Vmd": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "Vmd",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "159.71914124998497"
+      }
+    },
     "Vemd": {
       "output_type": "display_data",
       "metadata": {
@@ -459,17 +471,79 @@
       "data": {
         "application/papermill.record/text/plain": "93.60414386431086"
       }
-    },
-    "Vmd": {
+    }
+  },
+  "Dynamics/CherokeeExample": {
+    "eig1": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "Vmd",
+          "name": "eig1",
           "mime_prefix": "application/papermill.record/"
         }
       },
       "data": {
-        "application/papermill.record/text/plain": "159.71914124998497"
+        "application/papermill.record/text/plain": "'-2.4663\u00b13.4056j'"
+      }
+    },
+    "eig5": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "eig5",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "'-2.7823'"
+      }
+    },
+    "eig4": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "eig4",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "'0.0'"
+      }
+    },
+    "eig6": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "eig6",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "'0.0194'"
+      }
+    },
+    "eig2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "eig2",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "'-0.0279\u00b10.2452j'"
+      }
+    },
+    "eig3": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "eig3",
+          "mime_prefix": "application/papermill.record/"
+        }
+      },
+      "data": {
+        "application/papermill.record/text/plain": "'-0.3468\u00b13.3718j'"
       }
     }
   },

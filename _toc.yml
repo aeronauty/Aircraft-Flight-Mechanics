@@ -47,8 +47,13 @@
   - file: Linearisation/Aerodynamic
   - file: Linearisation/Nondimensional
   - file: Linearisation/StateSpaceExample
+  - file: Linearisation/LinearvsNonlinear
 
-
+- chapter: Flight Dynamics
+  sections: 
+  - file: Dynamics/Intro
+  - file: Dynamics/ModesofMotion
+  - file: Dynamics/CherokeeExample
 
 - chapter: References and Resources
   sections:

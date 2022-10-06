@@ -2,10 +2,9 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nondimensional Equations of Motion &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
@@ -30,7 +29,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -260,6 +259,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="Concise.html#units">
+   Units
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Aerodynamic.html">
    Linear Aerodynamic Terms
   </a>
@@ -272,6 +276,38 @@
  <li class="toctree-l1">
   <a class="reference internal" href="StateSpaceExample.html">
    Worked Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LinearvsNonlinear.html">
+   Comparison of the Linear and Nonlinear Equations of Motion: Aircraft Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LinearvsNonlinear.html#numerical-linearisation-of-the-equations-of-motion">
+   Numerical Linearisation of the Equations of Motion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Flight Dynamics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Dynamics/Intro.html">
+   Dynamic Stability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Dynamics/ModesofMotion.html">
+   Aircraft Modes of Motion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Dynamics/CherokeeExample.html">
+   Final Examples
   </a>
  </li>
 </ul>
@@ -395,7 +431,7 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> On this page
+            <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -418,6 +454,13 @@
     <a class="reference internal nav-link" href="#converting-from-nondimensional-to-dimensional-stability-derivatives">
      Converting from nondimensional to dimensional stability derivatives
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#angle-of-attack-derivatives">
+       Angle of attack derivatives
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
@@ -605,6 +648,9 @@ The representative distance <span class="math notranslate nohighlight">\(l\)</sp
 Hence</p>
 <div class="math notranslate nohighlight">
 \[X_u=-\frac{q\,S}{m\,U_0}\left[2\,C_{D_0}+M\,C_{D_M}\right]\]</div>
+<p>Similarly it can be shown</p>
+<div class="math notranslate nohighlight">
+\[Z_u=-\frac{q\,S}{m\,U_0}\left[2\,C_{L_0}+M\,C_{L_M}\right]\]</div>
 <p>You will appreciate that the process to go from each dimensional derivative to the non-dimensional derivative is involved, hence I will not expect you to go over the whole process, rather that you should have an appreciation of the entire process and be able to relate to the quantities below.</p>
 <p>In practice, you will often start with the non-dimensional derivatives and convert to the dimensional form. For this, the table below will be useful</p>
 <div class="section" id="converting-from-nondimensional-to-dimensional-stability-derivatives">
@@ -688,7 +734,24 @@ Hence</p>
 <p>or the rate of change of <span class="math notranslate nohighlight">\(X\)</span> force with non-dimensional forward speed. But you <em>will</em> often see this presented as a compressibility effect, <span class="math notranslate nohighlight">\(C_{D_M}\)</span>. Noting that in stability axes, <span class="math notranslate nohighlight">\(C_X=-C_D\)</span>, then we can see</p>
 <div class="math notranslate nohighlight">
 \[C_{X_u}=-M\,C_{D_M}\]</div>
-<p>Hopefully it’ll all become clear after an example</p>
+<div class="section" id="angle-of-attack-derivatives">
+<h4>Angle of attack derivatives<a class="headerlink" href="#angle-of-attack-derivatives" title="Permalink to this headline">¶</a></h4>
+<p>There are terms such as <span class="math notranslate nohighlight">\(C_{X_\alpha}\)</span>, above, that again aren’t explicitly mentioned in the presented data for different aircraft. Let’s explore them all - first, <span class="math notranslate nohighlight">\(C_{X_\alpha}\)</span>. Though we’re in stability axes, any perturbation in angle of attack will cause a change to the direction of the lift and drag so:</p>
+<div class="math notranslate nohighlight">
+\[C_X=C_T - C_D\cos\alpha + C_L\sin\alpha\]</div>
+<p>which, for small perturbations is</p>
+<div class="math notranslate nohighlight">
+\[C_X=C_T - C_D + C_L\alpha\]</div>
+<p>and hence the rate of change with alpha, assuming small alpha along the way, is</p>
+<div class="math notranslate nohighlight">
+\[C_{X_\alpha} = -C_{D_\alpha} + C_{L_0}\]</div>
+<p>The Z-force derivative, <span class="math notranslate nohighlight">\(C_{Z_{\alpha}}\)</span> can be found similarly:</p>
+<div class="math notranslate nohighlight">
+\[C_Z=-C_D\cdot\alpha - C_L\]</div>
+<div class="math notranslate nohighlight">
+\[\implies C_{Z_\alpha}=-C_{D_0}-C_L\]</div>
+<p>Hopefully it’ll all become clear after an example - look at the worked example and see how the different nondimensional derivatives feed into the construction of the dimensional derivatives. The table above, and the notes about the Mach terms, and the angle of attack derivatives are all that’s needed (and a bit of patience…)</p>
+</div>
 </div>
 <div class="section" id="id1">
 <h3><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -738,7 +801,7 @@ Hence</p>
           <div class="extra_footer">
             <div>
     <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
-</div>
+</div><div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
 
           </div>
       </p>

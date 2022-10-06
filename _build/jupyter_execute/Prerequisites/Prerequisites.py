@@ -28,6 +28,8 @@ name: ControlSurfaces
 Aircraft Control Surfaces and High Lift Devices
 ```
 
+
+
 The control surfaces are there to alter the aircraft's attitude (its orientation in 3D space). They are:
 
 -   **Ailerons** - these are outboard on each wing, and operate in *differential mode*, meaning if one goes up, the other goes down. These are effected via a sideways stick/yoke movement. This increases lift on one wing, and decreases it on the other, effecting a *roll rate*, $p$, which changes the roll angle, $\phi$.
@@ -304,6 +306,17 @@ Lift Coefficient vs Angle of Attack - Cambered Aerofoil
 ```
 
 In general, we can use $C_L$ to compare aerodynamic performance, and we note that $C_L$ is simply a function of the angle of attack. However, $C_L$ is also a function of two important parameters that we'll mention here:
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5107176300009857"
+     data-ad-slot="7122611277"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ### Compressibility
 
