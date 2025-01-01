@@ -1,513 +1,489 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Defining Aircraft ‘Speed’ &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="../_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/sphinx-book-theme.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/mystnb.js"></script>
-    <script src="../_static/sphinx-book-theme.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-178506186-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-178506186-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-178506186-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'AircraftPerformance/Airspeed';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Steady Level Flight" href="SteadyLevelFlight.html" />
     <link rel="prev" title="Aircraft Performance" href="Introduction.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
-
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  <img src="../_static/Logo2.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">Aircraft Flight Mechanics by Harry Smith, PhD</h1>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-</a>
-</div>
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
+  </dialog>
 
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <p class="caption">
- <span class="caption-text">
-  Getting Started
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../CourseIntroduction.html">
-   Course Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Prerequisites/Prerequisites.html">
-   Assumed knowledge
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Aircraft Performance
- </span>
-</p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="Introduction.html">
-   Aircraft Performance
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Defining Aircraft ‘Speed’
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="SteadyLevelFlight.html">
-   Steady Level Flight
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="GlidingFlight.html">
-   Climbing and Gliding Caveat
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="GlidingFlight.html#gliding-flight-unpowered-descent">
-   Gliding Flight (Unpowered Descent)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ClimbingFlight.html">
-   Climbing Flight
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="RangeandEndurance.html">
-   Range and Endurance
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Manoeuvre.html">
-   Acceleration, Manoeuvres, and Aircraft Loading
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Examples.html">
-   Questions and Solutions
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Static Stability
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/StaticStability.html">
-   Defining Static Stability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/Angles.html">
-   Co-ordinate system and Angles
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/LSS.html">
-   Longitudinal Stability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/Nondimensionalrates.html">
-   Non-dimensional rates
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/Lateral.html">
-   Lateral Stability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/Directional.html">
-   Directional Stability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/CrossCouplings.html">
-   Cross-couplings
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Aircraft Equations of Motion
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../EoMs/Introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../EoMs/EulerTransforms.html">
-   Axes Transformations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../EoMs/RelativeMotion.html">
-   Absolute Acceleration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../EoMs/Translation.html">
-   EoMs for Translation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../EoMs/Rotation.html">
-   EoMs for Rotation
-   <span class="math notranslate nohighlight">
-    \(\def\dif{\text{d}}\)
-   </span>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../EoMs/InertiaTensor.html">
-   Inertia Tensor Calculation
-   <span class="math notranslate nohighlight">
-    \(\def\dif{\text{d}}\)
-   </span>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../EoMs/Summary.html">
-   Summary of the equations of motion
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linearisation
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Introduction.html">
-   The Road so Far…
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Linearisation.html">
-   Linearisation Theory
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/AerodynamicDerivatives.html">
-   Stability Derivatives
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Concise.html">
-   Concise Form of Dimensional EoMs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Concise.html#units">
-   Units
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Aerodynamic.html">
-   Linear Aerodynamic Terms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Nondimensional.html">
-   Nondimensional Equations of Motion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/StateSpaceExample.html">
-   Worked Example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/LinearvsNonlinear.html">
-   Comparison of the Linear and Nonlinear Equations of Motion: Aircraft Simulation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/LinearvsNonlinear.html#numerical-linearisation-of-the-equations-of-motion">
-   Numerical Linearisation of the Equations of Motion
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Flight Dynamics
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Dynamics/Intro.html">
-   Dynamic Stability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Dynamics/ModesofMotion.html">
-   Aircraft Modes of Motion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Dynamics/CherokeeExample.html">
-   Final Examples
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  References and Resources
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../zreferences.html">
-   Acknowledgements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../zreferences.html#references">
-   References
-  </a>
- </li>
-</ul>
-
-</nav>
-
- <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  <div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
-</div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
 
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
 
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
     
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/AircraftPerformance/Airspeed.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
     
-</div>
-        <!-- Source interaction buttons -->
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/issues/new?title=Issue%20on%20page%20%2FAircraftPerformance/Airspeed.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/edit/master/AircraftPerformance/Airspeed.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+  
+    
+  
+
+<a class="navbar-brand logo" href="../NotesIntroduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Logo2.png" class="logo__image only-light" alt="Aircraft Flight Mechanics by Harry Smith, PhD - Home"/>
+    <img src="../_static/Logo2.png" class="logo__image only-dark pst-js-only" alt="Aircraft Flight Mechanics by Harry Smith, PhD - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../NotesIntroduction.html">
+                    Introduction to this website
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CourseIntroduction.html">Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Prerequisites/Prerequisites.html">Assumed knowledge</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aircraft Performance</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Aircraft Performance</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Defining Aircraft ‘Speed’</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SteadyLevelFlight.html">Steady Level Flight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GlidingFlight.html">Climbing and Gliding Caveat</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClimbingFlight.html">Climbing Flight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RangeandEndurance.html">Range and Endurance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Manoeuvre.html">Acceleration, Manoeuvres, and Aircraft Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples.html">Questions and Solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Static Stability</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/StaticStability.html">Defining Static Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/Angles.html">Co-ordinate system and Angles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/LSS.html">Longitudinal Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/Nondimensionalrates.html">Non-dimensional rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/Lateral.html">Lateral Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/Directional.html">Directional Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/CrossCouplings.html">Cross-couplings</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aircraft Equations of Motion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../EoMs/Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EoMs/EulerTransforms.html">Axes Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EoMs/RelativeMotion.html">Absolute Acceleration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EoMs/Translation.html">EoMs for Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EoMs/Rotation.html">EoMs for Rotation <span class="math notranslate nohighlight">\(\def\dif{\text{d}}\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EoMs/InertiaTensor.html">Inertia Tensor Calculation <span class="math notranslate nohighlight">\(\def\dif{\text{d}}\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EoMs/Summary.html">Summary of the equations of motion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linearisation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/Introduction.html">The Road so Far…</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/Linearisation.html">Linearisation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/AerodynamicDerivatives.html">Stability Derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/Concise.html">Concise Form of Dimensional EoMs</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/Aerodynamic.html">Linear Aerodynamic Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/Nondimensional.html">Nondimensional Equations of Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/StateSpaceExample.html">Worked Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/LinearvsNonlinear.html">Comparison of the Linear and Nonlinear Equations of Motion: Aircraft Simulation</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Flight Dynamics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Dynamics/Intro.html">Dynamic Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Dynamics/ModesofMotion.html">Aircraft Modes of Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Dynamics/CherokeeExample.html">Final Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References and Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../zreferences.html">Acknowledgements</a></li>
+
+</ul>
+
     </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/aeronauty/Aircraft-Flight-Mechanics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/edit/master/AircraftPerformance/Airspeed.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/issues/new?title=Issue%20on%20page%20%2FAircraftPerformance/Airspeed.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/AircraftPerformance/Airspeed.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/AircraftPerformance/Airspeed.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
-    </div>
 
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Defining Aircraft ‘Speed’</h1>
     <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#airspeed-measurement">
-   Airspeed Measurement
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calibrated-airspeed">
-     Calibrated Airspeed
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#indicated-airspeed">
-     Indicated Airspeed
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#equivalent-airspeed">
-     Equivalent Airspeed
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#true-airspeed">
-     True Airspeed
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#approximate-density-correction">
-       Approximate density correction
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-use-eas">
-     Why use EAS?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary-of-corrections">
-   Summary of Corrections
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problems">
-   Problems:
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#problem-1-1-conversion-between-airspeeds">
-     Problem 1.1 - Conversion between airspeeds
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#problem-1-2-theory">
-     Problem 1.2 - Theory
-    </a>
-   </li>
-  </ul>
- </li>
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airspeed-measurement">Airspeed Measurement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrated-airspeed">Calibrated Airspeed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indicated-airspeed">Indicated Airspeed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-airspeed">Equivalent Airspeed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-airspeed">True Airspeed</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-density-correction">Approximate density correction</a></li>
 </ul>
-
-        </nav>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-eas">Why use EAS?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-corrections">Summary of Corrections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-1-conversion-between-airspeeds">Problem 1.1 - Conversion between airspeeds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-2-theory">Problem 1.2 - Theory</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="section" id="defining-aircraft-speed">
-<h1>Defining Aircraft ‘Speed’<a class="headerlink" href="#defining-aircraft-speed" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="defining-aircraft-speed">
+<h1>Defining Aircraft ‘Speed’<a class="headerlink" href="#defining-aircraft-speed" title="Link to this heading">#</a></h1>
 <p>Measuring translations and velocities for a ground-based vehicle (your car) is relatively simple as the vehicle is moving with respect to an inertially-fixed reference frame (the Earth), that it is <em>always</em> connected to. To determine how long it will take to get somewhere, distance/time/velocity calculations are simple, and the engine performance is chiefly a function of the vehicle speed.</p>
 <p>By comparison, an aircraft is moving with respect to the inertially-fixed reference frame, but it is not connected to it - thus is it difficult to make measurements between the two. Furthermore, aerodynamic performance (how much lift and drag is being produced) is a function of the aircraft’s orientation and translation with respect to the incident wind, and not to the Earth. Similarly, the powerplant performance will be a function of the incident wind and not the groundspeed.</p>
 <p>This gives us our first set of ‘speeds’, and the relationship between them:</p>
@@ -522,14 +498,18 @@
     &amp;V : \text{True Airspeed (TAS)}\nonumber\\
     &amp;V_{wind} : \text{Wind Speed}\nonumber\end{aligned}\end{split}\]</div>
 <p>where we can simply add the two together via vector addition. In the two figures below, the two situations will require the exact same amount of thrust, and the same configuration of control surfaces - but the there is a groundspeed difference of 100kn.</p>
-<div class="figure align-default" id="headwind">
+<figure class="align-default" id="headwind">
 <a class="reference internal image-reference" href="../_images/HeadWind.png"><img alt="../_images/HeadWind.png" src="../_images/HeadWind.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Aircraft With Headwind</span><a class="headerlink" href="#headwind" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="tailwind">
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Aircraft With Headwind</span><a class="headerlink" href="#headwind" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="tailwind">
 <a class="reference internal image-reference" href="../_images/TailWind.png"><img alt="../_images/TailWind.png" src="../_images/TailWind.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Aircraft With Tailwind</span><a class="headerlink" href="#tailwind" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Aircraft With Tailwind</span><a class="headerlink" href="#tailwind" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>This is why LHR-ORD takes typically 8h50m, but ORD-LHR takes 7h30m, yet in each case, the aircraft is flying at typical cruise velocity, requiring the same amount of total thrust.</p>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <p><ins class="adsbygoogle"
@@ -541,26 +521,23 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<div class="section" id="airspeed-measurement">
-<h2>Airspeed Measurement<a class="headerlink" href="#airspeed-measurement" title="Permalink to this headline">¶</a></h2>
+<section id="airspeed-measurement">
+<h2>Airspeed Measurement<a class="headerlink" href="#airspeed-measurement" title="Link to this heading">#</a></h2>
 <p>Clearly aerospace engineers require a means of determining the true airspeed, in order to determine aircraft powerplant/aerodynamic performance, and in order to calculate groundspeed and thus facilitate speed/time calculations.</p>
 <p>Equation <a class="reference internal" href="#equation-tasequation">(1)</a> may be developed from the isentropic flow equations, and allows us to determine <strong>true airspeed</strong> as a function of density and pressure:</p>
 <div class="math notranslate nohighlight" id="equation-tasequation">
-<span class="eqno">(1)<a class="headerlink" href="#equation-tasequation" title="Permalink to this equation">¶</a></span>\[V =\sqrt{7\cdot\frac{p}{\rho}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-tasequation" title="Link to this equation">#</a></span>\[V =\sqrt{7\cdot\frac{p}{\rho}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}\rho = \text{ Local air density}\\p = \text{ Local static pressure}\\\gamma = \text{ Specific heat ratio = 1.4 for diatomic gases}\\\Delta p = \text{ Dynamic pressure/pressure difference} : p_o-p\\p_o = \text{ Stagnation/total pressure} p_o = \tfrac{1}{2}\rho V^2 + p\end{aligned}\end{align} \]</div>
 <p>Equation <a class="reference internal" href="#equation-tasequation">(1)</a> is often simply given in textbooks with no derivation or explanation. You are encouraged to <em>understand</em> the derivation, but I won’t test you on it.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the derivation…</p>
-<p>This is presented <a class="bibtex reference internal" href="../zreferences.html#yechout-2014vg" id="id1">[YMB+14]</a>, and other textbooks with no derivation given. It is easily derived from the isentropic flow equations.</p>
+<p>This is presented , and other textbooks with no derivation given. It is easily derived from the isentropic flow equations.</p>
 <p>The following should be standard from your compressible flow classes, but I want to ensure you understand the legacy of the equations you’re using - so you understand limitations and their development. This is adapted from my own undergraduate notes.</p>
 <p>We have the isentropic relationship showing that the ratio of total to static temperature is a function of the Mach number and the ratio of specific heats:</p>
 <div class="math notranslate nohighlight">
-\[\frac{T_{0}}{T}=1+\frac{\gamma-1}{2} M^{2}\]</div>
-<p>and we have the isentropic relations</p>
-<div class="math notranslate nohighlight">
-\[\frac{p_{2}}{p_{1}}=\left(\frac{\rho_{2}}{\rho_{1}}\right)^{\gamma}=\left(\frac{T_{2}}{T_{1}}\right)^{\frac{\gamma}{\gamma-1}}\]</div>
+\[ \begin{align}\begin{aligned}\frac{T_{0}}{T}=1+\frac{\gamma-1}{2} M^{2}$$ - (x)\\and we have the isentropic relations\\$$\frac{p_{2}}{p_{1}}=\left(\frac{\rho_{2}}{\rho_{1}}\right)^{\gamma}=\left(\frac{T_{2}}{T_{1}}\right)^{\frac{\gamma}{\gamma-1}}\end{aligned}\end{align} \]</div>
 <p>since from total to stagnation we have an isentropic compression of the flow, we can state</p>
 <div class="math notranslate nohighlight">
 \[
@@ -590,28 +567,30 @@
 <p>Equation <a class="reference internal" href="#equation-tasequation">(1)</a> allows us to determine the velocity with respect to a volume of air, via measurement of three quantities - density <span class="math notranslate nohighlight">\(\rho\)</span>, static pressure <span class="math notranslate nohighlight">\(p\)</span>, and impact pressure <span class="math notranslate nohighlight">\(\Delta p\)</span>. ‘Impact pressure’ is a term that is probably new to you, and refers to the difference between total and static pressure - and, for an incompressible fluid, is the same as dynamic pressure, but not for a compressible fluid.</p>
 <p>We have the relationship <span class="math notranslate nohighlight">\(V(p, \rho, \Delta p)\)</span>, but the first two quantities are relatively difficult to measure, as they are <em>absolute</em> quantities. Hence, transducers for measurement of absolute pressure and density would require regular calibration, and would add complexity to a measurement system. The reasons for this are complex, and will be elaborated upon in an instrumentation/measurement course - suffice to say that, in general, all transducers are relative transducers, and thus measurement of any absolute quantity require a datum against which they can be compared, calibrated for changes in non-measured quantities, such as temperature.</p>
 <p>By contrast, <span class="math notranslate nohighlight">\(\Delta p\)</span> is a <em>relative</em> quantity. Whilst a transducer for measurement will still require calibration, measurement of <span class="math notranslate nohighlight">\(\Delta p\)</span> is relatively easy - for this purpose, we use a pitot-static device. Originally these were analogue devices, measuring the pressure difference between two sides of a pressure chamber via a mechanical diaphragm, calibrated to provide an accurate reading of <span class="math notranslate nohighlight">\(\Delta p\)</span>:</p>
-<div class="figure align-default" id="pitotstatic">
+<figure class="align-default" id="pitotstatic">
 <a class="reference internal image-reference" href="../_images/PitotStatic.png"><img alt="../_images/PitotStatic.png" src="../_images/PitotStatic.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Aircraft Pitot-Static Measurement Device</span><a class="headerlink" href="#pitotstatic" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="calibrated-airspeed">
-<h3>Calibrated Airspeed<a class="headerlink" href="#calibrated-airspeed" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Aircraft Pitot-Static Measurement Device</span><a class="headerlink" href="#pitotstatic" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="calibrated-airspeed">
+<h3>Calibrated Airspeed<a class="headerlink" href="#calibrated-airspeed" title="Link to this heading">#</a></h3>
 <p>To avoid having to measure <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(\rho\)</span>, rather than using the pitot-static to measure <span class="math notranslate nohighlight">\(\Delta p\)</span>, aircraft Engineers calibrated their devices to provide the correct value of true airspeed at sea-level ISA density and pressure. This provides us with <strong>calibrated airspeed</strong>, <span class="math notranslate nohighlight">\(V_c\)</span>/CAS, which is only the same as true airspeed at sea-level ISA conditions. <span class="math notranslate nohighlight">\(V_c\)</span> can be calculated via Equation <a class="reference internal" href="#equation-casequation">(2)</a>:</p>
 <div class="math notranslate nohighlight" id="equation-casequation">
-<span class="eqno">(2)<a class="headerlink" href="#equation-casequation" title="Permalink to this equation">¶</a></span>\[    V_c=\sqrt{7\cdot\frac{p_{SL}}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p_{SL}}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
-</div>
-<div class="section" id="indicated-airspeed">
-<h3>Indicated Airspeed<a class="headerlink" href="#indicated-airspeed" title="Permalink to this headline">¶</a></h3>
+<span class="eqno">(2)<a class="headerlink" href="#equation-casequation" title="Link to this equation">#</a></span>\[    V_c=\sqrt{7\cdot\frac{p_{SL}}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p_{SL}}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
+</section>
+<section id="indicated-airspeed">
+<h3>Indicated Airspeed<a class="headerlink" href="#indicated-airspeed" title="Link to this heading">#</a></h3>
 <p>In reality, such a pitot-static device will measure the <strong>calibrated airspeed</strong> at a point on the aircraft surface, where the flow has already been disturbed by the aircraft. The device is NOT measuring the freestream velicity - thus there is a <em>position error</em>, based on where the pitot-static is on the aircraft. During flight testing, these inaccuracies can be quantified, and a difference between what is <em>indicated</em> by the device, <strong>indicated airspeed</strong>/IAS, and calibrated airspeed is determined - <span class="math notranslate nohighlight">\(\Delta V_p\)</span>, the position error.</p>
 <div class="math notranslate nohighlight" id="equation-iasequation">
-<span class="eqno">(3)<a class="headerlink" href="#equation-iasequation" title="Permalink to this equation">¶</a></span>\[V_c = V_I + \Delta V_p\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-iasequation" title="Link to this equation">#</a></span>\[V_c = V_I + \Delta V_p\]</div>
 <p>At this stage - we have three airspeeds; Indicated (what is shown on the measurement device, for ISA SL conditions), Calibrated (what <em>should</em> be shown on the measurement device, for ISA SL conditions), and True Airspeed. We don’t have a means to convert Calibrated to True yet, so we adopt a two-step approach.</p>
-</div>
-<div class="section" id="equivalent-airspeed">
-<h3>Equivalent Airspeed<a class="headerlink" href="#equivalent-airspeed" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="equivalent-airspeed">
+<h3>Equivalent Airspeed<a class="headerlink" href="#equivalent-airspeed" title="Link to this heading">#</a></h3>
 <p>The first correction is for the actual pressure at a given altitude. This gives Equivalent Airspeed, EAS.</p>
 <div class="math notranslate nohighlight" id="equation-easequation">
-<span class="eqno">(4)<a class="headerlink" href="#equation-easequation" title="Permalink to this equation">¶</a></span>\[    V_e=\sqrt{7\cdot\frac{p}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-easequation" title="Link to this equation">#</a></span>\[    V_e=\sqrt{7\cdot\frac{p}{\rho_{SL}}\cdot\left\{\left(\frac{\Delta p}{p}+1\right)^\frac{\gamma-1}{\gamma}-1\right\}}\]</div>
 <p>where we can see that the sea-level pressure has been replaced with the actual pressure. In practice, this correction is applied as a multiplier between CAS and EAS:</p>
 <div class="math notranslate nohighlight">
 \[V_e = f\cdot V_c\]</div>
@@ -623,148 +602,154 @@
 <div class="math notranslate nohighlight">
 \[= f(\Delta p, p)\]</div>
 <p>Since <span class="math notranslate nohighlight">\(f\)</span> is only dependent on the <span class="math notranslate nohighlight">\(\Delta p\)</span> the aircraft speed, and the <span class="math notranslate nohighlight">\(p\)</span> the aircraft altitude, it can be calculated and tabulated - see the table below for the pressure correction factor:</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:left head"><p>h, ft</p></th>
-<th class="text-align:left head"><p><td colspan=9> Calibrated Airspeed, kn</p></th>
-<th class="text-align:left head"><p></p></th>
-<th class="text-align:left head"><p></p></th>
-<th class="text-align:left head"><p></p></th>
-<th class="text-align:left head"><p></p></th>
-<th class="text-align:left head"><p></p></th>
-<th class="text-align:left head"><p></p></th>
-<th class="text-align:left head"><p></p></th>
-<th class="text-align:left head"><p></p></th>
+<tr class="row-odd"><th class="head text-left"><p>h, ft</p></th>
+<th class="head text-left"><p><td colspan=9> Calibrated Airspeed, kn</p></th>
+<th class="head text-left"><p></p></th>
+<th class="head text-left"><p></p></th>
+<th class="head text-left"><p></p></th>
+<th class="head text-left"><p></p></th>
+<th class="head text-left"><p></p></th>
+<th class="head text-left"><p></p></th>
+<th class="head text-left"><p></p></th>
+<th class="head text-left"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p></p></td>
-<td class="text-align:left"><p>100</p></td>
-<td class="text-align:left"><p>125</p></td>
-<td class="text-align:left"><p>150</p></td>
-<td class="text-align:left"><p>175</p></td>
-<td class="text-align:left"><p>200</p></td>
-<td class="text-align:left"><p>225</p></td>
-<td class="text-align:left"><p>250</p></td>
-<td class="text-align:left"><p>275</p></td>
-<td class="text-align:left"><p>300</p></td>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p>100</p></td>
+<td class="text-left"><p>125</p></td>
+<td class="text-left"><p>150</p></td>
+<td class="text-left"><p>175</p></td>
+<td class="text-left"><p>200</p></td>
+<td class="text-left"><p>225</p></td>
+<td class="text-left"><p>250</p></td>
+<td class="text-left"><p>275</p></td>
+<td class="text-left"><p>300</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>5000</p></td>
-<td class="text-align:left"><p>0.999</p></td>
-<td class="text-align:left"><p>0.999</p></td>
-<td class="text-align:left"><p>0.999</p></td>
-<td class="text-align:left"><p>0.998</p></td>
-<td class="text-align:left"><p>0.998</p></td>
-<td class="text-align:left"><p>0.997</p></td>
-<td class="text-align:left"><p>0.997</p></td>
-<td class="text-align:left"><p>0.996</p></td>
-<td class="text-align:left"><p>0.995</p></td>
+<tr class="row-odd"><td class="text-left"><p>5000</p></td>
+<td class="text-left"><p>0.999</p></td>
+<td class="text-left"><p>0.999</p></td>
+<td class="text-left"><p>0.999</p></td>
+<td class="text-left"><p>0.998</p></td>
+<td class="text-left"><p>0.998</p></td>
+<td class="text-left"><p>0.997</p></td>
+<td class="text-left"><p>0.997</p></td>
+<td class="text-left"><p>0.996</p></td>
+<td class="text-left"><p>0.995</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>10000</p></td>
-<td class="text-align:left"><p>0.999</p></td>
-<td class="text-align:left"><p>0.998</p></td>
-<td class="text-align:left"><p>0.997</p></td>
-<td class="text-align:left"><p>0.996</p></td>
-<td class="text-align:left"><p>0.995</p></td>
-<td class="text-align:left"><p>0.994</p></td>
-<td class="text-align:left"><p>0.992</p></td>
-<td class="text-align:left"><p>0.991</p></td>
-<td class="text-align:left"><p>0.989</p></td>
+<tr class="row-even"><td class="text-left"><p>10000</p></td>
+<td class="text-left"><p>0.999</p></td>
+<td class="text-left"><p>0.998</p></td>
+<td class="text-left"><p>0.997</p></td>
+<td class="text-left"><p>0.996</p></td>
+<td class="text-left"><p>0.995</p></td>
+<td class="text-left"><p>0.994</p></td>
+<td class="text-left"><p>0.992</p></td>
+<td class="text-left"><p>0.991</p></td>
+<td class="text-left"><p>0.989</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>15000</p></td>
-<td class="text-align:left"><p>0.998</p></td>
-<td class="text-align:left"><p>0.997</p></td>
-<td class="text-align:left"><p>0.995</p></td>
-<td class="text-align:left"><p>0.994</p></td>
-<td class="text-align:left"><p>0.992</p></td>
-<td class="text-align:left"><p>0.990</p></td>
-<td class="text-align:left"><p>0.987</p></td>
-<td class="text-align:left"><p>0.985</p></td>
-<td class="text-align:left"><p>0.982</p></td>
+<tr class="row-odd"><td class="text-left"><p>15000</p></td>
+<td class="text-left"><p>0.998</p></td>
+<td class="text-left"><p>0.997</p></td>
+<td class="text-left"><p>0.995</p></td>
+<td class="text-left"><p>0.994</p></td>
+<td class="text-left"><p>0.992</p></td>
+<td class="text-left"><p>0.990</p></td>
+<td class="text-left"><p>0.987</p></td>
+<td class="text-left"><p>0.985</p></td>
+<td class="text-left"><p>0.982</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>20000</p></td>
-<td class="text-align:left"><p>0.997</p></td>
-<td class="text-align:left"><p>0.995</p></td>
-<td class="text-align:left"><p>0.993</p></td>
-<td class="text-align:left"><p>0.990</p></td>
-<td class="text-align:left"><p>0.987</p></td>
-<td class="text-align:left"><p>0.984</p></td>
-<td class="text-align:left"><p>0.981</p></td>
-<td class="text-align:left"><p>0.977</p></td>
-<td class="text-align:left"><p>0.973</p></td>
+<tr class="row-even"><td class="text-left"><p>20000</p></td>
+<td class="text-left"><p>0.997</p></td>
+<td class="text-left"><p>0.995</p></td>
+<td class="text-left"><p>0.993</p></td>
+<td class="text-left"><p>0.990</p></td>
+<td class="text-left"><p>0.987</p></td>
+<td class="text-left"><p>0.984</p></td>
+<td class="text-left"><p>0.981</p></td>
+<td class="text-left"><p>0.977</p></td>
+<td class="text-left"><p>0.973</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>25000</p></td>
-<td class="text-align:left"><p>0.995</p></td>
-<td class="text-align:left"><p>0.993</p></td>
-<td class="text-align:left"><p>0.990</p></td>
-<td class="text-align:left"><p>0.986</p></td>
-<td class="text-align:left"><p>0.982</p></td>
-<td class="text-align:left"><p>0.978</p></td>
-<td class="text-align:left"><p>0.973</p></td>
-<td class="text-align:left"><p>0.968</p></td>
-<td class="text-align:left"><p>0.963</p></td>
+<tr class="row-odd"><td class="text-left"><p>25000</p></td>
+<td class="text-left"><p>0.995</p></td>
+<td class="text-left"><p>0.993</p></td>
+<td class="text-left"><p>0.990</p></td>
+<td class="text-left"><p>0.986</p></td>
+<td class="text-left"><p>0.982</p></td>
+<td class="text-left"><p>0.978</p></td>
+<td class="text-left"><p>0.973</p></td>
+<td class="text-left"><p>0.968</p></td>
+<td class="text-left"><p>0.963</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>30000</p></td>
-<td class="text-align:left"><p>0.993</p></td>
-<td class="text-align:left"><p>0.990</p></td>
-<td class="text-align:left"><p>0.986</p></td>
-<td class="text-align:left"><p>0.981</p></td>
-<td class="text-align:left"><p>0.975</p></td>
-<td class="text-align:left"><p>0.970</p></td>
-<td class="text-align:left"><p>0.963</p></td>
-<td class="text-align:left"><p>0.957</p></td>
-<td class="text-align:left"><p>0.950</p></td>
+<tr class="row-even"><td class="text-left"><p>30000</p></td>
+<td class="text-left"><p>0.993</p></td>
+<td class="text-left"><p>0.990</p></td>
+<td class="text-left"><p>0.986</p></td>
+<td class="text-left"><p>0.981</p></td>
+<td class="text-left"><p>0.975</p></td>
+<td class="text-left"><p>0.970</p></td>
+<td class="text-left"><p>0.963</p></td>
+<td class="text-left"><p>0.957</p></td>
+<td class="text-left"><p>0.950</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>35000</p></td>
-<td class="text-align:left"><p>0.991</p></td>
-<td class="text-align:left"><p>0.986</p></td>
-<td class="text-align:left"><p>0.981</p></td>
-<td class="text-align:left"><p>0.974</p></td>
-<td class="text-align:left"><p>0.967</p></td>
-<td class="text-align:left"><p>0.959</p></td>
-<td class="text-align:left"><p>0.951</p></td>
-<td class="text-align:left"><p>0.943</p></td>
-<td class="text-align:left"><p>0.934</p></td>
+<tr class="row-odd"><td class="text-left"><p>35000</p></td>
+<td class="text-left"><p>0.991</p></td>
+<td class="text-left"><p>0.986</p></td>
+<td class="text-left"><p>0.981</p></td>
+<td class="text-left"><p>0.974</p></td>
+<td class="text-left"><p>0.967</p></td>
+<td class="text-left"><p>0.959</p></td>
+<td class="text-left"><p>0.951</p></td>
+<td class="text-left"><p>0.943</p></td>
+<td class="text-left"><p>0.934</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>40000</p></td>
-<td class="text-align:left"><p>0.988</p></td>
-<td class="text-align:left"><p>0.982</p></td>
-<td class="text-align:left"><p>0.974</p></td>
-<td class="text-align:left"><p>0.966</p></td>
-<td class="text-align:left"><p>0.957</p></td>
-<td class="text-align:left"><p>0.947</p></td>
-<td class="text-align:left"><p>0.937</p></td>
-<td class="text-align:left"><p>0.926</p></td>
-<td class="text-align:left"><p>0.916</p></td>
+<tr class="row-even"><td class="text-left"><p>40000</p></td>
+<td class="text-left"><p>0.988</p></td>
+<td class="text-left"><p>0.982</p></td>
+<td class="text-left"><p>0.974</p></td>
+<td class="text-left"><p>0.966</p></td>
+<td class="text-left"><p>0.957</p></td>
+<td class="text-left"><p>0.947</p></td>
+<td class="text-left"><p>0.937</p></td>
+<td class="text-left"><p>0.926</p></td>
+<td class="text-left"><p>0.916</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>45000</p></td>
-<td class="text-align:left"><p>0.984</p></td>
-<td class="text-align:left"><p>0.976</p></td>
-<td class="text-align:left"><p>0.966</p></td>
-<td class="text-align:left"><p>0.956</p></td>
-<td class="text-align:left"><p>0.944</p></td>
-<td class="text-align:left"><p>0.932</p></td>
-<td class="text-align:left"><p>0.920</p></td>
-<td class="text-align:left"><p>0.907</p></td>
-<td class="text-align:left"><p>0.895</p></td>
+<tr class="row-odd"><td class="text-left"><p>45000</p></td>
+<td class="text-left"><p>0.984</p></td>
+<td class="text-left"><p>0.976</p></td>
+<td class="text-left"><p>0.966</p></td>
+<td class="text-left"><p>0.956</p></td>
+<td class="text-left"><p>0.944</p></td>
+<td class="text-left"><p>0.932</p></td>
+<td class="text-left"><p>0.920</p></td>
+<td class="text-left"><p>0.907</p></td>
+<td class="text-left"><p>0.895</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>50000</p></td>
-<td class="text-align:left"><p>0.979</p></td>
-<td class="text-align:left"><p>0.969</p></td>
-<td class="text-align:left"><p>0.957</p></td>
-<td class="text-align:left"><p>0.944</p></td>
-<td class="text-align:left"><p>0.930</p></td>
-<td class="text-align:left"><p>0.915</p></td>
-<td class="text-align:left"><p>0.901</p></td>
-<td class="text-align:left"><p>0.886</p></td>
-<td class="text-align:left"><p>0.871</p></td>
+<tr class="row-even"><td class="text-left"><p>50000</p></td>
+<td class="text-left"><p>0.979</p></td>
+<td class="text-left"><p>0.969</p></td>
+<td class="text-left"><p>0.957</p></td>
+<td class="text-left"><p>0.944</p></td>
+<td class="text-left"><p>0.930</p></td>
+<td class="text-left"><p>0.915</p></td>
+<td class="text-left"><p>0.901</p></td>
+<td class="text-left"><p>0.886</p></td>
+<td class="text-left"><p>0.871</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Intermediate values are found via linear interpolation - you should be comfortable with doing this by hand, or by writing code. An example code is provided below that provides two-dimensional interpolation for any values - you can use this function to find out the pressure correction factor - use the syntax <code class="docutils literal notranslate"><span class="pre">f_correction(VC,</span> <span class="pre">h)</span></code> (both of these have default values, so you don’t need to provide either).</p>
 <div class="cell tag_hide-input tag_thebe-init docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.interpolate</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp2d</span>
 <span class="n">presscorr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5000</span><span class="p">,</span><span class="mf">0.999</span><span class="p">,</span><span class="mf">0.999</span><span class="p">,</span><span class="mf">0.999</span><span class="p">,</span><span class="mf">0.998</span><span class="p">,</span><span class="mf">0.998</span><span class="p">,</span><span class="mf">0.997</span><span class="p">,</span><span class="mf">0.997</span><span class="p">,</span><span class="mf">0.996</span><span class="p">,</span><span class="mf">0.995</span><span class="p">],</span>
@@ -792,10 +777,41 @@
 </pre></div>
 </div>
 </div>
+</details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">21</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">VC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">275</span><span class="p">,</span> <span class="mi">300</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">table</span> <span class="o">=</span> <span class="n">presscorr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+<span class="ne">---&gt; </span><span class="mi">21</span> <span class="n">f_corr</span> <span class="o">=</span> <span class="n">interp2d</span><span class="p">(</span><span class="n">VC</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="k">def</span> <span class="nf">f_correction</span><span class="p">(</span><span class="n">VC</span><span class="o">=</span><span class="mi">125</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">45000</span><span class="p">,</span> <span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">f</span> <span class="o">=</span> <span class="n">f_corr</span><span class="p">(</span><span class="n">VC</span><span class="p">,</span> <span class="n">h</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">File ~/PycharmProjects/Aircraft-Flight-Mechanics/venv/lib/python3.12/site-packages/scipy/interpolate/_interpolate.py:129,</span> in <span class="ni">interp2d.__init__</span><span class="nt">(self, x, y, z, kind, copy, bounds_error, fill_value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span>              <span class="n">fill_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">129</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="n">err_mesg</span><span class="p">)</span>
+
+<span class="ne">NotImplementedError</span>: `interp2d` has been removed in SciPy 1.14.0.
+
+<span class="n">For</span> <span class="n">legacy</span> <span class="n">code</span><span class="p">,</span> <span class="n">nearly</span> <span class="n">bug</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">bug</span> <span class="n">compatible</span> <span class="n">replacements</span> <span class="n">are</span>
+<span class="err">`</span><span class="n">RectBivariateSpline</span><span class="err">`</span> <span class="n">on</span> <span class="n">regular</span> <span class="n">grids</span><span class="p">,</span> <span class="ow">and</span> <span class="err">`</span><span class="n">bisplrep</span><span class="err">`</span><span class="o">/</span><span class="err">`</span><span class="n">bisplev</span><span class="err">`</span> <span class="k">for</span>
+<span class="n">scattered</span> <span class="mi">2</span><span class="n">D</span> <span class="n">data</span><span class="o">.</span>
+
+<span class="n">In</span> <span class="n">new</span> <span class="n">code</span><span class="p">,</span> <span class="k">for</span> <span class="n">regular</span> <span class="n">grids</span> <span class="n">use</span> <span class="err">`</span><span class="n">RegularGridInterpolator</span><span class="err">`</span> <span class="n">instead</span><span class="o">.</span>
+<span class="n">For</span> <span class="n">scattered</span> <span class="n">data</span><span class="p">,</span> <span class="n">prefer</span> <span class="err">`</span><span class="n">LinearNDInterpolator</span><span class="err">`</span> <span class="ow">or</span>
+<span class="err">`</span><span class="n">CloughTocher2DInterpolator</span><span class="err">`</span><span class="o">.</span>
+
+<span class="n">For</span> <span class="n">more</span> <span class="n">details</span> <span class="n">see</span>
+<span class="ne">https</span>://scipy.github.io/devdocs/tutorial/interpolate/interp_transition_guide.html
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VC</span> <span class="o">=</span> <span class="mi">182</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">VC</span> <span class="o">=</span> <span class="mi">182</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">39500</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">f_correction</span><span class="p">(</span><span class="n">VC</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;For a CAS of </span><span class="si">{</span><span class="n">VC</span><span class="si">}</span><span class="s2">, at an altitude of </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2"> feet, the pressure correction factor is </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -803,7 +819,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>For a CAS of 182, at an altitude of 39500 feet, the pressure correction factor is 0.964336
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For a CAS of 182, at an altitude of 39500 feet, the pressure correction factor is 0.964336
 </pre></div>
 </div>
 </div>
@@ -818,9 +834,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-</div>
-<div class="section" id="true-airspeed">
-<h3>True Airspeed<a class="headerlink" href="#true-airspeed" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="true-airspeed">
+<h3>True Airspeed<a class="headerlink" href="#true-airspeed" title="Link to this heading">#</a></h3>
 <p>Finally, <strong>True Airspeed</strong> may be calculated from <strong>Equivalent Airspeed</strong>, by accounting for the actual density at the correct altitude:</p>
 <div class="math notranslate nohighlight">
 \[V = V_e\cdot\sqrt{\frac{\rho_{SL}}{\rho}}\]</div>
@@ -832,7 +848,7 @@
 <p>If you can’t get the following to work - then you might need to install ambiance. Try <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ambiance</span></code> in your terminal window. See here for more instructions: https://pypi.org/project/ambiance/</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ambiance</span> <span class="kn">import</span> <span class="n">Atmosphere</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ambiance</span> <span class="kn">import</span> <span class="n">Atmosphere</span>
 
 <span class="n">sealevel</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
@@ -855,7 +871,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>At sea level, the pressure is 101325.000Pa, the density is 1.225kg/m^3, the tempertaure is 15.0C,  and the viscosity is 1.461e-05kg/s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At sea level, the pressure is 101325.000Pa, the density is 1.225kg/m^3, the tempertaure is 15.0C,  and the viscosity is 1.461e-05kg/s
 
 At an altitude of 12000m, the pressure is 19399.392Pa,the density is 0.312kg/m^3,the tempertaure is -56.5C,and the viscosity is 4.557e-05kg/s
 </pre></div>
@@ -865,7 +881,7 @@ At an altitude of 12000m, the pressure is 19399.392Pa,the density is 0.312kg/m^3
 <p>Using <code class="docutils literal notranslate"><span class="pre">ambiance</span></code> to define the density, we can create a function, <code class="docutils literal notranslate"><span class="pre">sigma_density</span></code> (it’s a good idea to make function handles descriptive, and there tend to be lots of sigma functions that mean important things in programming languages). This function will return the density ratio for a given altitude provided in metres or feet - bearing in mind than the units for <code class="docutils literal notranslate"><span class="pre">ambiance</span></code> are metres.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ambiance</span> <span class="kn">import</span> <span class="n">Atmosphere</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ambiance</span> <span class="kn">import</span> <span class="n">Atmosphere</span>
 
 <span class="k">def</span> <span class="nf">sigma_density</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">alt_units</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">alt_units</span> <span class="o">==</span> <span class="s1">&#39;m&#39;</span><span class="p">:</span>
@@ -887,15 +903,15 @@ At an altitude of 12000m, the pressure is 19399.392Pa,the density is 0.312kg/m^3
 
 <span class="n">h_unit</span> <span class="o">=</span> <span class="s1">&#39;ft&#39;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At </span><span class="si">{</span><span class="n">h_in</span><span class="si">}{</span><span class="n">h_unit</span><span class="si">}</span><span class="s2">, the density ratio is </span><span class="si">{</span><span class="n">sigma_density</span><span class="p">(</span><span class="n">h_in</span><span class="p">,</span> <span class="n">h_unit</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At </span><span class="si">{</span><span class="n">h_in</span><span class="si">}{</span><span class="n">h_unit</span><span class="si">}</span><span class="s2">, the density ratio is </span><span class="si">{</span><span class="n">sigma_density</span><span class="p">(</span><span class="n">h_in</span><span class="p">,</span><span class="w"> </span><span class="n">h_unit</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="n">atm</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">39000</span><span class="o">*.</span><span class="mi">3048</span><span class="p">)</span>
+<span class="n">atm</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">39000</span><span class="o">*</span><span class="mf">.3048</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">atm</span><span class="o">.</span><span class="n">temperature</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>At 39500ft, the density ratio is 0.253064
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At 39500ft, the density ratio is 0.253064
 [216.65]
 </pre></div>
 </div>
@@ -908,12 +924,17 @@ At an altitude of 12000m, the pressure is 19399.392Pa,the density is 0.312kg/m^3
 <p>Both are equal in the ranges used in this course - but in the printed tables, the values have been truncated. This can lead to differences when interpolating from the table, and when using the routines. See the code dropdown below to understand this further.</p>
 </div>
 <div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get four different atmospheres</span>
-<span class="n">atmo_sl</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">0</span><span class="o">*.</span><span class="mi">3048</span><span class="p">)</span>
-<span class="n">atmo_35kft</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">35000</span><span class="o">*.</span><span class="mi">3048</span><span class="p">)</span>
-<span class="n">atmo_40kft</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">40000</span><span class="o">*.</span><span class="mi">3048</span><span class="p">)</span>
-<span class="n">atmo_395kft</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">39500</span><span class="o">*.</span><span class="mi">3048</span><span class="p">)</span>
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get four different atmospheres</span>
+<span class="n">atmo_sl</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">0</span><span class="o">*</span><span class="mf">.3048</span><span class="p">)</span>
+<span class="n">atmo_35kft</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">35000</span><span class="o">*</span><span class="mf">.3048</span><span class="p">)</span>
+<span class="n">atmo_40kft</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">40000</span><span class="o">*</span><span class="mf">.3048</span><span class="p">)</span>
+<span class="n">atmo_395kft</span> <span class="o">=</span> <span class="n">Atmosphere</span><span class="p">(</span><span class="mi">39500</span><span class="o">*</span><span class="mf">.3048</span><span class="p">)</span>
 
 
 <span class="c1"># Conversions</span>
@@ -947,8 +968,14 @@ At an altitude of 12000m, the pressure is 19399.392Pa,the density is 0.312kg/m^3
 </pre></div>
 </div>
 </div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>The density at 35,000ft from the table is 7.3800e-04slugs/ft**3 and from ICAO it is 7.3821e-04slugs/ft**3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The density at 35,000ft from the table is 7.3800e-04slugs/ft**3 and from ICAO it is 7.3821e-04slugs/ft**3
 The density at 40,000ft from the table is 5.8700e-04slugs/ft**3 and from ICAO it is 5.8728e-04slugs/ft**3
 
 The density at 39,500ft from ICAO is 6.0151e-04slugs/ft**3 and interpolated between 35000 and 40000 ICAO it is 6.0237e-04slugs/ft**3
@@ -959,11 +986,12 @@ Sigma from the table is 0.2533,
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The inputs can also be <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">sigmas</span> <span class="o">=</span> <span class="n">sigma_density</span><span class="p">(</span><span class="n">alts</span><span class="p">,</span> <span class="s1">&#39;miles&#39;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">alt</span><span class="p">,</span> <span class="n">sigma</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">alts</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">):</span>
@@ -977,7 +1005,7 @@ Sigma from the table is 0.2533,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>At an altitude of 1 mile, the density ratio is 0.8544179176392871
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At an altitude of 1 mile, the density ratio is 0.8544179176392871
 At an altitude of 2 miles, the density ratio is 0.7256946830480345
 At an altitude of 3 miles, the density ratio is 0.6124148561281167
 At an altitude of 4 miles, the density ratio is 0.5132337621724308
@@ -1000,16 +1028,21 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<div class="section" id="approximate-density-correction">
-<h4>Approximate density correction<a class="headerlink" href="#approximate-density-correction" title="Permalink to this headline">¶</a></h4>
+<section id="approximate-density-correction">
+<h4>Approximate density correction<a class="headerlink" href="#approximate-density-correction" title="Link to this heading">#</a></h4>
 <p>For altitudes below about 16km, the approximation can be used</p>
 <div class="math notranslate nohighlight">
 \[\sigma=\frac{20-H}{20+H}\]</div>
 <p>where <span class="math notranslate nohighlight">\(H\)</span> is the altitude in <span class="math notranslate nohighlight">\(km\)</span>.</p>
 <p>The error in this approximation is easily shown using the functions created above:</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigma_approx</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigma_approx</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
     <span class="n">sigma</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span> <span class="o">-</span> <span class="n">H</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">20</span> <span class="o">+</span> <span class="n">H</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">sigma</span>
 
@@ -1030,61 +1063,60 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../_images/Airspeed_15_0.png" src="../_images/Airspeed_15_0.png" />
+<img alt="../_images/6f4f766279cd860adec1a9411e3589747bf2a9964e83aad0cd76ca9e9ba37348.png" src="../_images/6f4f766279cd860adec1a9411e3589747bf2a9964e83aad0cd76ca9e9ba37348.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="why-use-eas">
-<h3>Why use EAS?<a class="headerlink" href="#why-use-eas" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="why-use-eas">
+<h3>Why use EAS?<a class="headerlink" href="#why-use-eas" title="Link to this heading">#</a></h3>
 <p>Equivalent airspeed is actually very useful (though pilots tend not to actually use it, annoyingly). We tend to define <span class="math notranslate nohighlight">\(q_\infty\)</span> as <span class="math notranslate nohighlight">\(\tfrac{1}{2}\rho_{SL}V_e^2\)</span>, which means that aerodynamic coefficients remain the same for a given <span class="math notranslate nohighlight">\(V_e\)</span> and <span class="math notranslate nohighlight">\(\alpha/\beta\)</span>.</p>
 <p>It is useful to see that the Equivalent Air Speed (EAS) for a given flight condition, <span class="math notranslate nohighlight">\(V_e\)</span>, is the <strong>speed which if flown at standard sea level density (<span class="math notranslate nohighlight">\(\rho_{sl} \sim 1.225 kg\cdot m^{-3}\)</span>) would give the same aerodynamic loads, for the same aerodynamic configuration, constant <span class="math notranslate nohighlight">\(C_L\)</span></strong>.</p>
 <p>This is useful for simplicity of calculations, but is also useful for ease of flight - stall will always occur at the same angle, for the same EAS, regardless of flight altitude. Structural limits are always defined in EAS for the same reason, as the loads are constant at any altitude for the same EAS.</p>
-</div>
-</div>
-<div class="section" id="summary-of-corrections">
-<h2>Summary of Corrections<a class="headerlink" href="#summary-of-corrections" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="summary-of-corrections">
+<h2>Summary of Corrections<a class="headerlink" href="#summary-of-corrections" title="Link to this heading">#</a></h2>
 <p>We can remember the order of corrections by the mnemonic “ICE-T”, with the relative magnitudes of the velocities given by the shape that loosely looks like a square root -</p>
-<div class="figure align-default" id="icet">
+<figure class="align-default" id="icet">
 <a class="reference internal image-reference" href="../_images/IceT.png"><img alt="../_images/IceT.png" src="../_images/IceT.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Airspeed Corrections</span><a class="headerlink" href="#icet" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="problems">
-<h2>Problems:<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Airspeed Corrections</span><a class="headerlink" href="#icet" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="problems">
+<h2>Problems:<a class="headerlink" href="#problems" title="Link to this heading">#</a></h2>
 <p>Below are a range of numerical and theoretical questions. Some of the numerical questions have random numbers that change each time the notes get updated - so you’re not going crazy if you thought it was different last time.</p>
 <p>Try and go through the questions on your own before looking at the solutions - questions you’ll face in tests/exams will be <em>similar</em> but not exactly the same, so you need to be able to understand the <em>why</em> of the solution rather than just following an algorithm.</p>
-<div class="cell tag_remove-input tag_remove-outputs tag_remove-output tag_thebe-init docutils container">
-</div>
-<div class="section" id="problem-1-1-conversion-between-airspeeds">
-<h3>Problem 1.1 - Conversion between airspeeds<a class="headerlink" href="#problem-1-1-conversion-between-airspeeds" title="Permalink to this headline">¶</a></h3>
-<p>An aircraft is flying at an altitude of <span class="pasted-text">30000</span>ft, with a calibrated airspeed of <span class="pasted-text">260</span>kn, with a <span class="pasted-text">4</span>kn <span class="pasted-text">headwind</span>:</p>
+<section id="problem-1-1-conversion-between-airspeeds">
+<h3>Problem 1.1 - Conversion between airspeeds<a class="headerlink" href="#problem-1-1-conversion-between-airspeeds" title="Link to this heading">#</a></h3>
+<p>An aircraft is flying at an altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">195</span>kn, with a <span class="pasted-text">10</span>kn <span class="pasted-text">headwind</span>:</p>
 <p>a) How long will it take to cover 100 miles?</p>
 <p>b) How long will it take to cover 200km?</p>
-<p>c) If instead of <span class="math notranslate nohighlight">\(V_C\)</span> = <span class="pasted-text">260</span>kn, you have <span class="math notranslate nohighlight">\(V_I\)</span> = <span class="pasted-text">260</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
+<p>c) If instead of <span class="math notranslate nohighlight">\(V_C\)</span> = <span class="pasted-text">195</span>kn, you have <span class="math notranslate nohighlight">\(V_I\)</span> = <span class="pasted-text">195</span>kn, with a position error of <span class="math notranslate nohighlight">\(\Delta V_P=+2kn\)</span>, what do the above answers change to?</p>
 <p>Try and tackle the problem yourself before you see the solution below. The numbers in this problem will change each time the notes are updated.</p>
-<div class="cell tag_remove-input tag_remove-output docutils container">
-</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the solution…</p>
 <p>The first step is to take Vc to Ve via the pressure correction.</p>
-<p>For the altitude of <span class="pasted-text">30000</span>ft, with a calibrated airspeed of <span class="pasted-text">260</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">30000</span>, <span class="pasted-text">260</span>).</p>
-<p>This gives a value of <span class="pasted-text">0.961</span> for the pressure correction, and this determination pf the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">249.756</span>kn.</p>
-<p>For EAS to TAS, the density ratio is required - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.375</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
-<p>True airspeed is obtained from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">407.998</span>kn.</p>
+<p>For the altitude of <span class="pasted-text">35000</span>ft, with a calibrated airspeed of <span class="pasted-text">195</span>kn, the pressure correction can be interpolated from table using the function created earlier with syntax press_correction = f_correction(<span class="pasted-text">35000</span>, <span class="pasted-text">195</span>).</p>
+<p>This gives a value of <span class="pasted-text">0.967</span> for the pressure correction, and this determination pf the equivalent airspeed from <span class="math notranslate nohighlight">\(V_e = V_c\cdot f\)</span> so, <span class="math notranslate nohighlight">\(V_e=\)</span><span class="pasted-text">192.489</span>kn.</p>
+<p>For EAS to TAS, the density ratio is required - <span class="math notranslate nohighlight">\(\sigma=\frac{\rho}{\rho_{sl}}\)</span>, and this is found to be <span class="math notranslate nohighlight">\(\sigma=\)</span><span class="pasted-text">0.311</span>kn. Since this is an altitude <em>above</em> sea level, this has to be a number smaller than one - if it’s not, then you’ve done something wrong.</p>
+<p>True airspeed is obtained from the relationship <span class="math notranslate nohighlight">\(V=V_e\cdot\sigma^{-\frac{1}{2}}\)</span> which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">345.399</span>kn.</p>
 <p>Note that at no point have the units had to be converted into SI to make the corrections - that’s the smart part of the density and pressure corrections; they are both non-dimensional corrections. If you have velocity in knots, you use them and get velocity in knots out.</p>
-<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">403.998</span>kn. This gives the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
-<p>With the velocity in knots it may be easily converted to m/s by multiplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">207.835</span>m/s.</p>
-<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">774.3</span>s or <span class="pasted-text">12 minutes, 54 seconds</span></p>
-<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">962.3</span>s or <span class="pasted-text">16 minutes, 2 seconds</span></p>
+<p>Since the wind is a <span class="pasted-text">headwind</span>, this is <span class="pasted-text">subtracted from</span> the value above to yield the groundspeed in knots as <span class="pasted-text">335.399</span>kn. This gives the speed of the aircraft relative to the ground, and hence the speed we require for distance/time calculations.</p>
+<p>With the velocity in knots it may be easily converted to m/s by multiplying by 0.5144444 which yields <span class="math notranslate nohighlight">\(V\)</span>=<span class="pasted-text">172.544</span>m/s.</p>
+<p>100 miles is 160,934m, and hence this is covered in <span class="pasted-text">932.7</span>s or <span class="pasted-text">15 minutes, 32 seconds</span></p>
+<p>200 km is 200,000, and hence this is covered in <span class="pasted-text">1159.1</span>s or <span class="pasted-text">19 minutes, 19 seconds</span></p>
 <hr class="docutils" />
 <p>For the last part of the question, this is solved by recalling that <span class="math notranslate nohighlight">\(V_c = V_I + \Delta V_p\)</span> and hence the speeds calculated are now:</p>
-<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">262.000</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">251.551</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">410.931</span>kn</p>
-<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">414.931</span>kn = <span class="pasted-text">213.459</span>m/s</p>
-<p>The times taken are found to be <span class="pasted-text">12 minutes, 33 seconds</span> and  <span class="pasted-text">15 minutes, 36 seconds</span>, for a respective  <span class="pasted-text">20 seconds</span> and  <span class="pasted-text">25 seconds</span> <span class="pasted-text">faster</span>.</p>
+<p><span class="math notranslate nohighlight">\(V_c\)</span> = <span class="pasted-text">201.000</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_e\)</span> = <span class="pasted-text">194.303</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V\)</span> = <span class="pasted-text">348.654</span>kn</p>
+<p><span class="math notranslate nohighlight">\(V_g\)</span> = <span class="pasted-text">358.654</span>kn = <span class="pasted-text">184.508</span>m/s</p>
+<p>The times taken are found to be <span class="pasted-text">14 minutes, 32 seconds</span> and  <span class="pasted-text">18 minutes, 3 seconds</span>, for a respective  <span class="pasted-text">1 minutes, 0 seconds</span> and  <span class="pasted-text">1 minutes, 15 seconds</span> <span class="pasted-text">faster</span>.</p>
 </div>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <p><ins class="adsbygoogle"
@@ -1095,14 +1127,14 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
      data-ad-slot="7122611277"></ins></p>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
-<div class="section" id="problem-1-2-theory">
-<h3>Problem 1.2 - Theory<a class="headerlink" href="#problem-1-2-theory" title="Permalink to this headline">¶</a></h3>
+</script></section>
+<section id="problem-1-2-theory">
+<h3>Problem 1.2 - Theory<a class="headerlink" href="#problem-1-2-theory" title="Link to this heading">#</a></h3>
 <p>a) When converting between different airspeeds, how can you ‘sense check’ your numbers?</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to show the solution…</p>
 <p>Look at the square-root symbol for ICE-T <a class="reference internal" href="#icet"><span class="std std-ref">Airspeed Corrections</span></a>. This shows the respective magnitude of the velocities you should expect to find.</p>
-<p>Once you have the true airspeed, you should also compare it to the type of aircraft listed (if one is). The speed of sound is about 340m/s at sea-level - so if you’ve been given a light commuter aircraft, and you’ve found a true airspeed of 500m/s then something is wrong. (You probably got the knots to metre/s conversion wrong - <a class="reference external" href="https://www.google.com/search?q=how+do+i+convert+knots+to+metres+per+second&amp;rlz=1C5CHFA_enUS892US892&amp;oq=how+do+i+convert+knots+to+metres+per+second&amp;aqs=chrome..69i57j6.5772j1j7&amp;sourceid=chrome&amp;ie=UTF-8">see here</a></p>
+<p>Once you have the true airspeed, you should also compare it to the type of aircraft listed (if one is). The speed of sound is about 340m/s at sea-level - so if you’ve been given a light commuter aircraft, and you’ve found a true airspeed of 500m/s then something is wrong. (You probably got the knots to metre/s conversion wrong - <a class="reference external" href="https://www.google.com/search?q=how+do+i+convert+knots+to+metres+per+second&amp;amp;rlz=1C5CHFA_enUS892US892&amp;amp;oq=how+do+i+convert+knots+to+metres+per+second&amp;amp;aqs=chrome..69i57j6.5772j1j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8">see here</a></p>
 </div>
 <p>b) What is the significance of “equivalent airspeed”, and why is it preferable to use when defining limiting speeds for aircraft</p>
 <div class="dropdown admonition">
@@ -1120,15 +1152,15 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
 <p class="admonition-title">Click to show the solution…</p>
 <p>Flight at sea-level.</p>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "aeronauty/Aircraft-Flight-Mechanics",
+            repo: "binder-examples/jupyter-stacks-datascience",
             ref: "master",
         },
         codeMirrorConfig: {
@@ -1136,7 +1168,7 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./AircraftPerformance"
         },
         predefinedOutput: true
@@ -1144,51 +1176,123 @@ At an altitude of 9 miles, the density ratio is 0.17239372263976577
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="Introduction.html" title="previous page">Aircraft Performance</a>
-    <a class='right-next' id="next-link" href="SteadyLevelFlight.html" title="next page">Steady Level Flight</a>
 
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Harry Smith<br/>
-        
-            &copy; Copyright 2020.<br/>
-          <div class="extra_footer">
-            <div>
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
-</div><div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
-
-          </div>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Aircraft Performance</p>
       </div>
-    </div>
+    </a>
+    <a class="right-next"
+       href="SteadyLevelFlight.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Steady Level Flight</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-    <script src="../_static/js/index.js"></script>
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airspeed-measurement">Airspeed Measurement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrated-airspeed">Calibrated Airspeed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indicated-airspeed">Indicated Airspeed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-airspeed">Equivalent Airspeed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-airspeed">True Airspeed</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-density-correction">Approximate density correction</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-eas">Why use EAS?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-corrections">Summary of Corrections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-1-conversion-between-airspeeds">Problem 1.1 - Conversion between airspeeds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-2-theory">Problem 1.2 - Theory</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-178506186-1', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
+<p class="component-author">
+By Harry Smith
+</p>
+
+  </div>
+  
+  <div class="footer-item">
     
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a></div><div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

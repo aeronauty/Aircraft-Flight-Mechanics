@@ -19,27 +19,45 @@ html:
   use_edit_page_button      : true  # Whether to add an "edit this page" button to pages. 
   extra_navbar: <div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
   google_analytics_id: UA-178506186-1
-  extra_footer: |
-        <div>
-            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
-        </div><div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
+  extra_footer: <div><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a></div><div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
 
 # Configure your Binder links, such as the URL of the BinderHub.
-launch_buttons:
-  binderhub_url             : https://mybinder.org
-  thebe                     : true  # Add a thebe button to pages (requires the repository to run on Binder)
+#launch_buttons:
+#  binderhub_url             : https://mybinder.org
+#  thebe                     : true  # Add a thebe button to pages (requires the repository to run on Binder)
 
 
-execute_notebooks: force
-jupyter_execute_notebooks: force
+execute:
+  execute_notebooks: force
+  run_in_temp: false
 
 parse:
-  myst_extended_syntax: true
+  myst_enable_extensions:
+    - amsmath
+    - dollarmath
+
 
 sphinx:
   config:
-    html_extra_path: ['Assets'] 
+    suppress_warnings: ["mystnb.unknown_mime_type"]
+    html_extra_path: ['Assets']
     myst_amsmath_enable: true
-  extra_extensions:
-  - sphinx_tabs.tabs
+    html_js_files:
+    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+    mathjax_path: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML
+    mathjax2_config: {
+        'tex2jax': {
+            'displayMath': [ ['$$','$$'], ["\\[","\\]"] ],
+#            'inlineMath': [['$', '$'], ['\\(', '\\)']],
+            'processEscapes': True,
+            'ignoreClass': 'document',
+            'processClass': 'math|output_area',
+        }
+    }
+    mathjax_options: {
+        "async": "async",
+    }
+
+
+
 

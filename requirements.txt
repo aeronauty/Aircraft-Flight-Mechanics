@@ -1,5 +1,5 @@
 jupyter-book >= 0.7.0
-plotly == 4.8.2
+plotly
 matplotlib
 numpy
 scipy
@@ -9,3 +9,4 @@ sphinx_tabs
 ipywidgets
 pandas
 plyfile
+meshio

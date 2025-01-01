@@ -1,541 +1,496 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Axes Transformations &#8212; Aircraft Flight Mechanics by Harry Smith, PhD</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="../_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/sphinx-book-theme.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/mystnb.js"></script>
-    <script src="../_static/sphinx-book-theme.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-178506186-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-178506186-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-178506186-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'EoMs/EulerTransforms';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Absolute Acceleration" href="RelativeMotion.html" />
     <link rel="prev" title="Introduction" href="Introduction.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
-
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  <img src="../_static/Logo2.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">Aircraft Flight Mechanics by Harry Smith, PhD</h1>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-</a>
-</div>
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
+  </dialog>
 
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <p class="caption">
- <span class="caption-text">
-  Getting Started
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../CourseIntroduction.html">
-   Course Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Prerequisites/Prerequisites.html">
-   Assumed knowledge
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Aircraft Performance
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../AircraftPerformance/Introduction.html">
-   Aircraft Performance
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../AircraftPerformance/Airspeed.html">
-   Defining Aircraft ‘Speed’
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../AircraftPerformance/SteadyLevelFlight.html">
-   Steady Level Flight
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../AircraftPerformance/GlidingFlight.html">
-   Climbing and Gliding Caveat
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../AircraftPerformance/GlidingFlight.html#gliding-flight-unpowered-descent">
-   Gliding Flight (Unpowered Descent)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../AircraftPerformance/ClimbingFlight.html">
-   Climbing Flight
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../AircraftPerformance/RangeandEndurance.html">
-   Range and Endurance
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../AircraftPerformance/Manoeuvre.html">
-   Acceleration, Manoeuvres, and Aircraft Loading
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../AircraftPerformance/Examples.html">
-   Questions and Solutions
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Static Stability
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/StaticStability.html">
-   Defining Static Stability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/Angles.html">
-   Co-ordinate system and Angles
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/LSS.html">
-   Longitudinal Stability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/Nondimensionalrates.html">
-   Non-dimensional rates
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/Lateral.html">
-   Lateral Stability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/Directional.html">
-   Directional Stability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../StaticStability/CrossCouplings.html">
-   Cross-couplings
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Aircraft Equations of Motion
- </span>
-</p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="Introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Axes Transformations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="RelativeMotion.html">
-   Absolute Acceleration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Translation.html">
-   EoMs for Translation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Rotation.html">
-   EoMs for Rotation
-   <span class="math notranslate nohighlight">
-    \(\def\dif{\text{d}}\)
-   </span>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="InertiaTensor.html">
-   Inertia Tensor Calculation
-   <span class="math notranslate nohighlight">
-    \(\def\dif{\text{d}}\)
-   </span>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Summary.html">
-   Summary of the equations of motion
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Linearisation
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Introduction.html">
-   The Road so Far…
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Linearisation.html">
-   Linearisation Theory
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/AerodynamicDerivatives.html">
-   Stability Derivatives
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Concise.html">
-   Concise Form of Dimensional EoMs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Concise.html#units">
-   Units
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Aerodynamic.html">
-   Linear Aerodynamic Terms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/Nondimensional.html">
-   Nondimensional Equations of Motion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/StateSpaceExample.html">
-   Worked Example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/LinearvsNonlinear.html">
-   Comparison of the Linear and Nonlinear Equations of Motion: Aircraft Simulation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Linearisation/LinearvsNonlinear.html#numerical-linearisation-of-the-equations-of-motion">
-   Numerical Linearisation of the Equations of Motion
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Flight Dynamics
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Dynamics/Intro.html">
-   Dynamic Stability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Dynamics/ModesofMotion.html">
-   Aircraft Modes of Motion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Dynamics/CherokeeExample.html">
-   Final Examples
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  References and Resources
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../zreferences.html">
-   Acknowledgements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../zreferences.html#references">
-   References
-  </a>
- </li>
-</ul>
-
-</nav>
-
- <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  <div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
-</div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
 
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
 
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
     
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/EoMs/EulerTransforms.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
     
-</div>
-        <!-- Source interaction buttons -->
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/issues/new?title=Issue%20on%20page%20%2FEoMs/EulerTransforms.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/edit/master/EoMs/EulerTransforms.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+  
+    
+  
+
+<a class="navbar-brand logo" href="../NotesIntroduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Logo2.png" class="logo__image only-light" alt="Aircraft Flight Mechanics by Harry Smith, PhD - Home"/>
+    <img src="../_static/Logo2.png" class="logo__image only-dark pst-js-only" alt="Aircraft Flight Mechanics by Harry Smith, PhD - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../NotesIntroduction.html">
+                    Introduction to this website
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CourseIntroduction.html">Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Prerequisites/Prerequisites.html">Assumed knowledge</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aircraft Performance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AircraftPerformance/Introduction.html">Aircraft Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AircraftPerformance/Airspeed.html">Defining Aircraft ‘Speed’</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AircraftPerformance/SteadyLevelFlight.html">Steady Level Flight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AircraftPerformance/GlidingFlight.html">Climbing and Gliding Caveat</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../AircraftPerformance/ClimbingFlight.html">Climbing Flight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AircraftPerformance/RangeandEndurance.html">Range and Endurance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AircraftPerformance/Manoeuvre.html">Acceleration, Manoeuvres, and Aircraft Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AircraftPerformance/Examples.html">Questions and Solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Static Stability</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/StaticStability.html">Defining Static Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/Angles.html">Co-ordinate system and Angles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/LSS.html">Longitudinal Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/Nondimensionalrates.html">Non-dimensional rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/Lateral.html">Lateral Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/Directional.html">Directional Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../StaticStability/CrossCouplings.html">Cross-couplings</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aircraft Equations of Motion</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Axes Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RelativeMotion.html">Absolute Acceleration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Translation.html">EoMs for Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rotation.html">EoMs for Rotation <span class="math notranslate nohighlight">\(\def\dif{\text{d}}\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="InertiaTensor.html">Inertia Tensor Calculation <span class="math notranslate nohighlight">\(\def\dif{\text{d}}\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Summary.html">Summary of the equations of motion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linearisation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/Introduction.html">The Road so Far…</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/Linearisation.html">Linearisation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/AerodynamicDerivatives.html">Stability Derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/Concise.html">Concise Form of Dimensional EoMs</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/Aerodynamic.html">Linear Aerodynamic Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/Nondimensional.html">Nondimensional Equations of Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/StateSpaceExample.html">Worked Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linearisation/LinearvsNonlinear.html">Comparison of the Linear and Nonlinear Equations of Motion: Aircraft Simulation</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Flight Dynamics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Dynamics/Intro.html">Dynamic Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Dynamics/ModesofMotion.html">Aircraft Modes of Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Dynamics/CherokeeExample.html">Final Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References and Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../zreferences.html">Acknowledgements</a></li>
+
+</ul>
+
     </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/aeronauty/Aircraft-Flight-Mechanics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/edit/master/EoMs/EulerTransforms.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aeronauty/Aircraft-Flight-Mechanics/issues/new?title=Issue%20on%20page%20%2FEoMs/EulerTransforms.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/aeronauty/Aircraft-Flight-Mechanics/master?urlpath=tree/EoMs/EulerTransforms.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/EoMs/EulerTransforms.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
-    </div>
 
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Axes Transformations</h1>
     <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#euler-angles">
-   Euler Angles
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#earth-axes-to-intermediate-axes-x-1-y-1-z-1-through-yaw-psi">
-     Earth axes to intermediate axes
-     <span class="math notranslate nohighlight">
-      \([x_1, y_1, z_1]\)
-     </span>
-     through Yaw,
-     <span class="math notranslate nohighlight">
-      \(\psi\)
-     </span>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#intermediate-axes-1-to-intermediate-axes-2-through-pitch-theta">
-       Intermediate Axes 1 to Intermediate Axes 2 through Pitch,
-       <span class="math notranslate nohighlight">
-        \(\theta\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#intermediate-axes-2-to-body-axes-through-roll-phi">
-       Intermediate Axes 2 to Body Axes through Roll,
-       <span class="math notranslate nohighlight">
-        \(\phi\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#total-transformation-matrix">
-       Total Transformation Matrix
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#usage">
-       Usage
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#from-stability-axes-to-body-axes">
-   From Stability Axes to Body Axes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Usage
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#euler-rates">
-   Euler Rates
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#velocity-related-to-earth-and-body-axes">
-   Velocity related to Earth and Body Axes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#trajectory-angles">
-   Trajectory Angles
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reference-angles-on-the-same-planes">
-     Reference Angles on the same planes:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numerial-example">
-     Numerial Example
-    </a>
-   </li>
-  </ul>
- </li>
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-angles">Euler Angles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-axes-to-intermediate-axes-x-1-y-1-z-1-through-yaw-psi">Earth axes to intermediate axes <span class="math notranslate nohighlight">\([x_1, y_1, z_1]\)</span> through Yaw, <span class="math notranslate nohighlight">\(\psi\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-axes-1-to-intermediate-axes-2-through-pitch-theta">Intermediate Axes 1 to Intermediate Axes 2 through Pitch, <span class="math notranslate nohighlight">\(\theta\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-axes-2-to-body-axes-through-roll-phi">Intermediate Axes 2 to Body Axes through Roll, <span class="math notranslate nohighlight">\(\phi\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#total-transformation-matrix">Total Transformation Matrix</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
 </ul>
-
-        </nav>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-stability-axes-to-body-axes">From Stability Axes to Body Axes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Usage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-rates">Euler Rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-related-to-earth-and-body-axes">Velocity related to Earth and Body Axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trajectory-angles">Trajectory Angles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-angles-on-the-same-planes">Reference Angles on the same planes:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerial-example">Numerial Example</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="section" id="axes-transformations">
-<h1>Axes Transformations<a class="headerlink" href="#axes-transformations" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="axes-transformations">
+<h1>Axes Transformations<a class="headerlink" href="#axes-transformations" title="Link to this heading">#</a></h1>
 <p>The orientation of the body axis set within the Earth axis set is dictated by the aircraft’s attitude, defined by three angles, known as the <strong>Euler Angles</strong>:</p>
-<div class="section" id="euler-angles">
-<h2>Euler Angles<a class="headerlink" href="#euler-angles" title="Permalink to this headline">¶</a></h2>
+<section id="euler-angles">
+<h2>Euler Angles<a class="headerlink" href="#euler-angles" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Yaw <span class="math notranslate nohighlight">\((\psi)\)</span> - The angle between the projection of <span class="math notranslate nohighlight">\(x_b\)</span> on the plane of the earth, and the <span class="math notranslate nohighlight">\(x\)</span> axis, defined as rotation around <span class="math notranslate nohighlight">\(z\)</span>.</p></li>
 <li><p>Pitch <span class="math notranslate nohighlight">\((\theta)\)</span> - The angle between the aircraft <span class="math notranslate nohighlight">\(x_b\)</span> axis, and the earth <span class="math notranslate nohighlight">\(x_e/y_e\)</span> plane, defined as rotation around intermediate axis <span class="math notranslate nohighlight">\(y_1\)</span>.</p></li>
@@ -545,16 +500,16 @@
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}X_b\\Y_b\\Z_b\end{bmatrix}= \left[T(\psi, \theta, \phi)\right]\begin{bmatrix}X_e\\Y_e\\Z_e\end{bmatrix}\end{split}\]</div>
 <p>We define <span class="math notranslate nohighlight">\([T]\)</span> by performing a three individual rotations, involving two intermediate axes systems, and combining the result.</p>
-<div class="section" id="earth-axes-to-intermediate-axes-x-1-y-1-z-1-through-yaw-psi">
-<h3>Earth axes to intermediate axes <span class="math notranslate nohighlight">\([x_1, y_1, z_1]\)</span> through Yaw, <span class="math notranslate nohighlight">\(\psi\)</span><a class="headerlink" href="#earth-axes-to-intermediate-axes-x-1-y-1-z-1-through-yaw-psi" title="Permalink to this headline">¶</a></h3>
+<section id="earth-axes-to-intermediate-axes-x-1-y-1-z-1-through-yaw-psi">
+<h3>Earth axes to intermediate axes <span class="math notranslate nohighlight">\([x_1, y_1, z_1]\)</span> through Yaw, <span class="math notranslate nohighlight">\(\psi\)</span><a class="headerlink" href="#earth-axes-to-intermediate-axes-x-1-y-1-z-1-through-yaw-psi" title="Link to this heading">#</a></h3>
 <p>We perform an <em>Euler transform</em> to define <span class="math notranslate nohighlight">\(x_E,y_E\)</span> in the intermediate axes <span class="math notranslate nohighlight">\(x_1,y_1\)</span>, noting that <span class="math notranslate nohighlight">\(z_e=z_1\)</span>. You may have seen Euler transforms before, but they can be confusing, and are not clearly described in many textbooks - and, occasionally, taught incorrectly[^3]. Euler transforms don’t just appear in Flight Mechanics - if you do anything with rotation, then they come in handy all the time - so mastering this will put you in excellent stead for rotary aerodynamics.</p>
 <p>The key to getting an Euler transform correct is to understand what you’re doing - you are trying to describe a point that has <em>original</em> co-ordinates <span class="math notranslate nohighlight">\(x_e, y_e\)</span> in the earth axis system, and wish wish to determine what co-ordinates it would have in this new axis system <span class="math notranslate nohighlight">\(x_1, y_1\)</span>. We can use basic trigonometry to work this out. Apply the following rules, and you should be okay:</p>
-<ol class="simple">
-<li><p>Draw your unrotated axis set in any arbitrary orientation. Figure <a class="reference internal" href="#eulerpsi"><span class="std std-numref">Fig. 41</span></a> (a).</p></li>
-<li><p>Use your right hand to orient the axis system (see Figure <a class="reference internal" href="#rhrule"><span class="std std-numref">Fig. 42</span></a>), and determine the direction of the positive third axis (in or out of the page). In Figure <a class="reference internal" href="#eulerpsi"><span class="std std-numref">Fig. 41</span></a> (a), the <span class="math notranslate nohighlight">\(z\)</span>-axis is positive <em>into the page</em>.</p></li>
-<li><p>The right hand screw rule - See Figure <a class="reference internal" href="#rhscrewrule"><span class="std std-numref">Fig. 43</span></a> - defines the direction of positive rotation - for Figure, this is a <em>clockwise</em> rotation. Draw your rotated axes set at some arbitrary positive angle of rotation - in this case, through Yaw (<span class="math notranslate nohighlight">\(\psi\)</span>) - Figure <a class="reference internal" href="#eulerpsi"><span class="std std-numref">Fig. 41</span></a> (b) .</p></li>
-<li><p>Recall that you are defining what the point <span class="math notranslate nohighlight">\(x_e,y_e\)</span> would be in this new axis set - we can do this for each of them individually. Pick one, say <span class="math notranslate nohighlight">\(x_e\)</span>, and draw a right-angle triangle with the unrotated axis (<span class="math notranslate nohighlight">\(x_e\)</span>) as the hypotenuse. The adjacent side defines the component of <span class="math notranslate nohighlight">\(x_e\)</span> along <span class="math notranslate nohighlight">\(x_1\)</span>, whilst the opposite side defines the component of <span class="math notranslate nohighlight">\(x_e\)</span> along <span class="math notranslate nohighlight">\(y_1\)</span> which we can see is negative in this case - Figure <a class="reference internal" href="#eulerpsi"><span class="std std-numref">Fig. 41</span></a> (c).</p></li>
-<li><p>Do the same for the remaining unrotated axis - Figure <a class="reference internal" href="#eulerpsi"><span class="std std-numref">Fig. 41</span></a> (d).</p></li>
+<ol class="arabic simple">
+<li><p>Draw your unrotated axis set in any arbitrary orientation. Figure <a class="reference internal" href="#eulerpsi"><span class="std std-numref">Fig. 40</span></a> (a).</p></li>
+<li><p>Use your right hand to orient the axis system (see Figure <a class="reference internal" href="#rhrule"><span class="std std-numref">Fig. 41</span></a>), and determine the direction of the positive third axis (in or out of the page). In Figure <a class="reference internal" href="#eulerpsi"><span class="std std-numref">Fig. 40</span></a> (a), the <span class="math notranslate nohighlight">\(z\)</span>-axis is positive <em>into the page</em>.</p></li>
+<li><p>The right hand screw rule - See Figure <a class="reference internal" href="#rhscrewrule"><span class="std std-numref">Fig. 42</span></a> - defines the direction of positive rotation - for Figure, this is a <em>clockwise</em> rotation. Draw your rotated axes set at some arbitrary positive angle of rotation - in this case, through Yaw (<span class="math notranslate nohighlight">\(\psi\)</span>) - Figure <a class="reference internal" href="#eulerpsi"><span class="std std-numref">Fig. 40</span></a> (b) .</p></li>
+<li><p>Recall that you are defining what the point <span class="math notranslate nohighlight">\(x_e,y_e\)</span> would be in this new axis set - we can do this for each of them individually. Pick one, say <span class="math notranslate nohighlight">\(x_e\)</span>, and draw a right-angle triangle with the unrotated axis (<span class="math notranslate nohighlight">\(x_e\)</span>) as the hypotenuse. The adjacent side defines the component of <span class="math notranslate nohighlight">\(x_e\)</span> along <span class="math notranslate nohighlight">\(x_1\)</span>, whilst the opposite side defines the component of <span class="math notranslate nohighlight">\(x_e\)</span> along <span class="math notranslate nohighlight">\(y_1\)</span> which we can see is negative in this case - Figure <a class="reference internal" href="#eulerpsi"><span class="std std-numref">Fig. 40</span></a> (c).</p></li>
+<li><p>Do the same for the remaining unrotated axis - Figure <a class="reference internal" href="#eulerpsi"><span class="std std-numref">Fig. 40</span></a> (d).</p></li>
 <li><p>Collect the components are along the <em>rotated</em> X-axis, <span class="math notranslate nohighlight">\(x_1\)</span>:<span class="math notranslate nohighlight">\(x_1=x_e\cdot\cos\psi+y_e\cdot\sin\psi\)</span></p></li>
 <li><p>Collect the components are along the <em>rotated</em> Y-axis, <span class="math notranslate nohighlight">\(y_1\)</span>:<span class="math notranslate nohighlight">\(y_1=y_e\cdot\cos\psi-x_e\cdot\sin\psi\)</span> noting the <em>minus</em> sign in this one, as <span class="math notranslate nohighlight">\(x_e\cdot\sin\psi\)</span> was pointed in the <em>negative</em> <span class="math notranslate nohighlight">\(y_e\)</span> direction.</p></li>
 <li><p>We have already stated that <span class="math notranslate nohighlight">\(z_1=z_e\)</span>, so we can write the above in matrix form:</p></li>
@@ -564,50 +519,60 @@
             \vec{R_1}&amp;=\left[T_1\right]\vec{  R_e}\\
             \begin{bmatrix}x_1\\y_1\\z_1\end{bmatrix}&amp;=\begin{bmatrix}\cos\psi &amp; \sin\psi &amp; 0\\-\sin\psi &amp; \cos\psi &amp; 0\\ 0 &amp; 0 &amp; 1\end{bmatrix}\begin{bmatrix}x_e\\y_e\\z_e\end{bmatrix}
         \end{aligned}\end{split}\]</div>
-<ol class="simple">
+<ol class="arabic simple" start="9">
 <li><p>Check that you have a matrix with; four trig terms, four zeros, and a single unity term (1). The top-left and bottom-right trig term will be a positive cosine. The top-right, and bottom-left trig term will be a sine - one positive, one negative. The (1) will be in a row and column of its own, and everything else will be zero. <strong>If your transformation matrix doesn’t follow these rules, you’ve messed up.</strong></p></li>
 </ol>
-<div class="figure align-default" id="eulerpsi">
+<figure class="align-default" id="eulerpsi">
 <a class="reference internal image-reference" href="../_images/EulerPsi.png"><img alt="../_images/EulerPsi.png" src="../_images/EulerPsi.png" style="height: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">Step to create the Euler matrix from <span class="math notranslate nohighlight">\(O_{e}\)</span> to <span class="math notranslate nohighlight">\(O\)</span> (Earth to body)</span><a class="headerlink" href="#eulerpsi" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="rhrule">
+<figcaption>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Step to create the Euler matrix from <span class="math notranslate nohighlight">\(O_{e}\)</span> to <span class="math notranslate nohighlight">\(O\)</span> (Earth to body)</span><a class="headerlink" href="#eulerpsi" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="rhrule">
 <a class="reference internal image-reference" href="../_images/RHRule.png"><img alt="../_images/RHRule.png" src="../_images/RHRule.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">The rule for assigning a correct right-handed Cartesian axis system</span><a class="headerlink" href="#rhrule" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="rhscrewrule">
+<figcaption>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">The rule for assigning a correct right-handed Cartesian axis system</span><a class="headerlink" href="#rhrule" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="rhscrewrule">
 <a class="reference internal image-reference" href="../_images/RHScrewRule.png"><img alt="../_images/RHScrewRule.png" src="../_images/RHScrewRule.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">The rule for assigning a correct right-handed rotation direction</span><a class="headerlink" href="#rhscrewrule" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="intermediate-axes-1-to-intermediate-axes-2-through-pitch-theta">
-<h4>Intermediate Axes 1 to Intermediate Axes 2 through Pitch, <span class="math notranslate nohighlight">\(\theta\)</span><a class="headerlink" href="#intermediate-axes-1-to-intermediate-axes-2-through-pitch-theta" title="Permalink to this headline">¶</a></h4>
-<p>So far we have only yawed our axis system, we need to pitch it next. We do exactly the same as before. Figure <a class="reference internal" href="#eulertheta"><span class="std std-numref">Fig. 44</span></a> shows the aecond rotation through pitch, <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<figcaption>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">The rule for assigning a correct right-handed rotation direction</span><a class="headerlink" href="#rhscrewrule" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="intermediate-axes-1-to-intermediate-axes-2-through-pitch-theta">
+<h4>Intermediate Axes 1 to Intermediate Axes 2 through Pitch, <span class="math notranslate nohighlight">\(\theta\)</span><a class="headerlink" href="#intermediate-axes-1-to-intermediate-axes-2-through-pitch-theta" title="Link to this heading">#</a></h4>
+<p>So far we have only yawed our axis system, we need to pitch it next. We do exactly the same as before. Figure <a class="reference internal" href="#eulertheta"><span class="std std-numref">Fig. 43</span></a> shows the aecond rotation through pitch, <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 <p>To determine the second transformation matrix:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
     \begin{bmatrix}x_2\\y_2\\z_2\end{bmatrix}&amp;=\begin{bmatrix}\cos\theta &amp; 0 &amp; -\sin\theta\\ 0 &amp; 1 &amp; 0 \\ \sin\theta &amp; 0 &amp; \cos\theta\end{bmatrix}\begin{bmatrix}x_1\\y_1\\z_1\end{bmatrix}\\
     \vec{R_2}&amp;=[T_2]\vec{R_1}\\   
     &amp;=[T_2][T_1]\vec{R_e}\end{aligned}\end{split}\]</div>
-<div class="figure align-default" id="eulertheta">
+<figure class="align-default" id="eulertheta">
 <a class="reference internal image-reference" href="../_images/EulerTheta.png"><img alt="../_images/EulerTheta.png" src="../_images/EulerTheta.png" style="height: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">Euler Rotation from Intermediate Axes 1 to Intermediate Axes 2 through Pitch, <span class="math notranslate nohighlight">\(\theta\)</span></span><a class="headerlink" href="#eulertheta" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="intermediate-axes-2-to-body-axes-through-roll-phi">
-<h4>Intermediate Axes 2 to Body Axes through Roll, <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#intermediate-axes-2-to-body-axes-through-roll-phi" title="Permalink to this headline">¶</a></h4>
-<p>Figure <a class="reference internal" href="#eulerphi"><span class="std std-numref">Fig. 45</span></a> shows the final rotation through roll, <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<figcaption>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Euler Rotation from Intermediate Axes 1 to Intermediate Axes 2 through Pitch, <span class="math notranslate nohighlight">\(\theta\)</span></span><a class="headerlink" href="#eulertheta" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="intermediate-axes-2-to-body-axes-through-roll-phi">
+<h4>Intermediate Axes 2 to Body Axes through Roll, <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#intermediate-axes-2-to-body-axes-through-roll-phi" title="Link to this heading">#</a></h4>
+<p>Figure <a class="reference internal" href="#eulerphi"><span class="std std-numref">Fig. 44</span></a> shows the final rotation through roll, <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-    \begin{bmatrix}x\\y\\z\end{bmatrix}&amp;=\begin{bmatrix}1 &amp; 0 &amp; 0\\0 &amp; \cos\phi &amp; \sin\phi \\ 0 &amp; -\sin\phi &amp; \cos\phi \end{bmatrix}\begin{bmatrix}x_1\\y_1\\z_1\end{bmatrix}\\
+    \begin{bmatrix}x\\y\\z\end{bmatrix}&amp;=\begin{bmatrix}1 &amp; 0 &amp; 0\\0 &amp; \cos\phi &amp; \sin\phi \\ 0 &amp; -\sin\phi &amp; \cos\phi \end{bmatrix}\begin{bmatrix}x_2\\y_2\\z_2\end{bmatrix}\\
     \vec{R}&amp;=[T_3]\vec{R_2}\\   
     &amp;=[T_3][T_2][T_1]\vec{R_e}\end{aligned}\end{split}\]</div>
-<div class="figure align-default" id="eulerphi">
+<figure class="align-default" id="eulerphi">
 <a class="reference internal image-reference" href="../_images/EulerPhi.png"><img alt="../_images/EulerPhi.png" src="../_images/EulerPhi.png" style="height: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text">Euler Rotation from Intermediate Axes 2 to Body Axes through Roll, <span class="math notranslate nohighlight">\(\phi\)</span></span><a class="headerlink" href="#eulerphi" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="total-transformation-matrix">
-<h4>Total Transformation Matrix<a class="headerlink" href="#total-transformation-matrix" title="Permalink to this headline">¶</a></h4>
+<figcaption>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Euler Rotation from Intermediate Axes 2 to Body Axes through Roll, <span class="math notranslate nohighlight">\(\phi\)</span></span><a class="headerlink" href="#eulerphi" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="total-transformation-matrix">
+<h4>Total Transformation Matrix<a class="headerlink" href="#total-transformation-matrix" title="Link to this heading">#</a></h4>
 <p>Since we have now defined <span class="math notranslate nohighlight">\([T_1]\)</span>, <span class="math notranslate nohighlight">\([T_2]\)</span>, and <span class="math notranslate nohighlight">\([T_3]\)</span>, we can perform the matrix multiplication and express <span class="math notranslate nohighlight">\([T]\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
@@ -624,10 +589,10 @@
 <div class="math notranslate nohighlight">
 \[\begin{split}[T]^{-1}= \begin{bmatrix}\cos\theta\cos\psi &amp; \cos\theta\sin\psi &amp; -\sin\theta \\ 
  -\cos\phi\sin\psi + \sin\phi\sin\theta\cos\psi &amp; \cos\phi\cos\psi + \sin\phi\sin\theta\sin\psi &amp; \sin\phi\cos\theta \\ \sin\phi\sin\psi + \cos\phi\sin\theta\cos\psi &amp; -\sin\phi\cos\psi + \cos\phi\sin\theta\sin\psi   &amp; \cos\phi\cos\theta\end{bmatrix}\end{split}\]</div>
-</div>
-<div class="section" id="usage">
-<h4>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h4>
-<p>It is easiest to define the gravitational forces in Earth axes, as has already been shown in Equation <a class="reference internal" href="Introduction.html#equation-gforce-earth">(14)</a>:</p>
+</section>
+<section id="usage">
+<h4>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h4>
+<p>It is easiest to define the gravitational forces in Earth axes, as has already been shown in Equation <a class="reference internal" href="Introduction.html#equation-gforce-earth">(15)</a>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\vec{F}_{G_E} = \begin{bmatrix}0\\0\\W\end{bmatrix}_{e}    =\begin{bmatrix}0\\0\\ mg\end{bmatrix}_{e}\end{split}\]</div>
 <p>For development of the aircraft equations of motion, it is desired to express all forces in <em>body axes</em>, so we write:</p>
@@ -638,34 +603,36 @@
  -\cos\phi\sin\psi + \sin\phi\sin\theta\cos\psi &amp; \cos\phi\cos\psi + \sin\phi\sin\theta\sin\psi &amp; \sin\phi\cos\theta \\ \sin\phi\sin\psi + \cos\phi\sin\theta\cos\psi &amp; -\sin\phi\cos\psi + \cos\phi\sin\theta\sin\psi   &amp; \cos\phi\cos\theta\end{bmatrix}\begin{bmatrix}0\\0\\mg\end{bmatrix}
 \end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-gforce-body">
-<span class="eqno">(15)<a class="headerlink" href="#equation-gforce-body" title="Permalink to this equation">¶</a></span>\[\begin{split}= \begin{bmatrix}-mg\cdot\sin\theta\\mg\cdot \sin\phi\cos\theta\\mg\cdot \cos\phi\cos\theta\end{bmatrix}\end{split}\]</div>
-</div>
-</div>
-</div>
-<div class="section" id="from-stability-axes-to-body-axes">
-<h2>From Stability Axes to Body Axes<a class="headerlink" href="#from-stability-axes-to-body-axes" title="Permalink to this headline">¶</a></h2>
+<span class="eqno">(16)<a class="headerlink" href="#equation-gforce-body" title="Link to this equation">#</a></span>\[\begin{split}= \begin{bmatrix}-mg\cdot\sin\theta\\mg\cdot \sin\phi\cos\theta\\mg\cdot \cos\phi\cos\theta\end{bmatrix}\end{split}\]</div>
+</section>
+</section>
+</section>
+<section id="from-stability-axes-to-body-axes">
+<h2>From Stability Axes to Body Axes<a class="headerlink" href="#from-stability-axes-to-body-axes" title="Link to this heading">#</a></h2>
 <p>The transformation from Stability Axes to Body axes is another Euler transform, which you should be capable of doing now. Note that the definition of <span class="math notranslate nohighlight">\(\alpha\)</span> is such that for a positive angle of attack, <span class="math notranslate nohighlight">\(V_f\)</span> approaches the aircraft from underneath, thus providing a <span class="math notranslate nohighlight">\(w\)</span> component. It may be shown that:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
     \begin{bmatrix}x_b\\y_b\\z_b\end{bmatrix} &amp;= \begin{bmatrix}\cos\alpha &amp; 0 &amp; -\sin\alpha\\0 &amp; 1 &amp; 0\\\sin\alpha &amp; 0 &amp; \cos\alpha\end{bmatrix}\begin{bmatrix}x_w\\y_w\\z_w\end{bmatrix}\label{eq:windtobody}\end{aligned}\end{split}\]</div>
-<div class="section" id="id1">
-<h3>Usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<section id="id1">
+<h3>Usage<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>This transformation is used to convert the aerodynamic force vector into body axes:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
     \begin{bmatrix}F_{A_x}\\F_{A_y}\\F_{A_z}\end{bmatrix}_b &amp;= \begin{bmatrix}\cos\alpha &amp; 0 &amp; -\sin\alpha\\0 &amp; 1 &amp; 0\\\sin\alpha &amp; 0 &amp; \cos\alpha\end{bmatrix}\begin{bmatrix}F_{A_x}\\F_{A_y}\\F_{A_z}\end{bmatrix}_s\nonumber\\
     &amp;= \begin{bmatrix}\cos\alpha &amp; 0 &amp; -\sin\alpha\\0 &amp; 1 &amp; 0\\\sin\alpha &amp; 0 &amp; \cos\alpha\end{bmatrix}\begin{bmatrix}-D\\F_{A_y}\\-L\end{bmatrix}_s\nonumber\end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-aero-body">
-<span class="eqno">(16)<a class="headerlink" href="#equation-aero-body" title="Permalink to this equation">¶</a></span>\[\begin{split}=\begin{bmatrix}-D\cos\alpha + L\sin\alpha\\ F_{A_y}\\ -D\sin\alpha - L\cos\alpha\end{bmatrix}\end{split}\]</div>
-<p>a sense check of the forces in Equation <a class="reference internal" href="#equation-aero-body">(16)</a> may be performed - the body axial force has a large component aftward because of drag, and a small component acting forward (in body axes) due to lift. Lift acts ‘upward’ for positive AoA, as would be expected.</p>
-<div class="figure align-default" id="aerodynamicangles">
+<span class="eqno">(17)<a class="headerlink" href="#equation-aero-body" title="Link to this equation">#</a></span>\[\begin{split}=\begin{bmatrix}-D\cos\alpha + L\sin\alpha\\ F_{A_y}\\ -D\sin\alpha - L\cos\alpha\end{bmatrix}\end{split}\]</div>
+<p>a sense check of the forces in Equation <a class="reference internal" href="#equation-aero-body">(17)</a> may be performed - the body axial force has a large component aftward because of drag, and a small component acting forward (in body axes) due to lift. Lift acts ‘upward’ for positive AoA, as would be expected.</p>
+<figure class="align-default" id="aerodynamicangles">
 <a class="reference internal image-reference" href="../_images/AerodynamicAngles.png"><img alt="../_images/AerodynamicAngles.png" src="../_images/AerodynamicAngles.png" style="height: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 46 </span><span class="caption-text">Aerodynamic Angles</span><a class="headerlink" href="#aerodynamicangles" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="euler-rates">
-<span id="id2"></span><h2>Euler Rates<a class="headerlink" href="#euler-rates" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Aerodynamic Angles</span><a class="headerlink" href="#aerodynamicangles" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="euler-rates">
+<span id="id2"></span><h2>Euler Rates<a class="headerlink" href="#euler-rates" title="Link to this heading">#</a></h2>
 <p>It is important to understand that the Euler angles are not defined in the same axis set (yaw is defined in earth axes, pitch is defined in intermediate axes 1, and roll is defined in intermediate exes 2).</p>
 <p>Consequently:</p>
 <div class="math notranslate nohighlight">
@@ -757,7 +724,7 @@
  \end{aligned}\end{split}\]</div>
 <p>The matrix above is not orthogonal, but if we use the inverse of the three Euler matrices, we can construct the inverse of the matrix above (or invert the 3 x 3 manually)</p>
 <div class="math notranslate nohighlight" id="equation-eq-omegatoeulerrate">
-<span class="eqno">(17)<a class="headerlink" href="#equation-eq-omegatoeulerrate" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-omegatoeulerrate" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \begin{bmatrix} \dot{\phi}\\\dot{\theta}\\\dot{\psi}\end{bmatrix}
 &amp;= \begin{bmatrix}
     1 &amp; \sin\phi\tan\theta &amp; \cos\phi\tan\theta\\
@@ -765,20 +732,20 @@
     0 &amp; \frac{\sin\phi}{\cos\theta} &amp; \frac{\cos\phi}{\cos\theta}
  \end{bmatrix}\begin{bmatrix} P\\Q\\R\end{bmatrix}\end{aligned}\end{split}\]</div>
 <p>It should be apparent that for the case of <span class="math notranslate nohighlight">\(\theta=90^\circ\)</span>, the matrix above becomes singular, and hence for pitch vertically upwards, a relationship between body and Euler rates cannot be defined. This is known as ‘gimbal lock’ - but fortunately, for our purposes, we shall not be dealing with aircraft flying straight upward!</p>
-</div>
-<div class="section" id="velocity-related-to-earth-and-body-axes">
-<h2>Velocity related to Earth and Body Axes<a class="headerlink" href="#velocity-related-to-earth-and-body-axes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="velocity-related-to-earth-and-body-axes">
+<h2>Velocity related to Earth and Body Axes<a class="headerlink" href="#velocity-related-to-earth-and-body-axes" title="Link to this heading">#</a></h2>
 <p>Whilst aerodynamic forces are generally defined in stability axes, the aircraft velocity vector is defined in wind axes - hence we need to be able to relate the incident flow to Earth and body axes, respectively.<br />
-We relate <span class="math notranslate nohighlight">\(\vec{V}_f\)</span> to <span class="math notranslate nohighlight">\([U, V, W]\)</span> via the <span class="xref myst">aerodynamic angles</span><a class="footnote-reference brackets" href="#id5" id="id3">1</a>.</p>
-</div>
-<div class="section" id="trajectory-angles">
-<span id="id4"></span><h2>Trajectory Angles<a class="headerlink" href="#trajectory-angles" title="Permalink to this headline">¶</a></h2>
+We relate <span class="math notranslate nohighlight">\(\vec{V}_f\)</span> to <span class="math notranslate nohighlight">\([U, V, W]\)</span> via the <a class="reference internal" href="#aerodynamics-angles"><span class="xref myst">aerodynamic angles</span></a><a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+</section>
+<section id="trajectory-angles">
+<span id="id4"></span><h2>Trajectory Angles<a class="headerlink" href="#trajectory-angles" title="Link to this heading">#</a></h2>
 <p>The trajectory angles define the orientation of the velocity vector <span class="math notranslate nohighlight">\(\vec{V}_f\)</span> in earth axes. The angles are:</p>
 <p>Track angle, <span class="math notranslate nohighlight">\(\tau\)</span><br />
 Flight path angle, <span class="math notranslate nohighlight">\(\gamma\)</span></p>
 <p>Which we define as the aircraft velocity resolved into earth axis components:</p>
 <div class="math notranslate nohighlight" id="equation-eq-trajectoryangles">
-<span class="eqno">(18)<a class="headerlink" href="#equation-eq-trajectoryangles" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-trajectoryangles" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
 \begin{split}
     U_e &amp;= V_f\cdot\cos\gamma\cdot\cos\tau\\
     V_e &amp;= V_f\cdot\cos\gamma\cdot\sin\tau\\
@@ -786,30 +753,36 @@ Flight path angle, <span class="math notranslate nohighlight">\(\gamma\)</span><
 \end{split}\end{aligned}\end{split}\]</div>
 <p>The flight path angle is the angle between the velocity vector and its projection in the <span class="math notranslate nohighlight">\(x_e, y_e\)</span> plane. The track angle is the angle between that projection and due north, <span class="math notranslate nohighlight">\(x_e\)</span>.</p>
 <p>Caution must be taken as these angles are defined in the opposite order to aerodynamic angles. That is, <span class="math notranslate nohighlight">\(\vec{V}_f^\prime\)</span> is the projection of <span class="math notranslate nohighlight">\(\vec{V}_f\)</span> in the <span class="math notranslate nohighlight">\(x_e,y_e\)</span> plane. Hence <span class="math notranslate nohighlight">\(\vec{V}_f^\prime\triangleq\vec{V}_f\cos\gamma\)</span>.</p>
-<p>The remainder of Eq. <a class="reference internal" href="#equation-eq-trajectoryangles">(18)</a> should follow from basic trigonometry.</p>
-<div class="figure align-default" id="trajectoryangles">
+<p>The remainder of Eq. <a class="reference internal" href="#equation-eq-trajectoryangles">(19)</a> should follow from basic trigonometry.</p>
+<figure class="align-default" id="trajectoryangles">
 <a class="reference internal image-reference" href="../_images/TrajectoryAngles.png"><img alt="../_images/TrajectoryAngles.png" src="../_images/TrajectoryAngles.png" style="height: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 47 </span><span class="caption-text">Trajectory Angles</span><a class="headerlink" href="#trajectoryangles" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="reference-angles-on-the-same-planes">
-<h3>Reference Angles on the same planes:<a class="headerlink" href="#reference-angles-on-the-same-planes" title="Permalink to this headline">¶</a></h3>
-<p>We can overlay the flight path <span class="math notranslate nohighlight">\(\gamma\)</span> and angle of attack <span class="math notranslate nohighlight">\(\alpha\)</span> on the same diagram (for the case of zero sideslip, track) - Figure <a class="reference internal" href="#referenceanglesxz"><span class="std std-numref">Fig. 48</span></a>.</p>
-<p>We can do the same for the track angle <span class="math notranslate nohighlight">\(\tau\)</span> and the aircraft sideslip angle <span class="math notranslate nohighlight">\(\beta\)</span> - Figure <a class="reference internal" href="#referenceanglesxy"><span class="std std-numref">Fig. 49</span></a>.</p>
-<div class="figure align-default" id="referenceanglesxz">
+<figcaption>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Trajectory Angles</span><a class="headerlink" href="#trajectoryangles" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="reference-angles-on-the-same-planes">
+<h3>Reference Angles on the same planes:<a class="headerlink" href="#reference-angles-on-the-same-planes" title="Link to this heading">#</a></h3>
+<p>We can overlay the flight path <span class="math notranslate nohighlight">\(\gamma\)</span> and angle of attack <span class="math notranslate nohighlight">\(\alpha\)</span> on the same diagram (for the case of zero sideslip, track) - Figure <a class="reference internal" href="#referenceanglesxz"><span class="std std-numref">Fig. 47</span></a>.</p>
+<p>We can do the same for the track angle <span class="math notranslate nohighlight">\(\tau\)</span> and the aircraft sideslip angle <span class="math notranslate nohighlight">\(\beta\)</span> - Figure <a class="reference internal" href="#referenceanglesxy"><span class="std std-numref">Fig. 48</span></a>.</p>
+<figure class="align-default" id="referenceanglesxz">
 <a class="reference internal image-reference" href="../_images/ReferenceAnglesXZ.png"><img alt="../_images/ReferenceAnglesXZ.png" src="../_images/ReferenceAnglesXZ.png" style="height: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 48 </span><span class="caption-text">Reference angles on ZX plane</span><a class="headerlink" href="#referenceanglesxz" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="referenceanglesxy">
+<figcaption>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Reference angles on ZX plane</span><a class="headerlink" href="#referenceanglesxz" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="referenceanglesxy">
 <a class="reference internal image-reference" href="../_images/ReferenceAnglesXY.png"><img alt="../_images/ReferenceAnglesXY.png" src="../_images/ReferenceAnglesXY.png" style="height: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text">Reference angles on XY plane</span><a class="headerlink" href="#referenceanglesxy" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="numerial-example">
-<h3>Numerial Example<a class="headerlink" href="#numerial-example" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Reference angles on XY plane</span><a class="headerlink" href="#referenceanglesxy" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="numerial-example">
+<h3>Numerial Example<a class="headerlink" href="#numerial-example" title="Link to this heading">#</a></h3>
 <p>Aircraft accident investigators wish to calculate the descent rate of an aircraft at the moment of impact into the ocean. The flight data recorder outputs are in terms of the following aircraft variables:</p>
 <p>Sideslip, yaw, pitch angles = 0</p>
-<p>Roll angle = 60$^\circ$</p>
-<p>Angle of Attack = 30$^\circ$</p>
+<p>Roll angle = 60<span class="math notranslate nohighlight">\(^\circ\)</span></p>
+<p>Angle of Attack = 30<span class="math notranslate nohighlight">\(^\circ\)</span></p>
 <p>Airspeed = 120kn EAS</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Click to see solution</p>
@@ -830,21 +803,22 @@ Flight path angle, <span class="math notranslate nohighlight">\(\gamma\)</span><
     W_e &amp;= 53.458\cdot\sin0 + 0\sin60\cdot\cos0 + 30.864\cos60\cos0\\
     &amp;= 15.432\text{m/s EAS}\end{aligned}\end{split}\]</div>
 </div>
-<hr class="docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
-<dd><p>noting that <span class="math notranslate nohighlight">\(\vec{V}\)</span> without a subscript is the velocity in body axes by definition</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">4</a><span class="fn-bracket">]</span></span>
+<p>noting that <span class="math notranslate nohighlight">\(\vec{V}\)</span> without a subscript is the velocity in body axes by definition</p>
+</aside>
+</aside>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "aeronauty/Aircraft-Flight-Mechanics",
+            repo: "binder-examples/jupyter-stacks-datascience",
             ref: "master",
         },
         codeMirrorConfig: {
@@ -852,7 +826,7 @@ Flight path angle, <span class="math notranslate nohighlight">\(\gamma\)</span><
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./EoMs"
         },
         predefinedOutput: true
@@ -860,51 +834,127 @@ Flight path angle, <span class="math notranslate nohighlight">\(\gamma\)</span><
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="Introduction.html" title="previous page">Introduction</a>
-    <a class='right-next' id="next-link" href="RelativeMotion.html" title="next page">Absolute Acceleration</a>
 
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Harry Smith<br/>
-        
-            &copy; Copyright 2020.<br/>
-          <div class="extra_footer">
-            <div>
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a>.
-</div><div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
-
-          </div>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
       </div>
-    </div>
+    </a>
+    <a class="right-next"
+       href="RelativeMotion.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Absolute Acceleration</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-    <script src="../_static/js/index.js"></script>
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-angles">Euler Angles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-axes-to-intermediate-axes-x-1-y-1-z-1-through-yaw-psi">Earth axes to intermediate axes <span class="math notranslate nohighlight">\([x_1, y_1, z_1]\)</span> through Yaw, <span class="math notranslate nohighlight">\(\psi\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-axes-1-to-intermediate-axes-2-through-pitch-theta">Intermediate Axes 1 to Intermediate Axes 2 through Pitch, <span class="math notranslate nohighlight">\(\theta\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intermediate-axes-2-to-body-axes-through-roll-phi">Intermediate Axes 2 to Body Axes through Roll, <span class="math notranslate nohighlight">\(\phi\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#total-transformation-matrix">Total Transformation Matrix</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-stability-axes-to-body-axes">From Stability Axes to Body Axes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Usage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-rates">Euler Rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-related-to-earth-and-body-axes">Velocity related to Earth and Body Axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trajectory-angles">Trajectory Angles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-angles-on-the-same-planes">Reference Angles on the same planes:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerial-example">Numerial Example</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-178506186-1', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
+<p class="component-author">
+By Harry Smith
+</p>
+
+  </div>
+  
+  <div class="footer-item">
     
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aircraft Flight Mechanics</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.aircraftflightmechanics.com" property="cc:attributionName" rel="cc:attributionURL">Harry Smith</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="www.aircraftflightmechanics.com" rel="dct:source">www.aircraftflightmechanics.com</a></div><div><script data-ad-client="ca-pub-5107176300009857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></div>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

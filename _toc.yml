@@ -1,12 +1,12 @@
-- file: NotesIntroduction
-
-- chapter: Getting Started
-  sections:
+format: jb-book
+root: NotesIntroduction
+parts:
+- caption: Getting Started
+  chapters:
   - file: CourseIntroduction
   - file: Prerequisites/Prerequisites
-
-- chapter: Aircraft Performance
-  sections:
+- caption: Aircraft Performance
+  chapters:
   - file: AircraftPerformance/Introduction
   - file: AircraftPerformance/Airspeed
   - file: AircraftPerformance/SteadyLevelFlight
@@ -15,9 +15,8 @@
   - file: AircraftPerformance/RangeandEndurance
   - file: AircraftPerformance/Manoeuvre
   - file: AircraftPerformance/Examples
-
-- chapter: Static Stability
-  sections:
+- caption: Static Stability
+  chapters:
   - file: StaticStability/StaticStability
   - file: StaticStability/Angles
   - file: StaticStability/LSS
@@ -25,10 +24,8 @@
   - file: StaticStability/Lateral
   - file: StaticStability/Directional
   - file: StaticStability/CrossCouplings
-
-
-- chapter: Aircraft Equations of Motion
-  sections:
+- caption: Aircraft Equations of Motion
+  chapters:
   - file: EoMs/Introduction
   - file: EoMs/EulerTransforms
   - file: EoMs/RelativeMotion
@@ -37,9 +34,8 @@
   - file: EoMs/InertiaTensor
   - file: EoMs/AngularRates
   - file: EoMs/Summary
-
-- chapter: Linearisation
-  sections:
+- caption: Linearisation
+  chapters:
   - file: Linearisation/Introduction
   - file: Linearisation/Linearisation
   - file: Linearisation/AerodynamicDerivatives
@@ -48,13 +44,11 @@
   - file: Linearisation/Nondimensional
   - file: Linearisation/StateSpaceExample
   - file: Linearisation/LinearvsNonlinear
-
-- chapter: Flight Dynamics
-  sections: 
+- caption: Flight Dynamics
+  chapters:
   - file: Dynamics/Intro
   - file: Dynamics/ModesofMotion
   - file: Dynamics/CherokeeExample
-
-- chapter: References and Resources
-  sections:
+- caption: References and Resources
+  chapters:
   - file: zreferences
